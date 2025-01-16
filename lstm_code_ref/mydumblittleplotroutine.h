@@ -1,3 +1,12 @@
+#if defined(USE_APPROX_ACTIV_FNS)
+#define DATA0_FNAME "data0_approx.txt"
+#define DATA1_FNAME "data1_approx.txt"
+#else
+#define DATA0_FNAME "data0.txt"
+#define DATA1_FNAME "data1.txt"
+#endif
+
+
 // hardcoded for exactly two signals
 void plot (float *time,
 		   float *sig1,const char *name1,
@@ -10,12 +19,12 @@ void plot (float *time,
 	FILE *myFile[2];
 
 	// open a file to dump each trace
-	myFile[0] = fopen("data0.txt","w+");
+	myFile[0] = fopen(DATA0_FNAME,"w+");
 	if (!myFile[0]) {
 		perror("ERROR: can't create temp file in PWD");
 		exit(1);
 	}
-	myFile[1] = fopen("data1.txt","w+");
+	myFile[1] = fopen(DATA1_FNAME,"w+");
 	if (!myFile[1]) {
 		perror("ERROR: can't create temp file in PWD");
 		exit(1);
@@ -36,8 +45,9 @@ void plot (float *time,
 			"set xlabel 'time (s)';"
 			"set ylabel 'mm';"
 			//"set key off;"
-			"plot 'data0.txt' title '%s' with lines,"
-					   "'data1.txt' title '%s' with lines;\"",title,name1,name2);
+			"plot "
+	                   "'" DATA0_FNAME "' title '%s' with lines,"
+			   "'" DATA1_FNAME "' title '%s' with lines;\"",title,name1,name2);
 
 	FILE *myplot = popen(str,"w");
 	

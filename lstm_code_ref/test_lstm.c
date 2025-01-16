@@ -14,7 +14,7 @@
 
 #define APPROX_SIGM_N 128.0f
 
-#if defined(USE_APPROX_SIGM)
+#if defined(USE_APPROX_ACTIV_FNS)
 /*
 Approximate sigmoidal function formula:
      sigma(x) = 1.0 / (1.0 + (1.0 - x/n)^n)
@@ -37,7 +37,7 @@ float sigm(float x) {
 #endif
 
 
-#if defined(USE_APPROX_TANH)
+#if defined(USE_APPROX_ACTIV_FNS)
 /*
 Approximate hyperbolic tangent formula using 7th-degree lambert approximant:
      tanh(x) = (135135 * x + 17325 * x^3 + 378 * x^5 + x^7)

@@ -10,7 +10,7 @@ test_lstm: $(SOURCE)
 	$(CC) test_lstm.c $(CFLAGS) -o $@
 
 test_lstm_approx: $(SOURCE)
-	$(CC) test_lstm.c $(CFLAGS) -DUSE_APPROX_SIGM -DUSE_APPROX_TANH -o $@
+	$(CC) test_lstm.c $(CFLAGS) -DUSE_APPROX_ACTIV_FNS -o $@
 
 clean:
 	-rm test_lstm
