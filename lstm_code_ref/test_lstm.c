@@ -15,9 +15,12 @@
 #define APPROX_SIGM_N 128.0f
 
 #if defined(USE_APPROX_SIGM)
-// Approximate sigmoidal function formula from:
-// https://scicomp.stackexchange.com/a/42187
-//     sigma = 1.0 / (1.0 + (1 - x/n)^n)
+/*
+Approximate sigmoidal function formula:
+     sigma(x) = 1.0 / (1.0 + (1.0 - x/n)^n)
+
+Ref: https://scicomp.stackexchange.com/a/42187
+*/
 float sigm(float x) {
   float y = 1 - x / APPROX_SIGM_N;
   int m = (int)log2(APPROX_SIGM_N);
@@ -34,7 +37,28 @@ float sigm(float x) {
 #endif
 
 
-
+#if defined(USE_APPROX_TANH)
+/*
+Approximate hyperbolic tangent formula using 7th-degree lambert approximant:
+     tanh(x) = (135135 * x + 17325 * x^3 + 378 * x^5 + x^7)
+               / (135135 + 62370 * x^2 + 3150 * x^4 + 28 * x^6)
+Ref: https://yaikhom.com/2020-04-28-localised-approximation-of-hyperbolic-tangents.html
+*/
+float my_tanh(float x) {
+  float x2 = x * x;
+  float x3 = x * x2;
+  float x4 = x2 * x2;
+  float x5 = x2 * x3;
+  float x6 = x3 * x3;
+  float x7 = x3 * x4;
+  return ((135135.0f * x + 17325.0f * x3 + 378.0f * x5 + x7) /
+	  (135135.0f + 62370.0f * x2 + 3150.0 * x4 + 28 * x6));
+}
+#else
+float my_tanh(float x) {
+  return tanhf(x);
+}
+#endif
 
 
 // computes c += Ab
@@ -95,7 +119,7 @@ int main() {
 		for (int j=0;j<UNITS;j++) {
 			state[j] =
 				sigm(gates[UNITS + j]) * state[j] +
-				sigm(gates[i]) * tanhf(gates[UNITS*3+i]);
+				sigm(gates[i]) * my_tanh(gates[UNITS*3+i]);
 
 			output[j] =
 				sigm(gates[UNITS*2+j]) + sigm(state[j]);
