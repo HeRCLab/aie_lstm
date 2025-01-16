@@ -12,9 +12,30 @@
 #include "weights.h"
 #include "mydumblittleplotroutine.h"
 
+#define APPROX_SIGM_N 128.0f
+
+#if defined(USE_APPROX_SIGM)
+// Approximate sigmoidal function formula from:
+// https://scicomp.stackexchange.com/a/42187
+//     sigma = 1.0 / (1.0 + (1 - x/n)^n)
+float sigm(float x) {
+  float y = 1 - x / APPROX_SIGM_N;
+  int m = (int)log2(APPROX_SIGM_N);
+  for (int i = 0; i < m; i++) {
+    y *= y;
+  }
+
+  return 1.0 / (1.0 + y);
+}
+#else
 float sigm(float x) {
 	return 1.f/(1.f+expf(-x));
 }
+#endif
+
+
+
+
 
 // computes c += Ab
 // matrix is row-major
