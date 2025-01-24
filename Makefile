@@ -1,0 +1,51 @@
+SRC_DIR := src/
+INCLUDE_DIRS := $(SRC_DIR) $(SRC_DIR)/kernels/
+LFLAGS := -lsoftmath
+WORK_DIR := build/
+REPORT_DIR := reports/
+LOG_DIR := logs/
+PLATFORM := $(XILINX_VITIS)/xilinx_vck190_base_202420_1/xilinx_vck190_base_202420_1.xpfm
+
+SOURCES := $(wildcard $(SRC_DIR)/*.cpp) \
+	   $(wildcard $(SRC_DIR)/*.hpp) \
+	   $(wildcard $(SRC_DIR)/kernels/*.cpp) \
+	   $(wildcard $(SRC_DIR)/kernels/*.hpp)
+
+AIECC := v++ \
+      --compile \
+      --mode aie \
+      --aie.verbose \
+      --platform $(PLATFORM) \
+      --include $(XILINX_VITIS)/aietools/include \
+      $(foreach x,$(INCLUDE_DIRS),--include $x) \
+      $(LFLAGS) \
+      --report_dir $(REPORT_DIR) \
+      --work_dir $(WORK_DIR) \
+      --log_dir $(LOG_DIR)
+
+.PHONY: build-hw \
+	build-x86sim \
+	build-aiesim \
+	run-x86sim \
+	run-aiesim \
+	clean
+
+build-hw: $(SOURCES)
+	$(AIECC) --target hw src/main.cpp
+
+build-x86sim: $(SOURCES)
+	$(AIECC) --target x86sim src/main.cpp
+
+build-aiesim: $(SOURCES)
+	$(AIECC) --target aiesim src/main.cpp
+
+run-x86sim:
+	x86simulator --pkg-dir=$(WORK_DIR) --trace
+
+run-aiesim:
+	aiesimulator --pkg-dir=$(WORK_DIR)
+
+clean:
+	rm -r $(WORK_DIR)/*
+	rm -r $(REPORT_DIR)/*
+	rm -r $(LOG_DIR)/*
