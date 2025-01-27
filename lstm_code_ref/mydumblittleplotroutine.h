@@ -1,9 +1,18 @@
-#if defined(USE_APPROX_ACTIV_FNS)
+#if defined( USE_APPROX_ACTIVATION_FNS )
+
 #define DATA0_FNAME "data0_approx.txt"
 #define DATA1_FNAME "data1_approx.txt"
+
+#elif defined( USE_PWL_ACTIVATION_FNS )
+
+#define DATA0_FNAME "data0_pwl.txt"
+#define DATA1_FNAME "data1_pwl.txt"
+
 #else
+
 #define DATA0_FNAME "data0.txt"
 #define DATA1_FNAME "data1.txt"
+
 #endif
 
 
