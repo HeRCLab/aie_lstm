@@ -18,7 +18,8 @@
 
 /*
 Approximate sigmoidal function formula:
-     sigma(x) = 1.0 / (1.0 + (1.0 - x/n)^n)
+
+    sigma(x) = 1.0 / (1.0 + (1.0 - x/n)^n)
 
 Ref: https://scicomp.stackexchange.com/a/42187
 */
@@ -33,25 +34,27 @@ float sigm(float x) {
 }
 
 #elif defined(USE_PWL_ACTIVATION_FNS)
-// Pseudocode for piecewise linear sigmoid:
-//
-// def sigmoid(x):
-//   if (|x| >= 5)
-//     y = 1
-//   elif (2.375 <= |x| < 5)
-//     y = 0.03125 * |x| + 0.84375
-//   elif (1 <= |x| < 2.375)
-//     y = 0.125 * |x| + 0.625
-//   elif (0 <= |x| < 1)
-//     y = 0.25 * |x| + 0.5
-//
-//   if (X < 0)
-//     y = 1 - y
-//
-//   return y
-//
-// Ref: Piecewise linear approximation applied to nonlinear function
-// of a neural network, H.Amin, K.M.Curtis, B.R.Hayes-Gill
+/*
+Pseudocode for piecewise linear sigmoid:
+
+    def sigmoid(x):
+        if (|x| >= 5)
+            y = 1
+        elif (2.375 <= |x| < 5)
+            y = 0.03125 * |x| + 0.84375
+        elif (1 <= |x| < 2.375)
+            y = 0.125 * |x| + 0.625
+        elif (0 <= |x| < 1)
+            y = 0.25 * |x| + 0.5
+
+        if (X < 0)
+            y = 1 - y
+
+        return y
+
+Ref: Piecewise linear approximation applied to nonlinear function of a
+     neural network, H.Amin, K.M.Curtis, B.R.Hayes-Gill
+*/
 float sigm(float x) {
   float x_abs = abs(x);
   float y;
@@ -81,9 +84,12 @@ float sigm(float x) { return 1.f / (1.f + expf(-x)); }
 
 #if defined(USE_APPROX_ACTIVATION_FNS)
 /*
-Approximate hyperbolic tangent formula using 7th-degree lambert approximant:
-     tanh(x) = (135135 * x + 17325 * x^3 + 378 * x^5 + x^7)
-               / (135135 + 62370 * x^2 + 3150 * x^4 + 28 * x^6)
+Approximate hyperbolic tangent formula using 7th-degree lambert
+approximant:
+
+    tanh(x) = (135135 * x + 17325 * x^3 + 378 * x^5 + x^7) / (135135 +
+               62370 * x^2 + 3150 * x^4 + 28 * x^6)
+
 Ref:
 https://yaikhom.com/2020-04-28-localised-approximation-of-hyperbolic-tangents.html
 */
@@ -99,39 +105,41 @@ float my_tanh(float x) {
 }
 
 #elif defined(USE_PWL_ACTIVATION_FNS)
-// Pseudocode for piecewise linear tanh(x) function:
-//
-// def tanh(x):
-//   if (0 <= |x| < 0.25)
-//     y = |x|
-//
-//   elif (0.25 <= |x| < 0.5)
-//     y = (1 - 1/8) * |x| + 0.02935891015625
-//       = 0.875 * |x| + 0.02935791015625
-//
-//   elif (0.5 <= |x| < 1)
-//     y = (1/2 + 1/8) * |x| + 0.15625
-//       = 0.625 * |x| + 0.15625
-//
-//   elif (1 <= |x| < 1.5)
-//     y = (1/4 + 1/8) * |x| + 0.453125
-//       = 0.3125 * |x| + 0.453125
-//
-//   elif (1.5 <= |x| < 2)
-//     y = (1/8 + 1/512) * |x| + 0.716796875
-//       = 0.126953125 * |x| + 0.716796875
-//
-//   else:
-//     y = 1.0
-//
-//   if (x < 0.0)
-//     y = -1.0 * y
-//
-//   return y
-//
-// Ref: Cost effective Tanh activation function circuits based on fast piecewise
-// linear logic
-//      Kezhu Liu1, Weiwei Shi, Canji Huang, Dongdong Zeng
+/*
+Pseudocode for piecewise linear tanh(x) function:
+
+    def tanh(x):
+        if (0 <= |x| < 0.25)
+            y = |x|
+
+        elif (0.25 <= |x| < 0.5)
+            y = (1 - 1/8) * |x| + 0.02935891015625
+              = 0.875 * |x| + 0.02935791015625
+
+        elif (0.5 <= |x| < 1)
+            y = (1/2 + 1/8) * |x| + 0.15625
+              = 0.625 * |x| + 0.15625
+
+        elif (1 <= |x| < 1.5)
+            y = (1/4 + 1/8) * |x| + 0.453125
+              = 0.3125 * |x| + 0.453125
+
+        elif (1.5 <= |x| < 2)
+            y = (1/8 + 1/512) * |x| + 0.716796875
+              = 0.126953125 * |x| + 0.716796875
+
+        else:
+            y = 1.0
+
+        if (x < 0.0)
+            y = -1.0 * y
+
+        return y
+
+Ref: Cost effective Tanh activation function circuits based on fast
+     piecewise linear logic, Kezhu Liu1, Weiwei Shi, Canji Huang,
+     Dongdong Zeng
+*/
 float my_tanh(float x) {
   float y;
   float x_abs = abs(x);
