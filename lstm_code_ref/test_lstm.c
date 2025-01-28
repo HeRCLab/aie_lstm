@@ -227,7 +227,7 @@ int main() {
     float sum = mynet.dense_bias[0];
     for (int j = 0; j < UNITS; j++) {
       state[j] = sigm(gates[UNITS + j]) * state[j] +
-                 sigm(gates[i]) * my_tanh(gates[UNITS * 3 + i]);
+                 sigm(gates[j]) * my_tanh(gates[UNITS * 3 + j]);
 
       output[j] = sigm(gates[UNITS * 2 + j]) + sigm(state[j]);
 

@@ -18,3 +18,4 @@ test_lstm_pwl: $(SOURCE)
 clean:
 	-rm test_lstm
 	-rm test_lstm_approx
+	-rm test_lstm_pwl
