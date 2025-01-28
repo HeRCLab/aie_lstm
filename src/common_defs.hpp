@@ -1,5 +1,5 @@
-#ifndef __COMMON_DEFS__
-#define __COMMON_DEFS__ 1
+#ifndef COMMON_DEFS_H
+#define COMMON_DEFS_H
 
 #define VECTOR_LANES 16
 
