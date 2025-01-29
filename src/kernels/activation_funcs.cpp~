@@ -1,0 +1,235 @@
+#include <aie_api/aie.hpp>
+#include <aie_api/aie_adf.hpp>
+#include <aie_api/utils.hpp>
+#include <lib.hpp>
+
+/*
+Approximate sigmoidal function formula:
+     sigma(x) = 1.0 / (1.0 + (1.0 - x/n)^n)
+
+Ref: https://scicomp.stackexchange.com/a/42187
+*/
+
+aie::vector<float, VECTOR_LANES>
+sigm_approx(aie::vector<float, VECTOR_LANES> &__restrict x) {
+  aie::vector<float, VECTOR_LANES> y = aie::mul(1.0f / 128, x);
+  y = aie::sub(1.0f, y);
+
+  aie::vector<accfloat, VECTOR_LANES> y_acc;
+  [[chess::prepare_for_pipelining]] {
+    for (int i = 0; i < 7; i++) {
+      y_acc = aie::mul_square(Y);
+      y = Y_acc.to_vector<float>();
+    }
+  }
+
+  y = aie::add(1.0, y);
+  y = aie::inv(y);
+
+  return y;
+}
+
+/*
+Approximate hyperbolic tangent formula using 7th-degree lambert
+approximant:
+
+     tanh(x) = (135135 * x + 17325 * x^3 + 378 * x^5 + x^7) / (135135
+               + 62370 * x^2 + 3150 * x^4 + 28 * x^6)
+
+Ref:
+https://yaikhom.com/2020-04-28-localised-approximation-of-hyperbolic-tangents.html
+
+Plain C implementation:
+```
+    float my_tanh(float x) {
+        float x2 = x * x;
+        float x3 = x * x2;
+        float x4 = x2 * x2;
+        float x5 = x2 * x3;
+        float x6 = x3 * x3;
+        float x7 = x3 * x4;
+
+        return ((135135.0f * x + 17325.0f * x3 + 378.0f * x5 + x7) /
+                (135135.0f + 62370.0f * x2 + 3150.0 * x4 + 28 * x6));
+    }
+```
+*/
+aie::vector<float, VECTOR_LANES>
+tanh_approx(aie::vector<float, VECTOR_LANES> &__restrict x) {
+  aie::accum<accfloat, VECTOR_LANES> acc_num = 0.0f;
+  aie::accum<accfloat, VECTOR_LANES> acc_den = 135135.0f;
+  aie::vector<float, VECTOR_LANES> x2, x3, x4, x5, x6, x7;
+
+  // The instructions are ordered this way to fill the pipeline
+  // during two idle cycles of each float MACs.
+  // ----------------------------------------------------------,
+  x2 = aie::mul_square(x).to_vector<float>(0);
+  acc_num = aie::mac(acc_num, x, 135135.0f);
+
+  x3 = aie::mul(x, x2).to_vector<float>(0);
+  acc_den = aie::mac(acc_den, x2, 62370.0f);
+
+  x4 = aie::mul_square(x2).to_vector<float>(0);
+  acc_num = aie::mac(acc_num, x3, 17325.0f);
+
+  x5 = aie::mul(x2, x3).to_vector<float>(0);
+  acc_den = aie::mac(acc_den, x4, 3150.0f);
+
+  x6 = aie::mul_square(x3).to_vector<float>(0);
+  acc_num = aie::mac(acc_num, x5, 378.0f);
+
+  x7 = aie::mul(x3, x4).to_vector<float>(0);
+  acc_den = aie::mac(acc_den, x6, 28.0f);
+  acc_num = aie::mac(acc_num, x7, 1.0f);
+  // ----------------------------------------------------------'
+
+  auto num = acc_num.to_vector<float>(0);
+  auto den_inv = aie::inv(acc_den.to_vector<float>(0));
+
+  return aie::mul(num, den_inv).to_vector<float>(0);
+}
+
+/*
+Pseudocode for piecewise linear sigmoid:
+
+    def sigmoid(x):
+        if (|x| >= 5)
+            y = 1
+        elif (2.375 <= |x| < 5)
+            y = 0.03125 * |x| + 0.84375
+        elif (1 <= |x| < 2.375)
+            y = 0.125 * |x| + 0.625
+        elif (0 <= |x| < 1)
+            y = 0.25 * |x| + 0.5
+
+        if (X < 0)
+            y = 1 - y
+
+        return y
+
+Ref: Piecewise linear approximation applied to nonlinear function of a
+     neural network, H.Amin, K.M.Curtis, B.R.Hayes-Gill
+*/
+aie::vector<float, VECTOR_LANES>
+sigm_pwl(aie::vector<float, VECTOR_LANES> &__restrict x) {
+  aie::vector<float, VECTOR_LANES> x_abs, y, y1, y2, y3, y_neg;
+  aie::vector<accfloat, VECTOR_LANES> acc1, acc2;
+  aie::mask<VECTOR_LANES> comp_mask;
+
+  x_abs = aie::abs(x);
+
+  // Prepare possible alternatives of y for each vector lane.
+  // --------------------------------------------------------,
+  acc1 = aie::broadcast<accfloat, VECTOR_LANES>(0.84375f);
+  y1 = aie::mac(acc1, x_abs, 0.03125f).to_vector<float>(0);
+
+  acc2 = aie::broadcast<accfloat, VECTOR_LANES>(0.625f);
+  y2 = aie::mac(acc2, x_abs, 0.125f).to_vector<float>(0);
+
+  acc1 = aie::broadcast<accfloat, VECTOR_LANES>(0.5f);
+  y3 = aie::mac(acc1, x_abs, 0.25f).to_vector<float>(0);
+  // --------------------------------------------------------'
+
+  // Conditionally select y based on values of |x|.
+  // --------------------------------------------------------,
+  comp_mask = aie::lt(x_abs, 5.0f);
+  y = aie::select(y1, 1.0f, comp_mask);
+
+  comp_mask = aie::lt(x_abs, 2.375f);
+  y = aie::select(y2, y, comp_mask);
+
+  comp_mask = aie::lt(x_abs, 1.0f);
+  y = aie::select(y3, y, comp_mask);
+  // --------------------------------------------------------'
+
+  // Calculate alternative value of y where x is negative.
+  y_neg = aie::sub(1.0f, y);
+  comp_mask = aie::lt(x, 0.0f);
+  y = aie::select(y_neg, y, comp_mask);
+
+  return y;
+}
+
+/*
+Pseudocode for piecewise linear tanh(x) function:
+
+    def tanh(x):
+        if (0 <= |x| < 0.25)
+            y = |x|
+
+        elif (0.25 <= |x| < 0.5)
+            y = (1 - 1/8) * |x| + 0.02935891015625
+              = 0.875 * |x| + 0.02935791015625
+
+        elif (0.5 <= |x| < 1)
+            y = (1/2 + 1/8) * |x| + 0.15625
+              = 0.625 * |x| + 0.15625
+
+        elif (1 <= |x| < 1.5)
+            y = (1/4 + 1/8) * |x| + 0.453125
+              = 0.3125 * |x| + 0.453125
+
+        elif (1.5 <= |x| < 2)
+            y = (1/8 + 1/512) * |x| + 0.716796875
+              = 0.126953125 * |x| + 0.716796875
+
+        else:
+            y = 1.0
+
+        if (x < 0.0)
+            y = -1.0 * y
+
+        return y
+
+Ref: Cost effective Tanh activation function circuits based on fast
+     piecewise linear logic, Kezhu Liu1, Weiwei Shi, Canji Huang,
+     Dongdong Zeng
+*/
+aie::vector<float, VECTOR_LANES>
+tanh_pwl(aie::vector<float, VECTOR_LANES> &__restrict x) {
+  aie::vector<float, VECTOR_LANES> x_abs, y, y1, y2, y3, y4, y_neg;
+  aie::vector<accfloat, VECTOR_LANES> acc1, acc2;
+  aie::mask<VECTOR_LANES> comp_mask;
+
+  x_abs = aie::abs(x);
+
+  // Prepare possible alternatives of y for each vector lane.
+  // --------------------------------------------------------,
+  acc1 = aie::broadcast<accfloat, VECTOR_LANES>(0.716796875f);
+  y1 = aie::mac(acc1, x_abs, 0.126953125f).to_vector<float>(0);
+
+  acc2 = aie::broadcast<accfloat, VECTOR_LANES>(0.453125f);
+  y2 = aie::mac(acc2, x_abs, 0.3125f).to_vector<float>(0);
+
+  acc1 = aie::broadcast<accfloat, VECTOR_LANES>(0.15625f);
+  y3 = aie::mac(acc1, x_abs, 0.625f).to_vector<float>(0);
+
+  acc2 = aie::broadcast<accfloat, VECTOR_LANES>(0.02935791015625f);
+  y4 = aie::mac(acc2, x_abs, 0.875f).to_vector<float>(0);
+  // --------------------------------------------------------'
+
+  // Conditionally select y based on values of |x|.
+  // --------------------------------------------------------,
+  comp_mask = aie::lt(x_abs, 2.0f);
+  y = aie::select(y1, 1.0f, comp_mask);
+
+  comp_mask = aie::lt(x_abs, 1.5f);
+  y = aie::select(y2, y, comp_mask);
+
+  comp_mask = aie::lt(x_abs, 1.0f);
+  y = aie::select(y3, y, comp_mask);
+
+  comp_mask = aie::lt(x_abs, 0.5f);
+  y = aie::select(y4, y, comp_mask);
+
+  comp_mask = aie::lt(x_abs, 0.25f);
+  y = aie::select(x_abs, y, comp_mask);
+  // --------------------------------------------------------'
+
+  // Calculate alternative value of y where x is negative.
+  y_neg = aie::neg(y);
+  comp_mask = aie::lt(x, 0.0f);
+  y = aie::select(y_neg, y, comp_mask);
+
+  return y;
+}

@@ -1,0 +1,9 @@
+#include <aie_api/aie.hpp>
+#include <aie_api/aie_adf.hpp>
+#include <aie_api/utils.hpp>
+
+#define N_LSTM_UNITS 100
+// Actual input dim is 20. 24 is chosen to align with vector lanes.
+// The last 4 bytes will be filled by zero by the buffer feeder.
+#define INPUT_DIM 24
+#define VECTOR_LANES 8

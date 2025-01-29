@@ -1,0 +1,35 @@
+#include "common_defs.hpp"
+#include <aie_api/aie.hpp>
+#include <aie_api/aie_adf.hpp>
+#include <aie_api/utils.hpp>
+
+/*
+Approximate sigmoidal function formula:
+     sigma(x) = 1.0 / (1.0 + (1.0 - x/n)^n)
+
+Ref: https://scicomp.stackexchange.com/a/42187
+*/
+
+float sigm(aie::vector<float, VECTOR_LANES> &__restrict X) {
+  aie::vector<float, VECTOR_LANES> Y = aie::mul((float)1.0 / 128, X);
+  Y = aie::sub(1.0, Y);
+
+  aie::vector<accfloat, VECTOR_LANES> Y_acc;
+  chess_prepare_for_pipelining {
+    for (int i = 0; i < 7; i++) {
+      Y_acc = aie::mul_square(Y);
+      Y = Y_acc.to_vector<float>();
+    }
+  }
+
+  Y = aie::add(1.0, Y);
+  Y = aie::inv(Y);
+
+  return Y;
+}
+
+void lstm_activator(adf::input_buffer<float> &__restrict input_gate_conn,
+                    adf::input_buffer<float> &__restrict forget_gate_conn,
+                    adf::input_buffer<float> &__restrict output_gate_conn,
+                    adf::input_buffer<float> &__restrict modulation_gate_conn) {
+}

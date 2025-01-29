@@ -1,0 +1,59 @@
+/*
+Approximate hyperbolic tangent formula using 7th-degree lambert
+approximant:
+
+     tanh(x) = (135135 * x + 17325 * x^3 + 378 * x^5 + x^7) / (135135
+               + 62370 * x^2 + 3150 * x^4 + 28 * x^6)
+
+Ref:
+https://yaikhom.com/2020-04-28-localised-approximation-of-hyperbolic-tangents.html
+
+Plain C implementation:
+```
+    float my_tanh(float x) {
+        float x2 = x * x;
+        float x3 = x * x2;
+        float x4 = x2 * x2;
+        float x5 = x2 * x3;
+        float x6 = x3 * x3;
+        float x7 = x3 * x4;
+
+        return ((135135.0f * x + 17325.0f * x3 + 378.0f * x5 + x7) /
+                (135135.0f + 62370.0f * x2 + 3150.0 * x4 + 28 * x6));
+    }
+```
+*/
+aie::vector<float, VECTOR_LANES>
+tanh_approx(aie::vector<float, VECTOR_LANES> &__restrict x) {
+  aie::accum<accfloat, VECTOR_LANES> acc_num = 0.0f;
+  aie::accum<accfloat, VECTOR_LANES> acc_den = 135135.0f;
+  aie::vector<float, VECTOR_LANES> x2, x3, x4, x5, x6, x7;
+
+  // The instructions are ordered this way to fill the pipeline
+  // during two idle cycles of each float MACs.
+  // ----------------------------------------------------------,
+  x2 = aie::mul_square(x).to_vector<float>(0);
+  acc_num = aie::mac(acc_num, x, 135135.0f);
+
+  x3 = aie::mul(x, x2).to_vector<float>(0);
+  acc_den = aie::mac(acc_den, x2, 62370.0f);
+
+  x4 = aie::mul_square(x2).to_vector<float>(0);
+  acc_num = aie::mac(acc_num, x3, 17325.0f);
+
+  x5 = aie::mul(x2, x3).to_vector<float>(0);
+  acc_den = aie::mac(acc_den, x4, 3150.0f);
+
+  x6 = aie::mul_square(x3).to_vector<float>(0);
+  acc_num = aie::mac(acc_num, x5, 378.0f);
+
+  x7 = aie::mul(x3, x4).to_vector<float>(0);
+  acc_den = aie::mac(acc_den, x6, 28.0f);
+  acc_num = aie::mac(acc_num, x7, 1.0f);
+  // ----------------------------------------------------------'
+
+  auto num = acc_num.to_vector<float>(0);
+  auto den_inv = aie::inv(acc_den.to_vector<float>(0));
+
+  return aie::mul(num, den_inv).to_vector<float>(0);
+}

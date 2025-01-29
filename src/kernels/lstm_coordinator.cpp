@@ -35,9 +35,8 @@ void lstm_coordinator(
     auto mGIter = aie::cbegin_vector<VECTOR_LANES>(modulation_gate_rslt);
     auto wDenseIter = aie::cbegin_restrict_vector<VECTOR_LANES>(w_dense);
 
-    aie::vector<float, VECTOR_LANES> v1, v2, v3, out_v, next_s;
-    aie::accumulator<accfloat, VECTOR_LANES> acc;
-    aie::accumulator<accfloat, VECTOR_LANES> dense_acc = aie::zeros<float, VECTOR_LANES>();
+    aie::vector<float, VECTOR_LANES> v1, v2, v3, out_lstm, next_s;
+    aie::accumulator<accfloat, VECTOR_LANES> acc, acc_dense;
 
     // Sent initial state down to the gates.
     if (!first_iteration) {
@@ -60,6 +59,7 @@ void lstm_coordinator(
     state_out.acquire();
 
     // Fixme: This code block has scope for further optimisation.
+    acc_dense = aie::zeros<float, VECTOR_LANES>();
     [[chess:prepare_for_pipelining]] for (int i = 0; i < LSTM_UNITS_NON_EMPTY; i++) {
         // Calculate next state.
         v1 = sigm(*fGIter++);
@@ -69,17 +69,19 @@ void lstm_coordinator(
         acc = aie::mac(acc, v2, v3);
         next_state = acc.to_vector<float>(0);
 
-        // Accumulate partial dense layer output.
+        // Calculate LSTM output.
         v1 = sigm(*oGIter++);
         v2 = sigm(next_state);
-        out_v = aie::add(v1, v2);
-        dense_acc = aie::mac(dense_acc, out_v, *wDenseIter++);
+        out_lstm = aie::add(v1, v2);
+
+        // Accumulate partial dense layer output.
+        acc_dense = aie::mac(dense_acc, out_lstm, *wDenseIter++);
 
         *stateIter++ = next_state;
         *outStateIter++ = next_state;
     }
 
-    // Release the gate result buffers.
+    // Release the buffers.
     input_gate_rslt.release();
     forget_gate_rslt.release();
     output_gate_rslt.release();
@@ -87,7 +89,7 @@ void lstm_coordinator(
     state_out.release();
 
     // Set first sample of output buffer to dense network output.
-    *output = aie::reduce_add(dense_acc);
+    *output = aie::reduce_add(acc_dense);
     // Set the rest of the buffer to zero for transparency.
     for (int i = 0; i < 3; i++) {
         *output++ = 0.0f;
