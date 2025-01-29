@@ -1,9 +1,0 @@
-#include <aie_api/aie.hpp>
-#include <aie_api/aie_adf.hpp>
-#include <aie_api/utils.hpp>
-
-
-aie::vector<float, VECTOR_LANES>
-sigm_approx(aie::vector<float, VECTOR_LANES> &__restrict x) {
-}
-
