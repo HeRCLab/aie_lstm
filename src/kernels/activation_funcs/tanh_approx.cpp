@@ -28,37 +28,37 @@ Plain C implementation:
     }
 ```
 */
-aie::vector<float, VECTOR_LANES>
+inline __attribute__((always_inline)) aie::vector<float, VECTOR_LANES>
 tanh_approx(aie::vector<float, VECTOR_LANES> &__restrict x) {
-  aie::accum<accfloat, VECTOR_LANES> acc_num = 0.0f;
-  aie::accum<accfloat, VECTOR_LANES> acc_den = 135135.0f;
-  aie::vector<float, VECTOR_LANES> x2, x3, x4, x5, x6, x7;
+    aie::accum<accfloat, VECTOR_LANES> acc_num = 0.0f;
+    aie::accum<accfloat, VECTOR_LANES> acc_den = 135135.0f;
+    aie::vector<float, VECTOR_LANES> x2, x3, x4, x5, x6, x7;
 
-  // The instructions are ordered this way to fill the pipeline
-  // during two idle cycles of each float MACs.
-  // ----------------------------------------------------------,
-  x2 = aie::mul_square(x).to_vector<float>(0);
-  acc_num = aie::mac(acc_num, x, 135135.0f);
+    // The instructions are ordered this way to fill the pipeline
+    // during two idle cycles of each float MACs.
+    // ----------------------------------------------------------,
+    x2 = aie::mul_square(x).to_vector<float>(0);
+    acc_num = aie::mac(acc_num, x, 135135.0f);
 
-  x3 = aie::mul(x, x2).to_vector<float>(0);
-  acc_den = aie::mac(acc_den, x2, 62370.0f);
+    x3 = aie::mul(x, x2).to_vector<float>(0);
+    acc_den = aie::mac(acc_den, x2, 62370.0f);
 
-  x4 = aie::mul_square(x2).to_vector<float>(0);
-  acc_num = aie::mac(acc_num, x3, 17325.0f);
+    x4 = aie::mul_square(x2).to_vector<float>(0);
+    acc_num = aie::mac(acc_num, x3, 17325.0f);
 
-  x5 = aie::mul(x2, x3).to_vector<float>(0);
-  acc_den = aie::mac(acc_den, x4, 3150.0f);
+    x5 = aie::mul(x2, x3).to_vector<float>(0);
+    acc_den = aie::mac(acc_den, x4, 3150.0f);
 
-  x6 = aie::mul_square(x3).to_vector<float>(0);
-  acc_num = aie::mac(acc_num, x5, 378.0f);
+    x6 = aie::mul_square(x3).to_vector<float>(0);
+    acc_num = aie::mac(acc_num, x5, 378.0f);
 
-  x7 = aie::mul(x3, x4).to_vector<float>(0);
-  acc_den = aie::mac(acc_den, x6, 28.0f);
-  acc_num = aie::mac(acc_num, x7, 1.0f);
-  // ----------------------------------------------------------'
+    x7 = aie::mul(x3, x4).to_vector<float>(0);
+    acc_den = aie::mac(acc_den, x6, 28.0f);
+    acc_num = aie::mac(acc_num, x7, 1.0f);
+    // ----------------------------------------------------------'
 
-  auto num = acc_num.to_vector<float>(0);
-  auto den_inv = aie::inv(acc_den.to_vector<float>(0));
+    auto num = acc_num.to_vector<float>(0);
+    auto den_inv = aie::inv(acc_den.to_vector<float>(0));
 
-  return aie::mul(num, den_inv).to_vector<float>(0);
+    return aie::mul(num, den_inv).to_vector<float>(0);
 }

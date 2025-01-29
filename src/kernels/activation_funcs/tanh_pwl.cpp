@@ -38,51 +38,51 @@ Ref: Cost effective Tanh activation function circuits based on fast
      piecewise linear logic, Kezhu Liu1, Weiwei Shi, Canji Huang,
      Dongdong Zeng
 */
-aie::vector<float, VECTOR_LANES>
+inline __attribute__((always_inline)) aie::vector<float, VECTOR_LANES>
 tanh_pwl(aie::vector<float, VECTOR_LANES> &__restrict x) {
-  aie::vector<float, VECTOR_LANES> x_abs, y, y1, y2, y3, y4, y_neg;
-  aie::vector<accfloat, VECTOR_LANES> acc1, acc2;
-  aie::mask<VECTOR_LANES> comp_mask;
+    aie::vector<float, VECTOR_LANES> x_abs, y, y1, y2, y3, y4, y_neg;
+    aie::vector<accfloat, VECTOR_LANES> acc1, acc2;
+    aie::mask<VECTOR_LANES> comp_mask;
 
-  x_abs = aie::abs(x);
+    x_abs = aie::abs(x);
 
-  // Prepare possible alternatives of y for each vector lane.
-  // --------------------------------------------------------,
-  acc1 = aie::broadcast<accfloat, VECTOR_LANES>(0.716796875f);
-  y1 = aie::mac(acc1, x_abs, 0.126953125f).to_vector<float>(0);
+    // Prepare possible alternatives of y for each vector lane.
+    // --------------------------------------------------------,
+    acc1 = aie::broadcast<accfloat, VECTOR_LANES>(0.716796875f);
+    y1 = aie::mac(acc1, x_abs, 0.126953125f).to_vector<float>(0);
 
-  acc2 = aie::broadcast<accfloat, VECTOR_LANES>(0.453125f);
-  y2 = aie::mac(acc2, x_abs, 0.3125f).to_vector<float>(0);
+    acc2 = aie::broadcast<accfloat, VECTOR_LANES>(0.453125f);
+    y2 = aie::mac(acc2, x_abs, 0.3125f).to_vector<float>(0);
 
-  acc1 = aie::broadcast<accfloat, VECTOR_LANES>(0.15625f);
-  y3 = aie::mac(acc1, x_abs, 0.625f).to_vector<float>(0);
+    acc1 = aie::broadcast<accfloat, VECTOR_LANES>(0.15625f);
+    y3 = aie::mac(acc1, x_abs, 0.625f).to_vector<float>(0);
 
-  acc2 = aie::broadcast<accfloat, VECTOR_LANES>(0.02935791015625f);
-  y4 = aie::mac(acc2, x_abs, 0.875f).to_vector<float>(0);
-  // --------------------------------------------------------'
+    acc2 = aie::broadcast<accfloat, VECTOR_LANES>(0.02935791015625f);
+    y4 = aie::mac(acc2, x_abs, 0.875f).to_vector<float>(0);
+    // --------------------------------------------------------'
 
-  // Conditionally select y based on values of |x|.
-  // --------------------------------------------------------,
-  comp_mask = aie::lt(x_abs, 2.0f);
-  y = aie::select(y1, 1.0f, comp_mask);
+    // Conditionally select y based on values of |x|.
+    // --------------------------------------------------------,
+    comp_mask = aie::lt(x_abs, 2.0f);
+    y = aie::select(y1, 1.0f, comp_mask);
 
-  comp_mask = aie::lt(x_abs, 1.5f);
-  y = aie::select(y2, y, comp_mask);
+    comp_mask = aie::lt(x_abs, 1.5f);
+    y = aie::select(y2, y, comp_mask);
 
-  comp_mask = aie::lt(x_abs, 1.0f);
-  y = aie::select(y3, y, comp_mask);
+    comp_mask = aie::lt(x_abs, 1.0f);
+    y = aie::select(y3, y, comp_mask);
 
-  comp_mask = aie::lt(x_abs, 0.5f);
-  y = aie::select(y4, y, comp_mask);
+    comp_mask = aie::lt(x_abs, 0.5f);
+    y = aie::select(y4, y, comp_mask);
 
-  comp_mask = aie::lt(x_abs, 0.25f);
-  y = aie::select(x_abs, y, comp_mask);
-  // --------------------------------------------------------'
+    comp_mask = aie::lt(x_abs, 0.25f);
+    y = aie::select(x_abs, y, comp_mask);
+    // --------------------------------------------------------'
 
-  // Calculate alternative value of y where x is negative.
-  y_neg = aie::neg(y);
-  comp_mask = aie::lt(x, 0.0f);
-  y = aie::select(y_neg, y, comp_mask);
+    // Calculate alternative value of y where x is negative.
+    y_neg = aie::neg(y);
+    comp_mask = aie::lt(x, 0.0f);
+    y = aie::select(y_neg, y, comp_mask);
 
-  return y;
+    return y;
 }
