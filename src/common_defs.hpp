@@ -19,4 +19,8 @@
 #define SPLIT_W_STATE_SIZE (LSTM_UNITS * SPLIT_W_STATE_COLS)
 #define W_INPUT_SIZE (LSTM_UNITS * INPUT_DIM)
 
+#define N_GATES 4
+#define GMIO_BURST_LENGTH 64  /* Options: 64, 128, 256 */
+#define GMIO_BANDWIDTH 1024  /* Unit: MB/s */
+
 #endif

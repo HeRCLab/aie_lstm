@@ -8,17 +8,18 @@ void single_lstm_gate(
     adf::input_circular_buffer<float, adf::extents<INPUT_DIM>> &__restrict input,
     adf::input_circular_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state,
 
-    // Output buffers.
-    adf::output_buffer<float, adf::extents<LSTM_UNITS>> &__restrict output,
-
     // Run Time Parameters.
-    const float (&w_input)[W_INPUT_SIZE],
     // State weight matrix is split horizontally into two because each
     // runtime parameter needs to fit within a single memory module of
     // 32KB (roughly).
     const float (&w_state_left)[SPLIT_W_STATE_SIZE],
     const float (&w_state_right)[SPLIT_W_STATE_SIZE],
-    const float (&bias)[LSTM_UNITS]) {
+    const float (&w_input)[W_INPUT_SIZE],
+    const float (&bias)[LSTM_UNITS],
+
+    // Output buffers.
+    adf::output_buffer<float, adf::extents<LSTM_UNITS>> &__restrict output) {
+
     // Input and state iterators are circular, since they will be
     // repeatedly used to multiply with each row of the input and state
     // weight matrix, respectively.

@@ -17,15 +17,16 @@ void lstm_coordinator(
     adf::input_async_buffer<float, adf::extents<LSTM_UNITS>> &__restrict output_gate_rslt,
     adf::input_async_buffer<float, adf::extents<LSTM_UNITS>> &__restrict modulation_gate_rslt,
 
+    // Run Time Parameters.
+    const float (&w_dense)[LSTM_UNITS],
+    const float bias_dense,
+
     // Output buffers.
     adf::output_async_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state_out,
     // The minimum size of a buffer is 16 Bytes = 4 float
     // samples. Since each iteration will produce just a single
     // result, the rest of 12 bytes will be wasted.
-    adf::output_buffer<float, adf::extents<4>> &__restrict output,
-
-    // Run Time Parameters.
-    const float (&w_dense)[LSTM_UNITS]) {
+    adf::output_buffer<float, adf::extents<4>> &__restrict output) {
 
     auto stateIter = aie::cbegin_restrict_vector<VECTOR_LANES>(state);
     auto stateOutIter = aie::begin_vector<VECTOR_LANES>(state_out);
@@ -35,11 +36,12 @@ void lstm_coordinator(
     auto mGIter = aie::cbegin_vector<VECTOR_LANES>(modulation_gate_rslt);
     auto wDenseIter = aie::cbegin_restrict_vector<VECTOR_LANES>(w_dense);
 
+    float sum;
     aie::vector<float, VECTOR_LANES> v1, v2, v3, out_lstm, next_s;
     aie::accumulator<accfloat, VECTOR_LANES> acc, acc_dense;
 
     // Sent initial state down to the gates.
-    if (!first_iteration) {
+    if (first_iteration) {
         first_iteration = 0;
 
         state_out.acquire();
@@ -89,8 +91,10 @@ void lstm_coordinator(
     state_out.release();
 
     // Set first sample of output buffer to dense network output.
-    *output = aie::reduce_add(acc_dense);
-    // Set the rest of the buffer to zero for transparency.
+    sum = aie::reduce_add(acc_dense);
+    *output = sum + bias_dense;
+
+    // For clarity, set rest of the output buffer to zero.
     for (int i = 0; i < 3; i++) {
         *output++ = 0.0f;
     }
