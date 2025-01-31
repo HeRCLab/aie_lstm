@@ -85,8 +85,8 @@ void lstm_coordinator(
         // units, we need to discard some computations from tail.
         if (i == partial_block_id) {
 	  for (int j = partial_block_size; j < VECTOR_LANES; j++) {
-	    next_state[j] = 0.0f;
-	    out_lstm[j] = 0.0f;
+	    // next_state[j] = 0.0f;
+	    // out_lstm[j] = 0.0f;
 	  }
 	} else if (i > partial_block_id) {
 	  next_state = zeros<float, VECTOR_LANES>();

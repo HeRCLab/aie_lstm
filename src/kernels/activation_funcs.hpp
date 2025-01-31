@@ -1,7 +1,5 @@
+#pragma once
 #include "common_defs.hpp"
-
-#ifndef ACTIVATION_FUNCS_H
-#define ACTIVATION_FUNCS_H
 
 aie::vector<float, VECTOR_LANES>
 sigm_soft(aie::vector<float, VECTOR_LANES> &__restrict x);
@@ -35,7 +33,5 @@ tanh_approx(aie::vector<float, VECTOR_LANES> &__restrict x);
 
 #define sigm sigm_soft
 #define tanh tanh_soft
-
-#endif
 
 #endif

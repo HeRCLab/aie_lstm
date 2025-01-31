@@ -1,5 +1,4 @@
-#ifndef COMMON_DEFS_H
-#define COMMON_DEFS_H
+#pragma once
 
 #define VECTOR_LANES 16
 
@@ -17,7 +16,7 @@
 #define INPUT_DIM 32
 
 #define W_STATE_COLS LSTM_UNITS
-#define W_STATE_SIZE (LSTM_UNITS * SPLIT_W_STATE_COLS)
+#define W_STATE_SIZE (LSTM_UNITS * W_STATE_COLS)
 #define W_INPUT_SIZE (LSTM_UNITS * INPUT_DIM)
 
 #define N_GATES 4
@@ -26,5 +25,3 @@
 
 #define INPUT_DATA_PATH "data/dropbear.dat" 
 #define WEIGHT_DATA_PATH "data/weights.dat" 
-
-#endif

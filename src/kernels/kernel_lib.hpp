@@ -3,6 +3,5 @@
 // Ch 7, Sec "Recommended Project Directory Structure", Page 108.
 #pragma once
 
-#include "activation_funcs.cpp"
 #include "activation_funcs.hpp"
 #include "common_defs.hpp"

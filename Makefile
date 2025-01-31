@@ -1,10 +1,11 @@
 SRC_DIR := src/
 INCLUDE_DIRS := $(SRC_DIR) $(SRC_DIR)/kernels/
-LFLAGS := -lsoftmath
+PPFLAGS := -DUSE_PWL_ACTIVATION_FNS
+LFLAGS := # -lsoftfloat # -lsoftfloat
 WORK_DIR := build/
 REPORT_DIR := reports/
 LOG_DIR := logs/
-PLATFORM := $(XILINX_VITIS)/xilinx_vck190_base_202420_1/xilinx_vck190_base_202420_1.xpfm
+PLATFORM := $(XILINX_VITIS)/base_platforms/xilinx_vck190_base_202420_1/xilinx_vck190_base_202420_1.xpfm
 
 SOURCES := $(wildcard $(SRC_DIR)/*.cpp) \
 	   $(wildcard $(SRC_DIR)/*.hpp) \
@@ -14,11 +15,15 @@ SOURCES := $(wildcard $(SRC_DIR)/*.cpp) \
 AIECC := v++ \
       --compile \
       --mode aie \
+      --aie.debug \
       --aie.verbose \
+      --aie.adf-api-log-level=4 \
+      --aie.log-level=4 \
       --platform $(PLATFORM) \
       --include $(XILINX_VITIS)/aietools/include \
       $(foreach x,$(INCLUDE_DIRS),--include $x) \
-      $(LFLAGS) \
+      $(foreach x,$(PPFLAGS),--aie.Xpreproc $x) \
+      $(foreach x,$(LFLAGS),--aie.Xpslinker $x) \
       --report_dir $(REPORT_DIR) \
       --work_dir $(WORK_DIR) \
       --log_dir $(LOG_DIR)
@@ -35,9 +40,6 @@ build-hw: $(SOURCES)
 
 build-x86sim: $(SOURCES)
 	$(AIECC) --target x86sim src/main.cpp
-
-build-aiesim: $(SOURCES)
-	$(AIECC) --target aiesim src/main.cpp
 
 run-x86sim:
 	x86simulator --pkg-dir=$(WORK_DIR) --trace

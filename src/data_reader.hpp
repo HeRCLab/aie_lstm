@@ -1,3 +1,5 @@
+#pragma once
+
 #include "common_defs.hpp"
 #include <fstream>
 #include <iostream>
