@@ -1,6 +1,6 @@
 #include "common_defs.hpp"
 #include "kernels.hpp"
-#include <adf>
+#include <adf.h>
 
 using namespace adf;
 
@@ -10,8 +10,8 @@ class LSTMGraph : public graph {
     kernel gates[N_GATES];
 
   public:
-    input_gmio in;
-    output_gmio out;
+    input_gmio gmioIn;
+    output_gmio gmioOut;
 
     // Ports for run time parameters.
     // -------------------------------,
@@ -32,8 +32,8 @@ class LSTMGraph : public graph {
             gates[i] = kernel::create(single_lstm_gate);
         }
 
-        in = input_gmio::create(plio_32_bits, "data/input.txt");
-        out = output_gmio::create(plio_32_bits, "data/output.txt");
+        in = input_gmio::create("gmioIn", GMIO_BURST_LENGTH, GMIO_BANDWIDTH);
+        out = output_gmio::create("gmioOut", GMIO_BURST_LENGTH, GMIO_BANDWIDTH);
 
         for (int i = 0; i < N_GATES; i++) {
             // Connect graph data input to gate data input.
