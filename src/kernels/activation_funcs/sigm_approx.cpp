@@ -3,6 +3,8 @@
 #include <aie_api/aie_adf.hpp>
 #include <aie_api/utils.hpp>
 
+using namespace aie;
+
 /*
 Approximate sigmoidal function formula:
      sigma(x) = 1.0 / (1.0 + (1.0 - x/n)^n)
@@ -10,24 +12,25 @@ Approximate sigmoidal function formula:
 Ref: https://scicomp.stackexchange.com/a/42187
 */
 
-inline __attribute__((always_inline)) aie::vector<float, VECTOR_LANES>
-sigm_approx(aie::vector<float, VECTOR_LANES> &__restrict x) {
-    aie::vector<float, VECTOR_LANES> y;
-    aie::accumulator<accfloat, VECTOR_LANES> acc;
 
-    acc = aie::mul(1.0f / 128, x);
+inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
+sigm_approx(vector<float, VECTOR_LANES> &__restrict x) {
+    vector<float, VECTOR_LANES> y;
+    accumulator<accfloat, VECTOR_LANES> acc;
+
+    acc = mul(1.0f / 128, x);
     y = acc.to_vector<float>(0);
-    y = aie::sub(1.0f, y);
+    y = sub(1.0f, y);
 
     [[chess::prepare_for_pipelining]] {
         for (int i = 0; i < 7; i++) {
-            acc = aie::mul_square(y);
+            acc = mul_square(y);
             y = acc.to_vector<float>(0);
         }
     }
 
-    y = aie::add(1.0, y);
-    y = aie::inv(y);
+    y = add(1.0, y);
+    y = inv(y);
 
     return y;
 }

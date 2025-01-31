@@ -3,6 +3,8 @@
 #include <aie_api/aie_adf.hpp>
 #include <aie_api/utils.hpp>
 
+using namespace aie;
+
 /*
 Pseudocode for piecewise linear sigmoid:
 
@@ -24,42 +26,42 @@ Pseudocode for piecewise linear sigmoid:
 Ref: Piecewise linear approximation applied to nonlinear function of a
      neural network, H.Amin, K.M.Curtis, B.R.Hayes-Gill
 */
-inline __attribute__((always_inline)) aie::vector<float, VECTOR_LANES>
-sigm_pwl(aie::vector<float, VECTOR_LANES> &__restrict x) {
-    aie::vector<float, VECTOR_LANES> x_abs, y, y1, y2, y3, y_neg;
-    aie::vector<accfloat, VECTOR_LANES> acc1, acc2;
-    aie::mask<VECTOR_LANES> comp_mask;
+inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
+sigm_pwl(vector<float, VECTOR_LANES> &__restrict x) {
+    vector<float, VECTOR_LANES> x_abs, y, y1, y2, y3, y_neg;
+    vector<accfloat, VECTOR_LANES> acc1, acc2;
+    mask<VECTOR_LANES> comp_mask;
 
-    x_abs = aie::abs(x);
+    x_abs = abs(x);
 
     // Prepare possible alternatives of y for each vector lane.
     // --------------------------------------------------------,
-    acc1 = aie::broadcast<accfloat, VECTOR_LANES>(0.84375f);
-    y1 = aie::mac(acc1, x_abs, 0.03125f).to_vector<float>(0);
+    acc1 = broadcast<accfloat, VECTOR_LANES>(0.84375f);
+    y1 = mac(acc1, x_abs, 0.03125f).to_vector<float>(0);
 
-    acc2 = aie::broadcast<accfloat, VECTOR_LANES>(0.625f);
-    y2 = aie::mac(acc2, x_abs, 0.125f).to_vector<float>(0);
+    acc2 = broadcast<accfloat, VECTOR_LANES>(0.625f);
+    y2 = mac(acc2, x_abs, 0.125f).to_vector<float>(0);
 
-    acc1 = aie::broadcast<accfloat, VECTOR_LANES>(0.5f);
-    y3 = aie::mac(acc1, x_abs, 0.25f).to_vector<float>(0);
+    acc1 = broadcast<accfloat, VECTOR_LANES>(0.5f);
+    y3 = mac(acc1, x_abs, 0.25f).to_vector<float>(0);
     // --------------------------------------------------------'
 
     // Conditionally select y based on values of |x|.
     // --------------------------------------------------------,
-    comp_mask = aie::lt(x_abs, 5.0f);
-    y = aie::select(y1, 1.0f, comp_mask);
+    comp_mask = lt(x_abs, 5.0f);
+    y = select(y1, 1.0f, comp_mask);
 
-    comp_mask = aie::lt(x_abs, 2.375f);
-    y = aie::select(y2, y, comp_mask);
+    comp_mask = lt(x_abs, 2.375f);
+    y = select(y2, y, comp_mask);
 
-    comp_mask = aie::lt(x_abs, 1.0f);
-    y = aie::select(y3, y, comp_mask);
+    comp_mask = lt(x_abs, 1.0f);
+    y = select(y3, y, comp_mask);
     // --------------------------------------------------------'
 
     // Calculate alternative value of y where x is negative.
-    y_neg = aie::sub(1.0f, y);
-    comp_mask = aie::lt(x, 0.0f);
-    y = aie::select(y_neg, y, comp_mask);
+    y_neg = sub(1.0f, y);
+    comp_mask = lt(x, 0.0f);
+    y = select(y_neg, y, comp_mask);
 
     return y;
 }

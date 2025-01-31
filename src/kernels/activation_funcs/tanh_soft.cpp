@@ -4,9 +4,11 @@
 #include <aie_api/utils.hpp>
 #include <cmath>
 
-inline __attribute__((always_inline)) aie::vector<float, VECTOR_LANES>
-tanh_soft(aie::vector<float, VECTOR_LANES> &__restrict x) {
-    aie::vector<float, VECTOR_LANES> y;
+using namespace aie;
+
+inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
+tanh_soft(vector<float, VECTOR_LANES> &__restrict x) {
+    vector<float, VECTOR_LANES> y;
 
     for (int i = 0; i < VECTOR_LANES; i++) {
         y[i] = tanhf(x[i]);
