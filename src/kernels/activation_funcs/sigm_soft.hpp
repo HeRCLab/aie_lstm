@@ -2,16 +2,16 @@
 #include <aie_api/aie.hpp>
 #include <aie_api/aie_adf.hpp>
 #include <aie_api/utils.hpp>
-#include <cmath>
+#include <math.h>
 
 using namespace aie;
 
 inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
-tanh_soft(const vector<float, VECTOR_LANES> x) {
+sigm_soft(const vector<float, VECTOR_LANES> x) {
     vector<float, VECTOR_LANES> y;
 
     for (int i = 0; i < VECTOR_LANES; i++) {
-        y[i] = tanhf(x[i]);
+        y[i] = 1.0f / (1.0f + std::expf(x[i]));
     }
 
     return y;

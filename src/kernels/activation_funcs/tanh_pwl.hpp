@@ -1,4 +1,4 @@
-#include "common_defs.h"
+#include "common_defs.hpp"
 #include <aie_api/aie.hpp>
 #include <aie_api/aie_adf.hpp>
 #include <aie_api/utils.hpp>
@@ -43,23 +43,23 @@ Ref: Cost effective Tanh activation function circuits based on fast
 inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
 tanh_pwl(const vector<float, VECTOR_LANES> x) {
     vector<float, VECTOR_LANES> x_abs, y, y1, y2, y3, y4, y_neg;
-    vector<accfloat, VECTOR_LANES> acc1, acc2;
+    accum<accfloat, VECTOR_LANES> acc1, acc2;
     mask<VECTOR_LANES> comp_mask;
 
     x_abs = abs(x);
 
     // Prepare possible alternatives of y for each vector lane.
     // --------------------------------------------------------,
-    acc1 = broadcast<accfloat, VECTOR_LANES>(0.716796875f);
+    acc1.from_vector(broadcast<float, VECTOR_LANES>(0.716796875f));
     y1 = mac(acc1, x_abs, 0.126953125f).to_vector<float>(0);
 
-    acc2 = broadcast<accfloat, VECTOR_LANES>(0.453125f);
+    acc2.from_vector(broadcast<float, VECTOR_LANES>(0.453125f));
     y2 = mac(acc2, x_abs, 0.3125f).to_vector<float>(0);
 
-    acc1 = broadcast<accfloat, VECTOR_LANES>(0.15625f);
+    acc1.from_vector(broadcast<float, VECTOR_LANES>(0.15625f));
     y3 = mac(acc1, x_abs, 0.625f).to_vector<float>(0);
 
-    acc2 = broadcast<accfloat, VECTOR_LANES>(0.02935791015625f);
+    acc2.from_vector(broadcast<float, VECTOR_LANES>(0.02935791015625f));
     y4 = mac(acc2, x_abs, 0.875f).to_vector<float>(0);
     // --------------------------------------------------------'
 

@@ -1,4 +1,4 @@
-#include "common_defs.h"
+#include "common_defs.hpp"
 #include <aie_api/aie.hpp>
 #include <aie_api/aie_adf.hpp>
 #include <aie_api/utils.hpp>

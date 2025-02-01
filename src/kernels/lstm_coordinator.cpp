@@ -1,3 +1,4 @@
+#include "activation_funcs.hpp"
 #include "kernel_lib.hpp"
 #include <aie_api/aie.hpp>
 #include <aie_api/aie_adf.hpp>
