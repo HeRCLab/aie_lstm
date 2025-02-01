@@ -31,7 +31,7 @@ Plain C implementation:
 ```
 */
 inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
-tanh_approx(vector<float, VECTOR_LANES> &__restrict x) {
+tanh_approx(const vector<float, VECTOR_LANES> x) {
     accum<accfloat, VECTOR_LANES> acc_num = 0.0f;
     accum<accfloat, VECTOR_LANES> acc_den = 135135.0f;
     vector<float, VECTOR_LANES> x2, x3, x4, x5, x6, x7;

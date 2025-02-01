@@ -1,23 +1,26 @@
 #pragma once
 #include "common_defs.hpp"
+#include <aie_api/aie.hpp>
 
-aie::vector<float, VECTOR_LANES>
-sigm_soft(aie::vector<float, VECTOR_LANES> &__restrict x);
+using namespace aie;
 
-aie::vector<float, VECTOR_LANES>
-tanh_soft(aie::vector<float, VECTOR_LANES> &__restrict x);
+vector<float, VECTOR_LANES>
+sigm_soft(const vector<float, VECTOR_LANES> x);
 
-aie::vector<float, VECTOR_LANES>
-sigm_pwl(aie::vector<float, VECTOR_LANES> &__restrict x);
+vector<float, VECTOR_LANES>
+tanh_soft(const vector<float, VECTOR_LANES> x);
 
-aie::vector<float, VECTOR_LANES>
-tanh_pwl(aie::vector<float, VECTOR_LANES> &__restrict x);
+vector<float, VECTOR_LANES>
+sigm_pwl(const vector<float, VECTOR_LANES> x);
 
-aie::vector<float, VECTOR_LANES>
-sigm_approx(aie::vector<float, VECTOR_LANES> &__restrict x);
+vector<float, VECTOR_LANES>
+tanh_pwl(const vector<float, VECTOR_LANES> x);
 
-aie::vector<float, VECTOR_LANES>
-tanh_approx(aie::vector<float, VECTOR_LANES> &__restrict x);
+vector<float, VECTOR_LANES>
+sigm_approx(const vector<float, VECTOR_LANES> x);
+
+vector<float, VECTOR_LANES>
+tanh_approx(const vector<float, VECTOR_LANES> x);
 
 #if defined(USE_PWL_ACTIVATION_FNS)
 

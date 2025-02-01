@@ -41,7 +41,7 @@ Ref: Cost effective Tanh activation function circuits based on fast
      Dongdong Zeng
 */
 inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
-tanh_pwl(vector<float, VECTOR_LANES> &__restrict x) {
+tanh_pwl(const vector<float, VECTOR_LANES> x) {
     vector<float, VECTOR_LANES> x_abs, y, y1, y2, y3, y4, y_neg;
     vector<accfloat, VECTOR_LANES> acc1, acc2;
     mask<VECTOR_LANES> comp_mask;

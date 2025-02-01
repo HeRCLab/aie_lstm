@@ -7,15 +7,15 @@ using namespace aie;
 
 void single_lstm_gate(
     // Input buffers.
-    adf::input_circular_buffer<float, adf::extents<INPUT_DIM>> &__restrict input,
-    adf::input_circular_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state,
+    adf::input_buffer<float, adf::extents<INPUT_DIM>> &__restrict input,
+    adf::input_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state,
 
     // Run Time Parameters.
     // State weight matrix is split horizontally into two because each
     // runtime parameter needs to fit within a single memory module of
     // 32KB (roughly).
-    const float (&w_state_left)[W_STATE_SIZE/2],
-    const float (&w_state_right)[W_STATE_SIZE/2],
+    const float (&w_state_left)[W_STATE_SIZE / 2],
+    const float (&w_state_right)[W_STATE_SIZE / 2],
     const float (&w_input)[W_INPUT_SIZE],
     const float (&bias)[LSTM_UNITS],
 
@@ -25,26 +25,29 @@ void single_lstm_gate(
     // Input and state iterators are circular, since they will be
     // repeatedly used to multiply with each row of the input and state
     // weight matrix, respectively.
-    auto inp_iter = cbegin_vector_circular<VECTOR_LANES, INPUT_DIM>(input);
-    auto state_iter = cbegin_vector_circular<VECTOR_LANES, LSTM_UNITS>(state);
+    auto inp_iter = cbegin_vector_circular<VECTOR_LANES>(input);
+    auto state_iter = cbegin_vector_circular<VECTOR_LANES>(state);
 
     // Setup iterators for weights and bias run time parameters.
     auto w_inp_iter = cbegin_vector<VECTOR_LANES>(w_input);
     auto w_state_left_iter = cbegin_vector<VECTOR_LANES>(w_state_left);
     auto w_state_right_iter = cbegin_vector<VECTOR_LANES>(w_state_right);
-    auto b_iter = cbegin<LSTM_UNITS>(bias);
+    auto b_iter = cbegin(bias, LSTM_UNITS);
 
     auto out_iter = begin_vector<VECTOR_LANES>(output);
 
-    accumulator<accfloat, VECTOR_LANES> acc1, acc2;
-    vector<float, VECTOR_LANES> va, vb;
     float sum1, sum2, rslt;
+    vector<float, VECTOR_LANES> va, vb, rslt_v;
+    accum<accfloat, VECTOR_LANES> acc1, acc2;
 
     constexpr int partial_block_id = LSTM_UNITS_NON_EMPTY / VECTOR_LANES;
     constexpr int partial_block_size = LSTM_UNITS_NON_EMPTY % VECTOR_LANES;
 
-    [[chess::prepare_for_pipelining]] {
-      for (int i = 0; row < LSTM_UNITS / VECTOR_LANES; i++) {
+    rslt_v = zeros<float, VECTOR_LANES>();
+    [[chess::prepare_for_pipelining]] for (int row = 0; row < LSTM_UNITS; row++) {
+        if (row >= LSTM_UNITS_NON_EMPTY) {
+            rslt = 0.0f;
+        } else {
             // NOTE: The reason for using two accumulators is to fill the
             // pipeline during the two idle cycles of float MACS, as
             // described in UG1079(v2024.1), Ch 3, Sec "Floating Point
@@ -83,21 +86,16 @@ void single_lstm_gate(
             sum1 = add(sum1, sum2);
 
             // Add bias to generate one block of gate results.
-	    rslt = add(sum1, *b_iter);
+            rslt = add(sum1, *b_iter++);
+        }
 
-	    // Since our reference network does not use all of the LSTM
-	    // units, we need to discard some computations from tail.
-	    if (i == partial_block_id) {
-		for (int j = partial_block_size; j < VECTOR_LANES; j++) {
-		    rslt[j] = 0.0f;
-		}
-	    } else if (i > partial_block_id) {
-		rslt = zeros<float, VECTOR_LANES>();
-	    }
+        // Place the result scalar into the vector.
+        rslt_v.push(rslt);
 
-	    // Save result to output buffer.
-            *out_iter++ = rslt;
-	    b_iter++;
+        // If result vector is full, publish it to output.
+        if ((row % VECTOR_LANES) == (VECTOR_LANES - 1)) {
+            *out_iter++ = rslt_v;
+            rslt_v = zeros<float, VECTOR_LANES>();
         }
     }
 }

@@ -14,7 +14,7 @@ Ref: https://scicomp.stackexchange.com/a/42187
 
 
 inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
-sigm_approx(vector<float, VECTOR_LANES> &__restrict x) {
+sigm_approx(const vector<float, VECTOR_LANES> x) {
     vector<float, VECTOR_LANES> y;
     accumulator<accfloat, VECTOR_LANES> acc;
 

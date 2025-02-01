@@ -55,14 +55,15 @@ class LSTMGraph : public graph {
 
         // Connect coordinator output to graph output port.
         connect<>(coord.out[1], out.in[0]);
+
         // Connect coordinator run-time parameters.
-        connect<parameter>(rtp_w_dense, async(out.in[4]));
-        connect<parameter>(rtp_b_dense, async(out.in[5]));
+        connect<parameter>(rtp_w_dense, async(coord.in[4]));
+        connect<parameter>(rtp_b_dense, async(coord.in[5]));
 
         // Map source files for debugging.
         source(coord) = "lstm_coordinator.cpp";
         for (int i = 0; i < N_GATES; i++) {
-            source(gates[i]) = "simple_lstm_gate.cpp";
+            source(gates[i]) = "single_lstm_gate.cpp";
         }
 
         // Set runtime ratio high so that all kernels get their own AI

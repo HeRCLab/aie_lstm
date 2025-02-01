@@ -17,8 +17,8 @@ AIECC := v++ \
       --mode aie \
       --aie.debug \
       --aie.verbose \
-      --aie.adf-api-log-level=4 \
-      --aie.log-level=4 \
+      --aie.adf-api-log-level=1 \
+      --aie.log-level=1 \
       --platform $(PLATFORM) \
       --include $(XILINX_VITIS)/aietools/include \
       $(foreach x,$(INCLUDE_DIRS),--include $x) \

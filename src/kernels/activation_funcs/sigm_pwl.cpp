@@ -27,7 +27,7 @@ Ref: Piecewise linear approximation applied to nonlinear function of a
      neural network, H.Amin, K.M.Curtis, B.R.Hayes-Gill
 */
 inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
-sigm_pwl(vector<float, VECTOR_LANES> &__restrict x) {
+sigm_pwl(const vector<float, VECTOR_LANES> x) {
     vector<float, VECTOR_LANES> x_abs, y, y1, y2, y3, y_neg;
     vector<accfloat, VECTOR_LANES> acc1, acc2;
     mask<VECTOR_LANES> comp_mask;

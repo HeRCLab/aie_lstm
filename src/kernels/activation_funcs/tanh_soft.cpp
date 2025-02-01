@@ -7,7 +7,7 @@
 using namespace aie;
 
 inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
-tanh_soft(vector<float, VECTOR_LANES> &__restrict x) {
+tanh_soft(const vector<float, VECTOR_LANES> x) {
     vector<float, VECTOR_LANES> y;
 
     for (int i = 0; i < VECTOR_LANES; i++) {
