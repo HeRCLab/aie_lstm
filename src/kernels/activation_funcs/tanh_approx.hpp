@@ -32,9 +32,11 @@ Plain C implementation:
 */
 inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
 tanh_approx(const vector<float, VECTOR_LANES> x) {
-    accum<accfloat, VECTOR_LANES> acc_num = 0.0f;
-    accum<accfloat, VECTOR_LANES> acc_den = 135135.0f;
-    vector<float, VECTOR_LANES> x2, x3, x4, x5, x6, x7;
+    accum<accfloat, VECTOR_LANES> acc_num, acc_den;
+    vector<float, VECTOR_LANES> v, x2, x3, x4, x5, x6, x7;
+
+    acc_num = zeros<float, VECTOR_LANES>();
+    acc_den = broadcast<float, VECTOR_LANES>(135135.0f);
 
     // The instructions are ordered this way to fill the pipeline
     // during two idle cycles of each float MACs.
