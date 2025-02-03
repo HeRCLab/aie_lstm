@@ -7,7 +7,7 @@
 // divisible by native vector lane size of 16.
 #define LSTM_UNITS 128
 #define LSTM_UNITS_NON_EMPTY 100
-#define LSTMP_UNITS_EMPTY (LSTM_UNITS - LSTM_UNITS_NON_EMPTY)
+#define LSTM_UNITS_EMPTY (LSTM_UNITS - LSTM_UNITS_NON_EMPTY)
 
 // Actual input dim is 20. 32 is chosen to be even divisible by vector
 // lane size of 16. The last 12 bytes will be filled by zero by the

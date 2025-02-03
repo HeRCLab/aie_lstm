@@ -72,7 +72,7 @@ void lstm_coordinator(
 
     // Fixme: This code block has scope for further optimisation.
     acc_dense = zeros<float, VECTOR_LANES>();
-    /* [[chess:prepare_for_pipelining]] */ for (int i = 0; i < LSTM_UNITS / VECTOR_LANES; i++) {
+    /* [[chess::prepare_for_pipelining]] */ for (int i = 0; i < LSTM_UNITS / VECTOR_LANES; i++) {
         // Calculate next state.
         v1 = sigm(*ig_iter++);
         acc = mul(v1, *state_iter);

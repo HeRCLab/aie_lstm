@@ -44,7 +44,7 @@ void single_lstm_gate(
     constexpr int partial_block_size = LSTM_UNITS_NON_EMPTY % VECTOR_LANES;
 
     rslt_v = zeros<float, VECTOR_LANES>();
-    [[chess::prepare_for_pipelining]] for (int row = 0; row < LSTM_UNITS; row++) {
+    /* [[chess::prepare_for_pipelining]] */ for (int row = 0; row < LSTM_UNITS; row++) {
         if (row >= LSTM_UNITS_NON_EMPTY) {
             rslt = 0.0f;
         } else {

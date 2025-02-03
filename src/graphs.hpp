@@ -55,11 +55,11 @@ class LSTMGraph : public graph {
 
         // Set single buffer constraint for big gate run time
         // parameters.
-	for (int i = 0; i < N_GATES; i++) {
-	  single_buffer(gates[i].in[2]);
-	  single_buffer(gates[i].in[3]);
-	  single_buffer(gates[i].in[4]);
-	}
+        for (int i = 0; i < N_GATES; i++) {
+            single_buffer(gates[i].in[2]);
+            single_buffer(gates[i].in[3]);
+            single_buffer(gates[i].in[4]);
+        }
 
         // Connect coordinator output to graph output port.
         connect<>(coord.out[1], out.in[0]);
@@ -81,13 +81,12 @@ class LSTMGraph : public graph {
             runtime<ratio>(gates[i]) = 0.9;
         }
 
-
-      /*
-        location<kernel>(coord) = tile(5, 5);
-        location<kernel>(gates[0]) = tile(4, 6);
-        location<kernel>(gates[1]) = tile(4, 7);
-        location<kernel>(gates[2]) = tile(6, 4);
-        location<kernel>(gates[3]) = tile(7, 4);
-      */
+        /*
+          location<kernel>(coord) = tile(5, 5);
+          location<kernel>(gates[0]) = tile(4, 6);
+          location<kernel>(gates[1]) = tile(4, 7);
+          location<kernel>(gates[2]) = tile(6, 4);
+          location<kernel>(gates[3]) = tile(7, 4);
+        */
     }
 };

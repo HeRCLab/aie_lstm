@@ -2,7 +2,7 @@
 #include <aie_api/aie.hpp>
 #include <aie_api/aie_adf.hpp>
 #include <aie_api/utils.hpp>
-#include <math.h>
+#include <cmath>
 
 using namespace aie;
 
@@ -12,8 +12,8 @@ tanh_soft(const vector<float, VECTOR_LANES> x) {
     float a, b;
 
     for (int i = 0; i < VECTOR_LANES; i++) {
-        a = std::expf(x[i]);
-        b = std::expf(-x[i]);
+        a = expf(x[i]);
+        b = expf(-x[i]);
         y[i] = (a - b) / (a + b);
     }
 

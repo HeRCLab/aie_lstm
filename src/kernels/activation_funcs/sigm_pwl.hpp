@@ -28,21 +28,24 @@ Ref: Piecewise linear approximation applied to nonlinear function of a
 */
 inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
 sigm_pwl(const vector<float, VECTOR_LANES> x) {
-    vector<float, VECTOR_LANES> x_abs, y, y1, y2, y3, y_neg;
-    vector<accfloat, VECTOR_LANES> acc1, acc2;
+    vector<float, VECTOR_LANES> x_abs, v, y, y1, y2, y3, y_neg;
+    accum<accfloat, VECTOR_LANES> acc1, acc2;
     mask<VECTOR_LANES> comp_mask;
 
     x_abs = abs(x);
 
     // Prepare possible alternatives of y for each vector lane.
     // --------------------------------------------------------,
-    acc1 = broadcast<accfloat, VECTOR_LANES>(0.84375f);
+    v = broadcast<float, VECTOR_LANES>(0.84375f);
+    acc1.from_vector(v, 0);
     y1 = mac(acc1, x_abs, 0.03125f).to_vector<float>(0);
 
-    acc2 = broadcast<accfloat, VECTOR_LANES>(0.625f);
+    v = broadcast<float, VECTOR_LANES>(0.625f);
+    acc2.from_vector(v, 0);
     y2 = mac(acc2, x_abs, 0.125f).to_vector<float>(0);
 
-    acc1 = broadcast<accfloat, VECTOR_LANES>(0.5f);
+    v = broadcast<float, VECTOR_LANES>(0.5f);
+    acc1.from_vector(v, 0);
     y3 = mac(acc1, x_abs, 0.25f).to_vector<float>(0);
     // --------------------------------------------------------'
 
