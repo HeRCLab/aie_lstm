@@ -29,11 +29,19 @@ class LSTMGraph : public graph {
     // -------------------------------'
 
     LSTMGraph() {
+        // Create kernels.
         coord = kernel::create(lstm_coordinator);
         for (int i = 0; i < N_GATES; i++) {
             gates[i] = kernel::create(single_lstm_gate);
         }
 
+        // Assign source files to each kernel.
+        source(coord) = "lstm_coordinator.cpp";
+        for (int i = 0; i < N_GATES; i++) {
+            source(gates[i]) = "single_lstm_gate.cpp";
+        }
+
+        // Create GMIO ports.
         in = input_gmio::create("gmioIn", GMIO_BURST_LENGTH, GMIO_BANDWIDTH);
         out = output_gmio::create("gmioOut", GMIO_BURST_LENGTH, GMIO_BANDWIDTH);
 
@@ -67,12 +75,6 @@ class LSTMGraph : public graph {
         // Connect coordinator run-time parameters.
         connect<parameter>(rtp_w_dense, async(coord.in[4]));
         connect<parameter>(rtp_b_dense, async(coord.in[5]));
-
-        // Map source files for debugging.
-        source(coord) = "lstm_coordinator.cpp";
-        for (int i = 0; i < N_GATES; i++) {
-            source(gates[i]) = "single_lstm_gate.cpp";
-        }
 
         // Set runtime ratio high so that all kernels get their own AI
         // engines.

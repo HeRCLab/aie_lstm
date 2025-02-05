@@ -23,5 +23,5 @@
 #define GMIO_BURST_LENGTH 64  /* Options: 64, 128, 256 */
 #define GMIO_BANDWIDTH 1024  /* Unit: MB/s */
 
-#define INPUT_DATA_PATH "data/dropbear.dat" 
+#define DROPBEAR_DATA_PATH "data/dropbear.dat" 
 #define WEIGHT_DATA_PATH "data/weights.dat" 

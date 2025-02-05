@@ -2,11 +2,26 @@ SRC_DIR:=src/
 INCLUDE_DIRS:=$(SRC_DIR) \
 	$(SRC_DIR)/kernels \
 	$(SRC_DIR)/kernels/activation_funcs
-PPFLAGS:=-DUSE_PWL_ACTIVATION_FNS
-LFLAGS:=# -lm
+
+# 0 : No kernel optimizations.
+#
+# 1 : Computation of heap size, generation of guidance based on LLVM
+#     IR analysis, and insertion of loop pragmas.
+#
+# 2 : Optimizations of level 1 and in addition loop peeling for
+#     unrolled loops and automatic inlining.
+OPT_LVL:=1
+
+STACK_SIZE:=4096
+
+# PREPROC_FLAGS:=-DCHESS_CXX_ATTRIBUTES -DUSE_PWL_ACTIVATION_FNS
+PREPROC_FLAGS:=-DUSE_PWL_ACTIVATION_FNS
+LINKER_FLAGS:=# -lm
+
 WORK_DIR:=build
 REPORT_DIR:=reports
 LOG_DIR:=logs
+
 PLATFORM:=$(XILINX_VITIS)/base_platforms/xilinx_vck190_base_202420_1/xilinx_vck190_base_202420_1.xpfm
 
 SOURCES := $(wildcard $(SRC_DIR)/*.cpp) \
@@ -23,11 +38,13 @@ AIECC := v++ \
       --aie.verbose \
       --aie.adf-api-log-level=1 \
       --aie.log-level=1 \
+      --aie.xlopt=$(OPT_LVL) \
+      --aie.stacksize=$(STACK_SIZE) \
       --platform $(PLATFORM) \
       --include $(XILINX_VITIS)/aietools/include \
       $(foreach x,$(INCLUDE_DIRS),--include $x) \
-      $(foreach x,$(PPFLAGS),--aie.Xpreproc=$x) \
-      $(foreach x,$(LFLAGS),--aie.Xpslinker=$x) \
+      $(foreach x,$(PREPROC_FLAGS),--aie.Xpreproc=$x) \
+      $(foreach x,$(LINKER_FLAGS),--aie.Xpslinker=$x) \
       --report_dir $(REPORT_DIR) \
       --work_dir $(WORK_DIR) \
       --log_dir $(LOG_DIR)

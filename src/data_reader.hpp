@@ -2,7 +2,6 @@
 
 #include "common_defs.hpp"
 #include <fstream>
-#include <iostream>
 
 using namespace std;
 
@@ -14,12 +13,12 @@ struct NetworkParams {
     float w_dense[LSTM_UNITS] = {};
     float b_dense = 0.0f;
 
-    NetworkParams(string &weight_file_path) {
+    NetworkParams(const char *weight_file_path) {
         fstream fin;
 
         fin.open(weight_file_path, ios::binary | ios::in);
         if (!fin) {
-            cout << "Failed to read network parameters!" << endl;
+            printf("Failed to read network parameters!");
             return;
         }
 
@@ -59,25 +58,25 @@ struct DropbearData {
     float *pin;
     float *time;
 
-    DropbearData(string &data_file_path) {
+    DropbearData(const char *data_file_path) {
         fstream fin;
         fin.open(data_file_path, ios::binary | ios::in);
         if (!fin) {
-            cout << "Failed to read dropbear data file!" << endl;
+            printf("Failed to read dropbear data file!");
             return;
         }
 
-        fin.seek(0, fin.end);
+        fin.seekg(0, fin.end);
         int file_size = fin.tellg();
         int n_samples = file_size / 3 / sizeof(float);
 
         vib = new float[n_samples];
-        pin = new pin[n_samples];
-        time = new pin[n_samples];
+        pin = new float[n_samples];
+        time = new float[n_samples];
 
-        fin.read(reinterpret_cast<char*>(vib), n_samples * sizeof(float)));
-        fin.read(reinterpret_cast<char*>(pin), n_samples * sizeof(float)));
-        fin.read(reinterpret_cast<char*>(time), n_samples * sizeof(float)));
+        fin.read(reinterpret_cast<char *>(vib), n_samples * sizeof(float));
+        fin.read(reinterpret_cast<char *>(pin), n_samples * sizeof(float));
+        fin.read(reinterpret_cast<char *>(time), n_samples * sizeof(float));
 
         fin.close();
     }

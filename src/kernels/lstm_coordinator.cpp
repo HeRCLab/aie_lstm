@@ -1,5 +1,6 @@
 #include "activation_funcs.hpp"
 #include "kernel_lib.hpp"
+#include <adf.h>
 #include <aie_api/aie.hpp>
 #include <aie_api/aie_adf.hpp>
 #include <aie_api/utils.hpp>
@@ -72,38 +73,40 @@ void lstm_coordinator(
 
     // Fixme: This code block has scope for further optimisation.
     acc_dense = zeros<float, VECTOR_LANES>();
-    /* [[chess::prepare_for_pipelining]] */ for (int i = 0; i < LSTM_UNITS / VECTOR_LANES; i++) {
-        // Calculate next state.
-        v1 = sigm(*ig_iter++);
-        acc = mul(v1, *state_iter);
-        v2 = sigm(*ig_iter++);
-        v3 = tanh(*mg_iter++);
-        acc = mac(acc, v2, v3);
-        next_state = acc.to_vector<float>(0);
+    // [[chess::prepare_for_pipelining]]
+    for (int i = 0; i < LSTM_UNITS / VECTOR_LANES; i++)
+        chess_prepare_for_pipelining {
+            // Calculate next state.
+            v1 = SIGM(*ig_iter++);
+            acc = mul(v1, *state_iter);
+            v2 = SIGM(*ig_iter++);
+            v3 = TANH(*mg_iter++);
+            acc = mac(acc, v2, v3);
+            next_state = acc.to_vector<float>(0);
 
-        // Calculate LSTM output.
-        v1 = sigm(*og_iter++);
-        v2 = sigm(next_state);
-        out_lstm = add(v1, v2);
+            // Calculate LSTM output.
+            v1 = SIGM(*og_iter++);
+            v2 = SIGM(next_state);
+            out_lstm = add(v1, v2);
 
-        // Since our reference network does not use all of the LSTM
-        // units, we need to discard some computations from tail.
-        if (i == partial_block_id) {
-            for (int j = partial_block_size; j < VECTOR_LANES; j++) {
-                // next_state[j] = 0.0f;
-                // out_lstm[j] = 0.0f;
+            // Since our reference network does not use all of the LSTM
+            // units, we need to discard some computations from tail.
+            if (i == partial_block_id) {
+                for (int j = partial_block_size; j < VECTOR_LANES; j++) {
+                    // next_state[j] = 0.0f;
+                    // out_lstm[j] = 0.0f;
+                }
+            } else if (i > partial_block_id) {
+                next_state = zeros<float, VECTOR_LANES>();
+                out_lstm = zeros<float, VECTOR_LANES>();
             }
-        } else if (i > partial_block_id) {
-            next_state = zeros<float, VECTOR_LANES>();
-            out_lstm = zeros<float, VECTOR_LANES>();
+
+            // Accumulate partial dense layer output.
+            acc_dense = mac(acc_dense, out_lstm, *w_dense_iter++);
+
+            *state_iter++ = next_state;
+            *state_out_iter++ = next_state;
         }
-
-        // Accumulate partial dense layer output.
-        acc_dense = mac(acc_dense, out_lstm, *w_dense_iter++);
-
-        *state_iter++ = next_state;
-        *state_out_iter++ = next_state;
-    }
 
     // Release the buffers.
     input_gate_rslt.release();

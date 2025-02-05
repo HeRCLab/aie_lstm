@@ -44,58 +44,60 @@ void single_lstm_gate(
     constexpr int partial_block_size = LSTM_UNITS_NON_EMPTY % VECTOR_LANES;
 
     rslt_v = zeros<float, VECTOR_LANES>();
-    /* [[chess::prepare_for_pipelining]] */ for (int row = 0; row < LSTM_UNITS; row++) {
-        if (row >= LSTM_UNITS_NON_EMPTY) {
-            rslt = 0.0f;
-        } else {
-            // NOTE: The reason for using two accumulators is to fill the
-            // pipeline during the two idle cycles of float MACS, as
-            // described in UG1079(v2024.1), Ch 3, Sec "Floating Point
-            // Operations", page 54.
-            acc1 = zeros<accfloat, VECTOR_LANES>();
-            acc2 = zeros<accfloat, VECTOR_LANES>();
+    // [[chess::prepare_for_pipelining]]
+    for (int row = 0; row < LSTM_UNITS; row++)
+        chess_prepare_for_pipelining {
+            if (row >= LSTM_UNITS_NON_EMPTY) {
+                rslt = 0.0f;
+            } else {
+                // NOTE: The reason for using two accumulators is to fill the
+                // pipeline during the two idle cycles of float MACS, as
+                // described in UG1079(v2024.1), Ch 3, Sec "Floating Point
+                // Operations", page 54.
+                acc1 = zeros<accfloat, VECTOR_LANES>();
+                acc2 = zeros<accfloat, VECTOR_LANES>();
 
-            // Multiply and accumulate with left half of state weight matrix.
-            for (int i = 0; i < W_STATE_COLS / VECTOR_LANES / 2; i++) {
-                va = *w_state_left_iter++;
-                vb = *state_iter++;
-                acc1 = mac(acc1, va, vb);
-                va = *w_state_left_iter++;
-                vb = *state_iter++;
-                acc2 = mac(acc2, va, vb);
+                // Multiply and accumulate with left half of state weight matrix.
+                for (int i = 0; i < W_STATE_COLS / VECTOR_LANES / 2; i++) {
+                    va = *w_state_left_iter++;
+                    vb = *state_iter++;
+                    acc1 = mac(acc1, va, vb);
+                    va = *w_state_left_iter++;
+                    vb = *state_iter++;
+                    acc2 = mac(acc2, va, vb);
+                }
+
+                // Multiply and accumulate with right half of state weight matrix.
+                for (int i = 0; i < W_STATE_COLS / VECTOR_LANES / 2; i++) {
+                    va = *w_state_right_iter++;
+                    vb = *state_iter++;
+                    acc1 = mac(acc1, va, vb);
+                    va = *w_state_right_iter++;
+                    vb = *state_iter++;
+                    acc2 = mac(acc2, va, vb);
+                }
+
+                // Mutiply and accumulate with input-weight matrix.
+                for (int i = 0; i < INPUT_DIM / VECTOR_LANES; i++) {
+                    acc1 = mac(acc1, *w_inp_iter++, *inp_iter++);
+                }
+
+                // Sum all of the accumulator lanes.
+                sum1 = reduce_add(acc1.to_vector<float>(0));
+                sum2 = reduce_add(acc2.to_vector<float>(0));
+                sum1 = add(sum1, sum2);
+
+                // Add bias to generate one block of gate results.
+                rslt = add(sum1, *b_iter++);
             }
 
-            // Multiply and accumulate with right half of state weight matrix.
-            for (int i = 0; i < W_STATE_COLS / VECTOR_LANES / 2; i++) {
-                va = *w_state_right_iter++;
-                vb = *state_iter++;
-                acc1 = mac(acc1, va, vb);
-                va = *w_state_right_iter++;
-                vb = *state_iter++;
-                acc2 = mac(acc2, va, vb);
+            // Place the result scalar into the vector.
+            rslt_v.push(rslt);
+
+            // If result vector is full, publish it to output.
+            if ((row % VECTOR_LANES) == (VECTOR_LANES - 1)) {
+                *out_iter++ = rslt_v;
+                rslt_v = zeros<float, VECTOR_LANES>();
             }
-
-            // Mutiply and accumulate with input-weight matrix.
-            for (int i = 0; i < INPUT_DIM / VECTOR_LANES; i++) {
-                acc1 = mac(acc1, *w_inp_iter++, *inp_iter++);
-            }
-
-            // Sum all of the accumulator lanes.
-            sum1 = reduce_add(acc1.to_vector<float>(0));
-            sum2 = reduce_add(acc2.to_vector<float>(0));
-            sum1 = add(sum1, sum2);
-
-            // Add bias to generate one block of gate results.
-            rslt = add(sum1, *b_iter++);
         }
-
-        // Place the result scalar into the vector.
-        rslt_v.push(rslt);
-
-        // If result vector is full, publish it to output.
-        if ((row % VECTOR_LANES) == (VECTOR_LANES - 1)) {
-            *out_iter++ = rslt_v;
-            rslt_v = zeros<float, VECTOR_LANES>();
-        }
-    }
 }
