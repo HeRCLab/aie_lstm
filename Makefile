@@ -39,6 +39,7 @@ AIECC := v++ \
       --aie.adf-api-log-level=1 \
       --aie.log-level=1 \
       --aie.xlopt=$(OPT_LVL) \
+      --aie.heapsize=1024 \
       --aie.stacksize=$(STACK_SIZE) \
       --platform $(PLATFORM) \
       --include $(XILINX_VITIS)/aietools/include \

@@ -57,6 +57,7 @@ struct DropbearData {
     float *vib;
     float *pin;
     float *time;
+    int   n_samples;
 
     DropbearData(const char *data_file_path) {
         fstream fin;
@@ -68,7 +69,7 @@ struct DropbearData {
 
         fin.seekg(0, fin.end);
         int file_size = fin.tellg();
-        int n_samples = file_size / 3 / sizeof(float);
+        n_samples = file_size / 3 / sizeof(float);
 
         vib = new float[n_samples];
         pin = new float[n_samples];

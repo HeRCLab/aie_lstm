@@ -12,8 +12,8 @@ class LSTMGraph : public graph {
     kernel gates[N_GATES];
 
   public:
-    input_gmio in;
-    output_gmio out;
+    input_gmio gmio_in;
+    output_gmio gmio_out;
 
     // Ports for run time parameters.
     // -------------------------------,
@@ -42,12 +42,13 @@ class LSTMGraph : public graph {
         }
 
         // Create GMIO ports.
-        in = input_gmio::create("gmioIn", GMIO_BURST_LENGTH, GMIO_BANDWIDTH);
-        out = output_gmio::create("gmioOut", GMIO_BURST_LENGTH, GMIO_BANDWIDTH);
+        gmio_in = input_gmio::create("gmioIn", GMIO_BURST_LENGTH, GMIO_BANDWIDTH);
+        gmio_out = output_gmio::create("gmioOut", GMIO_BURST_LENGTH, GMIO_BANDWIDTH);
 
         for (int i = 0; i < N_GATES; i++) {
             // Connect graph data input to gate data input.
-            connect<>(in.out[0], gates[i].in[0]);
+            connect<>(gmio_in.out[0], gates[i].in[0]);
+
             // Connect coordinator state output to gate state input.
             connect<>(coord.out[0], gates[i].in[1]);
 
@@ -61,18 +62,22 @@ class LSTMGraph : public graph {
             connect<>(gates[i].out[0], coord.in[i]);
         }
 
-        // Set single buffer constraint for big gate run time
-        // parameters.
+        // Set single buffer constraint for gate RTP-s.
         for (int i = 0; i < N_GATES; i++) {
             single_buffer(gates[i].in[2]);
             single_buffer(gates[i].in[3]);
             single_buffer(gates[i].in[4]);
+            single_buffer(gates[i].in[5]);
         }
 
-        // Connect coordinator output to graph output port.
-        connect<>(coord.out[1], out.in[0]);
+        // Set single buffer constraint for coordinator RTP-s.
+        single_buffer(coord.in[4]);
+        single_buffer(coord.in[5]);
 
-        // Connect coordinator run-time parameters.
+        // Connect coordinator output to graph output port.
+        connect<>(coord.out[1], gmio_out.in[0]);
+
+        // Connect coordinator RTP-s.
         connect<parameter>(rtp_w_dense, async(coord.in[4]));
         connect<parameter>(rtp_b_dense, async(coord.in[5]));
 

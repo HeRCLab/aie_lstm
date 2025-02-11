@@ -7,8 +7,8 @@ using namespace aie;
 
 void single_lstm_gate(
     // Input buffers.
-    adf::input_buffer<float, adf::extents<INPUT_DIM>> &__restrict input,
-    adf::input_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state,
+    adf::input_circular_buffer<float, adf::extents<INPUT_DIM>> &__restrict input,
+    adf::input_circular_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state,
 
     // Run Time Parameters.
     // State weight matrix is split horizontally into two because each
