@@ -54,6 +54,7 @@ AIECC := v++ \
 	build-x86sim \
 	build-aiesim \
 	run-x86sim \
+	debug-x86sim \
 	run-aiesim \
 	clean
 
@@ -65,6 +66,9 @@ build-x86sim: $(SOURCES)
 
 run-x86sim:
 	x86simulator --pkg-dir=$(WORK_DIR) --trace
+
+debug-x86sim:
+	x86simulator --pkg-dir=$(WORK_DIR) --trace --gdb
 
 run-aiesim:
 	aiesimulator --pkg-dir=$(WORK_DIR)
