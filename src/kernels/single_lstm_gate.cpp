@@ -22,6 +22,8 @@ void single_lstm_gate(
     // Output buffers.
     adf::output_buffer<float, adf::extents<LSTM_UNITS>> &__restrict output) {
 
+    printf("This is single lstm gate!\n");
+
     // Input and state iterators are circular, since they will be
     // repeatedly used to multiply with each row of the input and state
     // weight matrix, respectively.

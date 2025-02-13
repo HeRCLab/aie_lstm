@@ -10,12 +10,16 @@ int main(void) {
     adf::return_code ret;
 
     // Read network weights and input data from disk.
+    printf("Reading weights ...\n");
     NetworkParams net_params(WEIGHT_DATA_PATH);
+    printf("Reading data ...\n");
     DropbearData dropbear_data(DROPBEAR_DATA_PATH);
 
-    int n_samples = dropbear_data.n_samples;
+    // int n_sample_bytes = dropbear_data.n_samples * sizeof(float);
+    constexpr int n_sample_bytes = N_TEST_SAMPLES * sizeof(float);
 
     // Initiate graph.
+    printf("Initiating graph ...\n");
     gr.init();
 
     // Set gate network parameters.
@@ -34,19 +38,20 @@ int main(void) {
     gr.update(gr.rtp_b_dense, net_params.b_dense);
 
     // Allocate buffers for GMIO communication.
-    float *input_buff = reinterpret_cast<float *>(GMIO::malloc(n_samples * sizeof(float)));
-    float *output_buff = reinterpret_cast<float *>(GMIO::malloc(n_samples * sizeof(float)));
+    float *input_buff = reinterpret_cast<float *>(GMIO::malloc(n_sample_bytes));
+    float *output_buff = reinterpret_cast<float *>(GMIO::malloc(n_sample_bytes));
 
     // Copy input data.
-    memcpy(input_buff, &dropbear_data.vib, sizeof(dropbear_data.vib));
+    memcpy(input_buff, dropbear_data.vib, n_sample_bytes);
 
     // Attach GMIO buffers.
-    gr.gmio_in.gm2aie_nb(input_buff, n_samples * sizeof(float));
-    gr.gmio_out.aie2gm_nb(output_buff, n_samples * sizeof(float));
+    gr.gmio_in.gm2aie_nb(input_buff, n_sample_bytes);
+    gr.gmio_out.aie2gm_nb(output_buff, n_sample_bytes);
 
-    // Run the graph for full sample length.
-    gr.run(n_samples);
+    // Run the graph.
+    gr.run(N_TEST_SAMPLES);
     gr.gmio_out.wait();
+    gr.wait();
 
     // TODO: Write the output to file.
 

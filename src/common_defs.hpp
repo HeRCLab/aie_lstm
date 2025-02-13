@@ -25,3 +25,5 @@
 
 #define DROPBEAR_DATA_PATH "data/dropbear.dat" 
 #define WEIGHT_DATA_PATH "data/weights.dat" 
+
+#define N_TEST_SAMPLES 32

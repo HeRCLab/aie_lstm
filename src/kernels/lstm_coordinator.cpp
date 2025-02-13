@@ -50,6 +50,7 @@ void lstm_coordinator(
 
     // Sent initial state down to the gates.
     if (first_iteration) {
+        printf("Sending initial state!\n");
         first_iteration = 0;
 
         state_out.acquire();
@@ -70,6 +71,9 @@ void lstm_coordinator(
 
     constexpr int partial_block_id = LSTM_UNITS_NON_EMPTY / VECTOR_LANES;
     constexpr int partial_block_size = LSTM_UNITS_NON_EMPTY % VECTOR_LANES;
+
+
+    printf("This is lstm coord!\n");
 
     // Fixme: This code block has scope for further optimisation.
     acc_dense = zeros<float, VECTOR_LANES>();
@@ -93,8 +97,8 @@ void lstm_coordinator(
             // units, we need to discard some computations from tail.
             if (i == partial_block_id) {
                 for (int j = partial_block_size; j < VECTOR_LANES; j++) {
-                    // next_state[j] = 0.0f;
-                    // out_lstm[j] = 0.0f;
+                    next_state[j] = 0.0f;
+                    out_lstm[j] = 0.0f;
                 }
             } else if (i > partial_block_id) {
                 next_state = zeros<float, VECTOR_LANES>();
@@ -117,6 +121,7 @@ void lstm_coordinator(
 
     // Set first sample of output buffer to dense network output.
     sum = reduce_add(acc_dense.to_vector<float>());
+    printf("Lstm coord output: %f\n", sum);
     *outp_iter = sum + bias_dense;
 
     // For clarity, set rest of the output buffer to zero.
