@@ -86,6 +86,7 @@ struct DropbearData {
         pin = new float[n_samples];
         time = new float[n_samples];
 
+        fin.seekg(0);
         fin.read(reinterpret_cast<char *>(vib), n_samples * sizeof(float));
         fin.read(reinterpret_cast<char *>(pin), n_samples * sizeof(float));
         fin.read(reinterpret_cast<char *>(time), n_samples * sizeof(float));
