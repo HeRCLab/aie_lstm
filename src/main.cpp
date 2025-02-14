@@ -5,7 +5,7 @@
 
 LSTMGraph gr;
 
-#if defined (__AIESIM__) || defined(__X86SIM__)
+#if defined(__AIESIM__) || defined(__X86SIM__)
 int main(void) {
     adf::return_code ret;
 
@@ -63,9 +63,9 @@ int main(void) {
 
     // Copy input data.
     for (int i = 0; i < usable_sample_size; i++) {
-      memcpy(input_buff + i * INPUT_DIM,
-	     dropbear_data.vib + i,
-	     INPUT_DIM_REAL * sizeof(float));
+        memcpy(input_buff + i * INPUT_DIM,
+               dropbear_data.vib + i,
+               INPUT_DIM_REAL * sizeof(float));
     }
     // ---------------------------------------------------------------'
 
