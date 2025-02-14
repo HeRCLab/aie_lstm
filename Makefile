@@ -74,6 +74,9 @@ run-aiesim:
 	aiesimulator --pkg-dir=$(WORK_DIR)
 
 clean:
-	rm -r $(WORK_DIR)/*
-	rm -r $(REPORT_DIR)/*
-	rm -r $(LOG_DIR)/*
+	-rm -rf $(WORK_DIR)/*
+	-rm -rf $(REPORT_DIR)/*
+	-rm -rf $(LOG_DIR)/*
+	-rm -rf aiesimulator_output/
+	-rm -rf x86simulator_output/
+	-rm -f *.log *.jou *.db libadf.a Map_Report.csv
