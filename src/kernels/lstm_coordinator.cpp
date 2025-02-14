@@ -30,7 +30,7 @@ void lstm_coordinator(
     // The minimum size of a buffer is 16 Bytes = 4 float
     // samples. Since each iteration will produce just a single
     // result, the rest of 12 bytes will be wasted.
-    adf::output_buffer<float, adf::extents<4>> &__restrict output) {
+    adf::output_buffer<float, adf::extents<OUTPUT_BLOCK_SIZE>> &__restrict output) {
 
     // This vectors are circular so that they may be access twice during
     // first iteration.

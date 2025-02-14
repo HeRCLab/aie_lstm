@@ -37,19 +37,41 @@ int main(void) {
     gr.update(gr.rtp_w_dense, net_params.w_dense, LSTM_UNITS);
     gr.update(gr.rtp_b_dense, net_params.b_dense);
 
+    // Setup GMIO buffers.
+    //
+    // NOTE: Each graph iteration will take as input an overlapping
+    // window of INPUT_DIM input samples. Although AIE engine supports
+    // 'margins' in buffers, they have an alignment requirement of
+    // 32. I don't think our current data format can be shaped to take
+    // advantage of that. Rather, we will do the sliding-window
+    // copying in the input buffer itself.
+    // ---------------------------------------------------------------,
+    constexpr int usable_sample_size = N_TEST_SAMPLES - INPUT_DIM + 1;
+    constexpr int input_buff_size = usable_sample_size * INPUT_DIM * sizeof(float);
+    constexpr int output_buff_size = usable_sample_size * OUTPUT_BLOCK_SIZE * sizeof(float);
+
+    printf("Usable sample size: %d\n", usable_sample_size);
+    printf("Input buff size: %d\n", input_buff_size);
+    printf("Output buff size: %d\n", output_buff_size);
+
     // Allocate buffers for GMIO communication.
-    float *input_buff = reinterpret_cast<float *>(GMIO::malloc(n_sample_bytes));
-    float *output_buff = reinterpret_cast<float *>(GMIO::malloc(n_sample_bytes));
+    float *input_buff = reinterpret_cast<float *>(GMIO::malloc(input_buff_size));
+    float *output_buff = reinterpret_cast<float *>(GMIO::malloc(output_buff_size));
 
     // Copy input data.
-    memcpy(input_buff, dropbear_data.vib, n_sample_bytes);
+    for (int i = 0; i < usable_sample_size; i++) {
+      memcpy(input_buff + i * INPUT_DIM * sizeof(float),
+	     dropbear_data.vib + i * sizeof(float),
+	     INPUT_DIM * sizeof(float));
+    }
+    // ---------------------------------------------------------------'
 
     // Attach GMIO buffers.
-    gr.gmio_in.gm2aie_nb(input_buff, n_sample_bytes);
-    gr.gmio_out.aie2gm_nb(output_buff, n_sample_bytes);
+    gr.gmio_in.gm2aie_nb(input_buff, input_buff_size);
+    gr.gmio_out.aie2gm_nb(output_buff, output_buff_size);
 
     // Run the graph.
-    gr.run(N_TEST_SAMPLES);
+    gr.run(usable_sample_size);
     gr.gmio_out.wait();
     gr.wait();
 

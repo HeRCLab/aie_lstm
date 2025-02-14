@@ -15,6 +15,8 @@
 #define INPUT_DIM_NON_EMPTY 20
 #define INPUT_DIM 32
 
+#define OUTPUT_BLOCK_SIZE 4 /* Minimum buffer size of 16bytes */
+
 #define W_STATE_COLS LSTM_UNITS
 #define W_STATE_SIZE (LSTM_UNITS * W_STATE_COLS)
 #define W_INPUT_SIZE (LSTM_UNITS * INPUT_DIM)
@@ -26,4 +28,4 @@
 #define DROPBEAR_DATA_PATH "data/dropbear.dat" 
 #define WEIGHT_DATA_PATH "data/weights.dat" 
 
-#define N_TEST_SAMPLES 32
+#define N_TEST_SAMPLES 128
