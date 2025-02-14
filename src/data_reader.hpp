@@ -25,39 +25,39 @@ struct NetworkParams {
         // Load LSTM gate parameters.
         int offset = 0;
         for (int i = 0; i < N_GATES; i++) {
-	    // Skip data for previous gate.
-            offset = i * (W_STATE_SIZE + W_INPUT_SIZE + LSTM_UNITS) * sizeof(float);
+            // Skip data for previous gate.
+            offset = i * (W_STATE_SIZE_REAL + W_INPUT_SIZE_REAL + LSTM_UNITS_REAL) * sizeof(float);
 
             // Load state weights.
-	    fin.seekg(offset);
-            for (int r = 0; r < LSTM_UNITS_NON_EMPTY; r++) {
-              fin.read(reinterpret_cast<char *>(w_state + (i * W_STATE_SIZE) + r * LSTM_UNITS),
-                       LSTM_UNITS_NON_EMPTY * sizeof(float));
+            fin.seekg(offset, fin.beg);
+            for (int r = 0; r < LSTM_UNITS_REAL; r++) {
+                fin.read(reinterpret_cast<char *>(w_state + i * W_STATE_SIZE + r * LSTM_UNITS),
+                         LSTM_UNITS_REAL * sizeof(float));
             }
+            offset += W_STATE_SIZE_REAL * sizeof(float);
 
             // Load input weights.
-            offset += W_STATE_SIZE * sizeof(float);
-	    fin.seekg(offset);
-            for (int r = 0; r < INPUT_DIM_NON_EMPTY; r++) {
-              fin.read(reinterpret_cast<char *>(w_input + (i * W_INPUT_SIZE) + r * INPUT_DIM),
-                         INPUT_DIM_NON_EMPTY * sizeof(float));
+            fin.seekg(offset, fin.beg);
+            for (int r = 0; r < INPUT_DIM_REAL; r++) {
+                fin.read(reinterpret_cast<char *>(w_input + i * W_INPUT_SIZE + r * INPUT_DIM),
+                         INPUT_DIM_REAL * sizeof(float));
             }
+            offset += W_INPUT_SIZE_REAL * sizeof(float);
 
             // Load lstm biases.
-            offset += W_INPUT_SIZE * sizeof(float);
-	    fin.seekg(offset);
-            fin.read(reinterpret_cast<char *>(bias + (i * LSTM_UNITS)),
-                     LSTM_UNITS_NON_EMPTY * sizeof(float));
+            fin.seekg(offset, fin.beg);
+            fin.read(reinterpret_cast<char *>(bias + i * LSTM_UNITS),
+                     LSTM_UNITS_REAL * sizeof(float));
         }
 
         // Load dense layer parameters.
-        offset = N_GATES * (W_STATE_SIZE + W_INPUT_SIZE + LSTM_UNITS) * sizeof(float);
-        fin.seekg(offset);
+        offset = N_GATES * (W_STATE_SIZE_REAL + W_INPUT_SIZE_REAL + LSTM_UNITS_REAL) * sizeof(float);
+        fin.seekg(offset, fin.beg);
         fin.read(reinterpret_cast<char *>(w_dense),
-                 LSTM_UNITS_NON_EMPTY * sizeof(float));
+                 LSTM_UNITS_REAL * sizeof(float));
 
-        offset += LSTM_UNITS * sizeof(float);
-        fin.seekg(offset);
+        offset += LSTM_UNITS_REAL * sizeof(float);
+        fin.seekg(offset, fin.beg);
         fin.read(reinterpret_cast<char *>(&b_dense), sizeof(float));
 
         fin.close();
@@ -68,7 +68,7 @@ struct DropbearData {
     float *vib;
     float *pin;
     float *time;
-    int   n_samples;
+    int n_samples;
 
     DropbearData(const char *data_file_path) {
         fstream fin;
@@ -86,7 +86,7 @@ struct DropbearData {
         pin = new float[n_samples];
         time = new float[n_samples];
 
-        fin.seekg(0);
+        fin.seekg(0, fin.beg);
         fin.read(reinterpret_cast<char *>(vib), n_samples * sizeof(float));
         fin.read(reinterpret_cast<char *>(pin), n_samples * sizeof(float));
         fin.read(reinterpret_cast<char *>(time), n_samples * sizeof(float));

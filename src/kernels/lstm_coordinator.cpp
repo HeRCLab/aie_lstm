@@ -69,8 +69,8 @@ void lstm_coordinator(
     // Get access to state output buffer.
     state_out.acquire();
 
-    constexpr int partial_block_id = LSTM_UNITS_NON_EMPTY / VECTOR_LANES;
-    constexpr int partial_block_size = LSTM_UNITS_NON_EMPTY % VECTOR_LANES;
+    constexpr int partial_block_id = LSTM_UNITS_REAL / VECTOR_LANES;
+    constexpr int partial_block_size = LSTM_UNITS_REAL % VECTOR_LANES;
 
 
     printf("This is lstm coord!\n");

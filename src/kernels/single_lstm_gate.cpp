@@ -22,8 +22,6 @@ void single_lstm_gate(
     // Output buffers.
     adf::output_buffer<float, adf::extents<LSTM_UNITS>> &__restrict output) {
 
-    printf("This is single lstm gate!\n");
-
     // Input and state iterators are circular, since they will be
     // repeatedly used to multiply with each row of the input and state
     // weight matrix, respectively.
@@ -42,16 +40,14 @@ void single_lstm_gate(
     vector<float, VECTOR_LANES> va, vb, rslt_v;
     accum<accfloat, VECTOR_LANES> acc1, acc2;
 
-    constexpr int partial_block_id = LSTM_UNITS_NON_EMPTY / VECTOR_LANES;
-    constexpr int partial_block_size = LSTM_UNITS_NON_EMPTY % VECTOR_LANES;
+    constexpr int partial_block_id = LSTM_UNITS_REAL / VECTOR_LANES;
+    constexpr int partial_block_size = LSTM_UNITS_REAL % VECTOR_LANES;
 
     rslt_v = zeros<float, VECTOR_LANES>();
     // [[chess::prepare_for_pipelining]]
     for (int row = 0; row < LSTM_UNITS; row++)
         chess_prepare_for_pipelining {
-            if (row >= LSTM_UNITS_NON_EMPTY) {
-                rslt = 0.0f;
-            } else {
+            if (row < LSTM_UNITS_REAL) {
                 // NOTE: The reason for using two accumulators is to fill the
                 // pipeline during the two idle cycles of float MACS, as
                 // described in UG1079(v2024.1), Ch 3, Sec "Floating Point
@@ -81,6 +77,7 @@ void single_lstm_gate(
 
                 // Mutiply and accumulate with input-weight matrix.
                 for (int i = 0; i < INPUT_DIM / VECTOR_LANES; i++) {
+                    print(*inp_iter, true, "inp=");
                     acc1 = mac(acc1, *w_inp_iter++, *inp_iter++);
                 }
 
@@ -91,14 +88,18 @@ void single_lstm_gate(
 
                 // Add bias to generate one block of gate results.
                 rslt = add(sum1, *b_iter++);
+            } else {
+                rslt = 0.0f;
             }
 
             // Place the result scalar into the vector.
-            rslt_v.push(rslt);
+            int vi = row % VECTOR_LANES;
+            rslt_v.set(rslt, vi);
 
             // If result vector is full, publish it to output.
             if ((row % VECTOR_LANES) == (VECTOR_LANES - 1)) {
                 *out_iter++ = rslt_v;
+                print(rslt_v, true, "rslt_v=");
                 rslt_v = zeros<float, VECTOR_LANES>();
             }
         }

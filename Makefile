@@ -10,12 +10,13 @@ INCLUDE_DIRS:=$(SRC_DIR) \
 #
 # 2 : Optimizations of level 1 and in addition loop peeling for
 #     unrolled loops and automatic inlining.
-OPT_LVL:=1
+OPT_LVL:=0
 
 STACK_SIZE:=4096
 
 # PREPROC_FLAGS:=-DCHESS_CXX_ATTRIBUTES -DUSE_PWL_ACTIVATION_FNS
-PREPROC_FLAGS:=-DUSE_PWL_ACTIVATION_FNS
+# PREPROC_FLAGS:=-DUSE_PWL_ACTIVATION_FNS
+PREPROC_FLAGS:=
 LINKER_FLAGS:=# -lm
 
 WORK_DIR:=build

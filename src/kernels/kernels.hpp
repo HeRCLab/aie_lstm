@@ -20,4 +20,4 @@ void lstm_coordinator(
     const float (&w_dense)[LSTM_UNITS],
     const float bias_dense,
     adf::output_async_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state_out,
-    adf::output_buffer<float, adf::extents<4>> &__restrict output);
+    adf::output_buffer<float, adf::extents<OUTPUT_BLOCK_SIZE>> &__restrict output);

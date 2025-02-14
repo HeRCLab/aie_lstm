@@ -46,7 +46,7 @@ int main(void) {
     // advantage of that. Rather, we will do the sliding-window
     // copying in the input buffer itself.
     // ---------------------------------------------------------------,
-    constexpr int usable_sample_size = N_TEST_SAMPLES - INPUT_DIM + 1;
+    constexpr int usable_sample_size = N_TEST_SAMPLES - INPUT_DIM_REAL + 1;
     constexpr int input_buff_size = usable_sample_size * INPUT_DIM * sizeof(float);
     constexpr int output_buff_size = usable_sample_size * OUTPUT_BLOCK_SIZE * sizeof(float);
 
@@ -58,11 +58,14 @@ int main(void) {
     float *input_buff = reinterpret_cast<float *>(GMIO::malloc(input_buff_size));
     float *output_buff = reinterpret_cast<float *>(GMIO::malloc(output_buff_size));
 
+    // Fill input buffer with zeros.
+    memset(input_buff, 0, input_buff_size);
+
     // Copy input data.
     for (int i = 0; i < usable_sample_size; i++) {
-      memcpy(input_buff + i * INPUT_DIM * sizeof(float),
-	     dropbear_data.vib + i * sizeof(float),
-	     INPUT_DIM * sizeof(float));
+      memcpy(input_buff + i * INPUT_DIM,
+	     dropbear_data.vib + i,
+	     INPUT_DIM_REAL * sizeof(float));
     }
     // ---------------------------------------------------------------'
 
