@@ -32,7 +32,7 @@ void single_lstm_gate(
     auto w_inp_iter = cbegin_vector<VECTOR_LANES>(w_input);
     auto w_state_left_iter = cbegin_vector<VECTOR_LANES>(w_state_left);
     auto w_state_right_iter = cbegin_vector<VECTOR_LANES>(w_state_right);
-    auto b_iter = cbegin(bias, LSTM_UNITS);
+    auto b_iter = cbegin_vector<VECTOR_LANES>(bias);
 
     auto out_iter = begin_vector<VECTOR_LANES>(output);
 
@@ -56,9 +56,11 @@ void single_lstm_gate(
                 acc2 = zeros<accfloat, VECTOR_LANES>();
 
                 // Multiply and accumulate with left half of state weight matrix.
-                for (int i = 0; i < W_STATE_COLS / VECTOR_LANES / 2; i++) {
+                for (int i = 0; i < W_STATE_COLS / VECTOR_LANES / 4; i++) {
                     va = *w_state_left_iter++;
+                    // if (row == 0) print(va, true, "w_state_left=");
                     vb = *state_iter++;
+                    // if (row == 0) print(vb, true, "state=");
                     acc1 = mac(acc1, va, vb);
                     va = *w_state_left_iter++;
                     vb = *state_iter++;
@@ -66,7 +68,7 @@ void single_lstm_gate(
                 }
 
                 // Multiply and accumulate with right half of state weight matrix.
-                for (int i = 0; i < W_STATE_COLS / VECTOR_LANES / 2; i++) {
+                for (int i = 0; i < W_STATE_COLS / VECTOR_LANES / 4; i++) {
                     va = *w_state_right_iter++;
                     vb = *state_iter++;
                     acc1 = mac(acc1, va, vb);
@@ -77,17 +79,14 @@ void single_lstm_gate(
 
                 // Mutiply and accumulate with input-weight matrix.
                 for (int i = 0; i < INPUT_DIM / VECTOR_LANES; i++) {
-                    print(*inp_iter, true, "inp=");
+                    // if (row == 0) print(*inp_iter, true, "inp=");
                     acc1 = mac(acc1, *w_inp_iter++, *inp_iter++);
                 }
 
                 // Sum all of the accumulator lanes.
                 sum1 = reduce_add(acc1.to_vector<float>(0));
                 sum2 = reduce_add(acc2.to_vector<float>(0));
-                sum1 = add(sum1, sum2);
-
-                // Add bias to generate one block of gate results.
-                rslt = add(sum1, *b_iter++);
+                rslt = sum1 + sum2;
             } else {
                 rslt = 0.0f;
             }
@@ -98,8 +97,10 @@ void single_lstm_gate(
 
             // If result vector is full, publish it to output.
             if ((row % VECTOR_LANES) == (VECTOR_LANES - 1)) {
+                // Add bias to generate one block of gate results.
+                rslt_v = add(rslt_v, *b_iter++);
                 *out_iter++ = rslt_v;
-                print(rslt_v, true, "rslt_v=");
+                // print(rslt_v, true, "rslt_v=");
                 rslt_v = zeros<float, VECTOR_LANES>();
             }
         }
