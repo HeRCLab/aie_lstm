@@ -205,7 +205,7 @@ int main() {
   for (int i = INPUTS - 1; i < nsamples; i++) {
     // copy inputs and state to vector
     for (int j = 0; j < UNITS + INPUTS; j++)
-      i_vector[j] = j < UNITS ? state[j] : vib[i - INPUTS + j - INPUTS];
+      i_vector[j] = j < UNITS ? state[j] : vib[i - INPUTS + j - UNITS + 1];
 
     // allocate output vectoro
     float gates[4 * UNITS];

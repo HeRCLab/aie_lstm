@@ -7,7 +7,7 @@ SOURCE := test_lstm.c weights.h dropbear.h mydumblittleplotroutine.h
 all: test_lstm test_lstm_approx test_lstm_pwl
 
 test_lstm: $(SOURCE)
-	$(CC) test_lstm.c $(CFLAGS) -o $@
+	$(CC) test_lstm.c $(CFLAGS) -g -o $@
 
 test_lstm_approx: $(SOURCE)
 	$(CC) test_lstm.c $(CFLAGS) -DUSE_APPROX_ACTIVATION_FNS -o $@
