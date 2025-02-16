@@ -6,7 +6,8 @@
 using namespace std;
 
 struct NetworkParams {
-    float w_state[N_GATES * W_STATE_SIZE] = {};
+    float w_state_left[N_GATES * W_STATE_SIZE / 2] = {};
+    float w_state_right[N_GATES * W_STATE_SIZE / 2] = {};
     float w_input[N_GATES * W_INPUT_SIZE] = {};
     float bias[N_GATES * LSTM_UNITS] = {};
 
@@ -31,14 +32,16 @@ struct NetworkParams {
             // Load state weights.
             fin.seekg(offset, fin.beg);
             for (int r = 0; r < LSTM_UNITS_REAL; r++) {
-                fin.read(reinterpret_cast<char *>(w_state + i * W_STATE_SIZE + r * LSTM_UNITS),
-                         LSTM_UNITS_REAL * sizeof(float));
+                fin.read(reinterpret_cast<char *>(w_state_left + i * (W_STATE_SIZE / 2) + r * (LSTM_UNITS / 2)),
+                         (LSTM_UNITS / 2) * sizeof(float));
+                fin.read(reinterpret_cast<char *>(w_state_right + i * (W_STATE_SIZE / 2) + r * (LSTM_UNITS / 2)),
+                         (LSTM_UNITS_REAL - LSTM_UNITS / 2) * sizeof(float));
             }
             offset += W_STATE_SIZE_REAL * sizeof(float);
 
             // Load input weights.
             fin.seekg(offset, fin.beg);
-            for (int r = 0; r < INPUT_DIM_REAL; r++) {
+            for (int r = 0; r < LSTM_UNITS_REAL; r++) {
                 fin.read(reinterpret_cast<char *>(w_input + i * W_INPUT_SIZE + r * INPUT_DIM),
                          INPUT_DIM_REAL * sizeof(float));
             }

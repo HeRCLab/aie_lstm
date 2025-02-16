@@ -24,11 +24,11 @@ int main(void) {
 
     // Set gate network parameters.
     for (int i = 0; i < N_GATES; i++) {
-        int state_offset = i * W_STATE_SIZE;
+        int state_offset = i * W_STATE_SIZE / 2;
         int input_offset = i * W_INPUT_SIZE;
         int bias_offset = i * LSTM_UNITS;
-        gr.update(gr.rtp_w_state_left[i], &net_params.w_state[state_offset], W_STATE_SIZE / 2);
-        gr.update(gr.rtp_w_state_right[i], &net_params.w_state[state_offset + W_STATE_SIZE / 2], W_STATE_SIZE / 2);
+        gr.update(gr.rtp_w_state_left[i], &net_params.w_state_left[state_offset], W_STATE_SIZE / 2);
+        gr.update(gr.rtp_w_state_right[i], &net_params.w_state_right[state_offset], W_STATE_SIZE / 2);
         gr.update(gr.rtp_w_input[i], &net_params.w_input[input_offset], W_INPUT_SIZE);
         gr.update(gr.rtp_bias[i], &net_params.bias[bias_offset], LSTM_UNITS);
     }
