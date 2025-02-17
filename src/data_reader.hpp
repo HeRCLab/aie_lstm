@@ -58,8 +58,8 @@ struct NetworkParams {
         fin.seekg(offset, fin.beg);
         fin.read(reinterpret_cast<char *>(w_dense),
                  LSTM_UNITS_REAL * sizeof(float));
-
         offset += LSTM_UNITS_REAL * sizeof(float);
+
         fin.seekg(offset, fin.beg);
         fin.read(reinterpret_cast<char *>(&b_dense), sizeof(float));
 

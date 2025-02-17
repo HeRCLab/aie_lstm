@@ -8,12 +8,9 @@ using namespace aie;
 inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
 tanh_soft(const vector<float, VECTOR_LANES> x) {
     vector<float, VECTOR_LANES> y;
-    float a, b;
 
     for (int i = 0; i < VECTOR_LANES; i++) {
-        a = expf(x[i]);
-        b = expf(-x[i]);
-        y[i] = (a - b) / (a + b);
+      y[i] = tanhf(x[i]);
     }
 
     return y;

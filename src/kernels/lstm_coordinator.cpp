@@ -32,32 +32,32 @@ void lstm_coordinator(
     // result, the rest of 12 bytes will be wasted.
     adf::output_buffer<float, adf::extents<OUTPUT_BLOCK_SIZE>> &__restrict output) {
 
-    // This vectors are circular so that they may be access twice during
-    // first iteration.
-    auto state_iter = begin_vector_circular<VECTOR_LANES>(state);
-    auto state_out_iter = begin_vector_circular<VECTOR_LANES>(state_out);
+    // Set C compatible rounding mode.
+    set_rounding(aie::rounding_mode::conv_even);
 
-    auto ig_iter = cbegin_vector<VECTOR_LANES>(input_gate_rslt);
-    auto fg_iter = cbegin_vector<VECTOR_LANES>(forget_gate_rslt);
-    auto og_iter = cbegin_vector<VECTOR_LANES>(output_gate_rslt);
-    auto mg_iter = cbegin_vector<VECTOR_LANES>(modulation_gate_rslt);
-    auto w_dense_iter = cbegin_restrict_vector<VECTOR_LANES>(w_dense);
+    auto state_iter = begin_restrict_vector<VECTOR_LANES>(state);
+    auto w_dense_iter = cbegin_vector<VECTOR_LANES>(w_dense);
     auto outp_iter = begin(output);
 
-    float sum;
-    vector<float, VECTOR_LANES> v1, v2, v3, out_lstm, next_state;
-    accum<accfloat, VECTOR_LANES> acc, acc_dense;
+    constexpr int block_count = LSTM_UNITS / VECTOR_LANES;
+    constexpr int partial_block_id = LSTM_UNITS_REAL / VECTOR_LANES;
+    constexpr int partial_block_size = LSTM_UNITS_REAL % VECTOR_LANES;
 
     // Sent initial state down to the gates.
     if (first_iteration) {
-        printf("Sending initial state!\n");
+        // printf("Sending initial state!\n");
         first_iteration = 0;
 
         state_out.acquire();
-        for (int i = 0; i < LSTM_UNITS / VECTOR_LANES; i++) {
+        auto state_out_iter = begin_vector<VECTOR_LANES>(state_out);
+        for (int i = 0; i < block_count; i++) {
             *state_out_iter++ = *state_iter++;
         }
         state_out.release();
+
+        // Reset state iterators.
+        state_iter -= block_count;
+        state_out_iter -= block_count;
     }
 
     // Wait for results to arrive from all four gates.
@@ -69,19 +69,24 @@ void lstm_coordinator(
     // Get access to state output buffer.
     state_out.acquire();
 
-    constexpr int partial_block_id = LSTM_UNITS_REAL / VECTOR_LANES;
-    constexpr int partial_block_size = LSTM_UNITS_REAL % VECTOR_LANES;
+    // Setup iterators on acquired async buffers.
+    auto ig_iter = cbegin_vector<VECTOR_LANES>(input_gate_rslt);
+    auto fg_iter = cbegin_vector<VECTOR_LANES>(forget_gate_rslt);
+    auto og_iter = cbegin_vector<VECTOR_LANES>(output_gate_rslt);
+    auto mg_iter = cbegin_vector<VECTOR_LANES>(modulation_gate_rslt);
+    auto state_out_iter = begin_vector<VECTOR_LANES>(state_out);
 
-
-    printf("This is lstm coord!\n");
+    vector<float, VECTOR_LANES> v1, v2, v3, out_lstm, next_state;
+    accum<accfloat, VECTOR_LANES> acc, acc_dense;
 
     // Fixme: This code block has scope for further optimisation.
-    acc_dense = zeros<float, VECTOR_LANES>();
+    float sum = bias_dense;
+    acc_dense = zeros<accfloat, VECTOR_LANES>();
     // [[chess::prepare_for_pipelining]]
-    for (int i = 0; i < LSTM_UNITS / VECTOR_LANES; i++)
+    for (int i = 0; i < block_count; i++)
         chess_prepare_for_pipelining {
             // Calculate next state.
-            v1 = SIGM(*ig_iter++);
+            v1 = SIGM(*fg_iter++);
             acc = mul(v1, *state_iter);
             v2 = SIGM(*ig_iter++);
             v3 = TANH(*mg_iter++);
@@ -105,11 +110,25 @@ void lstm_coordinator(
                 out_lstm = zeros<float, VECTOR_LANES>();
             }
 
-            // Accumulate partial dense layer output.
+#if defined(STRICT_COL_ACCUM_ORDER)
+            // Multiply LSTM output with dense weights.
+            acc_dense = mul(out_lstm, *w_dense_iter++);
+
+            // Accumulate dense layer output one-by-one into the sum.
+            // This is slow, but will generate output identical to the
+            // reference implementation.
+            v1 = acc_dense.to_vector<float>();
+            for (int j = 0; j < VECTOR_LANES; j++)
+                sum += v1.get(j);
+#else
+            // Multiply LSTM output with dense weights and accumulate them
+            // partially.
             acc_dense = mac(acc_dense, out_lstm, *w_dense_iter++);
+#endif
 
             *state_iter++ = next_state;
             *state_out_iter++ = next_state;
+            // print(next_state, true, "next_state=");
         }
 
     // Release the buffers.
@@ -120,9 +139,15 @@ void lstm_coordinator(
     state_out.release();
 
     // Set first sample of output buffer to dense network output.
-    sum = reduce_add(acc_dense.to_vector<float>());
-    printf("Lstm coord output: %f\n", sum);
-    *outp_iter = sum + bias_dense;
+#if defined(STRICT_COL_ACCUM_ORDER)
+    *outp_iter++ = sum;
+#else
+    float col_sum = reduce_add(acc_dense.to_vector<float>(0));
+    sum += col_sum;
+    *outp_iter++ = sum;
+#endif
+
+    printf("Lstm coord output: %.12f\n", sum);
 
     // For clarity, set rest of the output buffer to zero.
     for (int i = 0; i < 3; i++) {

@@ -7,8 +7,8 @@ using namespace aie;
 
 void single_lstm_gate(
     // Input buffers.
-    adf::input_circular_buffer<float, adf::extents<INPUT_DIM>> &__restrict input,
-    adf::input_circular_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state,
+    adf::input_buffer<float, adf::extents<INPUT_DIM>> &__restrict input,
+    adf::input_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state,
 
     // Run Time Parameters.
     // State weight matrix is split horizontally into two because each
@@ -22,45 +22,100 @@ void single_lstm_gate(
     // Output buffers.
     adf::output_buffer<float, adf::extents<LSTM_UNITS>> &__restrict output) {
 
-    // Input and state iterators are circular, since they will be
-    // repeatedly used to multiply with each row of the input and state
-    // weight matrix, respectively.
-    auto inp_iter = cbegin_vector_circular<VECTOR_LANES>(input);
-    auto state_iter = cbegin_vector_circular<VECTOR_LANES>(state);
+    // Set C compatible rounding mode.
+    set_rounding(aie::rounding_mode::conv_even);
+
+    auto inp_iter = cbegin_vector<VECTOR_LANES>(input);
 
     // Setup iterators for weights and bias run time parameters.
     auto w_inp_iter = cbegin_vector<VECTOR_LANES>(w_input);
     auto w_state_left_iter = cbegin_vector<VECTOR_LANES>(w_state_left);
     auto w_state_right_iter = cbegin_vector<VECTOR_LANES>(w_state_right);
     auto b_iter = cbegin_vector<VECTOR_LANES>(bias);
-
     auto out_iter = begin_vector<VECTOR_LANES>(output);
 
     float sum1, sum2, rslt;
     vector<float, VECTOR_LANES> va, vb, rslt_v;
+
+    // NOTE: The reason for using two accumulators is to fill the
+    // pipeline during the two idle cycles of float MACS, as
+    // described in UG1079(v2024.1), Ch 3, Sec "Floating Point
+    // Operations", page 54.
     accum<accfloat, VECTOR_LANES> acc1, acc2;
 
-    constexpr int partial_block_id = LSTM_UNITS_REAL / VECTOR_LANES;
-    constexpr int partial_block_size = LSTM_UNITS_REAL % VECTOR_LANES;
+    constexpr int input_blocks = INPUT_DIM / VECTOR_LANES;
+    constexpr int state_blocks = W_STATE_COLS / VECTOR_LANES;
+
+    // Wait for state to be available.
+    // state.acquire();
+    auto state_iter = cbegin_vector<VECTOR_LANES>(state);
 
     rslt_v = zeros<float, VECTOR_LANES>();
     // [[chess::prepare_for_pipelining]]
     for (int row = 0; row < LSTM_UNITS; row++)
         chess_prepare_for_pipelining {
             if (row < LSTM_UNITS_REAL) {
-                // NOTE: The reason for using two accumulators is to fill the
-                // pipeline during the two idle cycles of float MACS, as
-                // described in UG1079(v2024.1), Ch 3, Sec "Floating Point
-                // Operations", page 54.
+#if defined(STRICT_COL_ACCUM_ORDER)
+                rslt = 0.0f;
+
+                // Multiply and accumulate with left half of state weight matrix.
+                for (int i = 0; i < W_STATE_COLS / VECTOR_LANES / 4; i++) {
+                    va = *w_state_left_iter++;
+                    vb = *state_iter++;
+                    acc1 = mul(va, vb);
+                    va = *w_state_left_iter++;
+                    vb = *state_iter++;
+                    acc2 = mul(va, vb);
+
+                    // 🐌 This is SLOW as a snail!
+                    va = acc1.to_vector<float>(0);
+                    for (int j = 0; j < VECTOR_LANES; j++) {
+                        rslt += va.get(j);
+                    }
+                    va = acc2.to_vector<float>(0);
+                    for (int j = 0; j < VECTOR_LANES; j++) {
+                        rslt += va.get(j);
+                    }
+                }
+
+                // Multiply and accumulate with right half of state weight matrix.
+                for (int i = 0; i < W_STATE_COLS / VECTOR_LANES / 4; i++) {
+                    va = *w_state_right_iter++;
+                    vb = *state_iter++;
+                    acc1 = mul(va, vb);
+                    va = *w_state_right_iter++;
+                    vb = *state_iter++;
+                    acc2 = mul(va, vb);
+
+                    // 🐌 This is SLOW as a snail!
+                    va = acc1.to_vector<float>(0);
+                    for (int j = 0; j < VECTOR_LANES; j++) {
+                        rslt += va.get(j);
+                    }
+                    va = acc2.to_vector<float>(0);
+                    for (int j = 0; j < VECTOR_LANES; j++) {
+                        rslt += va.get(j);
+                    }
+                }
+
+                // Mutiply and accumulate with input-weight matrix.
+                for (int i = 0; i < INPUT_DIM / VECTOR_LANES; i++) {
+                    acc1 = mul(*w_inp_iter++, *inp_iter++);
+
+                    // 🐌 This is SLOW as a snail!
+                    va = acc1.to_vector<float>(0);
+                    for (int j = 0; j < VECTOR_LANES; j++) {
+                        rslt += va.get(j);
+                    }
+                }
+#else
                 acc1 = zeros<accfloat, VECTOR_LANES>();
                 acc2 = zeros<accfloat, VECTOR_LANES>();
 
                 // Multiply and accumulate with left half of state weight matrix.
                 for (int i = 0; i < W_STATE_COLS / VECTOR_LANES / 4; i++) {
                     va = *w_state_left_iter++;
-                    // if (row == 0) print(va, true, "w_state_left=");
                     vb = *state_iter++;
-                    // if (row == 0) print(vb, true, "state=");
                     acc1 = mac(acc1, va, vb);
                     va = *w_state_left_iter++;
                     vb = *state_iter++;
@@ -79,7 +134,6 @@ void single_lstm_gate(
 
                 // Mutiply and accumulate with input-weight matrix.
                 for (int i = 0; i < INPUT_DIM / VECTOR_LANES; i++) {
-                    // if (row == 0) print(*inp_iter, true, "inp=");
                     acc1 = mac(acc1, *w_inp_iter++, *inp_iter++);
                 }
 
@@ -87,6 +141,11 @@ void single_lstm_gate(
                 sum1 = reduce_add(acc1.to_vector<float>(0));
                 sum2 = reduce_add(acc2.to_vector<float>(0));
                 rslt = sum1 + sum2;
+#endif
+
+                // Reset input and state iterators.
+                inp_iter -= input_blocks;
+                state_iter -= state_blocks;
             } else {
                 rslt = 0.0f;
             }
@@ -98,10 +157,12 @@ void single_lstm_gate(
             // If result vector is full, publish it to output.
             if ((row % VECTOR_LANES) == (VECTOR_LANES - 1)) {
                 // Add bias to generate one block of gate results.
-                rslt_v = add(rslt_v, *b_iter++);
+                rslt_v = add(*b_iter++, rslt_v);
                 *out_iter++ = rslt_v;
                 // print(rslt_v, true, "rslt_v=");
                 rslt_v = zeros<float, VECTOR_LANES>();
             }
         }
+
+    // state.release();
 }
