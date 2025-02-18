@@ -2,6 +2,7 @@
 #include "data_reader.hpp"
 #include "graphs.hpp"
 #include <adf.h>
+#include <cstdio>
 
 LSTMGraph gr;
 
@@ -43,7 +44,7 @@ int main(void) {
     // advantage of that. Rather, we will do the sliding-window
     // copying in the input buffer itself.
     // ---------------------------------------------------------------,
-    constexpr int input_buff_size =  OUTPUT_SAMPLES * INPUT_DIM * sizeof(float);
+    constexpr int input_buff_size = OUTPUT_SAMPLES * INPUT_DIM * sizeof(float);
     constexpr int output_buff_size = OUTPUT_SAMPLES * OUTPUT_BLOCK_SIZE * sizeof(float);
 
     printf("Output samples: %d\n", OUTPUT_SAMPLES);
@@ -66,15 +67,36 @@ int main(void) {
     // ---------------------------------------------------------------'
 
     // Attach GMIO buffers.
+    printf("Attaching GMIO buffers ..\n");
     gr.gmio_in.gm2aie_nb(input_buff, input_buff_size);
     gr.gmio_out.aie2gm_nb(output_buff, output_buff_size);
 
     // Run the graph.
+    printf("Starting graph ...\n");
     gr.run(OUTPUT_SAMPLES);
     gr.gmio_out.wait();
     gr.wait();
+    printf("Graph done.\n");
 
-    // TODO: Write the output to file.
+    // Output data to file.
+    // NOTE: Not using C++ stream because I want to use fprintf.
+    FILE *fout = std::fopen(OUTPUT_FILE_PATH, "w");
+    if (!fout) {
+        printf("Failed to open output file!\n");
+        return 1;
+    }
+
+    for (int i = 0; i < OUTPUT_SAMPLES + INPUT_DIM_REAL - 1; i++) {
+        if (i < (INPUT_DIM_REAL - 1)) {
+            fprintf(fout, "%.12f %.12f\n", dropbear_data.time[i], 0.0f);
+        } else {
+            fprintf(fout,
+                    "%.12f %.12f\n",
+                    dropbear_data.time[i],
+                    *(output_buff + (i - INPUT_DIM_REAL + 1) * OUTPUT_BLOCK_SIZE));
+        }
+    }
+    fclose(fout);
 
     // Free GMIO buffers.
     GMIO::free(input_buff);

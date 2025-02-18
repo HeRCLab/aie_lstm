@@ -146,7 +146,7 @@ void lstm_coordinator(
     *outp_iter++ = sum;
 #endif
 
-    printf("Lstm coord output: %.12f\n", sum);
+    // printf("Lstm coord output: %.12f\n", sum);
 
     // For clarity, set rest of the output buffer to zero.
     for (int i = 0; i < 3; i++) {
