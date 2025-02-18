@@ -82,7 +82,6 @@ void lstm_coordinator(
     // Fixme: This code block has scope for further optimisation.
     float sum = bias_dense;
     acc_dense = zeros<accfloat, VECTOR_LANES>();
-    // [[chess::prepare_for_pipelining]]
     for (int i = 0; i < block_count; i++)
         chess_prepare_for_pipelining {
             // Calculate next state.

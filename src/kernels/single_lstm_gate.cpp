@@ -33,6 +33,7 @@ void single_lstm_gate(
     auto w_state_right_iter = cbegin_vector<VECTOR_LANES>(w_state_right);
     auto b_iter = cbegin_vector<VECTOR_LANES>(bias);
     auto out_iter = begin_vector<VECTOR_LANES>(output);
+    auto state_iter = cbegin_vector<VECTOR_LANES>(state);
 
     float sum1, sum2, rslt;
     vector<float, VECTOR_LANES> va, vb, rslt_v;
@@ -46,12 +47,7 @@ void single_lstm_gate(
     constexpr int input_blocks = INPUT_DIM / VECTOR_LANES;
     constexpr int state_blocks = W_STATE_COLS / VECTOR_LANES;
 
-    // Wait for state to be available.
-    // state.acquire();
-    auto state_iter = cbegin_vector<VECTOR_LANES>(state);
-
     rslt_v = zeros<float, VECTOR_LANES>();
-    // [[chess::prepare_for_pipelining]]
     for (int row = 0; row < LSTM_UNITS; row++)
         chess_prepare_for_pipelining {
             if (row < LSTM_UNITS_REAL) {
@@ -163,6 +159,4 @@ void single_lstm_gate(
                 rslt_v = zeros<float, VECTOR_LANES>();
             }
         }
-
-    // state.release();
 }

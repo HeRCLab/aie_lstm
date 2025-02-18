@@ -15,9 +15,6 @@ int main(void) {
     printf("Reading data ...\n");
     DropbearData dropbear_data(DROPBEAR_DATA_PATH);
 
-    // int n_sample_bytes = dropbear_data.n_samples * sizeof(float);
-    constexpr int n_sample_bytes = N_TEST_SAMPLES * sizeof(float);
-
     // Initiate graph.
     printf("Initiating graph ...\n");
     gr.init();
@@ -46,11 +43,10 @@ int main(void) {
     // advantage of that. Rather, we will do the sliding-window
     // copying in the input buffer itself.
     // ---------------------------------------------------------------,
-    constexpr int usable_sample_size = N_TEST_SAMPLES - INPUT_DIM_REAL + 1;
-    constexpr int input_buff_size = usable_sample_size * INPUT_DIM * sizeof(float);
-    constexpr int output_buff_size = usable_sample_size * OUTPUT_BLOCK_SIZE * sizeof(float);
+    constexpr int input_buff_size =  OUTPUT_SAMPLES * INPUT_DIM * sizeof(float);
+    constexpr int output_buff_size = OUTPUT_SAMPLES * OUTPUT_BLOCK_SIZE * sizeof(float);
 
-    printf("Usable sample size: %d\n", usable_sample_size);
+    printf("Output samples: %d\n", OUTPUT_SAMPLES);
     printf("Input buff size: %d\n", input_buff_size);
     printf("Output buff size: %d\n", output_buff_size);
 
@@ -62,7 +58,7 @@ int main(void) {
     memset(input_buff, 0, input_buff_size);
 
     // Copy input data.
-    for (int i = 0; i < usable_sample_size; i++) {
+    for (int i = 0; i < OUTPUT_SAMPLES; i++) {
         memcpy(input_buff + i * INPUT_DIM,
                dropbear_data.vib + i,
                INPUT_DIM_REAL * sizeof(float));
@@ -74,7 +70,7 @@ int main(void) {
     gr.gmio_out.aie2gm_nb(output_buff, output_buff_size);
 
     // Run the graph.
-    gr.run(usable_sample_size);
+    gr.run(OUTPUT_SAMPLES);
     gr.gmio_out.wait();
     gr.wait();
 

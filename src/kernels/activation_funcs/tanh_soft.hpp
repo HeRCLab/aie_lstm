@@ -10,7 +10,7 @@ tanh_soft(const vector<float, VECTOR_LANES> x) {
     vector<float, VECTOR_LANES> y;
 
     for (int i = 0; i < VECTOR_LANES; i++) {
-      y[i] = tanhf(x[i]);
+      y[i] = tanh(x[i]);
     }
 
     return y;
