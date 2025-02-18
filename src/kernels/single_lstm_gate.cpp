@@ -52,7 +52,7 @@ void single_lstm_gate(
         chess_prepare_for_pipelining {
             if (row < LSTM_UNITS_REAL) {
 #if defined(STRICT_COL_ACCUM_ORDER)
-                rslt = 0.0f;
+                rslt = *(bias + row);
 
                 // Multiply and accumulate with left half of state weight matrix.
                 for (int i = 0; i < W_STATE_COLS / VECTOR_LANES / 4; i++) {
@@ -152,8 +152,10 @@ void single_lstm_gate(
 
             // If result vector is full, publish it to output.
             if ((row % VECTOR_LANES) == (VECTOR_LANES - 1)) {
+#if !defined(STRICT_COL_ACCUM_ORDER)
                 // Add bias to generate one block of gate results.
                 rslt_v = add(*b_iter++, rslt_v);
+#endif
                 *out_iter++ = rslt_v;
                 // print(rslt_v, true, "rslt_v=");
                 rslt_v = zeros<float, VECTOR_LANES>();
