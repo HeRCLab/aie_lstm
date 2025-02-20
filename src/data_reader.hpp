@@ -1,16 +1,14 @@
 #pragma once
 
 #include "common_defs.hpp"
+#include <adf.h>
 #if defined(NO_DISK_IO)
 #include "data/dropbear.hpp"
 #include "data/weights.hpp"
-#include <cstdio>
-#include <cstring>
 #else
+#include <cstdio>
 #include <fstream>
 #endif
-
-using namespace std;
 
 struct NetworkParams {
     /* # Network parameter layout in disk / array:
@@ -74,6 +72,20 @@ struct NetworkParams {
        +-----------+----+---
        |<- INPUT_DIM -->|
      */
+
+    float *w_state_left;
+    float *w_state_right;
+    float *w_input;
+    float *bias;
+
+    float *w_dense;
+    float b_dense;
+
+    /*
+    // NOTE: Allocating such a large structure statically will cause
+    // stackoverflow and memory corruption in the `aiesimulator`. DONT
+    // do this!!!! 👇
+
     float w_state_left[N_GATES * W_STATE_SIZE / 2] = {};
     float w_state_right[N_GATES * W_STATE_SIZE / 2] = {};
     float w_input[N_GATES * W_INPUT_SIZE] = {};
@@ -81,10 +93,17 @@ struct NetworkParams {
 
     float w_dense[LSTM_UNITS] = {};
     float b_dense = 0.0f;
+    */
 
 #if defined(NO_DISK_IO)
     // Load network parameters from array.
     NetworkParams() {
+        w_state_left = new float[N_GATES * W_STATE_SIZE / 2];
+        w_state_right = new float[N_GATES * W_STATE_SIZE / 2];
+        w_input = new float[N_GATES * W_INPUT_SIZE];
+        bias = new float[N_GATES * LSTM_UNITS];
+        w_dense = new float[LSTM_UNITS];
+
         // Load LSTM gate parameters.
         int offset = 0;
         for (int i = 0; i < N_GATES; i++) {
@@ -128,6 +147,7 @@ struct NetworkParams {
                (weights_dat + offset),
                sizeof(float));
     }
+
 #else
     // Load network parameters from disk.
     NetworkParams(const char *weight_file_path) {
@@ -180,6 +200,17 @@ struct NetworkParams {
         fin.read(reinterpret_cast<char *>(&b_dense), sizeof(float));
 
         fin.close();
+    }
+
+    ~NetworkParams() {
+        if (w_state_left)
+            delete[] w_state_left;
+        if (w_state_right)
+            delete[] w_state_right;
+        if (w_input)
+            delete[] w_input;
+        if (w_dense)
+            delete[] w_dense;
     }
 #endif
 };
