@@ -2,7 +2,6 @@
 #include "data_reader.hpp"
 #include "graphs.hpp"
 #include <adf.h>
-#include <cstdio>
 
 LSTMGraph gr;
 
@@ -11,10 +10,17 @@ int main(void) {
     adf::return_code ret;
 
     // Read network weights and input data from disk.
-    printf("Reading weights ...\n");
+#if defined(NO_DISK_IO)
+    printf("Reading weights from array ...\n");
+    NetworkParams net_params;
+    printf("Reading data from array ...\n");
+    DropbearData dropbear_data;
+#else
+    printf("Reading weights from disk ...\n");
     NetworkParams net_params(WEIGHT_DATA_PATH);
-    printf("Reading data ...\n");
+    printf("Reading data from disk ...\n");
     DropbearData dropbear_data(DROPBEAR_DATA_PATH);
+#endif
 
     // Initiate graph.
     printf("Initiating graph ...\n");
@@ -78,25 +84,16 @@ int main(void) {
     gr.wait();
     printf("Graph done.\n");
 
-    // Output data to file.
-    // NOTE: Not using C++ stream because I want to use fprintf.
-    FILE *fout = std::fopen(OUTPUT_FILE_PATH, "w");
-    if (!fout) {
-        printf("Failed to open output file!\n");
-        return 1;
-    }
-
+    // Print data to stdout in comparable format to ref implementation.
     for (int i = 0; i < OUTPUT_SAMPLES + INPUT_DIM_REAL - 1; i++) {
         if (i < (INPUT_DIM_REAL - 1)) {
-            fprintf(fout, "%.12f %.12f\n", dropbear_data.time[i], 0.0f);
+            printf("#%.12f %.12f\n", dropbear_data.time[i], 0.0f);
         } else {
-            fprintf(fout,
-                    "%.12f %.12f\n",
-                    dropbear_data.time[i],
-                    *(output_buff + (i - INPUT_DIM_REAL + 1) * OUTPUT_BLOCK_SIZE));
+            printf("#%.12f %.12f\n",
+                   dropbear_data.time[i],
+                   *(output_buff + (i - INPUT_DIM_REAL + 1) * OUTPUT_BLOCK_SIZE));
         }
     }
-    fclose(fout);
 
     // Free GMIO buffers.
     GMIO::free(input_buff);
