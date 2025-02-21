@@ -14,15 +14,30 @@ OPT_LVL:=0
 
 STACK_SIZE:=4096
 
-# PREPROC_FLAGS:=
-# PREPROC_FLAGS:=-DCHESS_CXX_ATTRIBUTES -DUSE_PWL_ACTIVATION_FNS
-# PREPROC_FLAGS:=-DSTRICT_COL_ACCUM_ORDER
-PREPROC_FLAGS:=-DNO_DISK_IO -DSTRICT_COL_ACCUM_ORDER
+# Pre-processor directives:
+# ------------------------------------------------------------------,
+# USE_PWL_ACTIVATION_FNS : Use piecewise linear activation funcs.
+#
+# USE_APPROX_ACTIVATION_FNS : Use activation functions implemented
+#   with various recursive polynomial approximation techniques.
+#
+# STRICT_COL_ACCUM_ORDER : Use strict column accumulation order to
+#   generate identical output to ref implementation. This code path is
+#   SLOW!
+#
+# NO_DISK_IO : Instead of reading input out data from disk, embedded
+#   them in header files.
+# ------------------------------------------------------------------'
+PREPROC_FLAGS:=-DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS
 LINKER_FLAGS:=
 
-WORK_DIR:=build
+WORK_DIR_X86:=build_x86
+WORK_DIR_HW:=build_hw
 REPORT_DIR:=reports
 LOG_DIR:=logs
+
+ADF_API_LOG_LVL:=2
+AIE_LOG_LVL:=2
 
 PLATFORM:=$(XILINX_VITIS)/base_platforms/xilinx_vck190_base_202420_1/xilinx_vck190_base_202420_1.xpfm
 
@@ -38,10 +53,9 @@ AIECC := v++ \
       --mode aie \
       --aie.debug \
       --aie.verbose \
-      --aie.adf-api-log-level=1 \
-      --aie.log-level=1 \
+      --aie.adf-api-log-level=$(ADF_API_LOG_LVL) \
+      --aie.log-level=$(AIE_LOG_LVL) \
       --aie.xlopt=$(OPT_LVL) \
-      --aie.heapsize=1024 \
       --aie.stacksize=$(STACK_SIZE) \
       --platform $(PLATFORM) \
       --include $(XILINX_VITIS)/aietools/include \
@@ -49,36 +63,49 @@ AIECC := v++ \
       $(foreach x,$(PREPROC_FLAGS),--aie.Xpreproc=$x) \
       $(foreach x,$(LINKER_FLAGS),--aie.Xpslinker=$x) \
       --report_dir $(REPORT_DIR) \
-      --work_dir $(WORK_DIR) \
-      --log_dir $(LOG_DIR)
+      --log_dir $(LOG_DIR) \
+
 
 .PHONY: build-hw \
+	run-aiesim \
 	build-x86sim \
-	build-aiesim \
 	run-x86sim \
 	debug-x86sim \
-	run-aiesim \
+	clean-x86 \
+	clean-hw \
+	clean-comm \
 	clean
 
-build-hw: $(SOURCES)
-	$(AIECC) --target hw src/main.cpp
-
 build-x86sim: $(SOURCES)
-	$(AIECC) --target x86sim src/main.cpp
+	$(AIECC) --target x86sim --work_dir $(WORK_DIR_X86) src/main.cpp
 
 run-x86sim:
-	x86simulator --pkg-dir=$(WORK_DIR) --trace
+	x86simulator --pkg-dir=$(WORK_DIR_X86) --trace
 
 debug-x86sim:
-	x86simulator --pkg-dir=$(WORK_DIR) --trace --gdb
+	x86simulator --pkg-dir=$(WORK_DIR_X86) --trace --gdb
+
+build-hw: $(SOURCES)
+	$(AIECC) --target hw --work_dir $(WORK_DIR_HW) src/main.cpp
 
 run-aiesim:
-	aiesimulator --pkg-dir=$(WORK_DIR) --profile
+	aiesimulator \
+		--profile \
+		--pkg-dir=$(WORK_DIR_HW) \
+		--options-file=aiesim-options.txt \
+		--dump-vcd aiesim
 
-clean:
-	-rm -rf $(WORK_DIR)/*
+clean-comm:
+	-rm -f *.log *.jou *.db libadf.a Map_Report.csv
 	-rm -rf $(REPORT_DIR)/*
 	-rm -rf $(LOG_DIR)/*
-	-rm -rf aiesimulator_output/
+
+clean-x86:
+	-rm -rf $(WORK_DIR_X86)/*
 	-rm -rf x86simulator_output/
-	-rm -f *.log *.jou *.db libadf.a Map_Report.csv
+
+clean-hw:
+	-rm -rf $(WORK_DIR_HW)/*
+	-rm -rf aiesimulator_output/
+
+clean: clean-comm clean-hw clean-x86
