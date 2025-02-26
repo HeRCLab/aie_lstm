@@ -56,17 +56,17 @@ Ref: Piecewise linear approximation applied to nonlinear function of a
      neural network, H.Amin, K.M.Curtis, B.R.Hayes-Gill
 */
 float sigm(float x) {
-  float x_abs = abs(x);
+  float x_abs = fabsf(x);
   float y;
 
-  if (x_abs < 1.0f) {
-    y = 0.25 * x_abs + 0.5;
-  } else if (x_abs < 2.375f) {
-    y = 0.125f * x_abs + 0.625f;
-  } else if (x_abs < 5.0f) {
-    y = 0.03125f * x_abs + 0.84375f;
-  } else {
+  if (x_abs >= 5.0f) {
     y = 1.0f;
+  } else if (x_abs >= 2.375f) {
+    y = 0.03125f * x_abs + 0.84375f;
+  } else if (x_abs >= 1.0f) {
+    y = 0.125f * x_abs + 0.625f;
+  } else {
+    y = 0.25 * x_abs + 0.5;
   }
 
   if (x < 0.0f) {
@@ -113,7 +113,7 @@ Pseudocode for piecewise linear tanh(x) function:
             y = |x|
 
         elif (0.25 <= |x| < 0.5)
-            y = (1 - 1/8) * |x| + 0.02935891015625
+            y = (1 - 1/8) * |x| + 0.02935791015625
               = 0.875 * |x| + 0.02935791015625
 
         elif (0.5 <= |x| < 1)
@@ -142,20 +142,20 @@ Ref: Cost effective Tanh activation function circuits based on fast
 */
 float my_tanh(float x) {
   float y;
-  float x_abs = abs(x);
+  float x_abs = fabsf(x);
 
-  if (x_abs < 0.25f) {
-    y = x_abs;
-  } else if (x_abs < 0.5f) {
-    y = 0.875f * x_abs + 0.02935791015625f;
-  } else if (x_abs < 1.0f) {
-    y = 0.625f * x_abs + 0.15625f;
-  } else if (x_abs < 1.5) {
-    y = 0.3125 * x_abs + 0.453125;
-  } else if (x_abs < 2.0f) {
-    y = 0.126953125f * x_abs + 0.716796875f;
-  } else {
+  if (x_abs >= 2.0f) {
     y = 1.0f;
+  } else if (x_abs >= 1.5f) {
+    y = 0.1269531f * x_abs + 0.7167968f;
+  } else if (x_abs >= 1.0f) {
+    y = 0.3125f * x_abs + 0.453125f;
+  } else if (x_abs >= 0.5f) {
+    y = 0.625f * x_abs + 0.15625f;
+  } else if (x_abs >= 0.25f) {
+    y = 0.875f * x_abs + 0.02935791015625f;
+  } else {
+    y = x_abs;
   }
 
   if (x < 0.0f) {

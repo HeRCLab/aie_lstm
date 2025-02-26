@@ -13,7 +13,7 @@ Pseudocode for piecewise linear tanh(x) function:
             y = |x|
 
         elif (0.25 <= |x| < 0.5)
-            y = (1 - 1/8) * |x| + 0.02935891015625
+            y = (1 - 1/8) * |x| + 0.02935791015625
               = 0.875 * |x| + 0.02935791015625
 
         elif (0.5 <= |x| < 1)
@@ -50,8 +50,8 @@ tanh_pwl(const vector<float, VECTOR_LANES> x) {
 
     // Prepare possible alternatives of y for each vector lane.
     // --------------------------------------------------------,
-    acc1.from_vector(broadcast<float, VECTOR_LANES>(0.716796875f));
-    y1 = mac(acc1, x_abs, 0.126953125f).to_vector<float>(0);
+    acc1.from_vector(broadcast<float, VECTOR_LANES>(0.7167968f));
+    y1 = mac(acc1, x_abs, 0.1269531f).to_vector<float>(0);
 
     acc2.from_vector(broadcast<float, VECTOR_LANES>(0.453125f));
     y2 = mac(acc2, x_abs, 0.3125f).to_vector<float>(0);
@@ -65,26 +65,26 @@ tanh_pwl(const vector<float, VECTOR_LANES> x) {
 
     // Conditionally select y based on values of |x|.
     // --------------------------------------------------------,
-    comp_mask = lt(x_abs, 2.0f);
-    y = select(y1, 1.0f, comp_mask);
+    comp_mask = ge(x_abs, 0.25f);
+    y = select(x_abs, y4, comp_mask);
 
-    comp_mask = lt(x_abs, 1.5f);
-    y = select(y2, y, comp_mask);
+    comp_mask = ge(x_abs, 0.5f);
+    y = select(y, y3, comp_mask);
 
-    comp_mask = lt(x_abs, 1.0f);
-    y = select(y3, y, comp_mask);
+    comp_mask = ge(x_abs, 1.0f);
+    y = select(y, y2, comp_mask);
 
-    comp_mask = lt(x_abs, 0.5f);
-    y = select(y4, y, comp_mask);
+    comp_mask = ge(x_abs, 1.5f);
+    y = select(y, y1, comp_mask);
 
-    comp_mask = lt(x_abs, 0.25f);
-    y = select(x_abs, y, comp_mask);
+    comp_mask = ge(x_abs, 2.0f);
+    y = select(y, 1.0f, comp_mask);
     // --------------------------------------------------------'
 
     // Calculate alternative value of y where x is negative.
     y_neg = neg(y);
     comp_mask = lt(x, 0.0f);
-    y = select(y_neg, y, comp_mask);
+    y = select(y, y_neg, comp_mask);
 
     return y;
 }

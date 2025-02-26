@@ -51,20 +51,20 @@ sigm_pwl(const vector<float, VECTOR_LANES> x) {
 
     // Conditionally select y based on values of |x|.
     // --------------------------------------------------------,
-    comp_mask = lt(x_abs, 5.0f);
-    y = select(y1, 1.0f, comp_mask);
+    comp_mask = gt(x_abs, 1.0f);
+    y = select(y3, y2, comp_mask);
 
-    comp_mask = lt(x_abs, 2.375f);
-    y = select(y2, y, comp_mask);
+    comp_mask = ge(x_abs, 2.375f);
+    y = select(y, y1, comp_mask);
 
-    comp_mask = lt(x_abs, 1.0f);
-    y = select(y3, y, comp_mask);
+    comp_mask = ge(x_abs, 5.0f);
+    y = select(y, 1.0f, comp_mask);
     // --------------------------------------------------------'
 
     // Calculate alternative value of y where x is negative.
     y_neg = sub(1.0f, y);
     comp_mask = lt(x, 0.0f);
-    y = select(y_neg, y, comp_mask);
+    y = select(y, y_neg, comp_mask);
 
     return y;
 }
