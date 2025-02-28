@@ -3,11 +3,25 @@
 #include "graphs.hpp"
 #include <adf.h>
 
-LSTMGraph gr;
+#if defined(VARIANT_4X1_BUFF)
+LSTMGraph_4x1_buff gr;
+#elif defined(VARIANT_4X2_BUFF)
+LSTMGraph_4x2_buff gr;
+#else
+static_assert(0, "VARIANT_XXXX preprocessor directive missing!");
+#endif
 
 #if defined(__AIESIM__) || defined(__X86SIM__)
 int main(void) {
     adf::return_code ret;
+
+    #if defined(VARIANT_4X1_BUFF)
+    printf("Program compiled with VARIANT=4x1_BUFF\n");
+    #elif defined(VARIANT_4X2_BUFF)
+    printf("Program compiled with VARIANT=4x2_BUFF\n");
+    #else
+    static_assert(0, "VARIANT_XXXX preprocessor directive missing!");
+    #endif
 
     // Read network weights and input data from disk.
 #if defined(NO_DISK_IO)
@@ -26,6 +40,7 @@ int main(void) {
     printf("Initiating graph ...\n");
     gr.init();
 
+#if defined(VARIANT_4X1_BUFF)
     // Set gate network parameters.
     for (int i = 0; i < N_GATES; i++) {
         int state_offset = i * W_STATE_SIZE / 2;
@@ -36,6 +51,30 @@ int main(void) {
         gr.update(gr.rtp_w_input[i], &net_params.w_input[input_offset], W_INPUT_SIZE);
         gr.update(gr.rtp_bias[i], &net_params.bias[bias_offset], LSTM_UNITS);
     }
+#elif defined(VARIANT_4X2_BUFF)
+    // Set gate network parameters.
+    for (int i = 0; i < N_HALF_GATES; i++) {
+        int state_offset = static_cast<int>(i / 2) * W_STATE_SIZE;
+        int input_offset = static_cast<int>(i / 2) * W_INPUT_SIZE;
+        int bias_offset = static_cast<int>(i / 2) * LSTM_UNITS;
+
+        gr.update(gr.rtp_w_input[i], &net_params.w_input[input_offset], W_INPUT_SIZE);
+
+        if (i % 2 == 0) {
+            // Up gates.
+            gr.update(gr.rtp_w_state[i], &net_params.w_state[state_offset], W_STATE_SIZE / 2);
+            gr.update(gr.rtp_bias[i], &net_params.bias[bias_offset], LSTM_UNITS / 2);
+            gr.update(gr.partial_computation_flag[i], (int)0);
+        } else {
+            // Down gates.
+            gr.update(gr.rtp_w_state[i], &net_params.w_state[state_offset + W_STATE_SIZE / 2], W_STATE_SIZE / 2);
+            gr.update(gr.rtp_bias[i], &net_params.bias[bias_offset + LSTM_UNITS / 2], LSTM_UNITS / 2);
+            gr.update(gr.partial_computation_flag[i], (int)1);
+        }
+    }
+#else
+    static_assert(0, "VARIANT_XXXX preprocessor directive missing!");
+#endif
 
     // Set coordinator network parameters.
     gr.update(gr.rtp_w_dense, net_params.w_dense, LSTM_UNITS);

@@ -3,6 +3,15 @@ INCLUDE_DIRS:=$(SRC_DIR) \
 	$(SRC_DIR)/kernels \
 	$(SRC_DIR)/kernels/activation_funcs
 
+# Type of implementation variations:
+#
+# 4X1_buff: 4 gates, buffer based comm.
+#
+# 4x2_buff: 8 half-gates, each split vertically,
+#           buffer based comm.
+#
+VARIANT:=4X2_BUFF
+
 # 0 : No kernel optimizations.
 #
 # 1 : Computation of heap size, generation of guidance based on LLVM
@@ -48,6 +57,7 @@ SOURCES := $(wildcard $(SRC_DIR)/*.cpp) \
 	   $(wildcard $(SRC_DIR)/kernels/activation_funcs/*.cpp) \
 	   $(wildcard $(SRC_DIR)/kernels/activation_funcs/*.hpp) \
 
+PREPROC_FLAGS += -DVARIANT_$(VARIANT)
 AIECC := v++ \
       --compile \
       --mode aie \

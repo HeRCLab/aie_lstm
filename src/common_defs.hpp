@@ -26,11 +26,12 @@
 #define W_INPUT_SIZE_REAL (LSTM_UNITS_REAL * INPUT_DIM_REAL) 
 
 #define N_GATES 4
+#define N_HALF_GATES (N_GATES * 2)
 #define GMIO_BURST_LENGTH 64  /* Options: 64, 128, 256 */
 #define GMIO_BANDWIDTH 1024  /* Unit: MB/s */
 
 #define DROPBEAR_DATA_PATH "data/dropbear.dat" 
 #define WEIGHT_DATA_PATH "data/weights.dat" 
 
-#define OUTPUT_SAMPLES 100
+#define OUTPUT_SAMPLES 2
 #define OUTPUT_FILE_PATH "aie_lstm_output.txt"

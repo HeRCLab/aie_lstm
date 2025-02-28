@@ -21,6 +21,24 @@ struct NetworkParams {
 
        # Network parameter layout in memory:
 
+       ## w_state (for 1 gate):
+
+           LSTM_UNITS_REAL
+       |<------------------->|
+       +---------------------+-----+---
+       |XXXXXXXXXXXXXXXXXXXXX|00000| ^
+       |XXXXXXXXXXXXXXXXXXXXX|00000| |
+       |XXXXXXXXXXXXXXXXXXXXX|00000| | LSTM_UNITS_REAL
+       |XXXXXXXXXXXXXXXXXXXXX|00000| |
+       |XXXXXXXXXXXXXXXXXXXXX|00000| v
+       +---------------------+-----+---
+       |000000000000000000000|00000| ^
+       |000000000000000000000|00000| | LSTM_UNITS - LSTM_UNITS_REAL
+       |000000000000000000000|00000| v
+       +---------------------+-----+---
+       |<------ LSTM_UNITS ------->|
+
+
        ## w_state_left (for 1 gate):
 
        |<------ LSTM_UNITS/2 ----->|
@@ -73,6 +91,7 @@ struct NetworkParams {
        |<- INPUT_DIM -->|
      */
 
+    float *w_state;
     float *w_state_left;
     float *w_state_right;
     float *w_input;
@@ -95,14 +114,52 @@ struct NetworkParams {
     float b_dense = 0.0f;
     */
 
-#if defined(NO_DISK_IO)
-    // Load network parameters from array.
-    NetworkParams() {
+    void allocate_memory() {
+        w_state = new float[N_GATES * W_STATE_SIZE];
         w_state_left = new float[N_GATES * W_STATE_SIZE / 2];
         w_state_right = new float[N_GATES * W_STATE_SIZE / 2];
         w_input = new float[N_GATES * W_INPUT_SIZE];
         bias = new float[N_GATES * LSTM_UNITS];
         w_dense = new float[LSTM_UNITS];
+    }
+
+    void free_memory() {
+        if (w_state)
+            delete[] w_state;
+        if (w_state_left)
+            delete[] w_state_left;
+        if (w_state_right)
+            delete[] w_state_right;
+        if (w_input)
+            delete[] w_input;
+        if (w_dense)
+            delete[] w_dense;
+    }
+
+    void propagate_w_state() {
+        // Propagate w_state from w_state_left and w_state_right.
+        for (int i = 0; i < N_GATES; i++) {
+            for (int r = 0; r < LSTM_UNITS; r++) {
+                int dst_offset = i * W_STATE_SIZE;
+                int src_offset = i * W_STATE_SIZE / 2;
+
+                // Copy left side.
+                memcpy(w_state + dst_offset + r * W_STATE_COLS,
+                       w_state_left + src_offset + r * W_STATE_COLS / 2,
+                       W_STATE_COLS * sizeof(float));
+
+                // Copy right side.
+                memcpy(w_state + dst_offset + r * W_STATE_COLS + W_STATE_COLS / 2,
+                       w_state_right + src_offset + r * W_STATE_COLS / 2,
+                       W_STATE_COLS * sizeof(float));
+            }
+        }
+    }
+
+#if defined(NO_DISK_IO)
+    // Load network parameters from array.
+    NetworkParams() {
+        allocate_memory();
 
         // Load LSTM gate parameters.
         int offset = 0;
@@ -136,6 +193,8 @@ struct NetworkParams {
                    LSTM_UNITS_REAL * sizeof(float));
         }
 
+        propagate_w_state();
+
         // Load dense layer parameters.
         offset = N_GATES * (W_STATE_SIZE_REAL + W_INPUT_SIZE_REAL + LSTM_UNITS_REAL) * sizeof(float);
         memcpy(reinterpret_cast<unsigned char *>(w_dense),
@@ -151,6 +210,8 @@ struct NetworkParams {
 #else
     // Load network parameters from disk.
     NetworkParams(const char *weight_file_path) {
+        allocate_memory();
+
         fstream fin;
 
         fin.open(weight_file_path, ios::binary | ios::in);
@@ -189,6 +250,8 @@ struct NetworkParams {
                      LSTM_UNITS_REAL * sizeof(float));
         }
 
+        propagate_w_state();
+
         // Load dense layer parameters.
         offset = N_GATES * (W_STATE_SIZE_REAL + W_INPUT_SIZE_REAL + LSTM_UNITS_REAL) * sizeof(float);
         fin.seekg(offset, fin.beg);
@@ -203,14 +266,7 @@ struct NetworkParams {
     }
 
     ~NetworkParams() {
-        if (w_state_left)
-            delete[] w_state_left;
-        if (w_state_right)
-            delete[] w_state_right;
-        if (w_input)
-            delete[] w_input;
-        if (w_dense)
-            delete[] w_dense;
+        free_memory();
     }
 #endif
 };

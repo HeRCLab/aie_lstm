@@ -3,7 +3,7 @@
 #include <aie_api/aie_adf.hpp>
 #include <adf.h>
 
-void single_lstm_gate(
+void gate_full_buff(
     adf::input_buffer<float, adf::extents<INPUT_DIM>> &__restrict input,
     adf::input_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state,
     const float (&w_state_left)[W_STATE_SIZE/2],
@@ -12,7 +12,16 @@ void single_lstm_gate(
     const float (&bias)[LSTM_UNITS],
     adf::output_buffer<float, adf::extents<LSTM_UNITS>> &__restrict output);
 
-void lstm_coordinator(
+void gate_half_buff(
+    adf::input_buffer<float, adf::extents<INPUT_DIM>> &__restrict input,
+    adf::input_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state,
+    const float (&w_state_part)[W_STATE_SIZE / 2],
+    const float (&w_input)[W_INPUT_SIZE],
+    const float (&bias)[LSTM_UNITS / 2],
+    const int partial_computation,
+    adf::output_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict output);
+
+void coordinator_4x1_buff(
     adf::input_async_buffer<float, adf::extents<LSTM_UNITS>> &__restrict input_gate_rslt,
     adf::input_async_buffer<float, adf::extents<LSTM_UNITS>> &__restrict forget_gate_rslt,
     adf::input_async_buffer<float, adf::extents<LSTM_UNITS>> &__restrict output_gate_rslt,
@@ -21,3 +30,19 @@ void lstm_coordinator(
     const float bias_dense,
     adf::output_async_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state_out,
     adf::output_buffer<float, adf::extents<OUTPUT_BLOCK_SIZE>> &__restrict output);
+
+void coordinator_4x2_buff(
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict ig_up_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict ig_down_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict fg_up_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict fg_down_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict og_up_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict og_down_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict mg_up_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict mg_down_rslt,
+
+    const float (&w_dense)[LSTM_UNITS],
+    const float bias_dense,
+    adf::output_async_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state_out,
+    adf::output_buffer<float, adf::extents<OUTPUT_BLOCK_SIZE>> &__restrict output);
+

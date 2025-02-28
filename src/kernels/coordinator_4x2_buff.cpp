@@ -14,12 +14,16 @@ alignas(vector_decl_align) static float state[LSTM_UNITS] = {0};
 // be sent without waiting for gate results.
 static int first_iteration = 1;
 
-void lstm_coordinator(
+void coordinator_4x2_buff(
     // Input buffers.
-    adf::input_async_buffer<float, adf::extents<LSTM_UNITS>> &__restrict input_gate_rslt,
-    adf::input_async_buffer<float, adf::extents<LSTM_UNITS>> &__restrict forget_gate_rslt,
-    adf::input_async_buffer<float, adf::extents<LSTM_UNITS>> &__restrict output_gate_rslt,
-    adf::input_async_buffer<float, adf::extents<LSTM_UNITS>> &__restrict modulation_gate_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict ig_up_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict ig_down_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict fg_up_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict fg_down_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict og_up_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict og_down_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict mg_up_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict mg_down_rslt,
 
     // Run Time Parameters.
     const float (&w_dense)[LSTM_UNITS],
@@ -40,8 +44,6 @@ void lstm_coordinator(
     auto outp_iter = begin(output);
 
     constexpr int block_count = LSTM_UNITS / VECTOR_LANES;
-    constexpr int partial_block_id = LSTM_UNITS_REAL / VECTOR_LANES;
-    constexpr int partial_block_size = LSTM_UNITS_REAL % VECTOR_LANES;
 
     // Sent initial state down to the gates.
     if (first_iteration) {
@@ -61,28 +63,78 @@ void lstm_coordinator(
     }
 
     // Wait for results to arrive from all four gates.
-    input_gate_rslt.acquire();
-    forget_gate_rslt.acquire();
-    output_gate_rslt.acquire();
-    modulation_gate_rslt.acquire();
+    ig_up_rslt.acquire();
+    fg_up_rslt.acquire();
+    og_up_rslt.acquire();
+    mg_up_rslt.acquire();
 
     // Get access to state output buffer.
     state_out.acquire();
 
-    // Setup iterators on acquired async buffers.
-    auto ig_iter = cbegin_vector<VECTOR_LANES>(input_gate_rslt);
-    auto fg_iter = cbegin_vector<VECTOR_LANES>(forget_gate_rslt);
-    auto og_iter = cbegin_vector<VECTOR_LANES>(output_gate_rslt);
-    auto mg_iter = cbegin_vector<VECTOR_LANES>(modulation_gate_rslt);
+    // Setup iterators on acquired async buffers for upper half gates.
+    auto ig_iter = cbegin_vector<VECTOR_LANES>(ig_up_rslt);
+    auto fg_iter = cbegin_vector<VECTOR_LANES>(fg_up_rslt);
+    auto og_iter = cbegin_vector<VECTOR_LANES>(og_up_rslt);
+    auto mg_iter = cbegin_vector<VECTOR_LANES>(mg_up_rslt);
     auto state_out_iter = begin_vector<VECTOR_LANES>(state_out);
 
+    float sum;
     vector<float, VECTOR_LANES> v1, v2, v3, out_lstm, next_state;
     accum<accfloat, VECTOR_LANES> acc, acc_dense;
 
-    // Fixme: This code block has scope for further optimisation.
-    float sum = bias_dense;
+    // Calculate next-state and output from upper half gates.
+    // ----------------------------------------------------------------,
+    sum = bias_dense;
     acc_dense = zeros<accfloat, VECTOR_LANES>();
-    for (int i = 0; i < block_count; i++)
+    for (int i = 0; i < block_count / 2; i++)
+        chess_prepare_for_pipelining {
+            // Calculate next state.
+            v1 = SIGM(*fg_iter++);
+            acc = mul(v1, *state_iter);
+            v2 = SIGM(*ig_iter++);
+            v3 = TANH(*mg_iter++);
+            acc = mac(acc, v2, v3);
+            next_state = acc.to_vector<float>(0);
+
+            // Calculate LSTM output.
+            v1 = SIGM(*og_iter++);
+            v2 = SIGM(next_state);
+            out_lstm = add(v1, v2);
+
+            // Multiply LSTM output with dense weights and accumulate them
+            // partially.
+            acc_dense = mac(acc_dense, out_lstm, *w_dense_iter++);
+
+            *state_iter++ = next_state;
+            *state_out_iter++ = next_state;
+            // print(next_state, true, "next_state=");
+        }
+    // ----------------------------------------------------------------'
+
+    // Release for upper half gates.
+    ig_up_rslt.release();
+    fg_up_rslt.release();
+    og_up_rslt.release();
+    mg_up_rslt.release();
+
+    // Acquire buffers for lower half gates.
+    ig_down_rslt.acquire();
+    fg_down_rslt.acquire();
+    og_down_rslt.acquire();
+    mg_down_rslt.acquire();
+
+    // Create iterators.
+    ig_iter = cbegin_vector<VECTOR_LANES>(ig_down_rslt);
+    fg_iter = cbegin_vector<VECTOR_LANES>(fg_down_rslt);
+    og_iter = cbegin_vector<VECTOR_LANES>(og_down_rslt);
+    mg_iter = cbegin_vector<VECTOR_LANES>(mg_down_rslt);
+
+    constexpr int partial_block_id = (LSTM_UNITS_REAL - LSTM_UNITS/2) / VECTOR_LANES;
+    constexpr int partial_block_size = (LSTM_UNITS_REAL - LSTM_UNITS/2) % VECTOR_LANES;
+
+    // Computations for lower half gates.
+    // ----------------------------------------------------------------,
+    for (int i = 0; i < block_count / 2; i++)
         chess_prepare_for_pipelining {
             // Calculate next state.
             v1 = SIGM(*fg_iter++);
@@ -109,42 +161,27 @@ void lstm_coordinator(
                 out_lstm = zeros<float, VECTOR_LANES>();
             }
 
-#if defined(STRICT_COL_ACCUM_ORDER)
-            // Multiply LSTM output with dense weights.
-            acc_dense = mul(out_lstm, *w_dense_iter++);
-
-            // Accumulate dense layer output one-by-one into the sum.
-            // This is slow, but will generate output identical to the
-            // reference implementation.
-            v1 = acc_dense.to_vector<float>();
-            for (int j = 0; j < VECTOR_LANES; j++)
-                sum += v1.get(j);
-#else
             // Multiply LSTM output with dense weights and accumulate them
             // partially.
             acc_dense = mac(acc_dense, out_lstm, *w_dense_iter++);
-#endif
 
             *state_iter++ = next_state;
             *state_out_iter++ = next_state;
             // print(next_state, true, "next_state=");
         }
+    // ----------------------------------------------------------------'
 
-    // Release the buffers.
-    input_gate_rslt.release();
-    forget_gate_rslt.release();
-    output_gate_rslt.release();
-    modulation_gate_rslt.release();
+    // Release the lower half gate and output buffers.
+    ig_down_rslt.release();
+    fg_down_rslt.release();
+    og_down_rslt.release();
+    mg_down_rslt.release();
     state_out.release();
 
     // Set first sample of output buffer to dense network output.
-#if defined(STRICT_COL_ACCUM_ORDER)
-    *outp_iter++ = sum;
-#else
     float col_sum = reduce_add(acc_dense.to_vector<float>(0));
     sum += col_sum;
     *outp_iter++ = sum;
-#endif
 
     // printf("Lstm coord output: %.12f\n", sum);
 

@@ -5,7 +5,7 @@
 
 using namespace aie;
 
-void single_lstm_gate(
+void gate_full_buff(
     // Input buffers.
     adf::input_buffer<float, adf::extents<INPUT_DIM>> &__restrict input,
     adf::input_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state,

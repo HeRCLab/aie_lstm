@@ -6,7 +6,7 @@
 
 using namespace adf;
 
-class LSTMGraph : public graph {
+class LSTMGraph_4x1_buff : public graph {
   private:
     kernel coord;
     kernel gates[N_GATES];
@@ -28,17 +28,17 @@ class LSTMGraph : public graph {
     input_port rtp_b_dense;
     // -------------------------------'
 
-    LSTMGraph() {
+    LSTMGraph_4x1_buff() {
         // Create kernels.
-        coord = kernel::create(lstm_coordinator);
+        coord = kernel::create(coordinator_4x1_buff);
         for (int i = 0; i < N_GATES; i++) {
-            gates[i] = kernel::create(single_lstm_gate);
+            gates[i] = kernel::create(gate_full_buff);
         }
 
         // Assign source files to each kernel.
-        source(coord) = "lstm_coordinator.cpp";
+        source(coord) = "coordinator_4x1_buff.cpp";
         for (int i = 0; i < N_GATES; i++) {
-            source(gates[i]) = "single_lstm_gate.cpp";
+            source(gates[i]) = "gate_full_buff.cpp";
         }
 
         // Create GMIO ports.
@@ -95,5 +95,89 @@ class LSTMGraph : public graph {
           location<kernel>(gates[2]) = tile(6, 4);
           location<kernel>(gates[3]) = tile(7, 4);
         */
+    }
+};
+
+
+class LSTMGraph_4x2_buff : public graph {
+  private:
+    kernel coord;
+    kernel gates[N_HALF_GATES];
+
+  public:
+    input_gmio gmio_in;
+    output_gmio gmio_out;
+
+    // Ports for run time parameters.
+    // -------------------------------,
+    // For gates.
+    input_port rtp_w_state[N_HALF_GATES];
+    input_port rtp_w_input[N_HALF_GATES];
+    input_port rtp_bias[N_HALF_GATES];
+    input_port partial_computation_flag[N_HALF_GATES];
+
+    // For coordinator.
+    input_port rtp_w_dense;
+    input_port rtp_b_dense;
+    // -------------------------------'
+
+    LSTMGraph_4x2_buff() {
+        // Create kernels.
+        coord = kernel::create(coordinator_4x2_buff);
+        for (int i = 0; i < N_HALF_GATES; i++) {
+            gates[i] = kernel::create(gate_half_buff);
+        }
+
+        // Assign source files to each kernel.
+        source(coord) = "coordinator_4x2_buff.cpp";
+        for (int i = 0; i < N_HALF_GATES; i++) {
+            source(gates[i]) = "gate_half_buff.cpp";
+        }
+
+        // Create GMIO ports.
+        gmio_in = input_gmio::create("gmioIn", GMIO_BURST_LENGTH, GMIO_BANDWIDTH);
+        gmio_out = output_gmio::create("gmioOut", GMIO_BURST_LENGTH, GMIO_BANDWIDTH);
+
+        for (int i = 0; i < N_HALF_GATES; i++) {
+            // Connect graph data input to gate data input.
+            connect<>(gmio_in.out[0], gates[i].in[0]);
+
+            // Connect coordinator state output to gate state input.
+            connect<>(coord.out[0], gates[i].in[1]);
+
+            // Connect run-time-parameters.
+            connect<parameter>(rtp_w_state[i], async(gates[i].in[2]));
+            connect<parameter>(rtp_w_input[i], async(gates[i].in[3]));
+            connect<parameter>(rtp_bias[i], async(gates[i].in[4]));
+	    connect<parameter>(partial_computation_flag[i], async(gates[i].in[5]));
+
+            // Connect gate output to coordinator inputs.
+            connect<>(gates[i].out[0], coord.in[i]);
+        }
+
+        // Set single buffer constraint for gate RTP-s.
+        for (int i = 0; i < N_HALF_GATES; i++) {
+	  for (int j = 2; j < 6; j++) {
+            single_buffer(gates[i].in[j]);
+	  }
+        }
+
+        // Set single buffer constraint for coordinator RTP-s.
+        single_buffer(coord.in[8]);
+        single_buffer(coord.in[9]);
+
+        // Connect coordinator output to graph output port.
+        connect<>(coord.out[1], gmio_out.in[0]);
+
+        // Connect coordinator RTP-s.
+        connect<parameter>(rtp_w_dense, async(coord.in[8]));
+        connect<parameter>(rtp_b_dense, async(coord.in[9]));
+
+        // Set runtime ratio high so that all kernels get their own AI
+        // engines.
+        runtime<ratio>(coord) = 0.9;
+        for (int i = 0; i < N_HALF_GATES; i++) {
+            runtime<ratio>(gates[i]) = 0.9;
+        }
     }
 };
