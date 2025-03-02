@@ -16,14 +16,14 @@ static int first_iteration = 1;
 
 void coordinator_4x2_buff(
     // Input buffers.
-    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict ig_up_rslt,
-    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict ig_down_rslt,
-    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict fg_up_rslt,
-    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict fg_down_rslt,
-    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict og_up_rslt,
-    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict og_down_rslt,
-    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict mg_up_rslt,
-    adf::input_async_buffer<float, adf::extents<LSTM_UNITS/2>> &__restrict mg_down_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS / 2>> &__restrict ig_up_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS / 2>> &__restrict ig_down_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS / 2>> &__restrict fg_up_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS / 2>> &__restrict fg_down_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS / 2>> &__restrict og_up_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS / 2>> &__restrict og_down_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS / 2>> &__restrict mg_up_rslt,
+    adf::input_async_buffer<float, adf::extents<LSTM_UNITS / 2>> &__restrict mg_down_rslt,
 
     // Run Time Parameters.
     const float (&w_dense)[LSTM_UNITS],
@@ -62,103 +62,81 @@ void coordinator_4x2_buff(
         state_out_iter -= block_count;
     }
 
-    // Wait for results to arrive from all four gates.
+    // Wait for results to arrive from all eight gates.
     ig_up_rslt.acquire();
     fg_up_rslt.acquire();
     og_up_rslt.acquire();
     mg_up_rslt.acquire();
+    ig_down_rslt.acquire();
+    fg_down_rslt.acquire();
+    og_down_rslt.acquire();
+    mg_down_rslt.acquire();
 
     // Get access to state output buffer.
     state_out.acquire();
 
     // Setup iterators on acquired async buffers for upper half gates.
-    auto ig_iter = cbegin_vector<VECTOR_LANES>(ig_up_rslt);
-    auto fg_iter = cbegin_vector<VECTOR_LANES>(fg_up_rslt);
-    auto og_iter = cbegin_vector<VECTOR_LANES>(og_up_rslt);
-    auto mg_iter = cbegin_vector<VECTOR_LANES>(mg_up_rslt);
+    auto ig_up_iter = cbegin_vector<VECTOR_LANES>(ig_up_rslt);
+    auto fg_up_iter = cbegin_vector<VECTOR_LANES>(fg_up_rslt);
+    auto og_up_iter = cbegin_vector<VECTOR_LANES>(og_up_rslt);
+    auto mg_up_iter = cbegin_vector<VECTOR_LANES>(mg_up_rslt);
+    auto ig_down_iter = cbegin_vector<VECTOR_LANES>(ig_down_rslt);
+    auto fg_down_iter = cbegin_vector<VECTOR_LANES>(fg_down_rslt);
+    auto og_down_iter = cbegin_vector<VECTOR_LANES>(og_down_rslt);
+    auto mg_down_iter = cbegin_vector<VECTOR_LANES>(mg_down_rslt);
     auto state_out_iter = begin_vector<VECTOR_LANES>(state_out);
 
     float sum;
     vector<float, VECTOR_LANES> v1, v2, v3, out_lstm, next_state;
     accum<accfloat, VECTOR_LANES> acc, acc_dense;
 
+    constexpr int partial_block_id = LSTM_UNITS_REAL / VECTOR_LANES;
+    constexpr int partial_block_size = LSTM_UNITS_REAL % VECTOR_LANES;
+
     // Calculate next-state and output from upper half gates.
     // ----------------------------------------------------------------,
     sum = bias_dense;
     acc_dense = zeros<accfloat, VECTOR_LANES>();
-    for (int i = 0; i < block_count / 2; i++)
+    for (int i = 0; i < block_count; i++)
         chess_prepare_for_pipelining {
-            // Calculate next state.
-            v1 = SIGM(*fg_iter++);
-            acc = mul(v1, *state_iter);
-            v2 = SIGM(*ig_iter++);
-            v3 = TANH(*mg_iter++);
-            acc = mac(acc, v2, v3);
-            next_state = acc.to_vector<float>(0);
+            if (i < (block_count / 2)) {
+                // Calculate next state.
+                v1 = SIGM(*fg_up_iter++);
+                acc = mul(v1, *state_iter);
+                v2 = SIGM(*ig_up_iter++);
+                v3 = TANH(*mg_up_iter++);
+                acc = mac(acc, v2, v3);
+                next_state = acc.to_vector<float>(0);
 
-            // Calculate LSTM output.
-            v1 = SIGM(*og_iter++);
-            v2 = SIGM(next_state);
-            out_lstm = add(v1, v2);
+                // Calculate LSTM output.
+                v1 = SIGM(*og_up_iter++);
+                v2 = SIGM(next_state);
+                out_lstm = add(v1, v2);
+            } else {
+                // Calculate next state.
+                v1 = SIGM(*fg_down_iter++);
+                acc = mul(v1, *state_iter);
+                v2 = SIGM(*ig_down_iter++);
+                v3 = TANH(*mg_down_iter++);
+                acc = mac(acc, v2, v3);
+                next_state = acc.to_vector<float>(0);
 
-            // Multiply LSTM output with dense weights and accumulate them
-            // partially.
-            acc_dense = mac(acc_dense, out_lstm, *w_dense_iter++);
+                // Calculate LSTM output.
+                v1 = SIGM(*og_down_iter++);
+                v2 = SIGM(next_state);
+                out_lstm = add(v1, v2);
 
-            *state_iter++ = next_state;
-            *state_out_iter++ = next_state;
-            // print(next_state, true, "next_state=");
-        }
-    // ----------------------------------------------------------------'
-
-    // Release for upper half gates.
-    ig_up_rslt.release();
-    fg_up_rslt.release();
-    og_up_rslt.release();
-    mg_up_rslt.release();
-
-    // Acquire buffers for lower half gates.
-    ig_down_rslt.acquire();
-    fg_down_rslt.acquire();
-    og_down_rslt.acquire();
-    mg_down_rslt.acquire();
-
-    // Create iterators.
-    ig_iter = cbegin_vector<VECTOR_LANES>(ig_down_rslt);
-    fg_iter = cbegin_vector<VECTOR_LANES>(fg_down_rslt);
-    og_iter = cbegin_vector<VECTOR_LANES>(og_down_rslt);
-    mg_iter = cbegin_vector<VECTOR_LANES>(mg_down_rslt);
-
-    constexpr int partial_block_id = (LSTM_UNITS_REAL - LSTM_UNITS/2) / VECTOR_LANES;
-    constexpr int partial_block_size = (LSTM_UNITS_REAL - LSTM_UNITS/2) % VECTOR_LANES;
-
-    // Computations for lower half gates.
-    // ----------------------------------------------------------------,
-    for (int i = 0; i < block_count / 2; i++)
-        chess_prepare_for_pipelining {
-            // Calculate next state.
-            v1 = SIGM(*fg_iter++);
-            acc = mul(v1, *state_iter);
-            v2 = SIGM(*ig_iter++);
-            v3 = TANH(*mg_iter++);
-            acc = mac(acc, v2, v3);
-            next_state = acc.to_vector<float>(0);
-
-            // Calculate LSTM output.
-            v1 = SIGM(*og_iter++);
-            v2 = SIGM(next_state);
-            out_lstm = add(v1, v2);
-
-            // Since our reference network does not use all of the LSTM
-            // units, we need to discard some computations from tail.
-            if (i == partial_block_id) {
-                for (int j = partial_block_size; j < VECTOR_LANES; j++) {
-                    next_state[j] = 0.0f;
-                    out_lstm[j] = 0.0f;
+                // Since our reference network does not use all of the LSTM
+                // units, we need to discard some computations from tail.
+                if (i == partial_block_id) {
+                    for (int j = partial_block_size; j < VECTOR_LANES; j++) {
+                        next_state[j] = 0.0f;
+                        out_lstm[j] = 0.0f;
+                    }
+                } else if (i > partial_block_id) {
+                    next_state = zeros<float, VECTOR_LANES>();
+                    out_lstm = zeros<float, VECTOR_LANES>();
                 }
-            } else if (i > partial_block_id) {
-                next_state = zeros<float, VECTOR_LANES>();
-                out_lstm = zeros<float, VECTOR_LANES>();
             }
 
             // Multiply LSTM output with dense weights and accumulate them
@@ -171,7 +149,11 @@ void coordinator_4x2_buff(
         }
     // ----------------------------------------------------------------'
 
-    // Release the lower half gate and output buffers.
+    // Release all gate result buffers and state output buffer.
+    ig_up_rslt.release();
+    fg_up_rslt.release();
+    og_up_rslt.release();
+    mg_up_rslt.release();
     ig_down_rslt.release();
     fg_down_rslt.release();
     og_down_rslt.release();

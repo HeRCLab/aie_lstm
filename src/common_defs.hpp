@@ -33,5 +33,5 @@
 #define DROPBEAR_DATA_PATH "data/dropbear.dat" 
 #define WEIGHT_DATA_PATH "data/weights.dat" 
 
-#define OUTPUT_SAMPLES 2
+#define OUTPUT_SAMPLES 3
 #define OUTPUT_FILE_PATH "aie_lstm_output.txt"

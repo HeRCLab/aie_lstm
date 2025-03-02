@@ -26,7 +26,7 @@ Pseudocode for piecewise linear sigmoid:
 Ref: Piecewise linear approximation applied to nonlinear function of a
      neural network, H.Amin, K.M.Curtis, B.R.Hayes-Gill
 */
-inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
+inline vector<float, VECTOR_LANES>
 sigm_pwl(const vector<float, VECTOR_LANES> x) {
     vector<float, VECTOR_LANES> x_abs, v, y, y1, y2, y3, y_neg;
     accum<accfloat, VECTOR_LANES> acc1, acc2;

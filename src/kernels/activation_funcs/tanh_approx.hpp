@@ -30,7 +30,7 @@ Plain C implementation:
     }
 ```
 */
-inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
+inline vector<float, VECTOR_LANES>
 tanh_approx(const vector<float, VECTOR_LANES> x) {
     accum<accfloat, VECTOR_LANES> acc_num, acc_den;
     vector<float, VECTOR_LANES> v, x2, x3, x4, x5, x6, x7;

@@ -40,7 +40,7 @@ Ref: Cost effective Tanh activation function circuits based on fast
      piecewise linear logic, Kezhu Liu1, Weiwei Shi, Canji Huang,
      Dongdong Zeng
 */
-inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
+inline vector<float, VECTOR_LANES>
 tanh_pwl(const vector<float, VECTOR_LANES> x) {
     vector<float, VECTOR_LANES> x_abs, y, y1, y2, y3, y4, y_neg;
     accum<accfloat, VECTOR_LANES> acc1, acc2;

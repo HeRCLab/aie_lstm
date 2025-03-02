@@ -5,7 +5,7 @@
 
 using namespace aie;
 
-inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
+inline vector<float, VECTOR_LANES>
 tanh_soft(const vector<float, VECTOR_LANES> x) {
     vector<float, VECTOR_LANES> y;
 

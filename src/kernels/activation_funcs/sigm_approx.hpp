@@ -12,7 +12,7 @@ Approximate sigmoidal function formula:
 Ref: https://scicomp.stackexchange.com/a/42187
 */
 
-inline __attribute__((always_inline)) vector<float, VECTOR_LANES>
+inline vector<float, VECTOR_LANES>
 sigm_approx(const vector<float, VECTOR_LANES> x) {
     vector<float, VECTOR_LANES> y;
     accum<accfloat, VECTOR_LANES> acc;
