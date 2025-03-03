@@ -1,7 +1,6 @@
 SRC_DIR:=src/
 INCLUDE_DIRS:=$(SRC_DIR) \
 	$(SRC_DIR)/kernels \
-	$(SRC_DIR)/kernels/activation_funcs
 
 # Type of implementation variations:
 #
@@ -67,6 +66,9 @@ AIECC := v++ \
       --aie.log-level=$(AIE_LOG_LVL) \
       --aie.xlopt=$(OPT_LVL) \
       --aie.stacksize=$(STACK_SIZE) \
+      --aie.fastmath \
+      --aie.fast-floats \
+      --aie.fast-nonlinearfloats \
       --platform $(PLATFORM) \
       --include $(XILINX_VITIS)/aietools/include \
       $(foreach x,$(INCLUDE_DIRS),--include $x) \
