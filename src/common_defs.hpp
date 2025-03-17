@@ -15,7 +15,11 @@
 #define INPUT_DIM_REAL 20
 #define INPUT_DIM 32
 
+#if defined(VARIANT_4X2_STRM)
+#define OUTPUT_BLOCK_SIZE 1
+#else
 #define OUTPUT_BLOCK_SIZE 4 /* Minimum buffer size of 16bytes */
+#endif
 
 #define W_STATE_COLS LSTM_UNITS
 #define W_STATE_SIZE (LSTM_UNITS * W_STATE_COLS)

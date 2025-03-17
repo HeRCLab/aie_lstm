@@ -68,3 +68,24 @@ sigm_pwl(const vector<float, VECTOR_LANES> x) {
 
     return y;
 }
+
+inline float sigm_pwl_scalar(float x) {
+  float x_abs = fabsf(x);
+  float y;
+
+  if (x_abs >= 5.0f) {
+    y = 1.0f;
+  } else if (x_abs >= 2.375f) {
+    y = 0.03125f * x_abs + 0.84375f;
+  } else if (x_abs >= 1.0f) {
+    y = 0.125f * x_abs + 0.625f;
+  } else {
+    y = 0.25 * x_abs + 0.5;
+  }
+
+  if (x < 0.0f) {
+    y = 1.0f - y;
+  }
+
+  return y;
+}

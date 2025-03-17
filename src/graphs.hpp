@@ -98,7 +98,6 @@ class LSTMGraph_4x1_buff : public graph {
     }
 };
 
-
 class LSTMGraph_4x2_buff : public graph {
   private:
     kernel coord;
@@ -149,7 +148,7 @@ class LSTMGraph_4x2_buff : public graph {
             connect<parameter>(rtp_w_state[i], async(gates[i].in[2]));
             connect<parameter>(rtp_w_input[i], async(gates[i].in[3]));
             connect<parameter>(rtp_bias[i], async(gates[i].in[4]));
-	    connect<parameter>(partial_computation_flag[i], async(gates[i].in[5]));
+            connect<parameter>(partial_computation_flag[i], async(gates[i].in[5]));
 
             // Connect gate output to coordinator inputs.
             connect<>(gates[i].out[0], coord.in[i]);
@@ -157,9 +156,9 @@ class LSTMGraph_4x2_buff : public graph {
 
         // Set single buffer constraint for gate RTP-s.
         for (int i = 0; i < N_HALF_GATES; i++) {
-	  for (int j = 2; j < 6; j++) {
-            single_buffer(gates[i].in[j]);
-	  }
+            for (int j = 2; j < 6; j++) {
+                single_buffer(gates[i].in[j]);
+            }
         }
 
         // Set single buffer constraint for coordinator RTP-s.
@@ -172,6 +171,112 @@ class LSTMGraph_4x2_buff : public graph {
         // Connect coordinator RTP-s.
         connect<parameter>(rtp_w_dense, async(coord.in[8]));
         connect<parameter>(rtp_b_dense, async(coord.in[9]));
+
+        // Set runtime ratio high so that all kernels get their own AI
+        // engines.
+        runtime<ratio>(coord) = 0.9;
+        for (int i = 0; i < N_HALF_GATES; i++) {
+            runtime<ratio>(gates[i]) = 0.9;
+        }
+    }
+};
+
+class LSTMGraph_4x2_strm : public graph {
+  private:
+    kernel coord;
+    kernel gates[N_HALF_GATES];
+    pktmerge<N_HALF_GATES> gate_output_merger;
+
+  public:
+    input_gmio gmio_in;
+    output_gmio gmio_out;
+
+    // Ports for run time parameters.
+    // -------------------------------,
+    // For gates.
+    input_port rtp_w_state[N_HALF_GATES];
+    input_port rtp_w_input[N_HALF_GATES];
+    input_port rtp_bias[N_HALF_GATES];
+    input_port gate_id[N_HALF_GATES];
+
+    // For coordinator.
+    input_port rtp_w_dense;
+    input_port rtp_b_dense;
+    // -------------------------------'
+
+    LSTMGraph_4x2_strm() {
+        // Create kernels.
+        coord = kernel::create(coordinator_4x2_strm);
+        for (int i = 0; i < N_HALF_GATES; i++) {
+            gates[i] = kernel::create(gate_half_strm);
+        }
+
+        // Assign source files to each kernel.
+        source(coord) = "coordinator_4x2_strm.cpp";
+        for (int i = 0; i < N_HALF_GATES; i++) {
+            source(gates[i]) = "gate_half_strm.cpp";
+        }
+
+        // Create gate output packet stream mergers.
+        gate_output_merger = pktmerge<N_HALF_GATES>::create();
+
+        // Create GMIO ports.
+        gmio_in = input_gmio::create("gmioIn", GMIO_BURST_LENGTH, GMIO_BANDWIDTH);
+        gmio_out = output_gmio::create("gmioOut", GMIO_BURST_LENGTH, GMIO_BANDWIDTH);
+
+	// Connect coordinator state output to gate state input.
+	connect<> s0 (coord.out[0], gates[0].in[1]);
+	connect<> s1 (coord.out[0], gates[1].in[1]);
+	connect<> s2 (coord.out[0], gates[2].in[1]);
+	connect<> s3 (coord.out[0], gates[3].in[1]);
+	connect<> s4 (coord.out[0], gates[4].in[1]);
+	connect<> s5 (coord.out[0], gates[5].in[1]);
+	connect<> s6 (coord.out[0], gates[6].in[1]);
+	connect<> s7 (coord.out[0], gates[7].in[1]);
+	fifo_depth(s0) = LSTM_UNITS;
+	fifo_depth(s1) = LSTM_UNITS;
+	fifo_depth(s2) = LSTM_UNITS;
+	fifo_depth(s3) = LSTM_UNITS;
+	fifo_depth(s4) = LSTM_UNITS;
+	fifo_depth(s5) = LSTM_UNITS;
+	fifo_depth(s6) = LSTM_UNITS;
+	fifo_depth(s7) = LSTM_UNITS;
+
+        for (int i = 0; i < N_HALF_GATES; i++) {
+            // Connect graph data input to gate data input.
+            connect<> (gmio_in.out[0], gates[i].in[0]);
+
+	    // Connect coordinator state output to gate state input.
+	    // connect<> (coord.out[0], gates[i].in[1]);
+
+            // Connect run-time-parameters.
+            connect<parameter>(rtp_w_state[i], async(gates[i].in[2]));
+            connect<parameter>(rtp_w_input[i], async(gates[i].in[3]));
+            connect<parameter>(rtp_bias[i], async(gates[i].in[4]));
+            connect<parameter>(gate_id[i], async(gates[i].in[5]));
+	    connect<>(gates[i].out[0], gate_output_merger.in[i]);
+        }
+
+        // Set single buffer constraint for gate RTP-s.
+        for (int i = 0; i < N_HALF_GATES; i++) {
+            for (int j = 2; j < 6; j++) {
+                single_buffer(gates[i].in[j]);
+            }
+        }
+
+        // Connect coordinator output to graph output port.
+        connect<>(coord.out[1], gmio_out.in[0]);
+
+        // Connect gate output packet-stream merger to coordinator.
+        connect(gate_output_merger.out[0], coord.in[0]);
+
+        // Connect coordinator RTP-s.
+        connect<parameter>(rtp_w_dense, async(coord.in[1]));
+        connect<parameter>(rtp_b_dense, async(coord.in[2]));
+
+        // Set single buffer constraint for coordinator RTP-s.
+        single_buffer(coord.in[1]);
+        single_buffer(coord.in[2]);
 
         // Set runtime ratio high so that all kernels get their own AI
         // engines.

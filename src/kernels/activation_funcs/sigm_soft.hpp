@@ -25,3 +25,12 @@ sigm_soft(const vector<float, VECTOR_LANES> x) {
 
     return y;
 }
+
+inline float sigm_soft_scalar(float x) {
+  if (x >= 0.0f) {
+    return 1.0f / (1.0f + expf(-x));
+  } else {
+    float t = expf(x);
+    return t / (1.0f + t);
+  }
+}

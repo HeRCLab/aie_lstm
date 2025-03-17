@@ -88,3 +88,29 @@ tanh_pwl(const vector<float, VECTOR_LANES> x) {
 
     return y;
 }
+
+
+inline float tanh_pwl_scalar(float x) {
+  float y;
+  float x_abs = fabsf(x);
+
+  if (x_abs >= 2.0f) {
+    y = 1.0f;
+  } else if (x_abs >= 1.5f) {
+    y = 0.1269531f * x_abs + 0.7167968f;
+  } else if (x_abs >= 1.0f) {
+    y = 0.3125f * x_abs + 0.453125f;
+  } else if (x_abs >= 0.5f) {
+    y = 0.625f * x_abs + 0.15625f;
+  } else if (x_abs >= 0.25f) {
+    y = 0.875f * x_abs + 0.02935791015625f;
+  } else {
+    y = x_abs;
+  }
+
+  if (x < 0.0f) {
+    y *= -1.0;
+  }
+
+  return y;
+}

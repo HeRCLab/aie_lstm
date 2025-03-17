@@ -11,6 +11,8 @@
 #include "activation_funcs/tanh_pwl.hpp"
 #define SIGM(x) (sigm_pwl(x))
 #define TANH(x) (tanh_pwl(x))
+#define SIGM_SCALAR(x) (sigm_pwl_scalar(x))
+#define TANH_SCALAR(x) (tanh_pwl_scalar(x))
 
 #elif defined(USE_APPROX_ACTIVATION_FNS)
 
@@ -25,5 +27,7 @@
 #include "activation_funcs/tanh_soft.hpp"
 #define SIGM(x) (sigm_soft(x))
 #define TANH(x) (tanh_soft(x))
+#define SIGM_SCALAR(x) (sigm_soft_scalar(x))
+#define TANH_SCALAR(x) (tanh_soft_scalar(x))
 
 #endif

@@ -30,3 +30,15 @@ tanh_soft(const vector<float, VECTOR_LANES> x) {
 
     return y;
 }
+
+inline float tanh_soft_scalar(float x) {
+    float e2x;
+    if (x >= 0.0f) {
+	e2x = expf(-2.0f * x);
+	return -(1.0f - 2.0f / (e2x + 1.0f));
+    } else {
+	e2x = expf(2.0f * x);
+	return -(2.0f / (e2x + 1.0f) - 1.0f);
+    }
+
+}
