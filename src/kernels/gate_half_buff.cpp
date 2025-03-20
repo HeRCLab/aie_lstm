@@ -86,7 +86,7 @@ void gate_half_buff(
                 // Add bias to generate one block of gate results.
                 rslt_v = add(*b_iter++, rslt_v);
                 *out_iter++ = rslt_v;
-                // print(rslt_v, true, "rslt_v=");
+                print(rslt_v, true, "rslt_v=");
                 rslt_v = zeros<float, VECTOR_LANES>();
             }
         }

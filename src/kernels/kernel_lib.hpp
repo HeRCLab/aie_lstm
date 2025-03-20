@@ -4,6 +4,7 @@
 #pragma once
 
 #include "common_defs.hpp"
+#include "kernels/utils.hpp"
 
 #if defined(USE_PWL_ACTIVATION_FNS)
 

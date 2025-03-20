@@ -35,10 +35,10 @@ struct GateFIFO {
     float buff[GATE_FIFO_MAX_SIZE] = {0.0f};
 };
 
-inline float
-get_gate_result(GateFIFO (&gate_fifos)[N_HALF_GATES],
-                input_pktstream *strm,
-                int32 gate_idx) {
+inline
+float get_gate_result(GateFIFO (&gate_fifos)[N_HALF_GATES],
+                      input_pktstream *strm,
+                      int32 gate_idx) {
     float rslt;
     int32 strm_head, strm_val, gidx;
     GateFIFO *fifo = &gate_fifos[gate_idx];
@@ -52,7 +52,9 @@ get_gate_result(GateFIFO (&gate_fifos)[N_HALF_GATES],
         fifo->begin = (fifo->begin + 1) % GATE_FIFO_MAX_SIZE;
         fifo->size--;
 
-        printf("G_%d [fifo ->> output] = %.5f\n", gate_idx, rslt);
+#ifdef DEBUG
+        printf("G_%d [fifo ->> output] = %.5f | fifo_size = %d\n", gate_idx, rslt, fifo->size);
+#endif
         return rslt;
     } else {
         while (true) {
@@ -64,7 +66,9 @@ get_gate_result(GateFIFO (&gate_fifos)[N_HALF_GATES],
             // Extract gate index of the new data.
             gidx = gate_idx_table[strm_head & 0x1f];
             if (gidx == gate_idx) {
+#ifdef DEBUG
                 printf("G_%d [strm ->> output] = %.5f\n", gate_idx, rslt);
+#endif
                 // Return result.
                 return rslt;
             } else {
@@ -76,7 +80,9 @@ get_gate_result(GateFIFO (&gate_fifos)[N_HALF_GATES],
                 auto end = (fifo->begin + fifo->size) % GATE_FIFO_MAX_SIZE;
                 fifo->buff[end] = rslt;
                 fifo->size++;
-                printf("G_%d [fifo <<- strm] = %.5f\n", gidx, rslt);
+#ifdef DEBUG
+                printf("G_%d [fifo <<- strm] = %.5f | fifo_size = %d\n", gidx, rslt, fifo->size);
+#endif
             }
         }
     }
@@ -109,10 +115,13 @@ void coordinator_4x2_strm(
     vector<float, VECTOR_LANES> v1, v2, v3;
     accum<accfloat, VECTOR_LANES> acc, acc_dense;
 
-    auto state_iter = begin(state);
-    auto w_dense_iter = begin(w_dense);
+    // Create pointers for iterating up gates and down gates.
+    float *__restrict state_p = state;
+    float *__restrict state_p_down = &state[LSTM_UNITS / 2];
+    const float *__restrict w_dense_p = w_dense;
+    const float *__restrict w_dense_p_down = &w_dense[LSTM_UNITS / 2];
 
-    // Sent initial state down to the gates.
+    // Send initial state down to the gates.
     if (!iter_count++) {
         // Populate gate ID table.
         for (int i = 0; i < N_HALF_GATES; i++) {
@@ -122,11 +131,11 @@ void coordinator_4x2_strm(
 
         // Send initial state.
         for (int i = 0; i < LSTM_UNITS; i++) {
-            writeincr(state_out_strm, *state_iter++);
+            writeincr(state_out_strm, *state_p++);
         }
 
-        // Reset state iterator.
-        state_iter -= LSTM_UNITS;
+        // Reset state pointer to beginning.
+        state_p -= LSTM_UNITS;
     }
 
     // Calculate next-state and output from upper half gates.
@@ -137,93 +146,72 @@ void coordinator_4x2_strm(
         chess_prepare_for_pipelining {
             // Always collect results from up gates.
             igu = get_gate_result(gate_fifos, gate_strm, IG_UP_IDX);
-            chess_memory_fence();
             fgu = get_gate_result(gate_fifos, gate_strm, FG_UP_IDX);
-            chess_memory_fence();
             ogu = get_gate_result(gate_fifos, gate_strm, OG_UP_IDX);
-            chess_memory_fence();
             mgu = get_gate_result(gate_fifos, gate_strm, MG_UP_IDX);
-            chess_memory_fence();
 
             // Collect results from down gates if computation is non-null.
-            if (i < (LSTM_UNITS_REAL - LSTM_UNITS / 2)) {
+            if (i < (LSTM_UNITS_REAL - (LSTM_UNITS / 2))) {
                 igd = get_gate_result(gate_fifos, gate_strm, IG_DOWN_IDX);
-                chess_memory_fence();
                 fgd = get_gate_result(gate_fifos, gate_strm, FG_DOWN_IDX);
-                chess_memory_fence();
                 ogd = get_gate_result(gate_fifos, gate_strm, OG_DOWN_IDX);
-                chess_memory_fence();
                 mgd = get_gate_result(gate_fifos, gate_strm, MG_DOWN_IDX);
-                chess_memory_fence();
             }
 
             // Process results from upper four gates.
             // ---------------------------------------------------,
             // Calculate next state.
-            t1 = (*state_iter) * SIGM_SCALAR(fgu);
+            t1 = (*state_p) * SIGM_SCALAR(fgu);
             t2 = SIGM_SCALAR(igu) * TANH_SCALAR(mgu);
             next_state = t1 + t2;
 
-            // Publish and save next state.
-            writeincr(state_out_strm, next_state);
-            *state_iter = next_state;
+            // Save next state.
+            *state_p++ = next_state;
 
             // Calculate LSTM output.
             t1 = SIGM_SCALAR(ogu);
             t2 = SIGM_SCALAR(next_state);
             out_lstm = t1 + t2;
-            sum += (out_lstm * (*w_dense_iter));
+            sum += (out_lstm * (*w_dense_p++));
             // ----------------------------------------------------'
 
             // Process results from lower four gates.
             // ---------------------------------------------------,
-            // Move iterators forward to the beginning of lower half
-            // gates.
-            state_iter += LSTM_UNITS / 2;
-            w_dense_iter += LSTM_UNITS / 2;
-
-            if (i < (LSTM_UNITS_REAL - LSTM_UNITS / 2)) {
+            if (i < (LSTM_UNITS_REAL - (LSTM_UNITS / 2))) {
                 // Calculate next state.
-                t1 = (*state_iter) * SIGM_SCALAR(fgd);
+                t1 = (*state_p_down) * SIGM_SCALAR(fgd);
                 t2 = SIGM_SCALAR(igd) * TANH_SCALAR(mgd);
                 next_state = t1 + t2;
 
-                // Save next state. ⚠️ NOTE that we are not publishing the
-                // state immediately as that will break the order of the
-                // state data.
-                *state_iter = next_state;
+                // Save next state.
+                *state_p_down++ = next_state;
 
                 // Calculate LSTM output.
                 t1 = SIGM_SCALAR(ogd);
                 t2 = SIGM_SCALAR(next_state);
                 out_lstm = t1 + t2;
-                sum += (out_lstm * (*w_dense_iter));
+                sum += (out_lstm * (*w_dense_p_down++));
             } else {
                 // Skip computations at the tail.
-                printf("skippppppppppppppppppeeeeddddddddd\n");
-                *state_iter = 0.0f;
+                *state_p_down++ = 0.0f;
+                w_dense_p_down++;
             }
-
-            // Restore iterators for processing of upper half gates.
-            state_iter -= LSTM_UNITS / 2;
-            w_dense_iter -= LSTM_UNITS / 2;
             // ----------------------------------------------------'
-
-            // Increase iterators by one for next stage.
-            state_iter++;
-            w_dense_iter++;
         }
 
     // Send coordinator result through output stream.
     writeincr(output_strm, sum);
 
-    // ⚠️ Forward lower half of the new state to gates, which we
-    // deffered sending to maintain proper order.
-    state_iter -= LSTM_UNITS / 2;
-    for (int i = 0; i < LSTM_UNITS / 2; i++) {
-        writeincr(state_out_strm, *state_iter++);
+    // Push next state back to the gates for next iteration. The next
+    // state will be queued in FIFO outgoing stream connections.
+    state_p = state;
+    for (int i = 0; i < LSTM_UNITS; i++) {
+        writeincr(state_out_strm, *state_p++);
     }
-    // ----------------------------------------------------------------'
+
+#ifdef DEBUG
+    print_state(state);
+#endif
 
     printf("Lstm coord output: %.12f\n", sum);
 }

@@ -35,8 +35,10 @@ STACK_SIZE:=4096
 #
 # NO_DISK_IO : Instead of reading input out data from disk, embedded
 #   them in header files.
+#
+# DEBUG: Print debug statements.
 # ------------------------------------------------------------------'
-PREPROC_FLAGS:=-DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS
+PREPROC_FLAGS:=-DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS # -DDEBUG
 LINKER_FLAGS:=
 
 WORK_DIR_X86:=build_x86

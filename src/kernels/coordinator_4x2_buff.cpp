@@ -159,6 +159,10 @@ void coordinator_4x2_buff(
     mg_down_rslt.release();
     state_out.release();
 
+#ifdef DEBUG
+    print_state(state);
+#endif
+
     // Set first sample of output buffer to dense network output.
     float col_sum = reduce_add(acc_dense.to_vector<float>(0));
     sum += col_sum;
