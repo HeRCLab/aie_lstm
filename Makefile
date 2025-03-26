@@ -4,11 +4,13 @@ INCLUDE_DIRS:=$(SRC_DIR) \
 
 # Type of implementation variations:
 #
-# 4X1_buff: 4 gates, buffer based comm.
+# 4X1_BUFF: 4 gates, buffer based comm.
 #
-# 4x2_buff: 8 half-gates, each split vertically,
+# 4x2_BUFF: 8 half-gates, each split vertically,
 #           buffer based comm.
 #
+# 4x2_STRM: 8 half-gates, each split vertically,
+#           stream based comm.
 VARIANT:=4X2_BUFF
 
 # 0 : No kernel optimizations.
