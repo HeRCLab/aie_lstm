@@ -91,6 +91,7 @@ tanh_pwl(const vector<float, VECTOR_LANES> x) {
 
 
 inline float tanh_pwl_scalar(float x) {
+  /*
   float y;
   float x_abs = fabsf(x);
 
@@ -113,4 +114,10 @@ inline float tanh_pwl_scalar(float x) {
   }
 
   return y;
+  */
+
+  vector<float, VECTOR_LANES> X, Y;
+  X[0] = x;
+  Y = tanh_pwl(X);
+  return Y[0];
 }

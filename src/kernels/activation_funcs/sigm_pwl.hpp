@@ -70,6 +70,7 @@ sigm_pwl(const vector<float, VECTOR_LANES> x) {
 }
 
 inline float sigm_pwl_scalar(float x) {
+  /*
   float x_abs = fabsf(x);
   float y;
 
@@ -88,4 +89,10 @@ inline float sigm_pwl_scalar(float x) {
   }
 
   return y;
+  */
+
+  vector<float, VECTOR_LANES> X, Y;
+  X[0] = x;
+  Y = sigm_pwl(X);
+  return Y[0];
 }
