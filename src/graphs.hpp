@@ -88,13 +88,12 @@ class LSTMGraph_4x1_buff : public graph {
             runtime<ratio>(gates[i]) = 0.9;
         }
 
-        /*
-          location<kernel>(coord) = tile(5, 5);
-          location<kernel>(gates[0]) = tile(4, 6);
-          location<kernel>(gates[1]) = tile(4, 7);
-          location<kernel>(gates[2]) = tile(6, 4);
-          location<kernel>(gates[3]) = tile(7, 4);
-        */
+	// The gates are placed around the coordinator as close as
+	// possible with enough memory tiles for each gates.
+	location<kernel>(gates[0]) = location<kernel>(coord) + relative_offset({.col_offset=1, .row_offset=1});
+	location<kernel>(gates[1]) = location<kernel>(coord) + relative_offset({.col_offset=-1, .row_offset=1});
+	location<kernel>(gates[2]) = location<kernel>(coord) + relative_offset({.col_offset=1, .row_offset=0});
+	location<kernel>(gates[3]) = location<kernel>(coord) + relative_offset({.col_offset=-1, .row_offset=0});
     }
 };
 
@@ -178,6 +177,19 @@ class LSTMGraph_4x2_buff : public graph {
         for (int i = 0; i < N_HALF_GATES; i++) {
             runtime<ratio>(gates[i]) = 0.9;
         }
+
+	// Place upper gates strictly up-down-left-right of the coordinator.
+	location<kernel>(gates[0]) = location<kernel>(coord) + relative_offset({.col_offset=1, .row_offset=0});
+	location<kernel>(gates[2]) = location<kernel>(coord) + relative_offset({.col_offset=0, .row_offset=1});
+	location<kernel>(gates[4]) = location<kernel>(coord) + relative_offset({.col_offset=-1, .row_offset=0});
+	location<kernel>(gates[6]) = location<kernel>(coord) + relative_offset({.col_offset=0, .row_offset=-1});
+
+	// Place lower gates at the corner of the coordinator.
+	location<kernel>(gates[1]) = location<kernel>(coord) + relative_offset({.col_offset=1, .row_offset=1});
+	location<kernel>(gates[3]) = location<kernel>(coord) + relative_offset({.col_offset=1, .row_offset=-1});
+	location<kernel>(gates[5]) = location<kernel>(coord) + relative_offset({.col_offset=-1, .row_offset=1});
+	location<kernel>(gates[7]) = location<kernel>(coord) + relative_offset({.col_offset=-1, .row_offset=-1});
+
     }
 };
 
@@ -284,5 +296,17 @@ class LSTMGraph_4x2_strm : public graph {
         for (int i = 0; i < N_HALF_GATES; i++) {
             runtime<ratio>(gates[i]) = 0.9;
         }
+
+	// Place upper gates strictly up-down-left-right of the coordinator.
+	location<kernel>(gates[0]) = location<kernel>(coord) + relative_offset({.col_offset=1, .row_offset=0});
+	location<kernel>(gates[2]) = location<kernel>(coord) + relative_offset({.col_offset=0, .row_offset=1});
+	location<kernel>(gates[4]) = location<kernel>(coord) + relative_offset({.col_offset=-1, .row_offset=0});
+	location<kernel>(gates[6]) = location<kernel>(coord) + relative_offset({.col_offset=0, .row_offset=-1});
+
+	// Place lower gates at the corner of the coordinator.
+	location<kernel>(gates[1]) = location<kernel>(coord) + relative_offset({.col_offset=1, .row_offset=1});
+	location<kernel>(gates[3]) = location<kernel>(coord) + relative_offset({.col_offset=1, .row_offset=-1});
+	location<kernel>(gates[5]) = location<kernel>(coord) + relative_offset({.col_offset=-1, .row_offset=1});
+	location<kernel>(gates[7]) = location<kernel>(coord) + relative_offset({.col_offset=-1, .row_offset=-1});
     }
 };
