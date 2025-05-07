@@ -1,6 +1,6 @@
 #pragma once
 
-#define VECTOR_LANES 16
+#define VECTOR_LANES 8
 
 // Actual number of LSTM units is 100. 128 is chosen so that when the
 // recurrent weights are split into two matrices of Nx(M/2), M is

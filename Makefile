@@ -13,6 +13,8 @@ INCLUDE_DIRS:=$(SRC_DIR) \
 #           stream based comm.
 VARIANT:=4X2_BUFF
 
+GATE_HALF_LOOP:=V1
+
 # 0 : No kernel optimizations.
 #
 # 1 : Computation of heap size, generation of guidance based on LLVM
@@ -61,6 +63,9 @@ SOURCES := $(wildcard $(SRC_DIR)/*.cpp) \
 	   $(wildcard $(SRC_DIR)/kernels/activation_funcs/*.hpp) \
 
 PREPROC_FLAGS += -DVARIANT_$(VARIANT)
+PREPROC_FLAGS += -DGATE_HALF_LOOP_$(GATE_HALF_LOOP)
+
+
 AIECC := v++ \
       --compile \
       --mode aie \
@@ -73,6 +78,8 @@ AIECC := v++ \
       --aie.fastmath \
       --aie.fast-floats \
       --aie.fast-nonlinearfloats \
+      --aie.Xchess="gate_half_buff:backend.mist2.maxfoldk=512" \
+      --aie.Xchess="gate_half_buff:backend.mist2.xargs=-ggraph" \
       --platform $(PLATFORM) \
       --include $(XILINX_VITIS)/aietools/include \
       $(foreach x,$(INCLUDE_DIRS),--include $x) \
