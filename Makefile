@@ -71,6 +71,7 @@ AIECC := v++ \
       --mode aie \
       --aie.debug \
       --aie.verbose \
+      --aie.keep-intermediate-results \
       --aie.adf-api-log-level=$(ADF_API_LOG_LVL) \
       --aie.log-level=$(AIE_LOG_LVL) \
       --aie.xlopt=$(OPT_LVL) \
@@ -78,8 +79,8 @@ AIECC := v++ \
       --aie.fastmath \
       --aie.fast-floats \
       --aie.fast-nonlinearfloats \
-      --aie.Xchess="gate_half_buff:backend.mist2.maxfoldk=512" \
-      --aie.Xchess="gate_half_buff:backend.mist2.xargs=-ggraph" \
+      --aie.Xchess="main:backend.mist2.maxfoldk=512" \
+      --aie.Xchess="main:backend.mist2.xargs=-ggraph" \
       --platform $(PLATFORM) \
       --include $(XILINX_VITIS)/aietools/include \
       $(foreach x,$(INCLUDE_DIRS),--include $x) \
