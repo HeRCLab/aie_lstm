@@ -178,6 +178,9 @@ class LSTMGraph_4x2_buff : public graph {
             runtime<ratio>(gates[i]) = 0.9;
         }
 
+	// Place coordinator in a fixed position of row 5, column 25.
+	location<kernel>(coord) = tile(25, 5);
+
 	// Place upper gates strictly up-down-left-right of the coordinator.
 	location<kernel>(gates[0]) = location<kernel>(coord) + relative_offset({.col_offset=1, .row_offset=0});
 	location<kernel>(gates[2]) = location<kernel>(coord) + relative_offset({.col_offset=0, .row_offset=1});
