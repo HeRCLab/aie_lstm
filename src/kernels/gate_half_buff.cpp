@@ -65,6 +65,9 @@ void gate_half_buff(
     constexpr int input_blocks = INPUT_DIM / VECTOR_LANES;
     constexpr int state_blocks = W_STATE_COLS / VECTOR_LANES;
 
+    // Record cycle count before the loop.
+    auto n_cycles_before = get_cycles();
+
 #if defined(GATE_HALF_LOOP_V1)
     rslt_v = zeros<float, VECTOR_LANES>();
     for (int row = 0; row < LSTM_UNITS / 2; row++)
@@ -664,4 +667,7 @@ void gate_half_buff(
             cyclic_add(outp_p, VECTOR_LANES, outp_start_p, size_outp);
         }
 #endif
+    auto n_cycles_after = get_cycles();
+    auto cycle_count = n_cycles_after - n_cycles_before;
+    printf("Loop cycle count: %llu\n", cycle_count);
 }
