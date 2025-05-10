@@ -14,8 +14,8 @@ void gate_full_buff(
     adf::output_buffer<float, adf::extents<LSTM_UNITS>> &__restrict output);
 
 void gate_half_buff(
-    adf::input_buffer<float, adf::extents<INPUT_DIM>> &__restrict input,
-    adf::input_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state,
+    adf::input_circular_buffer<float, adf::extents<INPUT_DIM>> &__restrict input,
+    adf::input_circular_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state,
     const float (&w_state_part)[W_STATE_SIZE / 2],
     const float (&w_input)[W_INPUT_SIZE],
     const float (&bias)[LSTM_UNITS / 2],

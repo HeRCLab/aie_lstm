@@ -79,7 +79,7 @@ AIECC := v++ \
       --aie.fastmath \
       --aie.fast-floats \
       --aie.fast-nonlinearfloats \
-      --aie.Xchess="main:backend.mist2.maxfoldk=512" \
+      --aie.Xchess="main:backend.mist2.maxfoldk=2048" \
       --aie.Xchess="main:backend.mist2.xargs=-ggraph" \
       --platform $(PLATFORM) \
       --include $(XILINX_VITIS)/aietools/include \
@@ -117,6 +117,7 @@ run-aiesim:
 		--profile \
 		--pkg-dir=$(WORK_DIR_HW) \
 		--options-file=aiesim-options.txt \
+		--enable-memory-check \
 		--dump-vcd aiesim
 
 clean-comm:
