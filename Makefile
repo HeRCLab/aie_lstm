@@ -24,6 +24,9 @@ GATE_HALF_LOOP:=V1
 #     unrolled loops and automatic inlining.
 OPT_LVL:=0
 
+# Buffer placement optimization level (0-9).
+BUFFER_OPT_LVL:=0
+
 STACK_SIZE:=4096
 
 # Pre-processor directives:
@@ -65,6 +68,9 @@ SOURCES := $(wildcard $(SRC_DIR)/*.cpp) \
 PREPROC_FLAGS += -DVARIANT_$(VARIANT)
 PREPROC_FLAGS += -DGATE_HALF_LOOP_$(GATE_HALF_LOOP)
 
+ifeq ($(ALT_4X2_BUFF_TILE_PLACEMENT),true)
+PREPROC_FLAGS += -DALT_4X2_BUFF_TILE_PLACEMENT
+endif
 
 AIECC := v++ \
       --compile \
@@ -81,6 +87,7 @@ AIECC := v++ \
       --aie.fast-nonlinearfloats \
       --aie.Xchess="main:backend.mist2.maxfoldk=2048" \
       --aie.Xchess="main:backend.mist2.xargs=-ggraph" \
+      --aie.Xmapper="BufferOptLevel$(BUFFER_OPT_LVL)" \
       --platform $(PLATFORM) \
       --include $(XILINX_VITIS)/aietools/include \
       $(foreach x,$(INCLUDE_DIRS),--include $x) \
@@ -89,6 +96,7 @@ AIECC := v++ \
       --report_dir $(REPORT_DIR) \
       --log_dir $(LOG_DIR) \
 
+#      --aie.Xrouter="dmaFIFOsInFreeBankOnly" \
 
 .PHONY: build-hw \
 	run-aiesim \

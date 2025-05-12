@@ -178,8 +178,26 @@ class LSTMGraph_4x2_buff : public graph {
             runtime<ratio>(gates[i]) = 0.9;
         }
 
-	// Place coordinator in a fixed position of row 5, column 25.
-	location<kernel>(coord) = tile(25, 5);
+#if defined(ALT_4X2_BUFF_TILE_PLACEMENT)
+	// Place coordinator in a fixed position of row 4, column 25.
+	location<kernel>(coord) = tile(25, 4);
+
+	// Place upper gates strictly up-down-left-right of the coordinator.
+	location<kernel>(gates[0]) = location<kernel>(coord) + relative_offset({.col_offset=1, .row_offset=0});
+	location<kernel>(gates[2]) = location<kernel>(coord) + relative_offset({.col_offset=0, .row_offset=1});
+	location<kernel>(gates[4]) = location<kernel>(coord) + relative_offset({.col_offset=-1, .row_offset=0});
+	location<kernel>(gates[6]) = location<kernel>(coord) + relative_offset({.col_offset=0, .row_offset=-1});
+
+	// Place lower gates at south, as data naturally flows from
+	// south to north, it's better to place the producers at
+	// south.
+	location<kernel>(gates[1]) = location<kernel>(coord) + relative_offset({.col_offset=1, .row_offset=-1});
+	location<kernel>(gates[3]) = location<kernel>(coord) + relative_offset({.col_offset=-1, .row_offset=-1});
+	location<kernel>(gates[5]) = location<kernel>(coord) + relative_offset({.col_offset=2, .row_offset=0});
+	location<kernel>(gates[7]) = location<kernel>(coord) + relative_offset({.col_offset=-2, .row_offset=0});
+#else
+	// Place coordinator in a fixed position of row 4, column 25.
+	location<kernel>(coord) = tile(25, 4);
 
 	// Place upper gates strictly up-down-left-right of the coordinator.
 	location<kernel>(gates[0]) = location<kernel>(coord) + relative_offset({.col_offset=1, .row_offset=0});
@@ -192,6 +210,7 @@ class LSTMGraph_4x2_buff : public graph {
 	location<kernel>(gates[3]) = location<kernel>(coord) + relative_offset({.col_offset=1, .row_offset=-1});
 	location<kernel>(gates[5]) = location<kernel>(coord) + relative_offset({.col_offset=-1, .row_offset=1});
 	location<kernel>(gates[7]) = location<kernel>(coord) + relative_offset({.col_offset=-1, .row_offset=-1});
+#endif
 
     }
 };
