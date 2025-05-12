@@ -24,13 +24,13 @@ void gate_half_buff(
 
 #if defined(GATE_HALF_LOOP_V6) || defined(GATE_HALF_LOOP_V7) || defined(GATE_HALF_LOOP_V8)
     // Setup circular iterators for input, output and state buffers.
-    const vector<float, VECTOR_LANES>* __restrict inp_p = (const vector<float, VECTOR_LANES>*) input.data();
-    const vector<float, VECTOR_LANES>* __restrict state_p = (const vector<float, VECTOR_LANES>*) state.data();
-    vector<float, VECTOR_LANES>* __restrict outp_p = (vector<float, VECTOR_LANES>*) output.data();
+    const vector<float, VECTOR_LANES> *__restrict inp_p = (const vector<float, VECTOR_LANES> *)input.data();
+    const vector<float, VECTOR_LANES> *__restrict state_p = (const vector<float, VECTOR_LANES> *)state.data();
+    vector<float, VECTOR_LANES> *__restrict outp_p = (vector<float, VECTOR_LANES> *)output.data();
 
-    const vector<float, VECTOR_LANES>* __restrict w_state_p = (const vector<float, VECTOR_LANES>*) w_state_part;
-    const vector<float, VECTOR_LANES>* __restrict w_inp_p = (const vector<float, VECTOR_LANES>*) w_input;
-    const vector<float, VECTOR_LANES>* __restrict bias_p = (const vector<float, VECTOR_LANES>*) bias;
+    const vector<float, VECTOR_LANES> *__restrict w_state_p = (const vector<float, VECTOR_LANES> *)w_state_part;
+    const vector<float, VECTOR_LANES> *__restrict w_inp_p = (const vector<float, VECTOR_LANES> *)w_input;
+    const vector<float, VECTOR_LANES> *__restrict bias_p = (const vector<float, VECTOR_LANES> *)bias;
 #else
     // Setup iterators for input, output and state buffers. Since
     // buffers already declared 'restrict', we don't need to use
@@ -152,7 +152,7 @@ void gate_half_buff(
 
             // Compute a block of rows.
             for (int row = 0; row < row_block_size; row++) {
-		acc1 = zeros<accfloat, VECTOR_LANES>();
+                acc1 = zeros<accfloat, VECTOR_LANES>();
 
                 // Multiply and accumulate with state weight matrix.
                 for (int i = 0; i < W_STATE_COLS / VECTOR_LANES; i++) {
@@ -192,32 +192,36 @@ void gate_half_buff(
     constexpr int row_block_size = VECTOR_LANES;
     constexpr int n_row_blocks = LSTM_UNITS / 2 / row_block_size;
 
-    for (int row_block = 0; row_block < n_row_blocks; row_block++) chess_prepare_for_pipelining {
+    for (int row_block = 0; row_block < n_row_blocks; row_block++)
+        chess_prepare_for_pipelining {
 
             // Compute a block of rows.
-            for (int row = 0; row < row_block_size; row++) chess_flatten_loop {
-		acc1 = zeros<accfloat, VECTOR_LANES>();
+            for (int row = 0; row < row_block_size; row++)
+                chess_flatten_loop {
+                    acc1 = zeros<accfloat, VECTOR_LANES>();
 
-                // Multiply and accumulate with state weight matrix.
-                for (int i = 0; i < W_STATE_COLS / VECTOR_LANES; i++) chess_flatten_loop {
-                    va = *w_state_iter++;
-                    vb = *state_iter++;
-                    acc1 = mac(acc1, va, vb);
+                    // Multiply and accumulate with state weight matrix.
+                    for (int i = 0; i < W_STATE_COLS / VECTOR_LANES; i++)
+                        chess_flatten_loop {
+                            va = *w_state_iter++;
+                            vb = *state_iter++;
+                            acc1 = mac(acc1, va, vb);
+                        }
+
+                    // Mutiply and accumulate with input-weight matrix.
+                    for (int i = 0; i < INPUT_DIM / VECTOR_LANES; i++)
+                        chess_flatten_loop {
+                            va = *w_inp_iter++;
+                            vb = *inp_iter++;
+                            acc1 = mac(acc1, va, vb);
+                        }
+
+                    // Sum all of the accumulator lanes.
+                    rslt = reduce_add(acc1.to_vector<float>(0));
+
+                    // Place the result scalar into the vector.
+                    rslt_v.push(rslt);
                 }
-
-                // Mutiply and accumulate with input-weight matrix.
-                for (int i = 0; i < INPUT_DIM / VECTOR_LANES; i++) chess_flatten_loop {
-                    va = *w_inp_iter++;
-                    vb = *inp_iter++;
-                    acc1 = mac(acc1, va, vb);
-                }
-
-                // Sum all of the accumulator lanes.
-                rslt = reduce_add(acc1.to_vector<float>(0));
-
-                // Place the result scalar into the vector.
-                rslt_v.push(rslt);
-            }
 
             rslt_v = reverse(rslt_v);
             // Add bias.
@@ -236,40 +240,44 @@ void gate_half_buff(
     constexpr int row_block_size = VECTOR_LANES;
     constexpr int n_row_blocks = LSTM_UNITS / 2 / row_block_size;
 
-    for (int row_block = 0; row_block < n_row_blocks; row_block++) chess_prepare_for_pipelining {
+    for (int row_block = 0; row_block < n_row_blocks; row_block++)
+        chess_prepare_for_pipelining {
 
             // Compute a block of rows.
-            for (int row = 0; row < row_block_size; row++) chess_flatten_loop {
-		acc1 = zeros<accfloat, VECTOR_LANES>();
-		acc2 = zeros<accfloat, VECTOR_LANES>();
+            for (int row = 0; row < row_block_size; row++)
+                chess_flatten_loop {
+                    acc1 = zeros<accfloat, VECTOR_LANES>();
+                    acc2 = zeros<accfloat, VECTOR_LANES>();
 
-                // Multiply and accumulate with state weight matrix.
-                for (int i = 0; i < W_STATE_COLS / VECTOR_LANES / 2; i++) chess_flatten_loop {
-                    va = *w_state_iter++;
-                    vb = *state_iter++;
-                    acc1 = mac(acc1, va, vb);
-                    vc = *w_state_iter++;
-                    vd = *state_iter++;
-                    acc2 = mac(acc2, vc, vd);
+                    // Multiply and accumulate with state weight matrix.
+                    for (int i = 0; i < W_STATE_COLS / VECTOR_LANES / 2; i++)
+                        chess_flatten_loop {
+                            va = *w_state_iter++;
+                            vb = *state_iter++;
+                            acc1 = mac(acc1, va, vb);
+                            vc = *w_state_iter++;
+                            vd = *state_iter++;
+                            acc2 = mac(acc2, vc, vd);
+                        }
+
+                    // Mutiply and accumulate with input-weight matrix.
+                    for (int i = 0; i < INPUT_DIM / VECTOR_LANES / 2; i++)
+                        chess_flatten_loop {
+                            va = *w_inp_iter++;
+                            vb = *inp_iter++;
+                            acc1 = mac(acc1, va, vb);
+                            vc = *w_inp_iter++;
+                            vd = *inp_iter++;
+                            acc2 = mac(acc2, vc, vd);
+                        }
+
+                    // Sum all of the accumulator lanes.
+                    rslt += reduce_add(acc1.to_vector<float>(0));
+                    rslt += reduce_add(acc2.to_vector<float>(0));
+
+                    // Place the result scalar into the vector.
+                    rslt_v.push(rslt);
                 }
-
-                // Mutiply and accumulate with input-weight matrix.
-                for (int i = 0; i < INPUT_DIM / VECTOR_LANES / 2; i++) chess_flatten_loop {
-                    va = *w_inp_iter++;
-                    vb = *inp_iter++;
-                    acc1 = mac(acc1, va, vb);
-                    vc = *w_inp_iter++;
-                    vd = *inp_iter++;
-                    acc2 = mac(acc2, vc, vd);
-                }
-
-                // Sum all of the accumulator lanes.
-                rslt += reduce_add(acc1.to_vector<float>(0));
-		rslt += reduce_add(acc2.to_vector<float>(0));
-
-                // Place the result scalar into the vector.
-                rslt_v.push(rslt);
-            }
 
             rslt_v = reverse(rslt_v);
             // Add bias.
@@ -291,99 +299,172 @@ void gate_half_buff(
     constexpr int n_state_blocks = W_STATE_COLS / VECTOR_LANES;
     constexpr int n_input_blocks = INPUT_DIM / VECTOR_LANES;
 
-    for (int row_block = 0; row_block < n_row_blocks; row_block++) chess_prepare_for_pipelining {
-	// Compute a block of rows.
-	for (int row = 0; row < row_block_size; row++) chess_flatten_loop {
-		acc1 = zeros<accfloat, VECTOR_LANES>();
+    for (int row_block = 0; row_block < n_row_blocks; row_block++)
+        chess_prepare_for_pipelining {
+            // Compute a block of rows.
+            for (int row = 0; row < row_block_size; row++)
+                chess_flatten_loop {
+                    acc1 = zeros<accfloat, VECTOR_LANES>();
 
-                // Multiply and accumulate with state weight matrix.
-                for (int i = 0; i < n_state_blocks; i++) chess_flatten_loop {
-		    va = *w_state_p++;
-                    vb = *state_p++;
-                    acc1 = mac(acc1, va, vb);
+                    // Multiply and accumulate with state weight matrix.
+                    for (int i = 0; i < n_state_blocks; i++)
+                        chess_flatten_loop {
+                            va = *w_state_p++;
+                            vb = *state_p++;
+                            acc1 = mac(acc1, va, vb);
+                        }
+
+                    // Mutiply and accumulate with input-weight matrix.
+                    for (int i = 0; i < n_input_blocks; i++)
+                        chess_flatten_loop {
+                            va = *w_inp_p++;
+                            vb = *inp_p++;
+                            acc1 = mac(acc1, va, vb);
+                        }
+
+                    // Sum all of the accumulator lanes.
+                    rslt = reduce_add(acc1.to_vector<float>(0));
+
+                    // Place the result scalar into the vector.
+                    rslt_v.push(rslt);
+
+                    // Reset state and input pointers.
+                    state_p -= n_state_blocks;
+                    inp_p -= n_input_blocks;
                 }
-
-                // Mutiply and accumulate with input-weight matrix.
-                for (int i = 0; i < n_input_blocks; i++) chess_flatten_loop {
-                    va = *w_inp_p++;
-                    vb = *inp_p++;
-                    acc1 = mac(acc1, va, vb);
-                }
-
-                // Sum all of the accumulator lanes.
-                rslt = reduce_add(acc1.to_vector<float>(0));
-
-                // Place the result scalar into the vector.
-                rslt_v.push(rslt);
-
-		// Reset state and input pointers.
-		state_p -= n_state_blocks;
-		inp_p -= n_input_blocks;
-            }
 
             rslt_v = reverse(rslt_v);
             // Add bias.
             rslt_v = add(*bias_p++, rslt_v);
             // Forward gate output to coordinator.
             *outp_p++ = rslt_v;
-      }
+        }
 #elif defined(GATE_HALF_LOOP_V7)
     // - used pointers instead of iterators
     // - pipelining at outer loop
     // - inner loops completely flattened
     // - double accumulator
-    // - NOTE: min cycle count = 3670 !!! 
+    // - NOTE: min cycle count = 3670 !!!
     constexpr int row_block_size = VECTOR_LANES;
     constexpr int n_row_blocks = LSTM_UNITS / 2 / row_block_size;
     constexpr int n_state_blocks = W_STATE_COLS / VECTOR_LANES;
     constexpr int n_input_blocks = INPUT_DIM / VECTOR_LANES;
 
-    for (int row_block = 0; row_block < n_row_blocks; row_block++) chess_prepare_for_pipelining {
-	// Compute a block of rows.
-	for (int row = 0; row < row_block_size; row++) chess_flatten_loop {
-		acc1 = zeros<accfloat, VECTOR_LANES>();
-		acc2 = zeros<accfloat, VECTOR_LANES>();
+    for (int row_block = 0; row_block < n_row_blocks; row_block++)
+        chess_prepare_for_pipelining {
+            // Compute a block of rows.
+            for (int row = 0; row < row_block_size; row++)
+                chess_flatten_loop {
+                    acc1 = zeros<accfloat, VECTOR_LANES>();
+                    acc2 = zeros<accfloat, VECTOR_LANES>();
 
-                // Multiply and accumulate with state weight matrix.
-                for (int i = 0; i < n_state_blocks / 2; i++) chess_flatten_loop {
-		    va = *w_state_p++;
-                    vb = *state_p++;
-                    acc1 = mac(acc1, va, vb);
+                    // Multiply and accumulate with state weight matrix.
+                    for (int i = 0; i < n_state_blocks / 2; i++)
+                        chess_flatten_loop {
+                            va = *w_state_p++;
+                            vb = *state_p++;
+                            acc1 = mac(acc1, va, vb);
 
-		    vc = *w_state_p++;
-                    vd = *state_p++;
-                    acc2 = mac(acc2, vc, vd);
+                            vc = *w_state_p++;
+                            vd = *state_p++;
+                            acc2 = mac(acc2, vc, vd);
+                        }
+
+                    // Mutiply and accumulate with input-weight matrix.
+                    for (int i = 0; i < n_input_blocks / 2; i++)
+                        chess_flatten_loop {
+                            va = *w_inp_p++;
+                            vb = *inp_p++;
+                            acc1 = mac(acc1, va, vb);
+
+                            vc = *w_inp_p++;
+                            vd = *inp_p++;
+                            acc2 = mac(acc2, vc, vd);
+                        }
+
+                    // Sum all of the accumulator lanes.
+                    rslt += reduce_add(acc1.to_vector<float>(0));
+                    rslt += reduce_add(acc2.to_vector<float>(0));
+
+                    // Place the result scalar into the vector.
+                    rslt_v.push(rslt);
+
+                    // Reset state and input pointers.
+                    state_p -= n_state_blocks;
+                    inp_p -= n_input_blocks;
                 }
-
-                // Mutiply and accumulate with input-weight matrix.
-                for (int i = 0; i < n_input_blocks / 2; i++) chess_flatten_loop {
-                    va = *w_inp_p++;
-                    vb = *inp_p++;
-                    acc1 = mac(acc1, va, vb);
-
-                    vc = *w_inp_p++;
-                    vd = *inp_p++;
-                    acc2 = mac(acc2, vc, vd);
-                }
-
-                // Sum all of the accumulator lanes.
-                rslt += reduce_add(acc1.to_vector<float>(0));
-                rslt += reduce_add(acc2.to_vector<float>(0));
-
-                // Place the result scalar into the vector.
-                rslt_v.push(rslt);
-
-		// Reset state and input pointers.
-		state_p -= n_state_blocks;
-		inp_p -= n_input_blocks;
-            }
 
             rslt_v = reverse(rslt_v);
             // Add bias.
             rslt_v = add(*bias_p++, rslt_v);
             // Forward gate output to coordinator.
             *outp_p++ = rslt_v;
-      }
+        }
+#elif defined(GATE_HALF_LOOP_V8)
+    // - used pointers instead of iterators
+    // - pipelining at outer loop
+    // - inner loops completely flattened
+    // - double accumulator
+    // - Improved accumulator reduction
+    // - NOTE: min cycle count = 3267
+    constexpr int row_block_size = VECTOR_LANES;
+    constexpr int n_row_blocks = LSTM_UNITS / 2 / row_block_size;
+    constexpr int n_state_blocks = W_STATE_COLS / VECTOR_LANES;
+    constexpr int n_input_blocks = INPUT_DIM / VECTOR_LANES;
+
+    const vector<float, VECTOR_LANES> *__restrict state_start_p = state_p;
+    const vector<float, VECTOR_LANES> *__restrict inp_start_p = inp_p;
+
+    for (int row_block = 0; row_block < n_row_blocks; row_block++)
+        chess_prepare_for_pipelining chess_pipeline_initiation_interval(201) chess_modulo_scheduling_budget_ratio(200) {
+            // Compute a block of rows.
+            for (int row = 0; row < row_block_size; row++)
+                chess_flatten_loop {
+                    acc1 = zeros<accfloat, VECTOR_LANES>();
+                    acc2 = zeros<accfloat, VECTOR_LANES>();
+                    state_p = state_start_p;
+                    inp_p = inp_start_p;
+
+                    // Multiply and accumulate with state weight matrix.
+                    for (int i = 0; i < n_state_blocks / 2; i++)
+                        chess_flatten_loop {
+                            va = *w_state_p++;
+                            vb = *state_p++;
+                            acc1 = mac(acc1, va, vb);
+
+                            vc = *w_state_p++;
+                            vd = *state_p++;
+                            acc2 = mac(acc2, vc, vd);
+                        }
+
+                    // Mutiply and accumulate with input-weight matrix.
+                    for (int i = 0; i < n_input_blocks / 2; i++)
+                        chess_flatten_loop {
+                            va = *w_inp_p++;
+                            vb = *inp_p++;
+                            acc1 = mac(acc1, va, vb);
+
+                            vc = *w_inp_p++;
+                            vd = *inp_p++;
+                            acc2 = mac(acc2, vc, vd);
+                        }
+
+                    // Sum all of the accumulator lanes.
+                    va = acc1.to_vector<float>(0);
+                    vb = acc2.to_vector<float>(0);
+                    vc = add(va, vb);
+                    rslt = reduce_add(vc);
+
+                    // Place the result scalar into the vector.
+                    rslt_v.push(rslt);
+                }
+
+            rslt_v = reverse(rslt_v);
+            // Add bias.
+            rslt_v = add(*bias_p++, rslt_v);
+            // Forward gate output to coordinator.
+            *outp_p++ = rslt_v;
+        }
 #endif
     auto n_cycles_after = get_cycles();
     auto cycle_count = n_cycles_after - n_cycles_before;
