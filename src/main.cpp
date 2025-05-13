@@ -147,9 +147,9 @@ int main(void) {
     // Run the graph.
     printf("Starting graph ...\n");
 #if defined(VARIANT_4X2_BUFF)
-    gr.run(OUTPUT_SAMPLES);
-#else
     gr.run(OUTPUT_SAMPLES + 1);
+#else
+    gr.run(OUTPUT_SAMPLES);
 #endif
     gr.gmio_out.wait();
     gr.wait();
@@ -163,9 +163,9 @@ int main(void) {
             printf("#%.12f %.12f\n",
                    dropbear_data.time[i],
 #if defined(VARIANT_4X2_BUFF)
-                   *(output_buff + (i - INPUT_DIM_REAL + 1) * OUTPUT_BLOCK_SIZE));
-#else
                    *(output_buff + (i - INPUT_DIM_REAL + 2) * OUTPUT_BLOCK_SIZE));
+#else
+                   *(output_buff + (i - INPUT_DIM_REAL + 1) * OUTPUT_BLOCK_SIZE));
 #endif
 
         }
