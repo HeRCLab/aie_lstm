@@ -113,10 +113,11 @@ int main(void) {
     // advantage of that. Rather, we will do the sliding-window
     // copying in the input buffer itself.
     // ---------------------------------------------------------------,
-    constexpr int input_buff_size = OUTPUT_SAMPLES * INPUT_DIM * sizeof(float);
 #if defined(VARIANT_4X2_BUFF)
+    constexpr int input_buff_size = (OUTPUT_SAMPLES + 1) * INPUT_DIM * sizeof(float);
     constexpr int output_buff_size = (OUTPUT_SAMPLES + 1) * OUTPUT_BLOCK_SIZE * sizeof(float);
 #else
+    constexpr int input_buff_size = OUTPUT_SAMPLES * INPUT_DIM * sizeof(float);
     constexpr int output_buff_size = OUTPUT_SAMPLES * OUTPUT_BLOCK_SIZE * sizeof(float);
 #endif
 
