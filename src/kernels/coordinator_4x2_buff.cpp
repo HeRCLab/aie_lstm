@@ -29,7 +29,7 @@ void coordinator_4x2_buff(
     const float bias_dense,
 
     // Output buffers.
-    adf::output_async_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state_out,
+    adf::output_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state_out,
     // The minimum size of a buffer is 16 Bytes = 4 float
     // samples. Since each iteration will produce just a single
     // result, the rest of 12 bytes will be wasted.
@@ -49,16 +49,22 @@ void coordinator_4x2_buff(
         // printf("Sending initial state!\n");
         first_iteration = 0;
 
-        state_out.acquire();
         auto state_out_iter = begin_vector<VECTOR_LANES>(state_out);
         for (int i = 0; i < block_count; i++) {
             *state_out_iter++ = *state_iter++;
         }
-        state_out.release();
 
         // Reset state iterators.
         state_iter -= block_count;
         state_out_iter -= block_count;
+
+	// Send zeros as output.
+	auto outp_iter = begin(output);
+	for (int i = 0; i < OUTPUT_BLOCK_SIZE; i++) {
+	  *outp_iter++ = 0.0f;
+	}
+
+	return;
     }
 
     // Wait for results to arrive from all eight gates.
@@ -72,7 +78,7 @@ void coordinator_4x2_buff(
     mg_down_rslt.acquire();
 
     // Get access to state output buffer.
-    state_out.acquire();
+    // state_out.acquire();
 
     // Setup iterators on acquired async buffers for upper half gates.
     auto ig_up_iter = cbegin_vector<VECTOR_LANES>(ig_up_rslt);
@@ -157,7 +163,7 @@ void coordinator_4x2_buff(
     fg_down_rslt.release();
     og_down_rslt.release();
     mg_down_rslt.release();
-    state_out.release();
+    // state_out.release();
 
 #ifdef DEBUG
     print_state(state);

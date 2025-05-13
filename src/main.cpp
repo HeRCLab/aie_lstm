@@ -114,7 +114,11 @@ int main(void) {
     // copying in the input buffer itself.
     // ---------------------------------------------------------------,
     constexpr int input_buff_size = OUTPUT_SAMPLES * INPUT_DIM * sizeof(float);
+#if defined(VARIANT_4X2_BUFF)
+    constexpr int output_buff_size = (OUTPUT_SAMPLES + 1) * OUTPUT_BLOCK_SIZE * sizeof(float);
+#else
     constexpr int output_buff_size = OUTPUT_SAMPLES * OUTPUT_BLOCK_SIZE * sizeof(float);
+#endif
 
     printf("Output samples: %d\n", OUTPUT_SAMPLES);
     printf("Input buff size: %d\n", input_buff_size);
@@ -142,7 +146,11 @@ int main(void) {
 
     // Run the graph.
     printf("Starting graph ...\n");
+#if defined(VARIANT_4X2_BUFF)
     gr.run(OUTPUT_SAMPLES);
+#else
+    gr.run(OUTPUT_SAMPLES + 1);
+#endif
     gr.gmio_out.wait();
     gr.wait();
     printf("Graph done.\n");
@@ -154,13 +162,19 @@ int main(void) {
         } else {
             printf("#%.12f %.12f\n",
                    dropbear_data.time[i],
+#if defined(VARIANT_4X2_BUFF)
                    *(output_buff + (i - INPUT_DIM_REAL + 1) * OUTPUT_BLOCK_SIZE));
+#else
+                   *(output_buff + (i - INPUT_DIM_REAL + 2) * OUTPUT_BLOCK_SIZE));
+#endif
+
         }
     }
 
     // Free GMIO buffers.
     GMIO::free(input_buff);
     GMIO::free(output_buff);
+
     gr.end();
 
     return 0;

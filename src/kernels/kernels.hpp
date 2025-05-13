@@ -14,8 +14,8 @@ void gate_full_buff(
     adf::output_buffer<float, adf::extents<LSTM_UNITS>> &__restrict output);
 
 void gate_half_buff(
-    adf::input_circular_buffer<float, adf::extents<INPUT_DIM>> &__restrict input,
-    adf::input_circular_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state,
+    adf::input_buffer<float, adf::extents<INPUT_DIM>> &__restrict input,
+    adf::input_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state,
     const float (&w_state_part)[W_STATE_SIZE / 2],
     const float (&w_input)[W_INPUT_SIZE],
     const float (&bias)[LSTM_UNITS / 2],
@@ -38,7 +38,7 @@ void coordinator_4x1_buff(
     adf::input_async_buffer<float, adf::extents<LSTM_UNITS>> &__restrict modulation_gate_rslt,
     const float (&w_dense)[LSTM_UNITS],
     const float bias_dense,
-    adf::output_async_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state_out,
+    adf::output_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state_out,
     adf::output_buffer<float, adf::extents<OUTPUT_BLOCK_SIZE>> &__restrict output);
 
 void coordinator_4x2_buff(
@@ -53,7 +53,7 @@ void coordinator_4x2_buff(
 
     const float (&w_dense)[LSTM_UNITS],
     const float bias_dense,
-    adf::output_async_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state_out,
+    adf::output_buffer<float, adf::extents<LSTM_UNITS>> &__restrict state_out,
     adf::output_buffer<float, adf::extents<OUTPUT_BLOCK_SIZE>> &__restrict output);
 
 void coordinator_4x2_strm(
