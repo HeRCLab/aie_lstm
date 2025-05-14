@@ -180,4 +180,6 @@ void coordinator_4x2_buff(
     for (int i = 0; i < 3; i++) {
         *outp_iter++ = 0.0f;
     }
+
+    printf("------\n");
 }

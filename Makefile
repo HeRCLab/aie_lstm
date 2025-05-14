@@ -27,7 +27,8 @@ OPT_LVL:=0
 # Buffer placement optimization level (0-9).
 BUFFER_OPT_LVL:=0
 
-STACK_SIZE:=4096
+STACK_SIZE:=2048
+HEAP_SIZE:=2048
 
 # Pre-processor directives:
 # ------------------------------------------------------------------,
@@ -82,6 +83,7 @@ AIECC := v++ \
       --aie.log-level=$(AIE_LOG_LVL) \
       --aie.xlopt=$(OPT_LVL) \
       --aie.stacksize=$(STACK_SIZE) \
+      --aie.heapsize=$(HEAP_SIZE) \
       --aie.fastmath \
       --aie.fast-floats \
       --aie.fast-nonlinearfloats \
@@ -95,7 +97,6 @@ AIECC := v++ \
       $(foreach x,$(LINKER_FLAGS),--aie.Xpslinker=$x) \
       --report_dir $(REPORT_DIR) \
       --log_dir $(LOG_DIR) \
-
 #      --aie.Xrouter="dmaFIFOsInFreeBankOnly" \
 
 .PHONY: build-hw \
@@ -120,13 +121,19 @@ debug-x86sim:
 build-hw: $(SOURCES)
 	$(AIECC) --target hw --work_dir $(WORK_DIR_HW) src/main.cpp
 
+AIESIM_CMD := aiesimulator \
+	      --pkg-dir=$(WORK_DIR_HW) \
+	      --options-file=aiesim-options.txt
+
 run-aiesim:
-	aiesimulator \
-		--profile \
-		--pkg-dir=$(WORK_DIR_HW) \
-		--options-file=aiesim-options.txt \
-		--enable-memory-check \
-		--dump-vcd aiesim
+	$(AIESIM_CMD) \
+		--enable-memory-check=1 \
+		--profile
+
+# Dumping VCD file while --profile option is active seems
+# to corrupt the network output.
+run-aiesim-trace:
+	$(AIESIM_CMD) --dump-vcd aiesim
 
 clean-comm:
 	-rm -f *.log *.jou *.db libadf.a Map_Report.csv
