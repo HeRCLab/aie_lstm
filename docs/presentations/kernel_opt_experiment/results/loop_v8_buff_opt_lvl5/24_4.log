@@ -1,0 +1,1770 @@
+Release: ASIP Programmer U-2023.06-TGT-240507
+Tool: chessmk version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Configuration: Release_LLVM
+Compiling "24_4.cc"
+chess-clang --chess-verbose -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib --chess-proc-dir=/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib -S -nostdlibinc -D__chess__ -D__tct_release__=2306 -g -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/. -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libcxx-lite/include -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libs/libcxx-9.0.0/include-lite -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime/include -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 -xc++ -O2 -include aie_core.h -std=c++2a -fno-builtin-memcpy -mllvm -disable-lsr -mllvm -replexitval=never -mllvm -enable-load-pre=false -mllvm -chess-disable-add-to-or -mllvm -chess-combine-gep-indices=none -mllvm -chess-disable-fold-phi-of-loads -mllvm -chess-aainfo2chains-algo=4 -mllvm -chess-aggressive-aainfo=false -mllvm -chess-enable-indvarsimplify=0 -fchess-register-c++-static-destructors-as-global-dtors -Werror=return-type -mllvm -chess-disable-cse-across-loopboundary -mllvm -chess-tbaa-detect-common-underlying-object=true -mllvm -chess-protect-llvm-global-reg-access=true -mllvm -chess-enable-c-pragma-protect ../src/24_4.cc -o../Release/chesswork/24_4.sfg --chess-proc-name=me
+Compiling "gate_half_buff.cpp"
+chess-clang --chess-verbose -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib --chess-proc-dir=/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib -S -nostdlibinc -D__chess__ -D__tct_release__=2306 -g -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/. -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libcxx-lite/include -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libs/libcxx-9.0.0/include-lite -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime/include -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 -xc++ -O2 -include aie_core.h -std=c++2a -fno-builtin-memcpy -mllvm -disable-lsr -mllvm -replexitval=never -mllvm -enable-load-pre=false -mllvm -chess-disable-add-to-or -mllvm -chess-combine-gep-indices=none -mllvm -chess-disable-fold-phi-of-loads -mllvm -chess-aainfo2chains-algo=4 -mllvm -chess-aggressive-aainfo=false -mllvm -chess-enable-indvarsimplify=0 -fchess-register-c++-static-destructors-as-global-dtors -Werror=return-type -mllvm -chess-disable-cse-across-loopboundary -mllvm -chess-tbaa-detect-common-underlying-object=true -mllvm -chess-protect-llvm-global-reg-access=true -mllvm -chess-enable-c-pragma-protect /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp -o../Release/chesswork/gate_half_buff.sfg --chess-proc-name=me
+Release: ipp U-2023.06-TGT-240507 
+Tool: chess-clang version U-2023.06#6a0b186d7c#240322
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Reading processor configuration from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_llvm.cfg
+
+Release: ipp U-2023.06-TGT-240507 
+Tool: chess-clang version U-2023.06#6a0b186d7c#240322
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Reading processor configuration from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_llvm.cfg
+
+
+chess-clang user time   =    2.54 s  /     2.53 s 	24_4
+chess-clang system time =    0.09 s  /     0.08 s 	24_4
+chess-clang real time   =    2.64 s  /     2.63 s 	24_4
+
+noodle -v -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/. -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libcxx-lite/include -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libs/libcxx-9.0.0/include-lite -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime/include -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 -iaie_core.h +Sinl +Olbb=200 +Opmsa +NOpld +Olzyinl +w../Release/chesswork ../Release/chesswork/24_4.sfg +Q1=+Sinl,+Olbb=200,+Opmsa,+NOpld,+Olzyinl +Q2=+Sinl,+Olbb=200,+Opmsa,+NOpld,+Olzyinl +Q3=+Sinl,+Olbb=1000,+Opmsa,+NOpld,+Olzyinl +Qfast=+Sinl,+Olbb=1000,+Opmsa,+NOpld,+Olzyinl,+Opfp +Qs=+Sinl,+Olbb=200,+Opmsa,+NOpld,+Olzyinl +Qz=+Sinl,+Olbb=200,+Opmsa,+NOpld,+Olzyinl me
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: noodle version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Reading enablings from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess.ena
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me.isb
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess.lib
+
+Translating source file ...
+
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_chess.h", line 658, column 39: declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 190, column 35: declaring `__abstract1381' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 191, column 35: declaring `__abstract1383' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+
+
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 192, column 35: declaring `__abstract1385' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 479, column 23: declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 479, column 30: declaring `__abstract2163' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 480, column 23: declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 480, column 30: declaring `__abstract2167' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+
+
+
+
+
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 481, column 23: declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 481, column 30: declaring `__abstract2171' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 729, column 25: declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+Warning in "me_mult.h", line 97, column 43: declaring `__abstract5273' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "me_mult.h", line 97, column 51: declaring `__abstract5274' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+
+Warning in "me_mult.h", line 1356, column 55: declaring `loffs' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "me_mult.h", line 1356, column 70: declaring `roffs' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+
+In file included from /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_chess.h:690,
+                 from /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/aie_core.h:57,
+                 from <command line>:1:
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:278:30: warning: pasting "shft_elem_x4int" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:278:30: warning: pasting "undef_v4int32" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:279:30: warning: pasting "shft_elem_x8int" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:279:30: warning: pasting "undef_v8int32" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:280:30: warning: pasting "shft_elem_x8int" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:280:30: warning: pasting "undef_v8int16" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:281:31: warning: pasting "shft_elem_x16int" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:281:31: warning: pasting "undef_v16int32" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:282:31: warning: pasting "shft_elem_x16int" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:282:31: warning: pasting "undef_v16int16" and "(" does not give a valid preprocessing token
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_common.h", line 120, column 33: declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_common.h", line 120, column 48: declaring `pmx' with type `pmx_cfg' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+
+Warning in "": declaring `__a' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "": declaring `__a' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "": declaring `__a' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+
+
+
+chess-clang user time   =    4.39 s  /     4.39 s 	gate_half_buff
+chess-clang system time =    0.14 s  /     0.14 s 	gate_half_buff
+chess-clang real time   =    4.58 s  /     4.57 s 	gate_half_buff
+
+noodle -v -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/. -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libcxx-lite/include -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libs/libcxx-9.0.0/include-lite -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime/include -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 -iaie_core.h +Sinl +Olbb=200 +Opmsa +NOpld +Olzyinl +w../Release/chesswork ../Release/chesswork/gate_half_buff.sfg +Q1=+Sinl,+Olbb=200,+Opmsa,+NOpld,+Olzyinl +Q2=+Sinl,+Olbb=200,+Opmsa,+NOpld,+Olzyinl +Q3=+Sinl,+Olbb=1000,+Opmsa,+NOpld,+Olzyinl +Qfast=+Sinl,+Olbb=1000,+Opmsa,+NOpld,+Olzyinl,+Opfp +Qs=+Sinl,+Olbb=200,+Opmsa,+NOpld,+Olzyinl +Qz=+Sinl,+Olbb=200,+Opmsa,+NOpld,+Olzyinl me
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: noodle version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Reading enablings from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess.ena
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me.isb
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess.lib
+
+Translating source file ...
+
+
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_chess.h", line 658, column 39: declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 190, column 35: declaring `__abstract1381' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 191, column 35: declaring `__abstract1383' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 192, column 35: declaring `__abstract1385' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 479, column 23: declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 479, column 30: declaring `__abstract2163' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 480, column 23: declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 480, column 30: declaring `__abstract2167' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+
+
+
+
+
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 481, column 23: declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 481, column 30: declaring `__abstract2171' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_upd_ext.h", line 729, column 25: declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+Warning in "me_mult.h", line 97, column 43: declaring `__abstract5273' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "me_mult.h", line 97, column 51: declaring `__abstract5274' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_common.h", line 122, column 19: declaring `cnv' with type (pointer to) `pmx_cnv' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+Warning in "Generation of llvm patterns for me": declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "Generation of llvm patterns for me": declaring `__a' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "Generation of llvm patterns for me": declaring `__b' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "Generation of llvm patterns for me": declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "Generation of llvm patterns for me": declaring `__a' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "Generation of llvm patterns for me": declaring `__b' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "Generation of llvm patterns for me": declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "Generation of llvm patterns for me": declaring `__a' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "Generation of llvm patterns for me": declaring `__b' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+
+
+
+
+
+
+
+
+
+Checking ...
+
+Reading DSFG from: ../Release/chesswork/24_4.sfg
+
+Translating ...
+
+        unsigned main()
+
+Finishing ...
+
+
+noodle user time   =    2.61 s  /     2.50 s 	24_4
+noodle system time =    0.59 s  /     0.52 s 	24_4
+noodle real time   =    3.26 s  /     3.07 s 	24_4
+
+chess-backend 24_4-main_ me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation -x --print-subtools --cosel -v -m +ef -M3 -S1024 --amnesia -v -p12 -q2 -eAM -rCLH -fR=2 +Oearly-fanout-complex +Odhls -Ono-prune-mappings +Oexcc +Oprefer-local-reg-moves -Ono-collapse-bundles --mist1 -v -k2048 --showcolor -v -b --mist2 -v -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 +Omodo -k2048 +Omsbr=2000 +Opnll +A +pnopALU +pnopLDA +pnopLDB +pnopSTS +pnopVEC +Ofexm +Onzmem +Ono-mapping-backtracking +Oalways-check-exec-paths +Omodulo-scheduling-minimize-folding-index +Omodulo-scheduling-lookahead-critical-transitory-class=AcqLdaRsrc_ID,AcqLdbRsrc_ID:2 +Odisable-spill-instr-class=LR_short_spill +Odisaggr-record-accesses +Oslr=crUPSMode +Oslr=crSRSMode -ggraph --tale -v -g -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 -V24_4 -L
+chess-backend --gvt me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation --tale -v -g -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 -V24_4 -L
+--cosel -v -m +ef -M3 -S1024 --common 24_4-main_ me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation -x
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: cosel version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: tale version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Reading enablings from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib//isg/me_chess.ena
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib//isg/me.isb
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib//isg/me_chess.lib
+Reading LIB/ISG from: 24_4.lib
+Reading elongation rules from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation
+Reading relocators from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib//isg/me.rlo with command tct_gcpp3 -nostdinc -nostdinc++ -lang-asm  -D'__AIENGINE__' -D'__AIE_ARCH__=10' -D'DEPLOYMENT_ELF=1' -D'__LOCK_FENCE_MODE__=0' -D'NO_DISK_IO' -D'USE_PWL_ACTIVATION_FNS' -D'VARIANT_4X2_BUFF' -D'GATE_HALF_LOOP_V8' -D'FLOAT2FIX_FAST' -D'FPLT_FAST' -D'FPGE_FAST' -D'AIE_OPTION_SCALAR_FLOAT_ON_VECTOR' -D'AIE_OPTION_SINF_COSF_FAST' -D'__tct_tgt__=240507' -I'/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/' -I'/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib//isg/'
+Reading DSFG from: 24_4.gvt
+Reading initial values from: 24_4.ini
+Reading initial values from: 24_4.sfg
+Reading Dwarf register-list from file '/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_regs.txt' ...
+Reading Dwarf register ID's from file '/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_regid.txt' ...
+
+Dumping object file '24_4.gvt.o' in ELF format with DWARF debug information (1)
+Reading enablings from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess.ena
+Reading LIB/ISG/NML from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me.isb
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess.lib
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_bndl.isg
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_dr.isg
+Reading DSFG from: 24_4-main_.sfg
+Collecting static variable register operations...
+
+
+
+tale user time   =    0.09 s  /     0.01 s 	24_4
+tale system time =    0.04 s  /     0.00 s 	24_4
+tale real time   =    0.13 s  /     0.01 s 	24_4
+
+**** Bundling `F_main' ****
+
+   macro #186 (4 opn)
+      matching... (4 p) (7 P)
+      covering... (4 its) (cost 3509.952)
+
+   macro #439 (7 opn)
+      matching... (7 p) (19 P)
+      covering... (5 its) (cost 3541.075)
+
+   macro #182 (2 opn)
+      matching... (1 p) (2 P)
+      covering... (1 its) (cost 1180.021)
+
+   macro #943 (5 opn)
+      matching... (5 p) (8 P)
+      covering... (4 its) (cost 3570.052)
+
+   macro #175 (3 opn)
+      matching... (1 p) (4 P)
+      covering... (1 its) (cost 1191.021)
+
+   macro #171 (3 opn)
+      matching... (1 p) (4 P)
+      covering... (1 its) (cost 1191.021)
+
+   macro #165 (3 opn)
+      matching... (1 p) (4 P)
+      covering... (1 its) (cost 1191.021)
+
+   macro #159 (4 opn)
+      matching... (2 p) (5 P)
+      covering... (2 its) (cost 1190.031)
+
+   macro #153 (4 opn)
+      matching... (2 p) (5 P)
+      covering... (2 its) (cost 1190.031)
+
+   macro #147 (4 opn)
+      matching... (2 p) (5 P)
+      covering... (2 its) (cost 1190.031)
+
+   macro #141 (4 opn)
+      matching... (2 p) (5 P)
+      covering... (2 its) (cost 1190.031)
+
+   macro #273 (2 opn)
+      matching... (3 p) (4 P)
+      covering... (3 its) (cost 2380.032)
+
+   macro #131 (4 opn)
+      matching... (2 p) (5 P)
+      covering... (2 its) (cost 1190.031)
+
+   macro #127 (4 opn)
+      matching... (2 p) (5 P)
+      covering... (2 its) (cost 1190.031)
+
+   macro #121 (4 opn)
+      matching... (2 p) (5 P)
+      covering... (2 its) (cost 1190.031)
+
+   macro #115 (4 opn)
+      matching... (2 p) (5 P)
+      covering... (2 its) (cost 1190.031)
+
+   macro #109 (4 opn)
+      matching... (2 p) (5 P)
+      covering... (2 its) (cost 1190.031)
+
+   macro #103 (4 opn)
+      matching... (2 p) (5 P)
+      covering... (2 its) (cost 1190.031)
+
+   macro #97 (4 opn)
+      matching... (2 p) (5 P)
+      covering... (2 its) (cost 1190.031)
+
+   macro #91 (4 opn)
+      matching... (2 p) (5 P)
+      covering... (2 its) (cost 1190.031)
+
+   macro #85 (4 opn)
+      matching... (2 p) (5 P)
+      covering... (2 its) (cost 1190.031)
+
+   macro #79 (4 opn)
+      matching... (2 p) (5 P)
+      covering... (2 its) (cost 1190.031)
+
+   macro #73 (4 opn)
+      matching... (2 p) (5 P)
+      covering... (2 its) (cost 1190.031)
+
+   macro #67 (4 opn)
+      matching... (2 p) (5 P)
+      covering... (2 its) (cost 1190.031)
+
+   macro #61 (3 opn)
+      matching... (1 p) (4 P)
+      covering... (1 its) (cost 1191.021)
+
+   macro #247 (6 opn)
+      matching... (5 p) (21 P)
+      covering... (5 its) (cost 3571.883)
+
+   macro #53 (3 opn)
+      matching... (1 p) (4 P)
+      covering... (1 its) (cost 1191.021)
+
+   macro #222 (6 opn)
+      matching... (5 p) (21 P)
+      covering... (5 its) (cost 3571.883)
+
+   macro #47 (3 opn)
+      matching... (1 p) (4 P)
+      covering... (1 its) (cost 1191.021)
+
+   macro #197 (10 opn)
+      matching... (7 p) (25 P)
+      covering... (7 its) (cost 5949.905)
+
+   macro #10 (1 opn)
+      matching... (2 p) (2 P)
+      covering... (2 its) (cost 1180.020)
+
+   macro #927 (5 opn)
+      matching... (5 p) (7 P)
+      covering... (3 its) (cost 2359.064)
+
+   macro #745 (49 opn)
+      matching... (54 p) (83 P)
+      covering... (40 its) (cost 37445.394)
+
+
+Total cost = 94445.903
+
+cosel user time   =    0.35 s  /     0.25 s 	24_4-main_
+cosel system time =    0.06 s  /     0.01 s 	24_4-main_
+cosel real time   =    0.45 s  /     0.30 s 	24_4-main_
+
+--amnesia -v -p12 -q2 -eAM -rCLH -fR=2 +Oearly-fanout-complex +Odhls -Ono-prune-mappings +Oexcc +Oprefer-local-reg-moves -Ono-collapse-bundles --common 24_4-main_ me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation -x
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: amnesia version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Reading pattern DSFGs from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_dr.sfg
+
+application DSFG routing:
+
+**** Routing 'F_main' ****
+analysing connectivity in ISG
+initial DSFG transformations
+initial timing
+initialise routing
+dependency hazard solving
+
+1 of 4: (943 68 110 97 165 74 61 142 48 116 197 103 171 132 80 67 148 54 122 109 44 86 73 154 141 222 47 128 115 50 131 92 79 160 147 53 134 121 14 176 56 273 98 85 166 247 153 127 62 23 104 91 172 159 175)
+(fanout-hzds) (splits:1) (fanout-hzds) (splits:1) (fanout-hzds) (splits:1) (fanout-hzds) (splits:1) (fanout-hzds) (splits:1) (fanout-hzds) (splits:1) (seq:1) 
+2 of 4: (944 945 24 9 10)
+
+3 of 4: (179 4 183 439 178 182 32 927)
+
+4 of 4: (745 186)
+(fanout-hzds) (splits:1) 
+sync/offset hazards solving
+
+
+time (after hazard solving) =    0.19 s
+
+routing control inputs
+
+routing
+
+1 of 4 ( 14 197 47 222 53 247 61 67 73 79 85 91 97 103 109 115 121 127 131 273 141 147 153 159 165 171 175 943 23 )
+# splits : 33
+# uses: 69 +2 +4 +1 +4 +1 +1 +1 +4 +1 +4 +1 +4 +1 +2 +1 +1 +1 +1 +1 +2 +1 +1 +1 (R:t)-1 1 1 1 1 1 1 1 +1 (R:t)-1 1 1 1 1 1 1 1 +1 +1 +1 +1 +1 (R:t)-1 4 1 1 1 1 1 1 ++1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 (R:t)-1 4 1 1 1 1 1 1 +1 +1 +1 +1 +1 (R:t)-1 4 1 3 1 1 1 1 +1 (R:t)-1 4 1 3 1 1 1 1 +1 +1 +1 (R:t)-1 1 1 3 1 1 1 1 +1 (R:t)-1 1 1 3 1 1 1 1 +1 (R:t)-1 4 1 3 1 1 1 1 +1 (R:t)-1 4 1 3 1 1 1 1 +1 (R:t)-1 1 1 3 1 1 1 1 +1 (R:t)-1 1 1 3 1 1 1 1 +1 (R:t)-1 4 1 3 1 1 1 1 +1 (R:t)-1 4 1 3 1 1 1 1 +1 (R:t)-1 1 1 3 1 1 1 1 +1 (R:t)-1 1 1 3 1 1 1 1 +1 (R:t)-1 4 1 3 1 1 1 1 +1 (R:t)-1 4 1 3 1 1 1 1 +1 +1 +1 +1 (check) (R)
+# splits: 13 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 (check) (P:t)=1 1 1 1 1 1 1 1 1 1 1 1 1 1 (P:t)=1 1 1 1 1 1 1 1 1 1 1 1 (P:t)=1 1 1 1 1 1 1 1 1 1 (P:t)=1 1 1 1 1 1 1 1 (P:t)=1 1 1 1 1 1 (R)(rlx +1)(R)+1 (check) 
+# splits: 14 
+
+
+2 of 4 ( 4 927 9 944 945 24 178 182 439 32 )
+# uses: 24 +1 +4 (rlx +1)4 +1 +1 +2 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 (check) 
+# floating moves to bind: 1
+
+
+
+3 of 4 ( 10 )
+# uses: 17 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 (check) 
+
+
+4 of 4 ( 745 186 )
+# uses: 41 +1 +9 +9 +1 +1 +1 +1 +1 +1 +1 +1 +3 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +3 +1 +1 +1 +1 +1 +3 +1 +3 +1 +1 +1 +1 +3 +3 +1 +1 +5 (check) (P)
+
+
+final flow graph transformations
+Removing dead operations ...Expanding complex patterns ...Creating 'dr_move' opns ...
+number of 'reduced cluster size' : 0
+
+amnesia user time   =    0.42 s  /     0.41 s 	24_4-main_
+amnesia system time =    0.01 s  /     0.01 s 	24_4-main_
+amnesia real time   =    0.45 s  /     0.45 s 	24_4-main_
+
+--mist1 -v -k2048 --common 24_4-main_ me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation -x
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: mist version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Mist1 : side effect checking is disabled
+
+Notice: using cstep-based list scheduling
+Using nop instruction classes specified in me_chess.lib
+
+NOTICE: no instructions are printed in error nor debugfile,
+        because the instruction length > 100
+
+
+NOTE : maximum range of occupy-stages for transitories = 9
+
+looking up standalone NOP instruction
+
+Compiling all mappings: 0%..10%..20%..30%..40%..50%..60%..70%..80%..90%..100%
+
+adding manifest flow nodes ...
+
+Constructing flow graphs ...
+Scheduling basic blocks ...
+scheduling macro #197     	-> # cycles: 4 
+scheduling macro #47     	-> # cycles: 5 
+scheduling macro #222     	-> # cycles: 5 
+scheduling macro #53     	-> # cycles: 4 
+scheduling macro #247     	-> # cycles: 4 
+scheduling macro #61     	-> # cycles: 5 
+scheduling macro #67     	-> # cycles: 4 
+scheduling macro #73     	-> # cycles: 4 
+scheduling macro #79     	-> # cycles: 4 
+scheduling macro #85     	-> # cycles: 4 
+scheduling macro #91     	-> # cycles: 4 
+scheduling macro #97     	-> # cycles: 4 
+scheduling macro #103     	-> # cycles: 4 
+scheduling macro #109     	-> # cycles: 4 
+scheduling macro #115     	-> # cycles: 4 
+scheduling macro #121     	-> # cycles: 4 
+scheduling macro #127     	-> # cycles: 4 
+scheduling macro #131     	-> # cycles: 4 
+scheduling macro #273     	-> # cycles: 9 
+scheduling macro #141     	-> # cycles: 7 
+scheduling macro #147     	-> # cycles: 4 
+scheduling macro #153     	-> # cycles: 4 
+scheduling macro #159     	-> # cycles: 4 
+scheduling macro #165     	-> # cycles: 4 
+scheduling macro #171     	-> # cycles: 4 
+scheduling macro #175     	-> # cycles: 4 
+scheduling macro #943     	-> # cycles: 8 
+scheduling macro #927     	-> # cycles: 14 
+scheduling macro #10     	-> # cycles: 6 
+scheduling macro #178     	-> # cycles: 1 
+scheduling macro #182     	-> # cycles: 9 
+scheduling macro #439     	-> # cycles: 20 
+scheduling macro #745     	-> # cycles: 14 
+scheduling macro #186     	-> # cycles: 14 
+
+Total number of cycles = 201
+
+Checking data/anti-dependencies beyond basic block boundaries
+
+mist1 user time   =    0.27 s  /     0.27 s 	24_4-main_
+mist1 system time =    0.00 s  /     0.00 s 	24_4-main_
+mist1 real time   =    0.28 s  /     0.28 s 	24_4-main_
+
+--showcolor -v -b --common 24_4-main_ me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation -x
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: showcolor version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Reading pattern DSFGs from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_dr.sfg
+initialisation
+upgraded carrier of signal __tmp.3269,__tmp.4756 to R
+upgraded carrier of signal _cst.4747,__rt.4749 to R
+collect coupled operands: ................................................................................................................
+  6 couplings found
+collect RMW pairs: C LR M P R SP mcCarry
+register: C {CL CH}
+	rmw pairs: 0
+	assigning fields: CL[0]
+	postbalancing   : none
+	rematerialising : 0 moves
+
+register: LR
+	assigning fields:
+	postbalancing   : none
+	rematerialising : 0 moves
+
+register: M
+	rmw pairs: 0
+	assigning fields: 0 1 2
+	postbalancing   : none
+	rematerialising : 0 moves
+
+register: P
+	rmw pairs: 6
+	coalescing      : ......
+                          2 rmw fanout splits
+	solving hazards : +(limit 1)
+	  -> 4 splits
+	assigning fields: 6 7x 0 2 3 4 1
+	extra splits during assignment: 1
+	postbalancing   : none
+	rematerialising : 0 moves
+
+register: R
+	rmw pairs: 0
+	solving hazards : +
+	  -> 2 splits
+	assigning fields: 12
+Warning in "me_mult.h", line 1356, column 55: declaring `loffs' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+Warning in "me_mult.h", line 1356, column 70: declaring `roffs' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+In file included from /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_chess.h:690,
+                 from /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/aie_core.h:57,
+                 from <command line>:1:
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:278:30: warning: pasting "shft_elem_x4int" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:278:30: warning: pasting "undef_v4int32" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:279:30: warning: pasting "shft_elem_x8int" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:279:30: warning: pasting "undef_v8int32" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:280:30: warning: pasting "shft_elem_x8int" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:280:30: warning: pasting "undef_v8int16" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:281:31: warning: pasting "shft_elem_x16int" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:281:31: warning: pasting "undef_v16int32" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:282:31: warning: pasting "shft_elem_x16int" and "(" does not give a valid preprocessing token
+/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_rewrite.h:282:31: warning: pasting "undef_v16int16" and "(" does not give a valid preprocessing token
+(limit 1)  13 14 15 10 11 6 5 7 8 9 4
+	postbalancing   : none
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_common.h", line 120, column 33: declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_common.h", line 120, column 48: declaring `pmx' with type `pmx_cfg' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+
+	rematerialising : + 2 ra_moves
+
+register: SP
+	assigning fields:
+	rematerialising : 0 moves
+
+register: mcCarry
+	assigning fields:
+	postbalancing   : none
+	rematerialising : 0 moves
+
+align offsets:
+	computing ideal alignment on mergeable borders: Warning in "": declaring `__a' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+
+
+Warning in "": declaring `__a' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+Warning in "": declaring `__a' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+	handle assignment constraints
+	reassign aligned offsets: CLH M P R
+	updating reassigned offsets in sfg
+
+collect coupled operands: .......................................................................................................................
+  0 couplings found
+solving cycles: none
+
+memory: __spill_DM_stack
+	assigning field:  0 4 8 12 16 20 24 28 32 36 40
+
+solving cycles: none
+
+5 ra_moves inserted
+
+Writing LIB (with interprocedural optimisation data) to: 24_4-main__ra.lib
+
+showcolor user time   =    0.20 s  /     0.18 s 	24_4-main_
+showcolor system time =    0.01 s  /     0.01 s 	24_4-main_
+showcolor real time   =    0.20 s  /     0.19 s 	24_4-main_
+
+--mist2 -v -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 +Omodo -k2048 +Omsbr=2000 +Opnll +A +pnopALU +pnopLDA +pnopLDB +pnopSTS +pnopVEC +Ofexm +Onzmem +Ono-mapping-backtracking +Oalways-check-exec-paths +Omodulo-scheduling-minimize-folding-index +Omodulo-scheduling-lookahead-critical-transitory-class=AcqLdaRsrc_ID,AcqLdbRsrc_ID:2 +Odisable-spill-instr-class=LR_short_spill +Odisaggr-record-accesses +Oslr=crUPSMode +Oslr=crSRSMode -ggraph --common 24_4-main_ me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation -x
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: mist version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Mist2 : side effect checking is enabled
+
+Notice: using node-based list scheduling
+Using nop instruction classes specified in me_chess.lib
+
+NOTICE: no instructions are printed in error nor debugfile,
+        because the instruction length > 100
+
+
+NOTE: list of .dot file for folded graph in file: 24_4-main__s2_info/dot.txt
+Reading elongation rules from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation
+
+NOTE : maximum range of occupy-stages for transitories = 9
+
+looking up standalone NOP instruction
+
+Compiling all mappings: 0%..10%..20%..30%..40%..50%..60%..70%..80%..90%..100%
+
+
+review chess_separator_scheduler(offset > 0)
+removing chess_separator blocks up to strength 2 in foldable loops
+removing chess_separator blocks up to strength 2 (all)
+
+jump threading ...
+adding manifest flow nodes ...
+
+Constructing flow graphs ...
+Scheduling basic blocks ...
+scheduling macro #197     	-> # cycles: 4 
+scheduling macro #47     	-> # cycles: 5 
+scheduling macro #222     	-> # cycles: 5 
+scheduling macro #53     	-> # cycles: 5 
+scheduling macro #247     	-> # cycles: 4 
+scheduling macro #61     	-> # cycles: 5 
+scheduling macro #67     	-> # cycles: 4 
+scheduling macro #73     	-> # cycles: 4 
+scheduling macro #79     	-> # cycles: 4 
+scheduling macro #85     	-> # cycles: 4 
+scheduling macro #91     	-> # cycles: 4 
+scheduling macro #97     	-> # cycles: 4 
+scheduling macro #103     	-> # cycles: 4 
+scheduling macro #109     	-> # cycles: 4 
+scheduling macro #115     	-> # cycles: 4 
+scheduling macro #121     	-> # cycles: 4 
+scheduling macro #127     	-> # cycles: 4 
+scheduling macro #131     	-> # cycles: 4 
+
+Warning in "../../../../../../../../LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/me_common.h", line 122, column 19: declaring `cnv' with type (pointer to) `pmx_cnv' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+scheduling macro #273     	-> # cycles: 12 
+scheduling macro #141     	-> # cycles: 7 
+scheduling macro #147     	-> # cycles: 4 
+scheduling macro #153     	-> # cycles: 4 
+scheduling macro #159     	-> # cycles: 4 
+scheduling macro #165     	-> # cycles: 4 
+scheduling macro #171     	-> # cycles: 4 
+scheduling macro #175     	-> # cycles: 4 
+scheduling macro #943     	-> # cycles: 8 
+scheduling macro #927     	-> # cycles: 14 
+scheduling macro #178     	-> # cycles: 1 
+scheduling macro #947     	-> # cycles: 8 
+scheduling macro #182     	-> # cycles: 1 
+scheduling macro #949     	-> # cycles: 5 
+scheduling macro #439     	-> # cycles: 15 
+scheduling macro #745     	-> # cycles: 
+Warning in "Generation of llvm patterns for me": declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+Warning in "Generation of llvm patterns for me": declaring `__a' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+Warning in "Generation of llvm patterns for me": declaring `__b' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+Warning in "Generation of llvm patterns for me": declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+Warning in "Generation of llvm patterns for me": declaring `__a' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+Warning in "Generation of llvm patterns for me": declaring `__b' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+Warning in "Generation of llvm patterns for me": declaring `__rt' with type (returning) `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+Warning in "Generation of llvm patterns for me": declaring `__a' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+Warning in "Generation of llvm patterns for me": declaring `__b' with type `pmx_idx' is deprecated: This type is deprecated and it is defined only for legacy. DPD configuration should be done in user space. [-Wdeprecated]
+
+Checking ...
+
+Reading DSFG from: ../Release/chesswork/gate_half_buff.sfg
+
+Translating ...
+
+        void _Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA4096_SJ_RA64_SJ_iRNS0_IfNS1_3outENS3_INS4_IJLj64EEEES7_S9_SB_EEEE(void *, void *, void *, void *, void *, unsigned, void *)
+14 
+
+Finishing ...
+
+
+noodle user time   =    2.86 s  /     2.71 s 	gate_half_buff
+noodle system time =    0.72 s  /     0.65 s 	gate_half_buff
+noodle real time   =    3.77 s  /     3.55 s 	gate_half_buff
+
+scheduling macro #186     	-> # cycles: 20 
+
+Total number of cycles = 205
+
+Checking data/anti-dependencies beyond basic block boundaries
+Checking resource conflicts beyond basic block boundaries
+Checking pipeline hazards ...
+chess-backend gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_ me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation -x --print-subtools --cosel -v -m +ef -M3 -S1024 --amnesia -v -p12 -q2 -eAM -rCLH -fR=2 +Oearly-fanout-complex +Odhls -Ono-prune-mappings +Oexcc +Oprefer-local-reg-moves -Ono-collapse-bundles --mist1 -v -k2048 --showcolor -v -b --mist2 -v -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 +Omodo -k2048 +Omsbr=2000 +Opnll +A +pnopALU +pnopLDA +pnopLDB +pnopSTS +pnopVEC +Ofexm +Onzmem +Ono-mapping-backtracking +Oalways-check-exec-paths +Omodulo-scheduling-minimize-folding-index +Omodulo-scheduling-lookahead-critical-transitory-class=AcqLdaRsrc_ID,AcqLdbRsrc_ID:2 +Odisable-spill-instr-class=LR_short_spill +Odisaggr-record-accesses +Oslr=crUPSMode +Oslr=crSRSMode -ggraph --tale -v -g -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 -Vgate_half_buff -L
+chess-backend --gvt me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation --tale -v -g -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 -Vgate_half_buff -L
+--cosel -v -m +ef -M3 -S1024 --common gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_ me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation -x
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: cosel version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: tale version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Reading enablings from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib//isg/me_chess.ena
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib//isg/me.isb
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib//isg/me_chess.lib
+Reading LIB/ISG from: gate_half_buff.lib
+Reading elongation rules from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation
+Reading relocators from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib//isg/me.rlo with command tct_gcpp3 -nostdinc -nostdinc++ -lang-asm  -D'__AIENGINE__' -D'__AIE_ARCH__=10' -D'DEPLOYMENT_ELF=1' -D'__LOCK_FENCE_MODE__=0' -D'NO_DISK_IO' -D'USE_PWL_ACTIVATION_FNS' -D'VARIANT_4X2_BUFF' -D'GATE_HALF_LOOP_V8' -D'FLOAT2FIX_FAST' -D'FPLT_FAST' -D'FPGE_FAST' -D'AIE_OPTION_SCALAR_FLOAT_ON_VECTOR' -D'AIE_OPTION_SINF_COSF_FAST' -D'__tct_tgt__=240507' -I'/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/' -I'/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib//isg/'
+Reading DSFG from: gate_half_buff.gvt
+Reading initial values from: gate_half_buff.ini
+Reading initial values from: gate_half_buff.sfg
+Reading Dwarf register-list from file '/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_regs.txt' ...
+Reading Dwarf register ID's from file '/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_regid.txt' ...
+
+Dumping object file 'gate_half_buff.gvt.o' in ELF format with DWARF debug information (1)
+Reading enablings from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess.ena
+Reading LIB/ISG/NML from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me.isb
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess.lib
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_bndl.isg
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_dr.isg
+Reading DSFG from: gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_.sfg
+Collecting static variable register operations...
+
+
+**** Bundling `F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA4096_SJ_RA64_SJ_iRNS0_IfNS1_3outENS3_INS4_IJLj64EEEES7_S9_SB_EEEE' ****
+
+tale user time   =    0.08 s  /     0.01 s 	gate_half_buff
+tale system time =    0.05 s  /     0.01 s 	gate_half_buff
+tale real time   =    0.17 s  /     0.01 s 	gate_half_buff
+
+
+Instruction alignment adds 34 extra words
+Filling in loop counts in instruction enabling ...
+Re-filling in 'a', 'r' values in instruction enabling ...
+Adjusting target addresses ...
+Filling in target addresses in instruction enabling ...
+Writing micro-code to ``24_4-main_.mic'' ...
+
+   macro #148 (4 opn)
+      matching... (4 p) (7 P)
+      covering... (4 its) (cost 3509.952)
+
+   macro #226 (11 opn)
+      matching... (10 p) (20 P)
+      covering... (9 its) (cost 9366.099)
+
+   macro #138 (1 opn)
+      matching... (1 p) (1 P)
+      covering... (1 its) (cost 1171.012)
+
+   macro #1201 (2 opn)
+      matching... (2 p) (3 P)
+      covering... (2 its) (cost 2344.022)
+
+   macro #1190 (28 opn)
+      matching... 
+mist2 user time   =    1.79 s  /     1.79 s 	24_4-main_
+mist2 system time =    0.03 s  /     0.03 s 	24_4-main_
+mist2 real time   =    1.84 s  /     1.84 s 	24_4-main_
+
+--tale -v -g -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 -V24_4 -L --common 24_4-main_ me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation -x
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: tale version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Reading elongation rules from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation
+Reading relocators from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib//isg/me.rlo with command tct_gcpp3 -nostdinc -nostdinc++ -lang-asm  -D'__AIENGINE__' -D'__AIE_ARCH__=10' -D'DEPLOYMENT_ELF=1' -D'__LOCK_FENCE_MODE__=0' -D'NO_DISK_IO' -D'USE_PWL_ACTIVATION_FNS' -D'VARIANT_4X2_BUFF' -D'GATE_HALF_LOOP_V8' -D'FLOAT2FIX_FAST' -D'FPLT_FAST' -D'FPGE_FAST' -D'AIE_OPTION_SCALAR_FLOAT_ON_VECTOR' -D'AIE_OPTION_SINF_COSF_FAST' -D'__tct_tgt__=240507' -I'/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/' -I'/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib//isg/'
+Reading DSFG from: 24_4.gvt
+Reading Dwarf register-list from file '/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_regs.txt' ...
+Reading Dwarf register ID's from file '/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_regid.txt' ...
+
+Dumping object file '24_4-main_.o' in ELF format with DWARF debug information (1)
+(12 p) (45 P)
+      covering... (9 its) (cost 7088.158)
+
+   macro #1177 (23 opn)
+      matching... 
+tale user time   =    0.03 s  /     0.03 s 	24_4-main_
+tale system time =    0.00 s  /     0.00 s 	24_4-main_
+tale real time   =    0.04 s  /     0.04 s 	24_4-main_
+
+bridge -v -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg -i -g -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/. -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libcxx-lite/include -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libs/libcxx-9.0.0/include-lite -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime/include -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 24_4.objlist -o../24_4.o -pme
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: bridge version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Reading enablings from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_das.ena
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_das.isb
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_types.lib
+Reading relocator definitions in file '/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me.rlo'...
+Creating link-memory
+Reading '24_4.objlist' ...
+    Adding '24_4-main_.o' with source reference offset 0
+    Adding '24_4.gvt.o' with source reference offset 0
+Reading objectfile '24_4-main_.o' with Dwarf info...
+Reading objectfile '24_4.gvt.o' with Dwarf info...
+Library search path: .
+Library search path: 
+Loading aliases information from file '24_4.aliases'
+Creating object file '../24_4.o'...
+    Adding '24_4.gvt.o'...
+    Adding '24_4-main_.o'...
+Writing object file '../24_4.o' (1) ...
+
+bridge user time   =    0.19 s  /     0.00 s 	../24_4.o
+bridge system time =    0.03 s  /     0.00 s 	../24_4.o
+bridge real time   =    0.22 s  /     0.00 s 	../24_4.o
+
+(14 p) (60 P)
+      covering... (10 its) (cost 9543.938)
+
+   macro #973 (18 opn)
+      matching... darts -v -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib -d -h -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/. -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libcxx-lite/include -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libs/libcxx-9.0.0/include-lite -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime/include -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 -L +Ihex +nanno ../Release/24_4.o me
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: darts version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Include paths: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libcxx-lite/include:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libs/libcxx-9.0.0/include-lite:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime/include:.:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg
+Reading enablings from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_das.ena
+Reading binary LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_das.isb
+Parsing binary ISG
+Parsing binary NML
+Building ISG done.
+Reading chess types from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_types.lib
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_types.lib
+Loading chess_types.lib file done.
+(18 p) (59 P)
+      covering... (1 its) (no cover found, retrying less greedy)
+      matching... Reading relocators from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me.rlo
+(35 p) (112 P)
+      covering... (18 its) (cost 7208.050)
+
+   macro #927 (18 opn)
+      matching... 
+Disassembling code of ``../Release/24_4.o''
+Writing results to ``../Release/24_4.o.lst''
+
+darts user time   =    0.63 s  /     0.36 s 	../Release/24_4.o
+darts system time =    0.04 s  /     0.00 s 	../Release/24_4.o
+darts real time   =    0.67 s  /     0.36 s 	../Release/24_4.o
+
+(18 p) (59 P)
+      covering... (1 its) (no cover found, retrying less greedy)
+      matching... (35 p) (112 P)
+      covering... (18 its) (cost 7208.050)
+
+   macro #81 (21 opn)
+      matching... (24 p) (25 P)
+      covering... (14 its) (cost 12870.151)
+
+   macro #75 (1 opn)
+      matching... (1 p) (1 P)
+      covering... (1 its) (cost 1171.012)
+
+   macro #73 (28 opn)
+      matching... (19 p) (34 P)
+      covering... (12 its) (cost 12870.234)
+
+
+Total cost = 74350.678
+
+cosel user time   =    1.61 s  /     1.53 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+cosel system time =    0.07 s  /     0.02 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+cosel real time   =    1.84 s  /     1.67 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+
+--amnesia -v -p12 -q2 -eAM -rCLH -fR=2 +Oearly-fanout-complex +Odhls -Ono-prune-mappings +Oexcc +Oprefer-local-reg-moves -Ono-collapse-bundles --common gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_ me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation -x
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: amnesia version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Reading pattern DSFGs from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_dr.sfg
+
+application DSFG routing:
+
+**** Routing 'F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA4096_SJ_RA64_SJ_iRNS0_IfNS1_3outENS3_INS4_IJLj64EEEES7_S9_SB_EEEE' ****
+analysing connectivity in ISG
+initial DSFG transformations
+initial timing
+initialise routing
+dependency hazard solving
+
+1 of 5: (23 14 927)
+
+2 of 5: (973 26 35)
+
+3 of 5: (1203 1204 9 1177 42)
+(fanout-hzds) (splits:2) 
+4 of 5: (49 1202 4 1190)
+(fanout-hzds) (splits:1) (fanout-hzds) (splits:1) 
+5 of 5: (81 226 145 76 148 75 139 1201 74 138 73 137)
+
+sync/offset hazards solving
+
+
+time (after hazard solving) =    0.17 s
+
+routing control inputs
+
+routing
+
+1 of 5 ( 14 927 23 )
+# uses: 24 +4 +1 +16 +1 +1 +2 +2 +1 +1 +1 +1 +2 +2 +1 +1 +1 (VRH0)+1 ++++1 ++1 +(check) 
+
+
+2 of 5 ( 26 973 35 )
+# uses: 24 +4 +1 +16 +1 +1 +2 +2 +1 +1 +1 +1 +2 +2 +1 +1 +1 (VRH0)+1 ++++1 ++1 +(check) 
+
+
+3 of 5 ( 9 1203 1204 1177 42 )
+# uses: 59 +3 +1 +1 +1 +3 +1 +1 +1 +1 +1 (rlx +1)1 +1 +1 +1 +4 (rlx +1)4 +1 +1 +1 +1 +4 (rlx +1)4 +1 +1 +1 +1 +4 (rlx +1)4 +1 +1 +1 +1 +2 +9 +3 +1 +1 ++1 ++++1 +1 +++++1 +1 +1 ++++1 +1 +1 +1 +1 +1 +1 +1 +1 (check) 
+
+
+4 of 5 ( 4 1202 1190 49 )
+# uses: 43 +1 +1 +1 +1 +2 +1 +1 +2 +2 +4 +4 +2 +2 +1 +1 +1 +1 +1 ++1 +1 +++++1 +1 ++1 ++1 +1 ++1 +1 +1 +1 +1 +1 +1 +1 +1 +1 (check) 
+
+
+5 of 5 ( 73 75 81 1201 138 226 148 )
+# uses: 58 +1 +1 +1 +2 +1 +1 +1 +2 +2 +1 +1 +4 +1 +1 +1 +1 (P:t)-1 1 1 1 +1 (P:t)-1 1 1 1 (CLH:t)-1 1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +2 +1 (mcCarry)(rlx +1)(mcCarry)+1 +1 (rlx +1)1 +1 +1 +1 (LR:t)-1 1 1 +19 +4 +3 +4 +4 +1 +3 +4 ++19 +17 +15 +4 +2 +3 +3 +3 +1 +1 (check) 
+
+
+final flow graph transformations
+Removing dead operations ...Expanding complex patterns ...expanding 5 complex patterns (5 constants )
+Creating 'dr_move' opns ...
+number of 'reduced cluster size' : 0
+
+amnesia user time   =    0.24 s  /     0.23 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+amnesia system time =    0.00 s  /     0.00 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+amnesia real time   =    0.24 s  /     0.24 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+
+--mist1 -v -k2048 --common gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_ me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation -x
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: mist version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Mist1 : side effect checking is disabled
+
+Notice: using cstep-based list scheduling
+Using nop instruction classes specified in me_chess.lib
+
+NOTICE: no instructions are printed in error nor debugfile,
+        because the instruction length > 100
+
+
+NOTE : maximum range of occupy-stages for transitories = 9
+
+looking up standalone NOP instruction
+
+Compiling all mappings: 0%..10%..20%..30%..40%..50%..60%..70%..80%..90%..100%
+
+adding manifest flow nodes ...
+
+Constructing flow graphs ...
+Scheduling basic blocks ...
+
+HW do-loop #927 in "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp", line 449: (loop #13) :
+critical cycle of length 8 : b134 -> b138 -> b136 -> b134
+minimum length due to resources: 2
+scheduling HW do-loop #927     	-> # cycles: 15 
+  -> HW do-loop #927 in "/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include/aie_api/detail/aie1/mul_acc32_fp.hpp", line 41: (loop #13) : 15 cycles
+
+HW do-loop #973 in "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp", line 461: (loop #25) :
+critical cycle of length 8 : b128 -> b132 -> b130 -> b128
+minimum length due to resources: 2
+scheduling HW do-loop #973     	-> # cycles: 15 
+  -> HW do-loop #973 in "/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include/aie_api/detail/aie1/mul_acc32_fp.hpp", line 41: (loop #25) : 15 cycles
+scheduling macro #1177     	-> # cycles: 35 
+scheduling macro #1190     	-> # cycles: 11 
+scheduling macro #1202     	-> # cycles: 1 
+scheduling macro #73     	-> # cycles: 6 
+scheduling macro #75     	-> # cycles: 1 
+scheduling macro #81     	-> # cycles: 17 
+scheduling macro #1201     	-> # cycles: 3 
+scheduling macro #138     	-> # cycles: 2 
+scheduling macro #226     	-> # cycles: 11 
+scheduling macro #148     	-> # cycles: 11 
+
+Total number of cycles = 128
+
+Checking data/anti-dependencies beyond basic block boundaries
+
+mist1 user time   =    0.24 s  /     0.24 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+mist1 system time =    0.00 s  /     0.00 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+mist1 real time   =    0.25 s  /     0.25 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+
+--showcolor -v -b --common gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_ me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation -x
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: showcolor version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Reading pattern DSFGs from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_dr.sfg
+initialisation
+upgraded carrier of signal __arg5.383 to R
+upgraded carrier of signal __tmp.429 to R
+upgraded carrier of signal _cst.3873 to CLH
+upgraded carrier of signal _cst.3875 to CLH
+upgraded carrier of signal __ct_9437184.3877 to CLH
+upgraded carrier of signal __ct_11534336.3879 to CLH
+upgraded carrier of signal __ct_26329088.3881 to CLH
+collect coupled operands: .............................................................................................
+  21 couplings found
+collect RMW pairs: C LC LE LR LS M MD0 P R SP TILE_CNTR W mcFPAdd mcFPMul mcCarry
+register: C {CL CH}
+	rmw pairs: 5
+	coalescing      : .....
+                          0 rmw fanout splits
+	assigning fields: CL[0] CH[0] CH[1] CL[1] CH[2] CL[2] CL[3] CL[4] CL[5] CL[6]
+	postbalancing   : none
+	rematerialising : + 1 dr_move
+
+register: LC
+	assigning fields:
+	rematerialising : 0 moves
+
+register: LE
+	assigning fields:
+	rematerialising : 0 moves
+
+register: LR
+	assigning fields:
+	postbalancing   : none
+	rematerialising : 0 moves
+
+register: LS
+	assigning fields:
+	rematerialising : 0 moves
+
+register: M
+	rmw pairs: 0
+	assigning fields: 0 1
+	postbalancing   : none
+	rematerialising : 0 moves
+
+register: MD0 {mdQ mdR mdRdx mdSQ mdSPARE0 mdFPAddMask mdFPMulMask}
+	assigning fields:
+	rematerialising : 0 moves
+
+register: P
+	rmw pairs: 12
+	coalescing      : ............
+                          0 rmw fanout splits
+	solving hazards : ++
+	  -> 2 splits
+	assigning fields: 6 7 2 3 4 0 5 1
+	postbalancing   : none
+	rematerialising : 0 moves
+
+register: R
+	rmw pairs: 0
+	assigning fields: 12 13 14 15 10 11 8 9 6 5 7 4 0 1 2 3
+	postbalancing   : 
+           #927 (#13)	: moved 1   mean max sdev 0.007 0.020 0.010 -> 0.007 0.020 0.010
+           #1203 (#8)	: moved 3   mean max sdev 0.102 0.249 0.109 -> 0.061 0.150 0.059
+	rematerialising : 0 moves
+
+register: SP
+	assigning fields:
+	rematerialising : 0 moves
+
+register: TILE_CNTR
+	assigning fields:
+	rematerialising : 0 moves
+
+register: W {VL VH}
+	rmw pairs: 1
+	coalescing      : .
+                          0 rmw fanout splits
+	solving hazards : ++
+	  -> 2 splits
+	assigning fields: VL[7] VH[7] VL[2] VH[2] VL[1] VL[3] VL[6] VL[4] VH[4] VL[5] VL[0]
+	postbalancing   : none
+        recycled splits: 0 ra, 1 dr
+	rematerialising : 0 moves
+
+register: mcFPAdd
+	assigning fields:
+	postbalancing   : none
+	rematerialising : 0 moves
+
+register: mcFPMul
+	assigning fields:
+	postbalancing   : none
+	rematerialising : 0 moves
+
+register: mcCarry
+	assigning fields: 0
+	postbalancing   : none
+	rematerialising : 0 moves
+
+align offsets:
+	computing ideal alignment on mergeable borders: ....
+	handle assignment constraints
+	reassign aligned offsets: {CH CL} M P R(!) {VH VL}(!)
+	updating reassigned offsets in sfg
+
+collect coupled operands: ................................................................................................
+  3 couplings found
+
+found a violated coupling
+
+Iteration required: enforce operand locations to satisfy coupled operand constraints
+Please run RA1 again.
+
+showcolor user time   =    0.60 s  /     0.60 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+showcolor system time =    0.00 s  /     0.00 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+showcolor real time   =    0.60 s  /     0.60 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+
+--amnesia -v -p12 -q2 -eAM -rCLH -fR=2 +Oearly-fanout-complex +Odhls -Ono-prune-mappings +Oexcc +Oprefer-local-reg-moves -Ono-collapse-bundles --common gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_ me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation -x
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: amnesia version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Reading pattern DSFGs from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_dr.sfg
+
+application DSFG routing:
+
+**** Routing 'F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA4096_SJ_RA64_SJ_iRNS0_IfNS1_3outENS3_INS4_IJLj64EEEES7_S9_SB_EEEE' ****
+analysing connectivity in ISG
+initial DSFG transformations
+initial timing
+initialise routing
+dependency hazard solving
+
+1 of 5: (23 14 927)
+
+2 of 5: (973 26 35)
+
+3 of 5: (1203 1204 9 1177 42)
+(fanout-hzds) (splits:2) 
+4 of 5: (49 1202 4 1190)
+(fanout-hzds) (splits:1) (fanout-hzds) (splits:1) 
+5 of 5: (81 226 145 76 148 75 139 1201 74 138 73 137)
+
+sync/offset hazards solving
+
+
+time (after hazard solving) =    0.16 s
+
+routing control inputs
+
+routing
+
+1 of 5 ( 14 927 23 )
+# uses: 24 +4 +1 +16 +1 +1 +2 +2 +1 +1 +1 +1 +2 +2 +1 +1 +1 (VRH0)+1 ++++1 ++1 +(check) 
+
+
+2 of 5 ( 26 973 35 )
+# uses: 24 +4 +1 +16 +1 +1 +2 +2 +1 +1 +1 +1 +2 +2 +1 +1 +1 (VRH0)+1 ++++1 ++1 +(check) 
+
+
+3 of 5 ( 9 1203 1204 1177 42 )
+# uses: 59 +3 +1 +1 +1 +3 +1 +1 +1 +1 +1 (rlx +1)1 +1 +1 +1 +4 (rlx +1)4 +1 +1 +1 +1 +4 (rlx +1)4 +1 +1 +1 +1 +4 (rlx +1)4 +1 +1 +1 +1 +2 +9 +3 +1 +1 ++1 ++++1 +1 +++++1 +1 +1 ++++1 +1 +1 +1 +1 +1 +1 +1 +1 (check) 
+
+
+4 of 5 ( 4 1202 1190 49 )
+# uses: 43 +1 +1 +1 +1 +2 +1 +1 +2 +2 +4 +4 +2 +2 +1 +1 +1 +1 +1 ++1 +2 +++++1 +1 ++1 ++1 +1 ++1 +1 +1 +1 +1 +1 +1 +1 +1 +1 (check) 
+
+
+5 of 5 ( 73 75 81 1201 138 226 148 )
+# uses: 58 +1 +1 +1 +2 +1 +1 +2 +2 +1 +4 +1 +1 +1 +1 +1 +1 (P:t)-1 1 1 1 +1 (P:t)-1 1 1 1 (CLH:t)-1 1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +2 +1 (mcCarry)(rlx +1)(mcCarry)+1 +1 (rlx +1)1 +1 +1 +1 (LR:t)-1 1 1 +19 +4 +3 +4 +4 +1 +3 +4 ++19 +17 +15 +4 +2 +3 +3 +3 +1 +1 (check) 
+
+
+final flow graph transformations
+Removing dead operations ...Expanding complex patterns ...expanding 5 complex patterns (5 constants )
+Creating 'dr_move' opns ...
+number of 'reduced cluster size' : 0
+
+amnesia user time   =    0.22 s  /     0.22 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+amnesia system time =    0.01 s  /     0.01 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+amnesia real time   =    0.23 s  /     0.22 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+
+--mist1 -v -k2048 --common gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_ me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation -x
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: mist version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Mist1 : side effect checking is disabled
+
+Notice: using cstep-based list scheduling
+Using nop instruction classes specified in me_chess.lib
+
+NOTICE: no instructions are printed in error nor debugfile,
+        because the instruction length > 100
+
+
+NOTE : maximum range of occupy-stages for transitories = 9
+
+looking up standalone NOP instruction
+
+Compiling all mappings: 0%..10%..20%..30%..40%..50%..60%..70%..80%..90%..100%
+
+adding manifest flow nodes ...
+
+Constructing flow graphs ...
+Scheduling basic blocks ...
+
+HW do-loop #927 in "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp", line 449: (loop #13) :
+critical cycle of length 8 : b134 -> b138 -> b136 -> b134
+minimum length due to resources: 2
+scheduling HW do-loop #927     	-> # cycles: 15 
+  -> HW do-loop #927 in "/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include/aie_api/detail/aie1/mul_acc32_fp.hpp", line 41: (loop #13) : 15 cycles
+
+HW do-loop #973 in "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp", line 461: (loop #25) :
+critical cycle of length 8 : b128 -> b132 -> b130 -> b128
+minimum length due to resources: 2
+scheduling HW do-loop #973     	-> # cycles: 15 
+  -> HW do-loop #973 in "/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include/aie_api/detail/aie1/mul_acc32_fp.hpp", line 41: (loop #25) : 15 cycles
+scheduling macro #1177     	-> # cycles: 35 
+scheduling macro #1190     	-> # cycles: 11 
+scheduling macro #1202     	-> # cycles: 1 
+scheduling macro #73     	-> # cycles: 6 
+scheduling macro #75     	-> # cycles: 1 
+scheduling macro #81     	-> # cycles: 17 
+scheduling macro #1201     	-> # cycles: 3 
+scheduling macro #138     	-> # cycles: 2 
+scheduling macro #226     	-> # cycles: 11 
+scheduling macro #148     	-> # cycles: 11 
+
+Total number of cycles = 128
+
+Checking data/anti-dependencies beyond basic block boundaries
+
+mist1 user time   =    0.25 s  /     0.25 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+mist1 system time =    0.00 s  /     0.00 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+mist1 real time   =    0.25 s  /     0.25 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+
+--showcolor -v -b --common gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_ me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation -x
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: showcolor version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Reading pattern DSFGs from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_dr.sfg
+initialisation
+upgraded carrier of signal __arg5.383 to R
+upgraded carrier of signal __tmp.429 to R
+upgraded carrier of signal _cst.3733,_cst.3813 to CH
+upgraded carrier of signal __ct_65536.3742,__ct_65536.3816 to CH
+upgraded carrier of signal _cst.3814,_cst.3878 to CL
+upgraded carrier of signal __ct_26329088.3815,__ct_26329088.3884 to CL
+upgraded carrier of signal _cst.3877 to CLH
+upgraded carrier of signal _cst.3879 to CLH
+upgraded carrier of signal __ct_9437184.3881 to CLH
+upgraded carrier of signal __ct_11534336.3883 to CLH
+upgraded carrier of signal __ct_26329088.3885 to CLH
+Reading operand couplings: 1 coupling
+collect coupled operands: .............................................................................................
+  21 couplings found
+collect RMW pairs: C LC LE LR LS M MD0 P R SP TILE_CNTR W mcFPAdd mcFPMul mcCarry
+register: C {CL CH}
+	rmw pairs: 5
+	coalescing      : .....
+                          0 rmw fanout splits
+	assigning fields: CL[2] CL[5] CH[2] CH[5] CH[0] CL[0] CL[1] CL[3] CL[4] CL[6]
+	postbalancing   : none
+	rematerialising : + 1 dr_move
+
+register: LC
+	assigning fields:
+	rematerialising : 0 moves
+
+register: LE
+	assigning fields:
+	rematerialising : 0 moves
+
+register: LR
+	assigning fields:
+	postbalancing   : none
+	rematerialising : 0 moves
+
+register: LS
+	assigning fields:
+	rematerialising : 0 moves
+
+register: M
+	rmw pairs: 0
+	assigning fields: 0 1
+	postbalancing   : none
+	rematerialising : 0 moves
+
+register: MD0 {mdQ mdR mdRdx mdSQ mdSPARE0 mdFPAddMask mdFPMulMask}
+	assigning fields:
+	rematerialising : 0 moves
+
+register: P
+	rmw pairs: 12
+	coalescing      : ............
+                          0 rmw fanout splits
+	solving hazards : ++
+	  -> 2 splits
+	assigning fields: 6 7 2 3 4 0 5 1
+	postbalancing   : none
+	rematerialising : 0 moves
+
+register: R
+	rmw pairs: 0
+	assigning fields: 12 13 14 15 10 11 8 9 6 5 7 4 0 1 2 3
+	postbalancing   : 
+           #927 (#13)	: moved 1   mean max sdev 0.007 0.020 0.010 -> 0.007 0.020 0.010
+           #1203 (#8)	: moved 3   mean max sdev 0.102 0.249 0.109 -> 0.061 0.150 0.059
+	rematerialising : 0 moves
+
+register: SP
+	assigning fields:
+	rematerialising : 0 moves
+
+register: TILE_CNTR
+	assigning fields:
+	rematerialising : 0 moves
+
+register: W {VL VH}
+	rmw pairs: 1
+	coalescing      : .
+                          0 rmw fanout splits
+	solving hazards : ++
+	  -> 2 splits
+	assigning fields: VL[7] VH[7] VL[2] VH[2] VL[1] VL[3] VL[6] VL[4] VH[4] VL[5] VL[0]
+	postbalancing   : none
+        recycled splits: 0 ra, 1 dr
+	rematerialising : 0 moves
+
+register: mcFPAdd
+	assigning fields:
+	postbalancing   : none
+	rematerialising : 0 moves
+
+register: mcFPMul
+	assigning fields:
+	postbalancing   : none
+	rematerialising : 0 moves
+
+register: mcCarry
+	assigning fields: 0
+	postbalancing   : none
+	rematerialising : 0 moves
+
+align offsets:
+	computing ideal alignment on mergeable borders: ....
+	handle assignment constraints
+	reassign aligned offsets: {CH CL} M P R(!) {VH VL}(!)
+	updating reassigned offsets in sfg
+
+collect coupled operands: ................................................................................................
+  3 couplings found
+solving cycles: none
+
+memory: __spill_DM_stack
+	assigning field:  0
+
+solving cycles: none
+
+4 ra_moves inserted
+1 dr_move rematerialised
+1 dr_move recycled
+
+showcolor iterated 1 time to RA1
+
+Writing LIB (with interprocedural optimisation data) to: gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409__ra.lib
+
+showcolor user time   =    0.68 s  /     0.66 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+showcolor system time =    0.00 s  /     0.00 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+showcolor real time   =    0.67 s  /     0.67 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+
+--mist2 -v -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 +Omodo -k2048 +Omsbr=2000 +Opnll +A +pnopALU +pnopLDA +pnopLDB +pnopSTS +pnopVEC +Ofexm +Onzmem +Ono-mapping-backtracking +Oalways-check-exec-paths +Omodulo-scheduling-minimize-folding-index +Omodulo-scheduling-lookahead-critical-transitory-class=AcqLdaRsrc_ID,AcqLdbRsrc_ID:2 +Odisable-spill-instr-class=LR_short_spill +Odisaggr-record-accesses +Oslr=crUPSMode +Oslr=crSRSMode -ggraph --common gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_ me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation -x
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: mist version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Mist2 : side effect checking is enabled
+
+Notice: using node-based list scheduling
+Using nop instruction classes specified in me_chess.lib
+
+NOTICE: no instructions are printed in error nor debugfile,
+        because the instruction length > 100
+
+
+NOTE: list of .dot file for folded graph in file: gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409__s2_info/dot.txt
+Reading elongation rules from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation
+
+NOTE : maximum range of occupy-stages for transitories = 9
+
+looking up standalone NOP instruction
+
+Compiling all mappings: 0%..10%..20%..30%..40%..50%..60%..70%..80%..90%..100%
+
+
+flatten loops : #25 #13 #8
+review chess_separator_scheduler(offset > 0)
+removing chess_separator blocks up to strength 2 in foldable loops
+
+HW do-loop #927 in "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp", line 438: (loop #3) :
+critical cycle of length 306 : b579 -> b871 -> b138 -> b136 -> b139 -> b878 -> b882 -> b880 -> b883 -> b884 -> b888 -> b886 -> b889 -> b890 -> b894 -> b892 -> b895 -> b896 -> b900 -> b898 -> b901 -> b902 -> b906 -> b904 -> b907 -> b908 -> b912 -> b910 -> b913 -> b914 -> b918 -> b916 -> b919 -> b129 -> b132 -> b130 -> b133 -> b872 -> b876 -> b874 -> b877 -> b122 -> b501 -> b123 -> b502 -> b124 -> b503 -> b125 -> b126 -> b968 -> b925 -> b926 -> b930 -> b928 -> b931 -> b932 -> b936 -> b934 -> b937 -> b938 -> b942 -> b940 -> b943 -> b944 -> b948 -> b946 -> b949 -> b950 -> b954 -> b952 -> b955 -> b956 -> b960 -> b958 -> b961 -> b962 -> b966 -> b964 -> b967 -> b971 -> b974 -> b972 -> b975 -> b976 -> b980 -> b978 -> b981 -> b984 -> b990 -> b985 -> b991 -> b986 -> b992 -> b987 -> b988 -> b1041 -> b998 -> b999 -> b1003 -> b1001 -> b1004 -> b1005 -> b1009 -> b1007 -> b1010 -> b1011 -> b1015 -> b1013 -> b1016 -> b1017 -> b1021 -> b1019 -> b1022 -> b1023 -> b1027 -> b1025 -> b1028 -> b1029 -> b1033 -> b1031 -> b1034 -> b1035 -> b1039 -> b1037 -> b1040 -> b1044 -> b1047 -> b1045 -> b1048 -> b1049 -> b1053 -> b1051 -> b1054 -> b1057 -> b1063 -> b1058 -> b1064 -> b1059 -> b1065 -> b1060 -> b1061 -> b1114 -> b1071 -> b1072 -> b1076 -> b1074 -> b1077 -> b1078 -> b1082 -> b1080 -> b1083 -> b1084 -> b1088 -> b1086 -> b1089 -> b1090 -> b1094 -> b1092 -> b1095 -> b1096 -> b1100 -> b1098 -> b1101 -> b1102 -> b1106 -> b1104 -> b1107 -> b1108 -> b1112 -> b1110 -> b1113 -> b1117 -> b1120 -> b1118 -> b1121 -> b1122 -> b1126 -> b1124 -> b1127 -> b1130 -> b1136 -> b1131 -> b1137 -> b1132 -> b1138 -> b1133 -> b1134 -> b1187 -> b1144 -> b1145 -> b1149 -> b1147 -> b1150 -> b1151 -> b1155 -> b1153 -> b1156 -> b1157 -> b1161 -> b1159 -> b1162 -> b1163 -> b1167 -> b1165 -> b1168 -> b1169 -> b1173 -> b1171 -> b1174 -> b1175 -> b1179 -> b1177 -> b1180 -> b1181 -> b1185 -> b1183 -> b1186 -> b1190 -> b1193 -> b1191 -> b1194 -> b1195 -> b1199 -> b1197 -> b1200 -> b1203 -> b1209 -> b1204 -> b1210 -> b1205 -> b1211 -> b1206 -> b1207 -> b1260 -> b1217 -> b1218 -> b1222 -> b1220 -> b1223 -> b1224 -> b1228 -> b1226 -> b1229 -> b1230 -> b1234 -> b1232 -> b1235 -> b1236 -> b1240 -> b1238 -> b1241 -> b1242 -> b1246 -> b1244 -> b1247 -> b1248 -> b1252 -> b1250 -> b1253 -> b1254 -> b1258 -> b1256 -> b1259 -> b1263 -> b1266 -> b1264 -> b1267 -> b1268 -> b1272 -> b1270 -> b1273 -> b1276 -> b1282 -> b1277 -> b1283 -> b1278 -> b1284 -> b1279 -> b1280 -> b1333 -> b1290 -> b1291 -> b1295 -> b1293 -> b1296 -> b1297 -> b1301 -> b1299 -> b1302 -> b1303 -> b1307 -> b1305 -> b1308 -> b1309 -> b1313 -> b1311 -> b1314 -> b1315 -> b1319 -> b1317 -> b1320 -> b1321 -> b1325 -> b1323 -> b1326 -> b1327 -> b1331 -> b1329 -> b1332 -> b1336 -> b1338 -> b1342 -> b1344 -> b1348 -> b1409 -> b1412 -> b1410 -> b1413 -> b1414 -> b1418 -> b1416 -> b1419 -> b1422 -> b1428 -> b1423 -> b1429 -> b1424 -> b1430 -> b1425 -> b1426 -> b1427 -> b115 -> b116 -> b117 -> b118 -> b579
+minimum length due to resources: 201
+scheduling HW do-loop #927
+(algo 2)	-> # cycles: 416 
+(modulo)	-> # cycles:NOTICE: Minimum pipelined initiation interval is set via chess_pipelined_initiation_interval(201) directive.
+ 306c 307c 308c 309c 310c 311c 312c 313c 314c 315c 316c 317c 318c 319c 320c 321c 322c 323c 324c 325c 326c 327c 328c 329c 330c 331c 332c 333c 334c 335c 336c 337c 338c 339c 340c 341c 342c 343c 344c 345c 346c 347c 348c 349c 350c 351c 352c 353c 354c 355c 356c 357c 358c 359c 360c 361c 362c 363c 364c 365c 366c 367c 368c 369c 370c 371c 372c 373c 374c 375c 376c 377c 378c 379c 380c 381c 382c 383c 384c 385c 386c 387c 388c 389c 390c 391c 392c 393c 394c 395c 396c 397c 398c 399c 400c 401c 402c 403c 404c 405c 406 ok 405c (required budget ratio: 1)  
+(resume algo)	  -> after folding: 406  (folded over 1 iterations)
+  -> HW do-loop #927 in "/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include/aie_api/detail/aie1/mul_acc32_fp.hpp", line 41: (loop #3) : 406 cycles
+NOTICE: postamble created
+removing chess_separator blocks up to strength 2 (all)
+
+jump threading ...
+adding manifest flow nodes ...
+
+Constructing flow graphs ...
+Scheduling basic blocks ...
+scheduling macro #73     	-> # cycles: 6 
+scheduling macro #75     	-> # cycles: 4 
+scheduling macro #1221     	-> # cycles: 410 
+scheduling macro #1201     	-> # cycles: 10 
+scheduling macro #138     	-> # cycles: 5 
+scheduling macro #226     	-> # cycles: 7 
+scheduling macro #148     	-> # cycles: 11 
+
+Total number of cycles = 859
+
+Checking data/anti-dependencies beyond basic block boundaries
+Checking resource conflicts beyond basic block boundaries
+Checking pipeline hazards ...
+
+Instruction alignment adds 14 extra words
+Filling in loop counts in instruction enabling ...
+Re-filling in 'a', 'r' values in instruction enabling ...
+Adjusting target addresses ...
+Filling in target addresses in instruction enabling ...
+Writing micro-code to ``gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_.mic'' ...
+
+mist2 user time   =   52.66 s  /    52.66 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+mist2 system time =    0.11 s  /     0.11 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+mist2 real time   =   52.78 s  /    52.78 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+
+--tale -v -g -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 -Vgate_half_buff -L --common gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_ me /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib +H/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation -x
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: tale version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Reading elongation rules from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/elongation
+Reading relocators from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib//isg/me.rlo with command tct_gcpp3 -nostdinc -nostdinc++ -lang-asm  -D'__AIENGINE__' -D'__AIE_ARCH__=10' -D'DEPLOYMENT_ELF=1' -D'__LOCK_FENCE_MODE__=0' -D'NO_DISK_IO' -D'USE_PWL_ACTIVATION_FNS' -D'VARIANT_4X2_BUFF' -D'GATE_HALF_LOOP_V8' -D'FLOAT2FIX_FAST' -D'FPLT_FAST' -D'FPGE_FAST' -D'AIE_OPTION_SCALAR_FLOAT_ON_VECTOR' -D'AIE_OPTION_SINF_COSF_FAST' -D'__tct_tgt__=240507' -I'/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/' -I'/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib//isg/'
+Reading DSFG from: gate_half_buff.gvt
+Reading Dwarf register-list from file '/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_regs.txt' ...
+Reading Dwarf register ID's from file '/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_regid.txt' ...
+
+Dumping object file 'gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_.o' in ELF format with DWARF debug information (1)
+
+tale user time   =    0.13 s  /     0.12 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+tale system time =    0.04 s  /     0.04 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+tale real time   =    0.17 s  /     0.16 s 	gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_
+
+bridge -v -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg -i -g -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/. -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libcxx-lite/include -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libs/libcxx-9.0.0/include-lite -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime/include -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 gate_half_buff.objlist -o../gate_half_buff.o -pme
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: bridge version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Reading enablings from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_das.ena
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_das.isb
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_types.lib
+Reading relocator definitions in file '/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me.rlo'...
+Creating link-memory
+Reading 'gate_half_buff.objlist' ...
+    Adding 'gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_.o' with source reference offset 0
+    Adding 'gate_half_buff.gvt.o' with source reference offset 0
+Reading objectfile 'gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_.o' with Dwarf info...
+Reading objectfile 'gate_half_buff.gvt.o' with Dwarf info...
+Library search path: .
+Library search path: 
+Loading aliases information from file 'gate_half_buff.aliases'
+Creating object file '../gate_half_buff.o'...
+    Adding 'gate_half_buff.gvt.o'...
+    Adding 'gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409_.o'...
+Writing object file '../gate_half_buff.o' (1) ...
+
+bridge user time   =    0.15 s  /     0.01 s 	../gate_half_buff.o
+bridge system time =    0.05 s  /     0.01 s 	../gate_half_buff.o
+bridge real time   =    0.20 s  /     0.02 s 	../gate_half_buff.o
+
+darts -v -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib -d -h -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/. -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libcxx-lite/include -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libs/libcxx-9.0.0/include-lite -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime/include -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 -L +Ihex +nanno ../Release/gate_half_buff.o me
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: darts version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Include paths: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libcxx-lite/include:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libs/libcxx-9.0.0/include-lite:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime/include:.:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg
+Reading enablings from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_das.ena
+Reading binary LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_das.isb
+Parsing binary ISG
+Parsing binary NML
+Building ISG done.
+Reading chess types from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_types.lib
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_types.lib
+Loading chess_types.lib file done.
+Reading relocators from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me.rlo
+
+Disassembling code of ``../Release/gate_half_buff.o''
+Writing results to ``../Release/gate_half_buff.o.lst''
+
+darts user time   =    0.48 s  /     0.31 s 	../Release/gate_half_buff.o
+darts system time =    0.03 s  /     0.00 s 	../Release/gate_half_buff.o
+darts real time   =    0.52 s  /     0.32 s 	../Release/gate_half_buff.o
+
+Linking "../Release/24_4"
+bridge -o../Release/24_4 ../Release/24_4.o ../Release/gate_half_buff.o -v -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg -g -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/. -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libcxx-lite/include -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libs/libcxx-9.0.0/include-lite -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime/include -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 -c24_4.bcf -L/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/Release -L/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime/lib/Release -L/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/softfloat/lib/Release -L/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libcxx-lite/lib/Release_LLVM -lme -lc -lm -lc++lite -lsoftfloat -S -export-locals -yMSMEM,SSMEM,SSMEM_tlast,WSSMEM_tlast,SSMEM_nb_sc,MSMEM_nb_sc -iconfig extra_memories.bcf -m -fC -fS -fH +m -T +work ../Release/chesswork -pme
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: bridge version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Reading enablings from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_das.ena
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_das.isb
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_types.lib
+Reading configuration in file '24_4.bcf'...
+Reading relocator definitions in file '/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me.rlo'...
+Creating link-memory
+Reading objectfile '../Release/24_4.o' with Dwarf info...
+Reading objectfile '../Release/gate_half_buff.o' with Dwarf info...
+Library search path: .
+Library search path: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/Release:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime/lib/Release:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/softfloat/lib/Release:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libcxx-lite/lib/Release_LLVM
+Reading archive '/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/Release/libme.a'...
+Reading archive '/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime/lib/Release/libc.a'...
+Reading archive '/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime/lib/Release/libm.a'...
+Reading archive '/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libcxx-lite/lib/Release_LLVM/libc++lite.a'...
+Reading archive '/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/softfloat/lib/Release/libsoftfloat.a'...
+Collecting symbols from object files...
+Collecting absolute symbols...
+Collecting stack range symbols...
+Mapping and reserving symbols with fixed addresses...
+    'buf12' (256, DMb) at address 0x3ff00
+    'buf12d' (256, DMb) at address 0x39f00
+    'buf22' (512, DMb) at address 0x3c000
+    'buf22d' (512, DMb) at address 0x3be00
+    'buf4' (128, DMb) at address 0x33f80
+    'buf4d' (128, DMb) at address 0x30000
+    'rtp88' (4, DMb) at address 0x30080
+    'rtpsel89' (4, DMb) at address 0x300a0
+    'rtp86' (256, DMb) at address 0x300e0
+    'rtpsel87' (4, DMb) at address 0x300c0
+    'rtp78' (32768, DMb) at address 0x28000
+    'rtpsel82' (4, DMb) at address 0x30280
+    'rtp83' (16384, DMb) at address 0x34000
+    'rtpsel85' (4, DMb) at address 0x31ee0
+    '_ZL11sync_buffer' (32) at address 0x38260
+    '_ZN12me_primitive3ss0E' (1, WSS_rsrc1) at address 0x0
+    '_ZN12me_primitive3ss1E' (1, WSS_rsrc2) at address 0x1
+    '_ZN12me_primitive4sst0E' (1, SSMEM_tlast) at address 0x0
+    '_ZN12me_primitive4sst1E' (1, SSMEM_tlast) at address 0x1
+    '_ZN12me_primitive4ssc0E' (1, SSMEM_nb_sc) at address 0x0
+    '_ZN12me_primitive4ssc1E' (1, SSMEM_nb_sc) at address 0x1
+    '_ZN12me_primitive5wsst0E' (1, WSSMEM_tlast) at address 0x0
+    '_ZN12me_primitive5wsst1E' (1, WSSMEM_tlast) at address 0x1
+    '_ZN12me_primitive3ms0E' (1, WMS_rsrc1) at address 0x0
+    '_ZN12me_primitive3ms1E' (1, WMS_rsrc2) at address 0x1
+    '_ZN12me_primitive4msc0E' (1, MSMEM_nb_sc) at address 0x0
+    '_ZN12me_primitive4msc1E' (1, MSMEM_nb_sc) at address 0x1
+    '_main_init' (274) at address 0x0
+Mapping _after chains...
+Mapping after chain ...
+    '_main' (836) at address 0x120
+Mapping _after chains...
+Mapping and reserving overlays...
+Overlaying pseudo-static stack-frame sections...
+Creating call-tree...
+Mapping defined and space (bss) symbols...
+Mapping read-only symbols...
+Mapping constructor and destructor sections...
+Looking for duplicate symbols...
+Creating call-tree...
+Reserving text, data and space symbols found in 0 _mapping statements ...
+Mapping and reserving global memory...
+Reserving 11 text and data symbol(s) and 1 space symbol(s)...
+    '___str' (24, DMb)
+    '_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA4096_SJ_RA64_SJ_iRNS0_IfNS1_3outENS3_INS4_IJLj64EEEES7_S9_SB_EEEE' (6820, PM)
+    'ZERO' (32, DMb, > 0/0)
+    '_fini' (216, PM)
+    '_ZL7_stdout' (8, DMb)
+    'stdout' (4, DMb)
+    '_ZL14clib_hosted_ioP16Hosted_clib_vars' (32, PM)
+    'vfprintf' (134, PM)
+    'printf' (46, PM)
+    '_ZL7atexits' (32, DM_bankA)
+    '_ZL10atexit_cnt' (4, DM_bankA)
+    '__cxa_finalize' (164, PM)
+Applying relocators found in objectfiles...
+    '../Release/24_4.o' (1142)
+    '../Release/gate_half_buff.o' (16134)
+    '../Release/chesswork/.ear.work.26i0wq1' (14)
+    '../Release/chesswork/.ear.work.3P3wjSB' (34)
+    '../Release/chesswork/.ear.work.4vmuvrp' (96)
+    '../Release/chesswork/.ear.work.1uRESgO' (12)
+    '../Release/chesswork/.ear.work.2fTECBM' (1507)
+    '../Release/chesswork/.ear.work.94YRBtp' (94)
+Creating physical data...
+Creating executable file '../Release/24_4'...
+Skipping memory 'MSMEM'
+Skipping memory 'MSMEM_nb_sc'
+Skipping memory 'SSMEM'
+Skipping memory 'SSMEM_nb_sc'
+Skipping memory 'SSMEM_tlast'
+Skipping memory 'WSSMEM_tlast'
+Creating memory-map
+
+bridge user time   =    1.01 s  /     0.21 s 	../Release/24_4
+bridge system time =    0.32 s  /     0.02 s 	../Release/24_4
+bridge real time   =    1.33 s  /     0.23 s 	../Release/24_4
+
+darts -v -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib -d -h -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels -I/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/. -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libcxx-lite/include -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libs/libcxx-9.0.0/include-lite -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime/include -D__AIENGINE__ -D__AIE_ARCH__=10 -DDEPLOYMENT_ELF=1 -D__LOCK_FENCE_MODE__=0 -DNO_DISK_IO -DUSE_PWL_ACTIVATION_FNS -DVARIANT_4X2_BUFF -DGATE_HALF_LOOP_V8 -DFLOAT2FIX_FAST -DFPLT_FAST -DFPGE_FAST -DAIE_OPTION_SCALAR_FLOAT_ON_VECTOR -DAIE_OPTION_SINF_COSF_FAST -D__tct_tgt__=240507 -L +Ihex +nanno +u ../Release/24_4 me
+Release: ASIP Programmer  U-2023.06-TGT-240507 
+Tool: darts version U-2023.06#da42d6af5a#240507
+Copyright 2014-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to
+Synopsys, Inc. and may only be used pursuant to the terms and conditions of a
+written license agreement with Synopsys, Inc. All other use, reproduction,
+modification, or distribution of the Synopsys software or the associated
+documentation is strictly prohibited.
+
+Include paths: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/include:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels:/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libcxx-lite/include:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime_cxx/libs/libcxx-9.0.0/include-lite:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/runtime/include:.:/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg
+Reading enablings from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_das.ena
+Reading binary LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_das.isb
+Parsing binary ISG
+Parsing binary NML
+Building ISG done.
+Reading chess types from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_types.lib
+Reading LIB/ISG from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me_chess_types.lib
+Loading chess_types.lib file done.
+Reading relocators from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib/isg/me.rlo
+
+Disassembling code of ``../Release/24_4''
+Writing results to ``../Release/24_4.lst''
+Writing results to ``../Release/24_4.srv''
+
+darts user time   =    0.46 s  /     0.29 s 	../Release/24_4
+darts system time =    0.05 s  /     0.02 s 	../Release/24_4
+darts real time   =    0.51 s  /     0.30 s 	../Release/24_4
+
+Compilation finished successfully (0 errors, 80 warnings) (69.14 s)

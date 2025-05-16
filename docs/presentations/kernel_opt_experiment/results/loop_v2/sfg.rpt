@@ -1,0 +1,193 @@
+SFG: gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409__s2.sfg
+
+Offset  Macro node                 Source ref                                                                                           Cycle Instr Words    Scheduling graphs + reports
+------  -------------------------  ---------------------------------------------------------------------------------------------------  ----- ----- -----    ---------------------------
+        block m1                   [/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp:20] 
+000000  .  block m49                                                                                                                        6     6    52    [m49.dot]
+        .  call m50                [/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp:61] 
+000052  .  block m51                                                                                                                        4     4     8    [m51.dot]
+        .  call m52                [/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp:61] 
+000060  .  block m53                                                                                                                       17    17   148    [m53.dot]
+        .  for m3                  [/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp:115]
+        .  .  block m5             [/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp:115]
+000208  .  .  .  block m1993                                                                                                               95    95   586    [m1993.dot]
+        .  .  .  if m8             [/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp:140]
+000794  .  .  .  .  else m2007                                                                                                             11    11    70    [m2007.dot]
+        .  .  .  .  then m10                                                                                                                0     0     0   
+000864  .  .  .  block m15                                                                                                                  1     2    32    [m15.dot]
+000896  .  block m2018                                                                                                                      2     2     4    [m2018.dot]
+        .  call m209               [/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp:489]
+000900  .  block m210                                                                                                                       2     2     4    [m210.dot]
+        .  call m211               [/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp:489]
+000904  .  block m266                                                                                                                       7     7    56    [m266.dot]
+        .  call m217               [/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp:491]
+000960  .  block m220                                                                                                                      17    17    50    [m220.dot]
+
+Total cycles: 162, total instrs: 163, total words: 1010
+
+
+Bundle schedule (instruction words shown before relocation)
+---------------
+000000  m49      3d 00 d6 c0 20 00 01 04 08 30 6d df                b616  (MOV.s10 r5, #3)                                             b610  (MOV.s9 r6, #1)                                              b614  (MOV.s12 m0, #64)                                            b615  (MOV.s8 r7, #6)                                             
+000012           08 90 20 fb 08 00 f8 77                            b186  (PADDA [sp], m0)                                             b613  (MOV.s12 r12, #1)                                            b187  (MOV md0[1], r7[0])                                         
+000020           42 b6 18 03                                        b188  (MOV md0[2], r5[0])                                         
+000024           68 d0 21 eb 15 bf f7 77                            b183  (LDA p0, [p0])                                               b189  (MOV md0[3], r6[0])                                          b636  (ST.SPIL p7, [sp, #-36])                                    
+000032           6f d0 40 00 10 00 00 0c 8f fd 84 3f                b184  (LDA p7, [p1])                                               b601  (ST.SPIL lr, [sp, #-40])                                    
+000044           6d d1 40 00 00 00 00 37                            b185  (LDA p5, [p5])                                              
+000052  m51      00 01                                              NOP
+000054           00 01                                              NOP
+000056           00 01                                              NOP
+000058           19 09                                              b178  (MOV c0, cntr)                                              
+000060  m53      24 10 16 c0 08 00 7a 05 02 72 10 3f                b174  (MOV.s10 lc, #0)                                             b608  (MOV.s9 r6, #0)                                              b606  (MOV.s12 r13, #0)                                            b661  (MOV.u20 cl1, #274960)                                      
+000072           30 88 1f c0 88 03 fc 04 d2 85 67 3f                b641  (MOV.s10 m0, #-480)                                          b642  (MOV.s9 r15, #4)                                             b640  (MOV.s12 r14, #7)                                            b663  (MOV.u20 cl2, #214375)                                      
+000084           00 00 19 c0 08 01 70 04 02 c0 00 3f                b673  (MOV.s9 r9, #0)                                              b643  (MOV.s12 r8, #2)                                             b665  (MOV.u20 cl3, #0)                                           
+000096           80 00 00 40 a4 00 07 f7                            b617  (MOV.u20 p1, #0)                                            
+000104           0a d0 40 00 10 00 00 04 03 00 00 3f                b177  (VLDA wr2, [p1])                                             b667  (MOV.u20 cl4, #0)                                           
+000116           80 00 00 47 34 00 07 f7                            b669  (MOV.u20 cl5, #114688)                                      
+000124           80 00 00 40 60 0d 07 f7                            b175  (MOV.u20 ls, #0)                                            
+000132           80 00 00 40 6c 37 07 f7                            b176  (MOV.u20 le, #0)                                            
+000140           80 00 00 40 38 00 07 f7                            b607  (MOV.u20 cl6, #0)                                           
+000148           80 00 00 40 08 00 07 f7                            b609  (MOV.u20 ch2, #0)                                           
+000156           80 00 00 44 14 00 07 f7                            b644  (MOV.u20 ch5, #65536)                                       
+000164           80 00 00 01 24 76 57 f7                            b660  (MOVT.s12 cl1, #1893)                                       
+000172           80 00 00 01 28 01 27 f7                            b662  (MOVT.s12 cl2, #18)                                         
+000180           80 00 00 01 2c 00 97 f7                            b664  (MOVT.s12 cl3, #9)                                          
+000188           80 00 00 01 30 00 b7 f7                            b666  (MOVT.s12 cl4, #11)                                         
+000196           80 00 00 01 34 01 97 f7                            b668  (MOVT.s12 cl5, #25)                                         
+000204           48 af 98 03                                        b540  (VMOV wd1, wr2)                                             
+000208  m1993  1 12 a3 c1 51 40 00 00 17                            b100  (VLDA wc0, [p7], #32)                                        b99   (VLDB wr0, [p2], #32)                                       
+000216         1 00 01                                              NOP
+000218         1 16 a3 cd 51 40 00 00 17                            b102  (VLDA wc1, [p7], #32)                                        b101  (VLDB wd0, [p2], #32)                                       
+000226         1 02 a2 89 51 e0 00 00 17                            b103  (VLDA wr0, [p2], #32)                                        b104  (VLDB wc0, [p7], #32)                                       
+000234         1 16 a3 c0 00 00 00 00 37                            b106  (VLDA wc1, [p7], #32)                                       
+000242         1 00 01                                              NOP
+000244         1 12 a3 c0 00 00 00 00 37                            b108  (VLDA wc0, [p7], #32)                                       
+000252         1 80 00 00 83 b3 41 2c c7                            b140  (VFPMAC wr3, r7, wd1, ya, r13, cl1, wc0, #0, cl1, #0, cl3)  
+000260         1 00 01                                              NOP
+000262         1 1a a2 a0 00 00 00 04 41 69 a0 97 ef                b105  (VLDA wd0, [p2], #32)                                        b141  (VFPMAC wd0, r7, wr3, yd, r13, cl1, wc1, #0, cl1, #0, cl3)  
+000274         1 02 a2 8b 51 e0 00 00 17                            b107  (VLDA wr0, [p2], #32)                                        b110  (VLDB wc1, [p7], #32)                                       
+000282         1 00 01                                              NOP
+000284         1 80 00 00 83 33 41 2c c7                            b142  (VFPMAC wr3, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl3)  
+000292         1 12 a3 c0 00 00 00 00 37                            b112  (VLDA wc0, [p7], #32)                                       
+000300         1 00 01                                              NOP
+000302         1 00 01                                              NOP
+000304         1 1a a2 a0 00 00 00 04 41 69 a0 97 ef                b109  (VLDA wd0, [p2], #32)                                        b143  (VFPMAC wd0, r7, wr3, yd, r13, cl1, wc1, #0, cl1, #0, cl3)  
+000316         1 02 a2 8b 51 e0 00 00 17                            b111  (VLDA wr0, [p2], #32)                                        b114  (VLDB wc1, [p7], #32)                                       
+000324         1 00 01                                              NOP
+000326         1 80 00 00 83 33 41 2c c7                            b144  (VFPMAC wr3, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl3)  
+000334         1 12 a3 c0 00 00 00 00 37                            b116  (VLDA wc0, [p7], #32)                                       
+000342         1 00 01                                              NOP
+000344         1 00 01                                              NOP
+000346         1 1a a2 a0 00 00 00 04 41 69 a0 97 ef                b113  (VLDA wd0, [p2], #32)                                        b145  (VFPMAC wd0, r7, wr3, yd, r13, cl1, wc1, #0, cl1, #0, cl3)  
+000358         1 02 a2 8b 51 e0 00 00 17                            b115  (VLDA wr0, [p2], #32)                                        b118  (VLDB wc1, [p7], #32)                                       
+000366         1 00 01                                              NOP
+000368         1 80 00 00 83 33 41 2c c7                            b146  (VFPMAC wr3, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl3)  
+000376         1 12 a3 c0 00 00 00 00 37                            b120  (VLDA wc0, [p7], #32)                                       
+000384         1 00 01                                              NOP
+000386         1 00 01                                              NOP
+000388         1 1a a2 a0 00 00 00 04 41 69 a0 97 ef                b117  (VLDA wd0, [p2], #32)                                        b147  (VFPMAC wd0, r7, wr3, yd, r13, cl1, wc1, #0, cl1, #0, cl3)  
+000400         1 02 a2 8b 51 e0 00 00 17                            b119  (VLDA wr0, [p2], #32)                                        b122  (VLDB wc1, [p7], #32)                                       
+000408         1 00 01                                              NOP
+000410         1 80 00 00 83 33 41 2c c7                            b148  (VFPMAC wr3, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl3)  
+000418         1 12 a3 c0 00 00 00 00 37                            b124  (VLDA wc0, [p7], #32)                                       
+000426         1 00 01                                              NOP
+000428         1 00 01                                              NOP
+000430         1 1a a2 a0 00 00 00 04 41 69 a0 97 ef                b121  (VLDA wd0, [p2], #32)                                        b149  (VFPMAC wd0, r7, wr3, yd, r13, cl1, wc1, #0, cl1, #0, cl3)  
+000442         1 02 a2 8b 51 e0 00 00 17                            b123  (VLDA wr0, [p2], #32)                                        b126  (VLDB wc1, [p7], #32)                                       
+000450         1 00 01                                              NOP
+000452         1 80 00 00 83 33 41 2c c7                            b150  (VFPMAC wr3, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl3)  
+000460         1 12 a3 c0 00 00 00 00 37                            b128  (VLDA wc0, [p7], #32)                                       
+000468         1 00 01                                              NOP
+000470         1 00 01                                              NOP
+000472         1 1a a2 a0 00 00 00 04 41 69 a0 97 ef                b125  (VLDA wd0, [p2], #32)                                        b151  (VFPMAC wd0, r7, wr3, yd, r13, cl1, wc1, #0, cl1, #0, cl3)  
+000484         1 02 a2 80 00 00 00 00 37                            b127  (VLDA wr0, [p2], #32)                                       
+000492         1 00 01                                              NOP
+000494         1 12 81 c1 51 50 00 00 40 00 00 00 88 33 34 12 cc    b155  (VLDA wc0, [p7], m0)                                         b129  (VLDB wr0, [p2], #32)                                        b152  (VFPMAC wr3, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl3)  
+000510         1 00 01                                              NOP
+000512         1 02 a2 c0 00 00 00 00 37                            b130  (VLDA wr0, [p3], #32)                                       
+000520         1 16 a2 00 00 00 00 00 37                            b131  (VLDA wc1, [p0], #32)                                       
+000528         1 12 a2 01 51 70 00 00 40 00 00 00 88 2d 34 12 fc    b133  (VLDA wc0, [p0], #32)                                        b132  (VLDB wr0, [p3], #32)                                        b153  (VFPMAC wd0, r7, wr3, yd, r13, cl1, wc1, #0, cl1, #0, cl3)  
+000544         1 16 a2 00 00 00 00 00 37                            b135  (VLDA wc1, [p0], #32)                                       
+000552         1 02 a2 c9 5d 10 00 00 40 00 00 00 88 33 34 12 cc    b134  (VLDA wr0, [p3], #32)                                        b137  (VLDB wc0, [p0], #-96)                                       b154  (VFPMAC wr3, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl3)  
+000568         1 00 01                                              NOP
+000570         1 80 00 00 82 d3 41 2c c7                            b156  (VFPMAC wd0, r7, wr3, ya, r13, cl1, wc0, #0, cl1, #0, cl3)  
+000578         1 00 01                                              NOP
+000580         1 80 00 00 83 53 41 2e c7                            b157  (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc1, #0, cl1, #0, cl3)  
+000588         1 00 01                                              NOP
+000590         1 1a a2 e0 00 00 00 04 41 a9 a0 96 6f                b136  (VLDA wd0, [p3], #32)                                        b158  (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl3)  
+000602         1 00 01                                              NOP
+000604         1 00 01                                              NOP
+000606         1 80 00 00 83 33 41 2e c7                            b159  (VFPMAC wr3, r7, wd0, ya, r13, cl1, wc1, #0, cl1, #0, cl3)  
+000614         1 00 01                                              NOP
+000616         1 00 01                                              NOP
+000618         1 00 01                                              NOP
+000620         1 80 00 00 82 d3 41 2d c7                            b160  (VFPMAC wd0, r7, wr3, yd, r13, cl1, wc0, #0, cl1, #0, cl3)  
+000628         1 00 01                                              NOP
+000630         1 00 01                                              NOP
+000632         1 00 01                                              NOP
+000634         1 00 01                                              NOP
+000636         1 00 01                                              NOP
+000638         1 49 a8 98 03                                        b432  (VMOV wr0, wd0)                                             
+000642         1 80 00 00 83 53 c1 d0 c7                            b161  (VFPMAC wd0, r7, wd0, ya, r15, cl1, wc0, #0, cl6, #0, cl4)  
+000650         1 00 01                                              NOP
+000652         1 00 01                                              NOP
+000654         1 00 01                                              NOP
+000656         1 00 01                                              NOP
+000658         1 00 01                                              NOP
+000660         1 49 a8 98 03                                        b433  (VMOV wr0, wd0)                                             
+000664         1 80 00 00 83 52 01 d0 c7                            b162  (VFPMAC wd0, r7, wd0, ya, r8, cl1, wc0, #0, cl6, #0, cl4)   
+000672         1 00 01                                              NOP
+000674         1 00 01                                              NOP
+000676         1 00 01                                              NOP
+000678         1 00 01                                              NOP
+000680         1 00 01                                              NOP
+000682         1 49 a8 98 03                                        b434  (VMOV wr0, wd0)                                             
+000686         1 00 00 00 00 10 00 00 69 3c a0 00 08 35 30 1d 0c    b138  (AND r5, r14, r9)                                            b163  (VFPMAC wd0, r7, wd0, ya, r12, cl1, wc0, #0, cl6, #0, cl4)  
+000702         1 39 5e 50 03                                        b139  (NE r5, r14, r5)                                            
+000706         1 80 00 00 90 a0 36 07 f7                            b166  (BNEZ r5,#0)                                                
+000714         1 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02    .swstall "delay_slot"
+000730         1 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02    .swstall "delay_slot"
+000746         1 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02    .swstall "delay_slot"
+000762         1 00 00 00 00 10 00 00 40 00 0f 82 80 00 00 00 00    b164  (VEXT.32 r7, vdl0[0])                                       
+000778         1 00 00 00 00 00 00 00 29 71 00 00 00 00 00 00 02    b165  (VSHL0.32 wr2, r7)                                          
+000794  m2007  1 1a a3 24 54 40 00 00 77                            b92   (VLDA wd0, [p4], #32)                                        b93   (VMOV wr0, wr2)                                             
+000802         1 ae e4 a9 13                                        b94   (VSEL xc, ya.s32, r13, c2, r6, c2, c5, r6)                  
+000806         1 00 01                                              NOP
+000808         1 49 28 98 03                                        b95   (VMOV wr0, wc0)                                             
+000812         1 80 00 00 83 11 81 d0 47                            b96   (VFPMAC wr2, r5, wd0, ya, r6, cl1, wc0, #0, cl6, #0, cl4)   
+000820         1 00 01                                              NOP
+000822         1 00 01                                              NOP
+000824         1 00 00 00 03                                        NOP
+000828         1 00 00 00 03                                        NOP
+000832         1 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02    NOP
+000848         1 00 00 00 00 07 52 8d 00 00 00 00 00 00 00 00 02    b97   (VST wr2, [p5], #32)                                        
+000864  m15    1 00 00 00 00 00 00 00 00 00 00 10 0c c8 00 00 02    b91   (ADD r9, r9, #1)                                            
+000880         1 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02    .swstall "jump_to_loop_end"
+000896  m2018    03 c5                                              b89   (MOV r12, ch0)                                              
+000898           23 e5                                              b90   (MOV r14, cl0)                                              
+000900  m210     00 01                                              NOP
+000902           19 29                                              b88   (MOV c2, cntr)                                              
+000904  m266     09 5f 98 03                                        b82   (MOV r15, cl2)                                              
+000908           80 00 00 a0 20 00 07 f7                            b87   (JAL #0)                                                    
+000916           00 00 04 2f c6 3d fc 77                            b84   (SUB r14, r15, r14)                                          b81   (MOV r15, ch2)                                              
+000924           00 00 19 ee ea fd ff 37                            b85   (SBC r13, r13, r13)                                          b585  (ST.SPIL r14, [sp, #-8])                                    
+000932           31 cf c0 40 a0 00 07 f7                            b83   (SUB r12, r15, r12)                                          b645  (MOV.u20 p0, #0)                                            
+000940           30 dc c0 03                                        b86   (ADD r12, r12, r13)                                         
+000944           00 00 00 00 10 00 00 0f cf ff c4 80 00 00 00 00    b584  (ST.SPIL r12, [sp, #-4])                                    
+000960  m220     00 01                                              NOP
+000962           00 01                                              NOP
+000964           00 01                                              NOP
+000966           58 fd b8 03                                        b602  (LDB lr, [sp, #-40])                                        
+000970           80 00 00 c7 bf fb e7 f7                            b637  (LDA.SPIL p7, [sp, #-36])                                   
+000978           00 01                                              NOP
+000980           00 01                                              NOP
+000982           00 01                                              NOP
+000984           00 01                                              NOP
+000986           00 01                                              NOP
+000988           00 01                                              NOP
+000990           01 01                                              b79   (RET lr)                                                    
+000992           7f 02 00 03                                        b639  (MOV.s12 m0, #-64)                                          
+000996           08 90 00 00 00 00 00 37                            b78   (PADDA [sp], m0)                                            
+001004           00 01                                              .swstall "delay_slot"
+001006           00 01                                              .swstall "delay_slot"
+001008           00 01                                              .swstall "delay_slot"

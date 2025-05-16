@@ -1,0 +1,1209 @@
+SFG: gate_half_buff-F_Z14gate_half_buffRN3adf9io_bufferIfNS_9direction2inENS_16io_buffer_configINS_7extentsIJLj32EEEENS_7locking4syncENS_10addressing6linearENS_6marginILj0EEEEEEERNS0_IfS2_NS3_INS4_IJLj128EEEES7_S9_SB_EEEERA8192_KfRA409__s2.sfg
+
+Offset  Macro node           Source ref                                                                                           Cycle Instr Words    Scheduling graphs + reports
+------  -------------------  ---------------------------------------------------------------------------------------------------  ----- ----- -----    ---------------------------
+        block m1             [/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp:20] 
+000000  .  block m73                                                                                                                  6     6    52    [m73.dot]
+        .  call m74          [/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp:61] 
+000052  .  block m75                                                                                                                  4     4     8    [m75.dot]
+        .  call m76          [/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp:61] 
+000060  .  block m1311                                                                                                              570   570  3956    [m1311.dot]
+        .  for m3            [/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp:373]
+004016  .  .  block m961                                                                                                            566   566  3856    [m961_crit_loop.dot] [m961_not_folded_loop.dot] [m961_unfolded_modulo_loop.dot] [m961_final_loop.dot] [m961_modulo.rpt]
+007872  .  block m1288                                                                                                                9     9    32    [m1288.dot]
+        .  call m143         [/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp:489]
+007904  .  block m144                                                                                                                 5     5    10    [m144.dot]
+        .  call m145         [/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp:489]
+007914  .  block m232                                                                                                                 7     7    54    [m232.dot]
+        .  call m151         [/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/kernels/gate_half_buff.cpp:491]
+007968  .  block m154                                                                                                                17    17    50    [m154.dot]
+
+Total cycles: 1184, total instrs: 1184, total words: 8018
+
+
+Bundle schedule (instruction words shown before relocation)
+---------------
+000000  m73      3d 00 d6 c0 20 00 01 04 08 30 6d df                b768  (MOV.s10 r5, #3)                                             b762  (MOV.s9 r6, #1)                                              b766  (MOV.s12 m0, #64)                                            b767  (MOV.s8 r7, #6)                                             
+000012           08 90 20 fb 08 00 f8 77                            b164  (PADDA [sp], m0)                                             b765  (MOV.s12 r12, #1)                                            b165  (MOV md0[1], r7[0])                                         
+000020           42 b6 18 03                                        b166  (MOV md0[2], r5[0])                                         
+000024           68 d0 21 eb 15 bf f6 77                            b161  (LDA p0, [p0])                                               b167  (MOV md0[3], r6[0])                                          b788  (ST.SPIL p7, [sp, #-40])                                    
+000032           6f d0 40 00 10 00 00 0c 8f fd c4 3f                b162  (LDA p7, [p1])                                               b759  (ST.SPIL lr, [sp, #-36])                                    
+000044           6d d1 40 00 00 00 00 37                            b163  (LDA p5, [p5])                                              
+000052  m75      00 01                                              NOP
+000054           00 01                                              NOP
+000056           00 01                                              NOP
+000058           19 09                                              b156  (MOV c0, cntr)                                              
+000060  m1311    00 01                                              NOP
+000062           00 01                                              NOP
+000064           00 01                                              NOP
+000066           16 a3 c0 00 00 00 00 37                            b1514 (VLDA wc1, [p7], #32)                                       
+000074           02 a2 89 51 f0 00 00 04 0a 40 00 3f                b1513 (VLDA wr0, [p2], #32)                                        b1516 (VLDB wc0, [p7], #32)                                        b769  (MOV.u20 p1, #0)                                            
+000086           02 a2 8f 68 20 00 00 17                            b1515 (VLDA wr0, [p2], #32)                                        b155  (VLDB wd1, [p1])                                            
+000094           02 a2 8b 51 f0 00 00 05 02 f2 10 3f                b1536 (VLDA wr0, [p2], #32)                                        b1537 (VLDB wc1, [p7], #32)                                        b847  (MOV.u20 cl3, #274960)                                      
+000106           02 a2 89 51 f0 00 00 04 03 00 00 3f                b1538 (VLDA wr0, [p2], #32)                                        b1539 (VLDB wc0, [p7], #32)                                        b851  (MOV.u20 cl4, #0)                                           
+000118           02 a2 8b 51 f0 00 00 00 12 c7 65 3f                b1542 (VLDA wr0, [p2], #32)                                        b1543 (VLDB wc1, [p7], #32)                                        b846  (MOVT.s12 cl3, #1893)                                       
+000130           02 a2 89 51 e8 00 7a 00 13 00 09 3f                b1544 (VLDA wr0, [p2], #32)                                        b1545 (VLDB wc0, [p7], #32)                                        b794  (MOV.s12 r13, #0)                                            b850  (MOVT.s12 cl4, #9)                                          
+000142           02 a2 8b 51 e0 00 00 17                            b1548 (VLDA wr0, [p2], #32)                                        b1549 (VLDB wc1, [p7], #32)                                       
+000150           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1550 (VLDA wr0, [p2], #32)                                        b1551 (VLDB wc0, [p7], #32)                                        b1517 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000166           02 a2 8b 51 f0 00 00 64 f5 40 00 88 34 34 37 00    b1554 (VLDA wr0, [p2], #32)                                        b1555 (VLDB wc1, [p7], #32)                                        b698  (VMOV wr2, wd1)                                              b1518 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000182           02 a2 89 51 f0 00 00 64 55 c0 00 88 2b 34 37 2c    b1556 (VLDA wr0, [p2], #32)                                        b1557 (VLDB wc0, [p7], #32)                                        b1529 (VMOV wr3, wr2)                                              b1540 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000198           02 a2 8b 51 f0 00 00 64 f7 40 00 88 34 34 37 00    b1560 (VLDA wr0, [p2], #32)                                        b1561 (VLDB wc1, [p7], #32)                                        b1528 (VMOV wd0, wd1)                                              b1541 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000214           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1562 (VLDA wr0, [p2], #32)                                        b1563 (VLDB wc0, [p7], #32)                                        b1546 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000230           02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1566 (VLDA wr0, [p2], #32)                                        b1567 (VLDB wc1, [p7], #32)                                        b1547 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000246           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1568 (VLDA wr0, [p2], #32)                                        b1569 (VLDB wc0, [p7], #32)                                        b1552 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000262           02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1572 (VLDA wr0, [p2], #32)                                        b1573 (VLDB wc1, [p7], #32)                                        b1553 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000278           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1574 (VLDA wr0, [p2], #32)                                        b1575 (VLDB wc0, [p7], #32)                                        b1558 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000294           12 a2 01 51 70 00 00 40 00 00 00 88 34 34 37 00    b1508 (VLDA wc0, [p0], #32)                                        b1507 (VLDB wr0, [p3], #32)                                        b1559 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000310           02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1509 (VLDA wr0, [p3], #32)                                        b1510 (VLDB wc1, [p0], #32)                                        b1564 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000326           02 a2 c9 51 10 00 00 40 00 00 00 88 34 34 37 00    b1530 (VLDA wr0, [p3], #32)                                        b1531 (VLDB wc0, [p0], #32)                                        b1565 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000342           02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1532 (VLDA wr0, [p3], #32)                                        b1533 (VLDB wc1, [p0], #32)                                        b1570 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000358           80 00 00 83 43 43 70 07                            b1571 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000366           80 00 00 82 b3 43 72 c7                            b1576 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000374           80 00 00 83 43 43 70 07                            b1577 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000382           80 00 00 82 b3 43 70 47                            b1511 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000390           80 00 00 83 43 43 72 07                            b1512 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000398           80 00 00 82 b3 43 70 47                            b1534 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000406           80 00 00 83 43 43 72 07                            b1535 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000414           00 01                                              NOP
+000416           00 01                                              NOP
+000418           80 00 00 40 34 00 07 f7                            b853  (MOV.u20 cl5, #0)                                           
+000426           80 00 00 40 24 00 07 f7                            b796  (MOV.u20 cl1, #0)                                           
+000434           40 13 e0 01 34 00 b7 f7                            b798  (MOV.s12 r14, #4)                                            b852  (MOVT.s12 cl5, #11)                                         
+000442           49 a8 98 03                                        b1519 (VMOV wr0, wd0)                                             
+000446           80 00 00 83 43 83 34 47                            b1500 (VFPMAC wd0, r1, wd0, ya, r14, cl3, wc0, #0, cl1, #0, cl5)  
+000454           00 01                                              NOP
+000456           00 01                                              NOP
+000458           00 01                                              NOP
+000460           00 01                                              NOP
+000462           40 0b f0 03                                        b799  (MOV.s12 r15, #2)                                           
+000466           49 a8 98 03                                        b1520 (VMOV wr0, wd0)                                             
+000470           80 00 00 83 43 c3 34 47                            b1501 (VFPMAC wd0, r1, wd0, ya, r15, cl3, wc0, #0, cl1, #0, cl5)  
+000478           00 01                                              NOP
+000480           00 01                                              NOP
+000482           00 01                                              NOP
+000484           00 01                                              NOP
+000486           00 01                                              NOP
+000488           49 a8 98 03                                        b1521 (VMOV wr0, wd0)                                             
+000492           80 00 00 83 43 03 34 87                            b1502 (VFPMAC wd0, r2, wd0, ya, r12, cl3, wc0, #0, cl1, #0, cl5)  
+000500           00 01                                              NOP
+000502           00 01                                              NOP
+000504           00 01                                              NOP
+000506           00 01                                              NOP
+000508           00 01                                              NOP
+000510           80 00 06 47 75 18 27 f7                            b1522 (VMOV wd0, wr3)                                              b1504 (VEXT.32 r8, vdl0[0])                                       
+000518           80 00 00 82 a3 83 35 87                            b1497 (VFPMAC wr3, r2, wr3, yd, r14, cl3, wc0, #0, cl1, #0, cl5)  
+000526           00 01                                              NOP
+000528           00 01                                              NOP
+000530           00 01                                              NOP
+000532           00 01                                              NOP
+000534           00 01                                              NOP
+000536           48 ee 98 03                                        b1523 (VMOV wd0, wr3)                                             
+000540           80 00 00 82 a3 c3 35 c7                            b1498 (VFPMAC wr3, r3, wr3, yd, r15, cl3, wc0, #0, cl1, #0, cl5)  
+000548           00 01                                              NOP
+000550           00 01                                              NOP
+000552           00 01                                              NOP
+000554           00 01                                              NOP
+000556           78 02 10 03                                        b801  (MOV.s12 m1, #-512)                                         
+000560           08 83 e4 77 40 00 00 77                            b1496 (PADDA [p7], m1)                                             b1524 (VMOV wd0, wr3)                                             
+000568           80 00 00 82 a3 03 35 c7                            b1499 (VFPMAC wr3, r3, wr3, yd, r12, cl3, wc0, #0, cl1, #0, cl5)  
+000576           02 a2 8b 51 e0 00 00 17                            b1578 (VLDA wr0, [p2], #32)                                        b1579 (VLDB wc1, [p7], #32)                                       
+000584           02 a2 89 51 f0 00 00 04 03 c0 00 3f                b1580 (VLDA wr0, [p2], #32)                                        b1581 (VLDB wc0, [p7], #32)                                        b855  (MOV.u20 cl7, #0)                                           
+000596           02 a2 8b 51 f0 00 00 00 13 c0 0a 3f                b1584 (VLDA wr0, [p2], #32)                                        b1585 (VLDB wc1, [p7], #32)                                        b854  (MOVT.s12 cl7, #10)                                         
+000608           02 a2 89 51 e8 c6 00 57                            b1586 (VLDA wr0, [p2], #32)                                        b1587 (VLDB wc0, [p7], #32)                                        b1525 (VUPD.32 vrl0[0], r8)                                       
+000616           02 a2 8b 51 f0 00 00 40 00 00 00 88 35 34 13 cc    b1590 (VLDA wr0, [p2], #32)                                        b1591 (VLDB wc1, [p7], #32)                                        b1505 (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl7)  
+000632           02 a2 89 51 f0 00 00 40 00 0e c2 3f                b1592 (VLDA wr0, [p2], #32)                                        b1593 (VLDB wc0, [p7], #32)                                        b1503 (VEXT.32 r7, vrl3[0])                                       
+000644           02 a2 8b 51 e8 bf 80 57                            b1596 (VLDA wr0, [p2], #32)                                        b1597 (VLDB wc1, [p7], #32)                                        b1526 (VUPD.32 vdl0[0], r7)                                       
+000652           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1598 (VLDA wr0, [p2], #32)                                        b1599 (VLDB wc0, [p7], #32)                                        b1582 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000668           02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1602 (VLDA wr0, [p2], #32)                                        b1603 (VLDB wc1, [p7], #32)                                        b1583 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000684           02 a2 89 51 f0 00 00 64 55 c0 00 88 2b 34 37 2c    b1604 (VLDA wr0, [p2], #32)                                        b1605 (VLDB wc0, [p7], #32)                                        b1627 (VMOV wr3, wr2)                                              b1588 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000700           02 a2 8b 51 f0 00 00 64 f7 53 82 88 34 34 37 00    b1608 (VLDA wr0, [p2], #32)                                        b1609 (VLDB wc1, [p7], #32)                                        b1626 (VMOV wd0, wd1)                                              b1527 (VEXT.32 r9, vdl0[0])                                        b1589 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000716           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1610 (VLDA wr0, [p2], #32)                                        b1611 (VLDB wc0, [p7], #32)                                        b1594 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000732           02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1614 (VLDA wr0, [p2], #32)                                        b1615 (VLDB wc1, [p7], #32)                                        b1595 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000748           02 a2 89 51 f0 00 00 fc 04 00 00 08 2b 34 37 2c    b1616 (VLDA wr0, [p2], #32)                                        b1617 (VLDB wc0, [p7], #32)                                        b800  (MOV.s12 m0, #-128)                                          b1600 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000764           02 a2 8b 51 f4 02 00 40 00 00 00 88 34 34 37 00    b1620 (VLDA wr0, [p2], #32)                                        b1621 (VLDB wc1, [p7], #32)                                        b1495 (PADDS [p0], m0)                                             b1601 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000780           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1622 (VLDA wr0, [p2], #32)                                        b1623 (VLDB wc0, [p7], #32)                                        b1606 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000796           12 a2 01 51 70 00 00 40 00 00 00 88 34 34 37 00    b1629 (VLDA wc0, [p0], #32)                                        b1628 (VLDB wr0, [p3], #32)                                        b1607 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000812           02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1630 (VLDA wr0, [p3], #32)                                        b1631 (VLDB wc1, [p0], #32)                                        b1612 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000828           02 a2 c9 51 10 00 00 40 00 00 00 88 34 34 37 00    b1634 (VLDA wr0, [p3], #32)                                        b1635 (VLDB wc0, [p0], #32)                                        b1613 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000844           02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1636 (VLDA wr0, [p3], #32)                                        b1637 (VLDB wc1, [p0], #32)                                        b1618 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000860           80 00 00 83 43 43 70 07                            b1619 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000868           80 00 00 82 b3 43 72 c7                            b1624 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000876           80 00 00 83 43 43 70 07                            b1625 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000884           80 00 00 82 b3 43 70 47                            b1632 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000892           80 00 00 83 43 43 72 07                            b1633 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000900           80 00 00 82 b3 43 70 47                            b1638 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+000908           80 00 00 83 43 43 72 07                            b1639 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+000916           00 01                                              NOP
+000918           00 01                                              NOP
+000920           00 01                                              NOP
+000922           00 01                                              NOP
+000924           00 01                                              NOP
+000926           49 a8 98 03                                        b1652 (VMOV wr0, wd0)                                             
+000930           80 00 00 83 43 83 34 47                            b1645 (VFPMAC wd0, r1, wd0, ya, r14, cl3, wc0, #0, cl1, #0, cl5)  
+000938           00 01                                              NOP
+000940           00 01                                              NOP
+000942           00 01                                              NOP
+000944           00 01                                              NOP
+000946           00 01                                              NOP
+000948           49 a8 98 03                                        b1653 (VMOV wr0, wd0)                                             
+000952           80 00 00 83 43 c3 34 47                            b1646 (VFPMAC wd0, r1, wd0, ya, r15, cl3, wc0, #0, cl1, #0, cl5)  
+000960           00 01                                              NOP
+000962           00 01                                              NOP
+000964           00 01                                              NOP
+000966           00 01                                              NOP
+000968           00 01                                              NOP
+000970           49 a8 98 03                                        b1654 (VMOV wr0, wd0)                                             
+000974           80 00 00 83 43 03 34 87                            b1647 (VFPMAC wd0, r2, wd0, ya, r12, cl3, wc0, #0, cl1, #0, cl5)  
+000982           00 01                                              NOP
+000984           00 01                                              NOP
+000986           00 01                                              NOP
+000988           00 01                                              NOP
+000990           00 01                                              NOP
+000992           80 00 06 47 75 18 27 f7                            b1655 (VMOV wd0, wr3)                                              b1649 (VEXT.32 r8, vdl0[0])                                       
+001000           80 00 00 82 a3 83 35 87                            b1642 (VFPMAC wr3, r2, wr3, yd, r14, cl3, wc0, #0, cl1, #0, cl5)  
+001008           00 01                                              NOP
+001010           00 01                                              NOP
+001012           00 01                                              NOP
+001014           00 01                                              NOP
+001016           00 01                                              NOP
+001018           48 ee 98 03                                        b1656 (VMOV wd0, wr3)                                             
+001022           80 00 00 82 a3 c3 35 c7                            b1643 (VFPMAC wr3, r3, wr3, yd, r15, cl3, wc0, #0, cl1, #0, cl5)  
+001030           00 01                                              NOP
+001032           00 01                                              NOP
+001034           00 01                                              NOP
+001036           00 01                                              NOP
+001038           00 01                                              NOP
+001040           08 83 e4 77 40 00 00 77                            b1641 (PADDA [p7], m1)                                             b1657 (VMOV wd0, wr3)                                             
+001048           80 00 00 82 a3 03 35 c7                            b1644 (VFPMAC wr3, r3, wr3, yd, r12, cl3, wc0, #0, cl1, #0, cl5)  
+001056           02 a2 8b 51 e0 00 00 17                            b1661 (VLDA wr0, [p2], #32)                                        b1662 (VLDB wc1, [p7], #32)                                       
+001064           02 a2 89 51 e0 00 00 17                            b1663 (VLDA wr0, [p2], #32)                                        b1664 (VLDB wc0, [p7], #32)                                       
+001072           02 a2 8b 51 e0 00 00 17                            b1667 (VLDA wr0, [p2], #32)                                        b1668 (VLDB wc1, [p7], #32)                                       
+001080           02 a2 89 51 e8 c6 00 57                            b1669 (VLDA wr0, [p2], #32)                                        b1670 (VLDB wc0, [p7], #32)                                        b1658 (VUPD.32 vrl0[0], r8)                                       
+001088           02 a2 8b 51 f0 00 00 40 00 00 00 88 35 34 13 cc    b1673 (VLDA wr0, [p2], #32)                                        b1674 (VLDB wc1, [p7], #32)                                        b1650 (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl7)  
+001104           02 a2 89 51 f0 00 00 40 00 0e c2 3f                b1675 (VLDA wr0, [p2], #32)                                        b1676 (VLDB wc0, [p7], #32)                                        b1648 (VEXT.32 r7, vrl3[0])                                       
+001116           02 a2 8b 51 e8 bf 80 57                            b1679 (VLDA wr0, [p2], #32)                                        b1680 (VLDB wc1, [p7], #32)                                        b1659 (VUPD.32 vdl0[0], r7)                                       
+001124           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1681 (VLDA wr0, [p2], #32)                                        b1682 (VLDB wc0, [p7], #32)                                        b1665 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001140           02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1685 (VLDA wr0, [p2], #32)                                        b1686 (VLDB wc1, [p7], #32)                                        b1666 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001156           02 a2 89 51 f0 00 00 64 55 c6 94 88 2b 34 37 2c    b1687 (VLDA wr0, [p2], #32)                                        b1688 (VLDB wc0, [p7], #32)                                        b1710 (VMOV wr3, wr2)                                              b1506 (VSHL1.32 wr1, r9)                                           b1671 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001172           02 a2 8b 51 f0 00 00 64 f7 53 82 88 34 34 37 00    b1691 (VLDA wr0, [p2], #32)                                        b1692 (VLDB wc1, [p7], #32)                                        b1709 (VMOV wd0, wd1)                                              b1660 (VEXT.32 r9, vdl0[0])                                        b1672 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001188           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1693 (VLDA wr0, [p2], #32)                                        b1694 (VLDB wc0, [p7], #32)                                        b1677 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001204           02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1697 (VLDA wr0, [p2], #32)                                        b1698 (VLDB wc1, [p7], #32)                                        b1678 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001220           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1699 (VLDA wr0, [p2], #32)                                        b1700 (VLDB wc0, [p7], #32)                                        b1683 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001236           02 a2 8b 51 f4 02 00 40 00 00 00 88 34 34 37 00    b1703 (VLDA wr0, [p2], #32)                                        b1704 (VLDB wc1, [p7], #32)                                        b1640 (PADDS [p0], m0)                                             b1684 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001252           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1705 (VLDA wr0, [p2], #32)                                        b1706 (VLDB wc0, [p7], #32)                                        b1689 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001268           12 a2 01 51 70 00 00 40 00 00 00 88 34 34 37 00    b1712 (VLDA wc0, [p0], #32)                                        b1711 (VLDB wr0, [p3], #32)                                        b1690 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001284           02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1713 (VLDA wr0, [p3], #32)                                        b1714 (VLDB wc1, [p0], #32)                                        b1695 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001300           02 a2 c9 51 10 00 00 40 00 00 00 88 34 34 37 00    b1717 (VLDA wr0, [p3], #32)                                        b1718 (VLDB wc0, [p0], #32)                                        b1696 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001316           02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1719 (VLDA wr0, [p3], #32)                                        b1720 (VLDB wc1, [p0], #32)                                        b1701 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001332           80 00 00 83 43 43 70 07                            b1702 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001340           80 00 00 82 b3 43 72 c7                            b1707 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001348           80 00 00 83 43 43 70 07                            b1708 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001356           80 00 00 82 b3 43 70 47                            b1715 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001364           80 00 00 83 43 43 72 07                            b1716 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001372           80 00 00 82 b3 43 70 47                            b1721 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001380           80 00 00 83 43 43 72 07                            b1722 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001388           00 01                                              NOP
+001390           00 01                                              NOP
+001392           00 01                                              NOP
+001394           00 01                                              NOP
+001396           00 01                                              NOP
+001398           49 a8 98 03                                        b1735 (VMOV wr0, wd0)                                             
+001402           80 00 00 83 43 83 34 47                            b1728 (VFPMAC wd0, r1, wd0, ya, r14, cl3, wc0, #0, cl1, #0, cl5)  
+001410           00 01                                              NOP
+001412           00 01                                              NOP
+001414           00 01                                              NOP
+001416           00 01                                              NOP
+001418           00 01                                              NOP
+001420           49 a8 98 03                                        b1736 (VMOV wr0, wd0)                                             
+001424           80 00 00 83 43 c3 34 47                            b1729 (VFPMAC wd0, r1, wd0, ya, r15, cl3, wc0, #0, cl1, #0, cl5)  
+001432           00 01                                              NOP
+001434           00 01                                              NOP
+001436           00 01                                              NOP
+001438           00 01                                              NOP
+001440           00 01                                              NOP
+001442           49 a8 98 03                                        b1737 (VMOV wr0, wd0)                                             
+001446           80 00 00 83 43 03 34 87                            b1730 (VFPMAC wd0, r2, wd0, ya, r12, cl3, wc0, #0, cl1, #0, cl5)  
+001454           00 01                                              NOP
+001456           00 01                                              NOP
+001458           00 01                                              NOP
+001460           00 01                                              NOP
+001462           00 01                                              NOP
+001464           80 00 06 47 75 18 27 f7                            b1738 (VMOV wd0, wr3)                                              b1732 (VEXT.32 r8, vdl0[0])                                       
+001472           80 00 00 82 a3 83 35 87                            b1725 (VFPMAC wr3, r2, wr3, yd, r14, cl3, wc0, #0, cl1, #0, cl5)  
+001480           00 01                                              NOP
+001482           00 01                                              NOP
+001484           00 01                                              NOP
+001486           00 01                                              NOP
+001488           00 01                                              NOP
+001490           48 ee 98 03                                        b1739 (VMOV wd0, wr3)                                             
+001494           80 00 00 82 a3 c3 35 c7                            b1726 (VFPMAC wr3, r3, wr3, yd, r15, cl3, wc0, #0, cl1, #0, cl5)  
+001502           00 01                                              NOP
+001504           00 01                                              NOP
+001506           00 01                                              NOP
+001508           00 01                                              NOP
+001510           00 01                                              NOP
+001512           08 83 e4 77 40 00 00 77                            b1724 (PADDA [p7], m1)                                             b1740 (VMOV wd0, wr3)                                             
+001520           80 00 00 82 a3 03 35 c7                            b1727 (VFPMAC wr3, r3, wr3, yd, r12, cl3, wc0, #0, cl1, #0, cl5)  
+001528           02 a2 8b 51 e0 00 00 17                            b1744 (VLDA wr0, [p2], #32)                                        b1745 (VLDB wc1, [p7], #32)                                       
+001536           02 a2 89 51 e0 00 00 17                            b1746 (VLDA wr0, [p2], #32)                                        b1747 (VLDB wc0, [p7], #32)                                       
+001544           02 a2 8b 51 e0 00 00 17                            b1750 (VLDA wr0, [p2], #32)                                        b1751 (VLDB wc1, [p7], #32)                                       
+001552           02 a2 89 51 e8 c6 00 57                            b1752 (VLDA wr0, [p2], #32)                                        b1753 (VLDB wc0, [p7], #32)                                        b1741 (VUPD.32 vrl0[0], r8)                                       
+001560           02 a2 8b 51 f0 00 00 40 00 00 00 88 35 34 13 cc    b1756 (VLDA wr0, [p2], #32)                                        b1757 (VLDB wc1, [p7], #32)                                        b1733 (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl7)  
+001576           02 a2 89 51 f0 00 00 40 00 0e c2 3f                b1758 (VLDA wr0, [p2], #32)                                        b1759 (VLDB wc0, [p7], #32)                                        b1731 (VEXT.32 r7, vrl3[0])                                       
+001588           02 a2 8b 51 e8 bf 80 57                            b1762 (VLDA wr0, [p2], #32)                                        b1763 (VLDB wc1, [p7], #32)                                        b1742 (VUPD.32 vdl0[0], r7)                                       
+001596           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1764 (VLDA wr0, [p2], #32)                                        b1765 (VLDB wc0, [p7], #32)                                        b1748 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001612           02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1768 (VLDA wr0, [p2], #32)                                        b1769 (VLDB wc1, [p7], #32)                                        b1749 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001628           02 a2 89 51 f0 00 00 64 55 c6 94 88 2b 34 37 2c    b1770 (VLDA wr0, [p2], #32)                                        b1771 (VLDB wc0, [p7], #32)                                        b1793 (VMOV wr3, wr2)                                              b1651 (VSHL1.32 wr1, r9)                                           b1754 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001644           02 a2 8b 51 f0 00 00 64 f7 53 82 88 34 34 37 00    b1774 (VLDA wr0, [p2], #32)                                        b1775 (VLDB wc1, [p7], #32)                                        b1792 (VMOV wd0, wd1)                                              b1743 (VEXT.32 r9, vdl0[0])                                        b1755 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001660           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1776 (VLDA wr0, [p2], #32)                                        b1777 (VLDB wc0, [p7], #32)                                        b1760 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001676           02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1780 (VLDA wr0, [p2], #32)                                        b1781 (VLDB wc1, [p7], #32)                                        b1761 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001692           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1782 (VLDA wr0, [p2], #32)                                        b1783 (VLDB wc0, [p7], #32)                                        b1766 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001708           02 a2 8b 51 f4 02 00 40 00 00 00 88 34 34 37 00    b1786 (VLDA wr0, [p2], #32)                                        b1787 (VLDB wc1, [p7], #32)                                        b1723 (PADDS [p0], m0)                                             b1767 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001724           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1788 (VLDA wr0, [p2], #32)                                        b1789 (VLDB wc0, [p7], #32)                                        b1772 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001740           12 a2 01 51 70 00 00 40 00 00 00 88 34 34 37 00    b1795 (VLDA wc0, [p0], #32)                                        b1794 (VLDB wr0, [p3], #32)                                        b1773 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001756           02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1796 (VLDA wr0, [p3], #32)                                        b1797 (VLDB wc1, [p0], #32)                                        b1778 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001772           02 a2 c9 51 10 00 00 40 00 00 00 88 34 34 37 00    b1800 (VLDA wr0, [p3], #32)                                        b1801 (VLDB wc0, [p0], #32)                                        b1779 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001788           02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1802 (VLDA wr0, [p3], #32)                                        b1803 (VLDB wc1, [p0], #32)                                        b1784 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001804           80 00 00 83 43 43 70 07                            b1785 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001812           80 00 00 82 b3 43 72 c7                            b1790 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001820           80 00 00 83 43 43 70 07                            b1791 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001828           80 00 00 82 b3 43 70 47                            b1798 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001836           80 00 00 83 43 43 72 07                            b1799 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001844           80 00 00 82 b3 43 70 47                            b1804 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+001852           80 00 00 83 43 43 72 07                            b1805 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+001860           00 01                                              NOP
+001862           00 01                                              NOP
+001864           00 01                                              NOP
+001866           00 01                                              NOP
+001868           00 01                                              NOP
+001870           49 a8 98 03                                        b1818 (VMOV wr0, wd0)                                             
+001874           80 00 00 83 43 83 34 47                            b1811 (VFPMAC wd0, r1, wd0, ya, r14, cl3, wc0, #0, cl1, #0, cl5)  
+001882           00 01                                              NOP
+001884           00 01                                              NOP
+001886           00 01                                              NOP
+001888           00 01                                              NOP
+001890           00 01                                              NOP
+001892           49 a8 98 03                                        b1819 (VMOV wr0, wd0)                                             
+001896           80 00 00 83 43 c3 34 47                            b1812 (VFPMAC wd0, r1, wd0, ya, r15, cl3, wc0, #0, cl1, #0, cl5)  
+001904           00 01                                              NOP
+001906           00 01                                              NOP
+001908           00 01                                              NOP
+001910           00 01                                              NOP
+001912           00 01                                              NOP
+001914           49 a8 98 03                                        b1820 (VMOV wr0, wd0)                                             
+001918           80 00 00 83 43 03 34 87                            b1813 (VFPMAC wd0, r2, wd0, ya, r12, cl3, wc0, #0, cl1, #0, cl5)  
+001926           00 01                                              NOP
+001928           00 01                                              NOP
+001930           00 01                                              NOP
+001932           00 01                                              NOP
+001934           00 01                                              NOP
+001936           80 00 06 47 75 18 27 f7                            b1821 (VMOV wd0, wr3)                                              b1815 (VEXT.32 r8, vdl0[0])                                       
+001944           80 00 00 82 a3 83 35 87                            b1808 (VFPMAC wr3, r2, wr3, yd, r14, cl3, wc0, #0, cl1, #0, cl5)  
+001952           00 01                                              NOP
+001954           00 01                                              NOP
+001956           00 01                                              NOP
+001958           00 01                                              NOP
+001960           00 01                                              NOP
+001962           48 ee 98 03                                        b1822 (VMOV wd0, wr3)                                             
+001966           80 00 00 82 a3 c3 35 c7                            b1809 (VFPMAC wr3, r3, wr3, yd, r15, cl3, wc0, #0, cl1, #0, cl5)  
+001974           00 01                                              NOP
+001976           00 01                                              NOP
+001978           00 01                                              NOP
+001980           00 01                                              NOP
+001982           00 01                                              NOP
+001984           08 83 e4 77 40 00 00 77                            b1807 (PADDA [p7], m1)                                             b1823 (VMOV wd0, wr3)                                             
+001992           80 00 00 82 a3 03 35 c7                            b1810 (VFPMAC wr3, r3, wr3, yd, r12, cl3, wc0, #0, cl1, #0, cl5)  
+002000           02 a2 8b 51 e0 00 00 17                            b1827 (VLDA wr0, [p2], #32)                                        b1828 (VLDB wc1, [p7], #32)                                       
+002008           02 a2 89 51 e0 00 00 17                            b1829 (VLDA wr0, [p2], #32)                                        b1830 (VLDB wc0, [p7], #32)                                       
+002016           02 a2 8b 51 e0 00 00 17                            b1833 (VLDA wr0, [p2], #32)                                        b1834 (VLDB wc1, [p7], #32)                                       
+002024           02 a2 89 51 e8 c6 00 57                            b1835 (VLDA wr0, [p2], #32)                                        b1836 (VLDB wc0, [p7], #32)                                        b1824 (VUPD.32 vrl0[0], r8)                                       
+002032           02 a2 8b 51 f0 00 00 40 00 00 00 88 35 34 13 cc    b1839 (VLDA wr0, [p2], #32)                                        b1840 (VLDB wc1, [p7], #32)                                        b1816 (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl7)  
+002048           02 a2 89 51 f0 00 00 40 00 0e c2 3f                b1841 (VLDA wr0, [p2], #32)                                        b1842 (VLDB wc0, [p7], #32)                                        b1814 (VEXT.32 r7, vrl3[0])                                       
+002060           02 a2 8b 51 e8 bf 80 57                            b1845 (VLDA wr0, [p2], #32)                                        b1846 (VLDB wc1, [p7], #32)                                        b1825 (VUPD.32 vdl0[0], r7)                                       
+002068           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1847 (VLDA wr0, [p2], #32)                                        b1848 (VLDB wc0, [p7], #32)                                        b1831 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002084           02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1851 (VLDA wr0, [p2], #32)                                        b1852 (VLDB wc1, [p7], #32)                                        b1832 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002100           02 a2 89 51 f0 00 00 64 55 c6 94 88 2b 34 37 2c    b1853 (VLDA wr0, [p2], #32)                                        b1854 (VLDB wc0, [p7], #32)                                        b1876 (VMOV wr3, wr2)                                              b1734 (VSHL1.32 wr1, r9)                                           b1837 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002116           02 a2 8b 51 f0 00 00 64 f7 53 82 88 34 34 37 00    b1857 (VLDA wr0, [p2], #32)                                        b1858 (VLDB wc1, [p7], #32)                                        b1875 (VMOV wd0, wd1)                                              b1826 (VEXT.32 r9, vdl0[0])                                        b1838 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002132           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1859 (VLDA wr0, [p2], #32)                                        b1860 (VLDB wc0, [p7], #32)                                        b1843 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002148           02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1863 (VLDA wr0, [p2], #32)                                        b1864 (VLDB wc1, [p7], #32)                                        b1844 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002164           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1865 (VLDA wr0, [p2], #32)                                        b1866 (VLDB wc0, [p7], #32)                                        b1849 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002180           02 a2 8b 51 f4 02 00 40 00 00 00 88 34 34 37 00    b1869 (VLDA wr0, [p2], #32)                                        b1870 (VLDB wc1, [p7], #32)                                        b1806 (PADDS [p0], m0)                                             b1850 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002196           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1871 (VLDA wr0, [p2], #32)                                        b1872 (VLDB wc0, [p7], #32)                                        b1855 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002212           12 a2 01 51 70 00 00 40 00 00 00 88 34 34 37 00    b1878 (VLDA wc0, [p0], #32)                                        b1877 (VLDB wr0, [p3], #32)                                        b1856 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002228           02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1879 (VLDA wr0, [p3], #32)                                        b1880 (VLDB wc1, [p0], #32)                                        b1861 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002244           02 a2 c9 51 10 00 00 40 00 00 00 88 34 34 37 00    b1883 (VLDA wr0, [p3], #32)                                        b1884 (VLDB wc0, [p0], #32)                                        b1862 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002260           02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1885 (VLDA wr0, [p3], #32)                                        b1886 (VLDB wc1, [p0], #32)                                        b1867 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002276           80 00 00 83 43 43 70 07                            b1868 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002284           80 00 00 82 b3 43 72 c7                            b1873 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002292           80 00 00 83 43 43 70 07                            b1874 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002300           80 00 00 82 b3 43 70 47                            b1881 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002308           80 00 00 83 43 43 72 07                            b1882 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002316           80 00 00 82 b3 43 70 47                            b1887 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002324           80 00 00 83 43 43 72 07                            b1888 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002332           00 01                                              NOP
+002334           00 01                                              NOP
+002336           00 01                                              NOP
+002338           00 01                                              NOP
+002340           00 01                                              NOP
+002342           49 a8 98 03                                        b1901 (VMOV wr0, wd0)                                             
+002346           80 00 00 83 43 83 34 47                            b1894 (VFPMAC wd0, r1, wd0, ya, r14, cl3, wc0, #0, cl1, #0, cl5)  
+002354           00 01                                              NOP
+002356           00 01                                              NOP
+002358           00 01                                              NOP
+002360           00 01                                              NOP
+002362           00 01                                              NOP
+002364           49 a8 98 03                                        b1902 (VMOV wr0, wd0)                                             
+002368           80 00 00 83 43 c3 34 47                            b1895 (VFPMAC wd0, r1, wd0, ya, r15, cl3, wc0, #0, cl1, #0, cl5)  
+002376           00 01                                              NOP
+002378           00 01                                              NOP
+002380           00 01                                              NOP
+002382           00 01                                              NOP
+002384           00 01                                              NOP
+002386           49 a8 98 03                                        b1903 (VMOV wr0, wd0)                                             
+002390           80 00 00 83 43 03 34 87                            b1896 (VFPMAC wd0, r2, wd0, ya, r12, cl3, wc0, #0, cl1, #0, cl5)  
+002398           00 01                                              NOP
+002400           00 01                                              NOP
+002402           00 01                                              NOP
+002404           00 01                                              NOP
+002406           00 01                                              NOP
+002408           80 00 06 47 75 18 27 f7                            b1904 (VMOV wd0, wr3)                                              b1898 (VEXT.32 r8, vdl0[0])                                       
+002416           80 00 00 82 a3 83 35 87                            b1891 (VFPMAC wr3, r2, wr3, yd, r14, cl3, wc0, #0, cl1, #0, cl5)  
+002424           00 01                                              NOP
+002426           00 01                                              NOP
+002428           00 01                                              NOP
+002430           00 01                                              NOP
+002432           00 01                                              NOP
+002434           48 ee 98 03                                        b1905 (VMOV wd0, wr3)                                             
+002438           80 00 00 82 a3 c3 35 c7                            b1892 (VFPMAC wr3, r3, wr3, yd, r15, cl3, wc0, #0, cl1, #0, cl5)  
+002446           00 01                                              NOP
+002448           00 01                                              NOP
+002450           00 01                                              NOP
+002452           00 01                                              NOP
+002454           00 01                                              NOP
+002456           08 83 e4 77 40 00 00 77                            b1890 (PADDA [p7], m1)                                             b1906 (VMOV wd0, wr3)                                             
+002464           80 00 00 82 a3 03 35 c7                            b1893 (VFPMAC wr3, r3, wr3, yd, r12, cl3, wc0, #0, cl1, #0, cl5)  
+002472           02 a2 8b 51 e0 00 00 17                            b1910 (VLDA wr0, [p2], #32)                                        b1911 (VLDB wc1, [p7], #32)                                       
+002480           02 a2 89 51 e0 00 00 17                            b1912 (VLDA wr0, [p2], #32)                                        b1913 (VLDB wc0, [p7], #32)                                       
+002488           02 a2 8b 51 e0 00 00 17                            b1916 (VLDA wr0, [p2], #32)                                        b1917 (VLDB wc1, [p7], #32)                                       
+002496           02 a2 89 51 e8 c6 00 57                            b1918 (VLDA wr0, [p2], #32)                                        b1919 (VLDB wc0, [p7], #32)                                        b1907 (VUPD.32 vrl0[0], r8)                                       
+002504           02 a2 8b 51 f0 00 00 40 00 00 00 88 35 34 13 cc    b1922 (VLDA wr0, [p2], #32)                                        b1923 (VLDB wc1, [p7], #32)                                        b1899 (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl7)  
+002520           02 a2 89 51 f0 00 00 40 00 0e c2 3f                b1924 (VLDA wr0, [p2], #32)                                        b1925 (VLDB wc0, [p7], #32)                                        b1897 (VEXT.32 r7, vrl3[0])                                       
+002532           02 a2 8b 51 e8 bf 80 57                            b1928 (VLDA wr0, [p2], #32)                                        b1929 (VLDB wc1, [p7], #32)                                        b1908 (VUPD.32 vdl0[0], r7)                                       
+002540           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1930 (VLDA wr0, [p2], #32)                                        b1931 (VLDB wc0, [p7], #32)                                        b1914 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002556           02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1934 (VLDA wr0, [p2], #32)                                        b1935 (VLDB wc1, [p7], #32)                                        b1915 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002572           02 a2 89 51 f0 00 00 64 55 c6 94 88 2b 34 37 2c    b1936 (VLDA wr0, [p2], #32)                                        b1937 (VLDB wc0, [p7], #32)                                        b1959 (VMOV wr3, wr2)                                              b1817 (VSHL1.32 wr1, r9)                                           b1920 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002588           02 a2 8b 51 f0 00 00 64 f7 53 82 88 34 34 37 00    b1940 (VLDA wr0, [p2], #32)                                        b1941 (VLDB wc1, [p7], #32)                                        b1958 (VMOV wd0, wd1)                                              b1909 (VEXT.32 r9, vdl0[0])                                        b1921 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002604           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1942 (VLDA wr0, [p2], #32)                                        b1943 (VLDB wc0, [p7], #32)                                        b1926 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002620           02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1946 (VLDA wr0, [p2], #32)                                        b1947 (VLDB wc1, [p7], #32)                                        b1927 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002636           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1948 (VLDA wr0, [p2], #32)                                        b1949 (VLDB wc0, [p7], #32)                                        b1932 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002652           02 a2 8b 51 f4 02 00 40 00 00 00 88 34 34 37 00    b1952 (VLDA wr0, [p2], #32)                                        b1953 (VLDB wc1, [p7], #32)                                        b1889 (PADDS [p0], m0)                                             b1933 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002668           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1954 (VLDA wr0, [p2], #32)                                        b1955 (VLDB wc0, [p7], #32)                                        b1938 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002684           12 a2 01 51 70 00 00 40 00 00 00 88 34 34 37 00    b1961 (VLDA wc0, [p0], #32)                                        b1960 (VLDB wr0, [p3], #32)                                        b1939 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002700           02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1962 (VLDA wr0, [p3], #32)                                        b1963 (VLDB wc1, [p0], #32)                                        b1944 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002716           02 a2 c9 51 10 00 00 40 00 00 00 88 34 34 37 00    b1966 (VLDA wr0, [p3], #32)                                        b1967 (VLDB wc0, [p0], #32)                                        b1945 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002732           02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1968 (VLDA wr0, [p3], #32)                                        b1969 (VLDB wc1, [p0], #32)                                        b1950 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002748           80 00 00 83 43 43 70 07                            b1951 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002756           80 00 00 82 b3 43 72 c7                            b1956 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002764           80 00 00 83 43 43 70 07                            b1957 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002772           80 00 00 82 b3 43 70 47                            b1964 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002780           80 00 00 83 43 43 72 07                            b1965 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002788           80 00 00 82 b3 43 70 47                            b1970 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+002796           80 00 00 83 43 43 72 07                            b1971 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+002804           00 01                                              NOP
+002806           00 01                                              NOP
+002808           00 01                                              NOP
+002810           00 01                                              NOP
+002812           00 01                                              NOP
+002814           49 a8 98 03                                        b1984 (VMOV wr0, wd0)                                             
+002818           80 00 00 83 43 83 34 47                            b1977 (VFPMAC wd0, r1, wd0, ya, r14, cl3, wc0, #0, cl1, #0, cl5)  
+002826           00 01                                              NOP
+002828           00 01                                              NOP
+002830           00 01                                              NOP
+002832           00 01                                              NOP
+002834           00 01                                              NOP
+002836           49 a8 98 03                                        b1985 (VMOV wr0, wd0)                                             
+002840           80 00 00 83 43 c3 34 47                            b1978 (VFPMAC wd0, r1, wd0, ya, r15, cl3, wc0, #0, cl1, #0, cl5)  
+002848           00 01                                              NOP
+002850           00 01                                              NOP
+002852           00 01                                              NOP
+002854           00 01                                              NOP
+002856           00 01                                              NOP
+002858           49 a8 98 03                                        b1986 (VMOV wr0, wd0)                                             
+002862           80 00 00 83 43 03 34 87                            b1979 (VFPMAC wd0, r2, wd0, ya, r12, cl3, wc0, #0, cl1, #0, cl5)  
+002870           00 01                                              NOP
+002872           00 01                                              NOP
+002874           00 01                                              NOP
+002876           00 01                                              NOP
+002878           00 01                                              NOP
+002880           80 00 06 47 75 18 27 f7                            b1987 (VMOV wd0, wr3)                                              b1981 (VEXT.32 r8, vdl0[0])                                       
+002888           80 00 00 82 a3 83 35 87                            b1974 (VFPMAC wr3, r2, wr3, yd, r14, cl3, wc0, #0, cl1, #0, cl5)  
+002896           00 01                                              NOP
+002898           00 01                                              NOP
+002900           00 01                                              NOP
+002902           00 01                                              NOP
+002904           00 01                                              NOP
+002906           48 ee 98 03                                        b1988 (VMOV wd0, wr3)                                             
+002910           80 00 00 82 a3 c3 35 c7                            b1975 (VFPMAC wr3, r3, wr3, yd, r15, cl3, wc0, #0, cl1, #0, cl5)  
+002918           00 01                                              NOP
+002920           00 01                                              NOP
+002922           00 01                                              NOP
+002924           00 01                                              NOP
+002926           00 01                                              NOP
+002928           08 83 e4 77 40 00 00 77                            b1973 (PADDA [p7], m1)                                             b1989 (VMOV wd0, wr3)                                             
+002936           80 00 00 82 a3 03 35 c7                            b1976 (VFPMAC wr3, r3, wr3, yd, r12, cl3, wc0, #0, cl1, #0, cl5)  
+002944           02 a2 8b 51 e0 00 00 17                            b1993 (VLDA wr0, [p2], #32)                                        b1994 (VLDB wc1, [p7], #32)                                       
+002952           02 a2 89 51 e0 00 00 17                            b1995 (VLDA wr0, [p2], #32)                                        b1996 (VLDB wc0, [p7], #32)                                       
+002960           02 a2 8b 51 e0 00 00 17                            b1999 (VLDA wr0, [p2], #32)                                        b2000 (VLDB wc1, [p7], #32)                                       
+002968           02 a2 89 51 e8 c6 00 57                            b2001 (VLDA wr0, [p2], #32)                                        b2002 (VLDB wc0, [p7], #32)                                        b1990 (VUPD.32 vrl0[0], r8)                                       
+002976           02 a2 8b 51 f0 00 00 40 00 00 00 88 35 34 13 cc    b2005 (VLDA wr0, [p2], #32)                                        b2006 (VLDB wc1, [p7], #32)                                        b1982 (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl7)  
+002992           02 a2 89 51 f0 00 00 40 00 0e c2 3f                b2007 (VLDA wr0, [p2], #32)                                        b2008 (VLDB wc0, [p7], #32)                                        b1980 (VEXT.32 r7, vrl3[0])                                       
+003004           02 a2 8b 51 e8 bf 80 57                            b2011 (VLDA wr0, [p2], #32)                                        b2012 (VLDB wc1, [p7], #32)                                        b1991 (VUPD.32 vdl0[0], r7)                                       
+003012           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b2013 (VLDA wr0, [p2], #32)                                        b2014 (VLDB wc0, [p7], #32)                                        b1997 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003028           02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b2017 (VLDA wr0, [p2], #32)                                        b2018 (VLDB wc1, [p7], #32)                                        b1998 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003044           02 a2 89 51 f0 00 00 64 55 c6 94 88 2b 34 37 2c    b2019 (VLDA wr0, [p2], #32)                                        b2020 (VLDB wc0, [p7], #32)                                        b2042 (VMOV wr3, wr2)                                              b1900 (VSHL1.32 wr1, r9)                                           b2003 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003060           02 a2 8b 51 f0 00 00 64 f7 53 82 88 34 34 37 00    b2023 (VLDA wr0, [p2], #32)                                        b2024 (VLDB wc1, [p7], #32)                                        b2041 (VMOV wd0, wd1)                                              b1992 (VEXT.32 r9, vdl0[0])                                        b2004 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003076           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b2025 (VLDA wr0, [p2], #32)                                        b2026 (VLDB wc0, [p7], #32)                                        b2009 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003092           02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b2029 (VLDA wr0, [p2], #32)                                        b2030 (VLDB wc1, [p7], #32)                                        b2010 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003108           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b2031 (VLDA wr0, [p2], #32)                                        b2032 (VLDB wc0, [p7], #32)                                        b2015 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003124           02 a2 8b 51 f4 02 00 40 00 00 00 88 34 34 37 00    b2035 (VLDA wr0, [p2], #32)                                        b2036 (VLDB wc1, [p7], #32)                                        b1972 (PADDS [p0], m0)                                             b2016 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003140           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b2037 (VLDA wr0, [p2], #32)                                        b2038 (VLDB wc0, [p7], #32)                                        b2021 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003156           12 a2 01 51 70 00 00 40 00 00 00 88 34 34 37 00    b2044 (VLDA wc0, [p0], #32)                                        b2043 (VLDB wr0, [p3], #32)                                        b2022 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003172           02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b2045 (VLDA wr0, [p3], #32)                                        b2046 (VLDB wc1, [p0], #32)                                        b2027 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003188           02 a2 c9 51 10 00 00 40 00 00 00 88 34 34 37 00    b2049 (VLDA wr0, [p3], #32)                                        b2050 (VLDB wc0, [p0], #32)                                        b2028 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003204           02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b2051 (VLDA wr0, [p3], #32)                                        b2052 (VLDB wc1, [p0], #32)                                        b2033 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003220           80 00 00 83 43 43 70 07                            b2034 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003228           80 00 00 82 b3 43 72 c7                            b2039 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003236           80 00 00 83 43 43 70 07                            b2040 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003244           80 00 00 82 b3 43 70 47                            b2047 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003252           80 00 00 83 43 43 72 07                            b2048 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003260           80 00 00 82 b3 43 70 47                            b2053 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003268           80 00 00 83 43 43 72 07                            b2054 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003276           00 01                                              NOP
+003278           00 01                                              NOP
+003280           00 01                                              NOP
+003282           00 01                                              NOP
+003284           00 01                                              NOP
+003286           49 a8 98 03                                        b2067 (VMOV wr0, wd0)                                             
+003290           80 00 00 83 43 83 34 47                            b2060 (VFPMAC wd0, r1, wd0, ya, r14, cl3, wc0, #0, cl1, #0, cl5)  
+003298           00 01                                              NOP
+003300           00 01                                              NOP
+003302           00 01                                              NOP
+003304           00 01                                              NOP
+003306           00 01                                              NOP
+003308           49 a8 98 03                                        b2068 (VMOV wr0, wd0)                                             
+003312           80 00 00 83 43 c3 34 47                            b2061 (VFPMAC wd0, r1, wd0, ya, r15, cl3, wc0, #0, cl1, #0, cl5)  
+003320           00 01                                              NOP
+003322           00 01                                              NOP
+003324           00 01                                              NOP
+003326           00 01                                              NOP
+003328           00 01                                              NOP
+003330           49 a8 98 03                                        b2069 (VMOV wr0, wd0)                                             
+003334           80 00 00 83 43 03 34 87                            b2062 (VFPMAC wd0, r2, wd0, ya, r12, cl3, wc0, #0, cl1, #0, cl5)  
+003342           00 01                                              NOP
+003344           00 01                                              NOP
+003346           00 01                                              NOP
+003348           00 01                                              NOP
+003350           00 01                                              NOP
+003352           80 00 06 47 75 18 27 f7                            b2070 (VMOV wd0, wr3)                                              b2064 (VEXT.32 r8, vdl0[0])                                       
+003360           80 00 00 82 a3 83 35 87                            b2057 (VFPMAC wr3, r2, wr3, yd, r14, cl3, wc0, #0, cl1, #0, cl5)  
+003368           00 01                                              NOP
+003370           00 01                                              NOP
+003372           00 01                                              NOP
+003374           00 01                                              NOP
+003376           00 01                                              NOP
+003378           48 ee 98 03                                        b2071 (VMOV wd0, wr3)                                             
+003382           80 00 00 82 a3 c3 35 c7                            b2058 (VFPMAC wr3, r3, wr3, yd, r15, cl3, wc0, #0, cl1, #0, cl5)  
+003390           00 01                                              NOP
+003392           00 01                                              NOP
+003394           00 01                                              NOP
+003396           00 01                                              NOP
+003398           00 01                                              NOP
+003400           08 83 e4 77 40 00 00 77                            b2056 (PADDA [p7], m1)                                             b2072 (VMOV wd0, wr3)                                             
+003408           80 00 00 82 a3 03 35 c7                            b2059 (VFPMAC wr3, r3, wr3, yd, r12, cl3, wc0, #0, cl1, #0, cl5)  
+003416           02 a2 8b 51 e0 00 00 17                            b2076 (VLDA wr0, [p2], #32)                                        b2077 (VLDB wc1, [p7], #32)                                       
+003424           02 a2 89 51 e0 00 00 17                            b2078 (VLDA wr0, [p2], #32)                                        b2079 (VLDB wc0, [p7], #32)                                       
+003432           02 a2 8b 51 e0 00 00 17                            b2082 (VLDA wr0, [p2], #32)                                        b2083 (VLDB wc1, [p7], #32)                                       
+003440           02 a2 89 51 e8 c6 00 57                            b2084 (VLDA wr0, [p2], #32)                                        b2085 (VLDB wc0, [p7], #32)                                        b2073 (VUPD.32 vrl0[0], r8)                                       
+003448           02 a2 8b 51 f0 00 00 40 00 00 00 88 35 34 13 cc    b2088 (VLDA wr0, [p2], #32)                                        b2089 (VLDB wc1, [p7], #32)                                        b2065 (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl7)  
+003464           02 a2 89 51 f0 00 00 40 00 0e c2 3f                b2090 (VLDA wr0, [p2], #32)                                        b2091 (VLDB wc0, [p7], #32)                                        b2063 (VEXT.32 r7, vrl3[0])                                       
+003476           02 a2 8b 51 e8 bf 80 57                            b2094 (VLDA wr0, [p2], #32)                                        b2095 (VLDB wc1, [p7], #32)                                        b2074 (VUPD.32 vdl0[0], r7)                                       
+003484           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b2096 (VLDA wr0, [p2], #32)                                        b2097 (VLDB wc0, [p7], #32)                                        b2080 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003500           02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b2100 (VLDA wr0, [p2], #32)                                        b2101 (VLDB wc1, [p7], #32)                                        b2081 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003516           02 a2 89 51 f0 00 00 64 55 c6 94 88 2b 34 37 2c    b2102 (VLDA wr0, [p2], #32)                                        b2103 (VLDB wc0, [p7], #32)                                        b2125 (VMOV wr3, wr2)                                              b1983 (VSHL1.32 wr1, r9)                                           b2086 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003532           02 a2 8b 51 f0 00 00 64 f7 53 82 88 34 34 37 00    b2106 (VLDA wr0, [p2], #32)                                        b2107 (VLDB wc1, [p7], #32)                                        b2124 (VMOV wd0, wd1)                                              b2075 (VEXT.32 r9, vdl0[0])                                        b2087 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003548           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b2108 (VLDA wr0, [p2], #32)                                        b2109 (VLDB wc0, [p7], #32)                                        b2092 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003564           02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b2112 (VLDA wr0, [p2], #32)                                        b2113 (VLDB wc1, [p7], #32)                                        b2093 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003580           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b2114 (VLDA wr0, [p2], #32)                                        b2115 (VLDB wc0, [p7], #32)                                        b2098 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003596           02 a2 8b 51 f4 02 00 40 00 00 00 88 34 34 37 00    b2118 (VLDA wr0, [p2], #32)                                        b2119 (VLDB wc1, [p7], #32)                                        b2055 (PADDS [p0], m0)                                             b2099 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003612           02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b2120 (VLDA wr0, [p2], #32)                                        b2121 (VLDB wc0, [p7], #32)                                        b2104 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003628           12 a2 01 51 70 00 00 40 00 00 00 88 34 34 37 00    b2127 (VLDA wc0, [p0], #32)                                        b2126 (VLDB wr0, [p3], #32)                                        b2105 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003644           02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b2128 (VLDA wr0, [p3], #32)                                        b2129 (VLDB wc1, [p0], #32)                                        b2110 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003660           02 a2 c9 51 10 00 00 40 00 00 00 88 34 34 37 00    b2132 (VLDA wr0, [p3], #32)                                        b2133 (VLDB wc0, [p0], #32)                                        b2111 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003676           02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b2134 (VLDA wr0, [p3], #32)                                        b2135 (VLDB wc1, [p0], #32)                                        b2116 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003692           80 00 00 83 43 43 70 07                            b2117 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003700           80 00 00 82 b3 43 72 c7                            b2122 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003708           80 00 00 83 43 43 70 07                            b2123 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003716           80 00 00 82 b3 43 70 47                            b2130 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003724           80 00 00 83 43 43 72 07                            b2131 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003732           80 00 00 82 b3 43 70 47                            b2136 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+003740           80 00 00 83 43 43 72 07                            b2137 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+003748           00 01                                              NOP
+003750           00 01                                              NOP
+003752           00 01                                              NOP
+003754           00 01                                              NOP
+003756           00 01                                              NOP
+003758           49 a8 98 03                                        b2150 (VMOV wr0, wd0)                                             
+003762           80 00 00 83 43 83 34 47                            b2143 (VFPMAC wd0, r1, wd0, ya, r14, cl3, wc0, #0, cl1, #0, cl5)  
+003770           00 01                                              NOP
+003772           00 01                                              NOP
+003774           00 01                                              NOP
+003776           00 01                                              NOP
+003778           00 01                                              NOP
+003780           49 a8 98 03                                        b2151 (VMOV wr0, wd0)                                             
+003784           80 00 00 83 43 c3 34 47                            b2144 (VFPMAC wd0, r1, wd0, ya, r15, cl3, wc0, #0, cl1, #0, cl5)  
+003792           00 01                                              NOP
+003794           00 01                                              NOP
+003796           00 01                                              NOP
+003798           00 01                                              NOP
+003800           00 01                                              NOP
+003802           49 a8 98 03                                        b2152 (VMOV wr0, wd0)                                             
+003806           80 00 00 83 43 03 34 87                            b2145 (VFPMAC wd0, r2, wd0, ya, r12, cl3, wc0, #0, cl1, #0, cl5)  
+003814           00 01                                              NOP
+003816           00 01                                              NOP
+003818           00 01                                              NOP
+003820           00 01                                              NOP
+003822           00 01                                              NOP
+003824           80 00 06 47 75 18 27 f7                            b2153 (VMOV wd0, wr3)                                              b2147 (VEXT.32 r8, vdl0[0])                                       
+003832           80 00 00 82 a3 83 35 87                            b2140 (VFPMAC wr3, r2, wr3, yd, r14, cl3, wc0, #0, cl1, #0, cl5)  
+003840           00 01                                              NOP
+003842           00 01                                              NOP
+003844           00 01                                              NOP
+003846           00 01                                              NOP
+003848           00 01                                              NOP
+003850           48 ee 98 03                                        b2154 (VMOV wd0, wr3)                                             
+003854           80 00 00 82 a3 c3 35 c7                            b2141 (VFPMAC wr3, r3, wr3, yd, r15, cl3, wc0, #0, cl1, #0, cl5)  
+003862           00 01                                              NOP
+003864           00 01                                              NOP
+003866           00 01                                              NOP
+003868           00 01                                              NOP
+003870           00 01                                              NOP
+003872           48 ee 98 03                                        b2155 (VMOV wd0, wr3)                                             
+003876           80 00 00 82 a3 03 35 c7                            b2142 (VFPMAC wr3, r3, wr3, yd, r12, cl3, wc0, #0, cl1, #0, cl5)  
+003884           80 00 00 4d 28 56 77 f7                            b849  (MOV.u20 cl2, #214375)                                      
+003892           80 00 00 47 38 00 07 f7                            b857  (MOV.u20 cl6, #114688)                                      
+003900           80 00 00 44 18 00 07 f7                            b802  (MOV.u20 ch6, #65536)                                       
+003908           23 18 18 03                                        b2156 (VUPD.32 vrl0[0], r8)                                       
+003912           00 00 00 00 10 00 00 04 00 80 00 88 35 34 13 cc    b860  (MOV.u20 ch2, #0)                                            b2148 (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl7)  
+003928           00 00 1d 84 30 00 00 77                            b2146 (VEXT.32 r7, vrl3[0])                                       
+003936           22 fe 18 03                                        b2157 (VUPD.32 vdl0[0], r7)                                       
+003940           80 00 00 40 60 fb 07 f7                            b153  (MOV.u20 ls, #0)                                            
+003948           80 00 00 01 28 01 27 f7                            b848  (MOVT.s12 cl2, #18)                                         
+003956           80 00 00 01 38 01 97 f7                            b856  (MOVT.s12 cl6, #25)                                         
+003964           80 00 06 99 09 38 27 f7                            b2066 (VSHL0.32 wr1, r9)                                           b2158 (VEXT.32 r9, vdl0[0])                                       
+003972           00 00 00 00 00 00 01 00 0d a9 90 9f                b795  (MOV.s12 r6, #0)                                             b2149 (VSHL0.32 wr1, r9)                                          
+003984           1a a3 00 00 04 02 0f 24 34 40 00 00 00 00 00 02    b1492 (VLDA wd0, [p4], #32)                                        b2139 (PADDS [p7], m1)                                             b1493 (VMOV wr0, wr1)                                             
+004000           08 80 00 00 08 03 88 04 06 de b0 80 05 77 25 88    b2138 (PADDA [p0], m0)                                             b152  (MOV.s12 lc, #0)                                             b154  (MOV.u20 le, #0)                                             b1494 (VSEL xc, ya.s32, r13, c2, r6, c2, c6, r6)                  
+004016  m961   1 16 a3 c1 51 40 00 00 17                            b140  (VLDA wc1, [p7], #32)                                        b139  (VLDB wr0, [p2], #32)                                       
+004024         1 02 a2 89 51 f2 4a 20 57                            b141  (VLDA wr0, [p2], #32)                                        b142  (VLDB wc0, [p7], #32)                                        b118  (VMOV wr0, wc0)                                             
+004032         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 33 18 33 44    b869  (VLDA wr0, [p2], #32)                                        b870  (VLDB wc1, [p7], #32)                                        b119  (VFPMAC wr3, r5, wd0, ya, r6, cl3, wc0, #0, cl1, #0, cl5)   
+004048         1 02 a2 89 51 e0 00 00 17                            b871  (VLDA wr0, [p2], #32)                                        b872  (VLDB wc0, [p7], #32)                                       
+004056         1 02 a2 8b 51 e0 00 00 17                            b875  (VLDA wr0, [p2], #32)                                        b876  (VLDB wc1, [p7], #32)                                       
+004064         1 02 a2 89 51 e0 00 00 17                            b877  (VLDA wr0, [p2], #32)                                        b878  (VLDB wc0, [p7], #32)                                       
+004072         1 02 a2 8b 51 e0 00 00 17                            b881  (VLDA wr0, [p2], #32)                                        b882  (VLDB wc1, [p7], #32)                                       
+004080         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b883  (VLDA wr0, [p2], #32)                                        b884  (VLDB wc0, [p7], #32)                                        b143  (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004096         1 02 a2 8b 51 f7 5a 8d 64 74 c0 00 88 34 34 37 00    b887  (VLDA wr0, [p2], #32)                                        b888  (VLDB wc1, [p7], #32)                                        b120  (VST wr3, [p5], #32)                                         b600  (VMOV wr1, wr3)                                              b144  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004112         1 02 a2 89 51 f0 00 00 64 55 c0 00 88 2b 34 37 2c    b889  (VLDA wr0, [p2], #32)                                        b890  (VLDB wc0, [p7], #32)                                        b862  (VMOV wr3, wr2)                                              b873  (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004128         1 02 a2 8b 51 f0 00 00 64 f7 40 00 88 34 34 37 00    b893  (VLDA wr0, [p2], #32)                                        b894  (VLDB wc1, [p7], #32)                                        b861  (VMOV wd0, wd1)                                              b874  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004144         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b895  (VLDA wr0, [p2], #32)                                        b896  (VLDB wc0, [p7], #32)                                        b879  (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004160         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b899  (VLDA wr0, [p2], #32)                                        b900  (VLDB wc1, [p7], #32)                                        b880  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004176         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b901  (VLDA wr0, [p2], #32)                                        b902  (VLDB wc0, [p7], #32)                                        b885  (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004192         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b905  (VLDA wr0, [p2], #32)                                        b906  (VLDB wc1, [p7], #32)                                        b886  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004208         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b907  (VLDA wr0, [p2], #32)                                        b908  (VLDB wc0, [p7], #32)                                        b891  (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004224         1 12 a2 01 51 70 00 00 40 00 00 00 88 34 34 37 00    b134  (VLDA wc0, [p0], #32)                                        b133  (VLDB wr0, [p3], #32)                                        b892  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004240         1 02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b135  (VLDA wr0, [p3], #32)                                        b136  (VLDB wc1, [p0], #32)                                        b897  (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004256         1 02 a2 c9 51 10 00 00 40 00 00 00 88 34 34 37 00    b863  (VLDA wr0, [p3], #32)                                        b864  (VLDB wc0, [p0], #32)                                        b898  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004272         1 02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b865  (VLDA wr0, [p3], #32)                                        b866  (VLDB wc1, [p0], #32)                                        b903  (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004288         1 80 00 00 83 43 43 70 07                            b904  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004296         1 80 00 00 82 b3 43 72 c7                            b909  (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004304         1 80 00 00 83 43 43 70 07                            b910  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004312         1 80 00 00 82 b3 43 70 47                            b137  (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004320         1 80 00 00 83 43 43 72 07                            b138  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004328         1 80 00 00 82 b3 43 70 47                            b867  (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004336         1 80 00 00 83 43 43 72 07                            b868  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004344         1 00 01                                              NOP
+004346         1 00 01                                              NOP
+004348         1 00 01                                              NOP
+004350         1 00 01                                              NOP
+004352         1 00 01                                              NOP
+004354         1 49 a8 98 03                                        b504  (VMOV wr0, wd0)                                             
+004358         1 80 00 00 83 43 83 34 47                            b126  (VFPMAC wd0, r1, wd0, ya, r14, cl3, wc0, #0, cl1, #0, cl5)  
+004366         1 00 01                                              NOP
+004368         1 00 01                                              NOP
+004370         1 00 01                                              NOP
+004372         1 00 01                                              NOP
+004374         1 00 01                                              NOP
+004376         1 49 a8 98 03                                        b505  (VMOV wr0, wd0)                                             
+004380         1 80 00 00 83 43 c3 34 47                            b127  (VFPMAC wd0, r1, wd0, ya, r15, cl3, wc0, #0, cl1, #0, cl5)  
+004388         1 00 01                                              NOP
+004390         1 00 01                                              NOP
+004392         1 00 01                                              NOP
+004394         1 00 01                                              NOP
+004396         1 00 01                                              NOP
+004398         1 49 a8 98 03                                        b506  (VMOV wr0, wd0)                                             
+004402         1 80 00 00 83 43 03 34 87                            b128  (VFPMAC wd0, r2, wd0, ya, r12, cl3, wc0, #0, cl1, #0, cl5)  
+004410         1 00 01                                              NOP
+004412         1 00 01                                              NOP
+004414         1 00 01                                              NOP
+004416         1 00 01                                              NOP
+004418         1 00 01                                              NOP
+004420         1 80 00 06 47 75 18 27 f7                            b507  (VMOV wd0, wr3)                                              b130  (VEXT.32 r8, vdl0[0])                                       
+004428         1 80 00 00 82 a3 83 35 87                            b123  (VFPMAC wr3, r2, wr3, yd, r14, cl3, wc0, #0, cl1, #0, cl5)  
+004436         1 00 01                                              NOP
+004438         1 00 01                                              NOP
+004440         1 00 01                                              NOP
+004442         1 00 01                                              NOP
+004444         1 00 01                                              NOP
+004446         1 48 ee 98 03                                        b508  (VMOV wd0, wr3)                                             
+004450         1 80 00 00 82 a3 c3 35 c7                            b124  (VFPMAC wr3, r3, wr3, yd, r15, cl3, wc0, #0, cl1, #0, cl5)  
+004458         1 00 01                                              NOP
+004460         1 00 01                                              NOP
+004462         1 00 01                                              NOP
+004464         1 00 01                                              NOP
+004466         1 00 01                                              NOP
+004468         1 08 83 e4 77 40 00 00 77                            b122  (PADDA [p7], m1)                                             b509  (VMOV wd0, wr3)                                             
+004476         1 80 00 00 82 a3 03 35 c7                            b125  (VFPMAC wr3, r3, wr3, yd, r12, cl3, wc0, #0, cl1, #0, cl5)  
+004484         1 02 a2 8b 51 e0 00 00 17                            b911  (VLDA wr0, [p2], #32)                                        b912  (VLDB wc1, [p7], #32)                                       
+004492         1 02 a2 89 51 e0 00 00 17                            b913  (VLDA wr0, [p2], #32)                                        b914  (VLDB wc0, [p7], #32)                                       
+004500         1 02 a2 8b 51 e0 00 00 17                            b917  (VLDA wr0, [p2], #32)                                        b918  (VLDB wc1, [p7], #32)                                       
+004508         1 02 a2 89 51 e8 c6 00 57                            b919  (VLDA wr0, [p2], #32)                                        b920  (VLDB wc0, [p7], #32)                                        b510  (VUPD.32 vrl0[0], r8)                                       
+004516         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 35 34 13 cc    b923  (VLDA wr0, [p2], #32)                                        b924  (VLDB wc1, [p7], #32)                                        b131  (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl7)  
+004532         1 02 a2 89 51 f0 00 00 40 00 0e c2 3f                b925  (VLDA wr0, [p2], #32)                                        b926  (VLDB wc0, [p7], #32)                                        b129  (VEXT.32 r7, vrl3[0])                                       
+004544         1 02 a2 8b 51 e8 bf 80 57                            b929  (VLDA wr0, [p2], #32)                                        b930  (VLDB wc1, [p7], #32)                                        b511  (VUPD.32 vdl0[0], r7)                                       
+004552         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b931  (VLDA wr0, [p2], #32)                                        b932  (VLDB wc0, [p7], #32)                                        b915  (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004568         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b935  (VLDA wr0, [p2], #32)                                        b936  (VLDB wc1, [p7], #32)                                        b916  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004584         1 02 a2 89 51 f0 00 00 64 55 c0 00 88 2b 34 37 2c    b937  (VLDA wr0, [p2], #32)                                        b938  (VLDB wc0, [p7], #32)                                        b960  (VMOV wr3, wr2)                                              b921  (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004600         1 02 a2 8b 51 f0 00 00 64 f7 53 82 88 34 34 37 00    b941  (VLDA wr0, [p2], #32)                                        b942  (VLDB wc1, [p7], #32)                                        b959  (VMOV wd0, wd1)                                              b512  (VEXT.32 r9, vdl0[0])                                        b922  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004616         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b943  (VLDA wr0, [p2], #32)                                        b944  (VLDB wc0, [p7], #32)                                        b927  (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004632         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b947  (VLDA wr0, [p2], #32)                                        b948  (VLDB wc1, [p7], #32)                                        b928  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004648         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b949  (VLDA wr0, [p2], #32)                                        b950  (VLDB wc0, [p7], #32)                                        b933  (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004664         1 02 a2 8b 51 f4 02 00 40 00 00 00 88 34 34 37 00    b953  (VLDA wr0, [p2], #32)                                        b954  (VLDB wc1, [p7], #32)                                        b121  (PADDS [p0], m0)                                             b934  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004680         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b955  (VLDA wr0, [p2], #32)                                        b956  (VLDB wc0, [p7], #32)                                        b939  (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004696         1 12 a2 01 51 70 00 00 40 00 00 00 88 34 34 37 00    b962  (VLDA wc0, [p0], #32)                                        b961  (VLDB wr0, [p3], #32)                                        b940  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004712         1 02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b963  (VLDA wr0, [p3], #32)                                        b964  (VLDB wc1, [p0], #32)                                        b945  (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004728         1 02 a2 c9 51 10 00 00 40 00 00 00 88 34 34 37 00    b967  (VLDA wr0, [p3], #32)                                        b968  (VLDB wc0, [p0], #32)                                        b946  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004744         1 02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b969  (VLDA wr0, [p3], #32)                                        b970  (VLDB wc1, [p0], #32)                                        b951  (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004760         1 80 00 00 83 43 43 70 07                            b952  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004768         1 80 00 00 82 b3 43 72 c7                            b957  (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004776         1 80 00 00 83 43 43 70 07                            b958  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004784         1 80 00 00 82 b3 43 70 47                            b965  (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004792         1 80 00 00 83 43 43 72 07                            b966  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004800         1 80 00 00 82 b3 43 70 47                            b971  (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+004808         1 80 00 00 83 43 43 72 07                            b972  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+004816         1 00 01                                              NOP
+004818         1 00 01                                              NOP
+004820         1 00 01                                              NOP
+004822         1 00 01                                              NOP
+004824         1 00 01                                              NOP
+004826         1 49 a8 98 03                                        b985  (VMOV wr0, wd0)                                             
+004830         1 80 00 00 83 43 83 34 47                            b978  (VFPMAC wd0, r1, wd0, ya, r14, cl3, wc0, #0, cl1, #0, cl5)  
+004838         1 00 01                                              NOP
+004840         1 00 01                                              NOP
+004842         1 00 01                                              NOP
+004844         1 00 01                                              NOP
+004846         1 00 01                                              NOP
+004848         1 49 a8 98 03                                        b986  (VMOV wr0, wd0)                                             
+004852         1 80 00 00 83 43 c3 34 47                            b979  (VFPMAC wd0, r1, wd0, ya, r15, cl3, wc0, #0, cl1, #0, cl5)  
+004860         1 00 01                                              NOP
+004862         1 00 01                                              NOP
+004864         1 00 01                                              NOP
+004866         1 00 01                                              NOP
+004868         1 00 01                                              NOP
+004870         1 49 a8 98 03                                        b987  (VMOV wr0, wd0)                                             
+004874         1 80 00 00 83 43 03 34 87                            b980  (VFPMAC wd0, r2, wd0, ya, r12, cl3, wc0, #0, cl1, #0, cl5)  
+004882         1 00 01                                              NOP
+004884         1 00 01                                              NOP
+004886         1 00 01                                              NOP
+004888         1 00 01                                              NOP
+004890         1 00 01                                              NOP
+004892         1 80 00 06 47 75 18 27 f7                            b988  (VMOV wd0, wr3)                                              b982  (VEXT.32 r8, vdl0[0])                                       
+004900         1 80 00 00 82 a3 83 35 87                            b975  (VFPMAC wr3, r2, wr3, yd, r14, cl3, wc0, #0, cl1, #0, cl5)  
+004908         1 00 01                                              NOP
+004910         1 00 01                                              NOP
+004912         1 00 01                                              NOP
+004914         1 00 01                                              NOP
+004916         1 00 01                                              NOP
+004918         1 48 ee 98 03                                        b989  (VMOV wd0, wr3)                                             
+004922         1 80 00 00 82 a3 c3 35 c7                            b976  (VFPMAC wr3, r3, wr3, yd, r15, cl3, wc0, #0, cl1, #0, cl5)  
+004930         1 00 01                                              NOP
+004932         1 00 01                                              NOP
+004934         1 00 01                                              NOP
+004936         1 00 01                                              NOP
+004938         1 00 01                                              NOP
+004940         1 08 83 e4 77 40 00 00 77                            b974  (PADDA [p7], m1)                                             b990  (VMOV wd0, wr3)                                             
+004948         1 80 00 00 82 a3 03 35 c7                            b977  (VFPMAC wr3, r3, wr3, yd, r12, cl3, wc0, #0, cl1, #0, cl5)  
+004956         1 02 a2 8b 51 e0 00 00 17                            b994  (VLDA wr0, [p2], #32)                                        b995  (VLDB wc1, [p7], #32)                                       
+004964         1 02 a2 89 51 e0 00 00 17                            b996  (VLDA wr0, [p2], #32)                                        b997  (VLDB wc0, [p7], #32)                                       
+004972         1 02 a2 8b 51 e0 00 00 17                            b1000 (VLDA wr0, [p2], #32)                                        b1001 (VLDB wc1, [p7], #32)                                       
+004980         1 02 a2 89 51 e8 c6 00 57                            b1002 (VLDA wr0, [p2], #32)                                        b1003 (VLDB wc0, [p7], #32)                                        b991  (VUPD.32 vrl0[0], r8)                                       
+004988         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 35 34 13 cc    b1006 (VLDA wr0, [p2], #32)                                        b1007 (VLDB wc1, [p7], #32)                                        b983  (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl7)  
+005004         1 02 a2 89 51 f0 00 00 40 00 0e c2 3f                b1008 (VLDA wr0, [p2], #32)                                        b1009 (VLDB wc0, [p7], #32)                                        b981  (VEXT.32 r7, vrl3[0])                                       
+005016         1 02 a2 8b 51 e8 bf 80 57                            b1012 (VLDA wr0, [p2], #32)                                        b1013 (VLDB wc1, [p7], #32)                                        b992  (VUPD.32 vdl0[0], r7)                                       
+005024         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1014 (VLDA wr0, [p2], #32)                                        b1015 (VLDB wc0, [p7], #32)                                        b998  (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005040         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1018 (VLDA wr0, [p2], #32)                                        b1019 (VLDB wc1, [p7], #32)                                        b999  (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005056         1 02 a2 89 51 f0 00 00 64 55 c6 94 88 2b 34 37 2c    b1020 (VLDA wr0, [p2], #32)                                        b1021 (VLDB wc0, [p7], #32)                                        b1043 (VMOV wr3, wr2)                                              b132  (VSHL1.32 wr1, r9)                                           b1004 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005072         1 02 a2 8b 51 f0 00 00 64 f7 53 82 88 34 34 37 00    b1024 (VLDA wr0, [p2], #32)                                        b1025 (VLDB wc1, [p7], #32)                                        b1042 (VMOV wd0, wd1)                                              b993  (VEXT.32 r9, vdl0[0])                                        b1005 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005088         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1026 (VLDA wr0, [p2], #32)                                        b1027 (VLDB wc0, [p7], #32)                                        b1010 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005104         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1030 (VLDA wr0, [p2], #32)                                        b1031 (VLDB wc1, [p7], #32)                                        b1011 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005120         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1032 (VLDA wr0, [p2], #32)                                        b1033 (VLDB wc0, [p7], #32)                                        b1016 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005136         1 02 a2 8b 51 f4 02 00 40 00 00 00 88 34 34 37 00    b1036 (VLDA wr0, [p2], #32)                                        b1037 (VLDB wc1, [p7], #32)                                        b973  (PADDS [p0], m0)                                             b1017 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005152         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1038 (VLDA wr0, [p2], #32)                                        b1039 (VLDB wc0, [p7], #32)                                        b1022 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005168         1 12 a2 01 51 70 00 00 40 00 00 00 88 34 34 37 00    b1045 (VLDA wc0, [p0], #32)                                        b1044 (VLDB wr0, [p3], #32)                                        b1023 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005184         1 02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1046 (VLDA wr0, [p3], #32)                                        b1047 (VLDB wc1, [p0], #32)                                        b1028 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005200         1 02 a2 c9 51 10 00 00 40 00 00 00 88 34 34 37 00    b1050 (VLDA wr0, [p3], #32)                                        b1051 (VLDB wc0, [p0], #32)                                        b1029 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005216         1 02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1052 (VLDA wr0, [p3], #32)                                        b1053 (VLDB wc1, [p0], #32)                                        b1034 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005232         1 80 00 00 83 43 43 70 07                            b1035 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005240         1 80 00 00 82 b3 43 72 c7                            b1040 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005248         1 80 00 00 83 43 43 70 07                            b1041 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005256         1 80 00 00 82 b3 43 70 47                            b1048 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005264         1 80 00 00 83 43 43 72 07                            b1049 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005272         1 80 00 00 82 b3 43 70 47                            b1054 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005280         1 80 00 00 83 43 43 72 07                            b1055 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005288         1 00 01                                              NOP
+005290         1 00 01                                              NOP
+005292         1 00 01                                              NOP
+005294         1 00 01                                              NOP
+005296         1 00 01                                              NOP
+005298         1 49 a8 98 03                                        b1068 (VMOV wr0, wd0)                                             
+005302         1 80 00 00 83 43 83 34 47                            b1061 (VFPMAC wd0, r1, wd0, ya, r14, cl3, wc0, #0, cl1, #0, cl5)  
+005310         1 00 01                                              NOP
+005312         1 00 01                                              NOP
+005314         1 00 01                                              NOP
+005316         1 00 01                                              NOP
+005318         1 00 01                                              NOP
+005320         1 49 a8 98 03                                        b1069 (VMOV wr0, wd0)                                             
+005324         1 80 00 00 83 43 c3 34 47                            b1062 (VFPMAC wd0, r1, wd0, ya, r15, cl3, wc0, #0, cl1, #0, cl5)  
+005332         1 00 01                                              NOP
+005334         1 00 01                                              NOP
+005336         1 00 01                                              NOP
+005338         1 00 01                                              NOP
+005340         1 00 01                                              NOP
+005342         1 49 a8 98 03                                        b1070 (VMOV wr0, wd0)                                             
+005346         1 80 00 00 83 43 03 34 87                            b1063 (VFPMAC wd0, r2, wd0, ya, r12, cl3, wc0, #0, cl1, #0, cl5)  
+005354         1 00 01                                              NOP
+005356         1 00 01                                              NOP
+005358         1 00 01                                              NOP
+005360         1 00 01                                              NOP
+005362         1 00 01                                              NOP
+005364         1 80 00 06 47 75 18 27 f7                            b1071 (VMOV wd0, wr3)                                              b1065 (VEXT.32 r8, vdl0[0])                                       
+005372         1 80 00 00 82 a3 83 35 87                            b1058 (VFPMAC wr3, r2, wr3, yd, r14, cl3, wc0, #0, cl1, #0, cl5)  
+005380         1 00 01                                              NOP
+005382         1 00 01                                              NOP
+005384         1 00 01                                              NOP
+005386         1 00 01                                              NOP
+005388         1 00 01                                              NOP
+005390         1 48 ee 98 03                                        b1072 (VMOV wd0, wr3)                                             
+005394         1 80 00 00 82 a3 c3 35 c7                            b1059 (VFPMAC wr3, r3, wr3, yd, r15, cl3, wc0, #0, cl1, #0, cl5)  
+005402         1 00 01                                              NOP
+005404         1 00 01                                              NOP
+005406         1 00 01                                              NOP
+005408         1 00 01                                              NOP
+005410         1 00 01                                              NOP
+005412         1 08 83 e4 77 40 00 00 77                            b1057 (PADDA [p7], m1)                                             b1073 (VMOV wd0, wr3)                                             
+005420         1 80 00 00 82 a3 03 35 c7                            b1060 (VFPMAC wr3, r3, wr3, yd, r12, cl3, wc0, #0, cl1, #0, cl5)  
+005428         1 02 a2 8b 51 e0 00 00 17                            b1077 (VLDA wr0, [p2], #32)                                        b1078 (VLDB wc1, [p7], #32)                                       
+005436         1 02 a2 89 51 e0 00 00 17                            b1079 (VLDA wr0, [p2], #32)                                        b1080 (VLDB wc0, [p7], #32)                                       
+005444         1 02 a2 8b 51 e0 00 00 17                            b1083 (VLDA wr0, [p2], #32)                                        b1084 (VLDB wc1, [p7], #32)                                       
+005452         1 02 a2 89 51 e8 c6 00 57                            b1085 (VLDA wr0, [p2], #32)                                        b1086 (VLDB wc0, [p7], #32)                                        b1074 (VUPD.32 vrl0[0], r8)                                       
+005460         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 35 34 13 cc    b1089 (VLDA wr0, [p2], #32)                                        b1090 (VLDB wc1, [p7], #32)                                        b1066 (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl7)  
+005476         1 02 a2 89 51 f0 00 00 40 00 0e c2 3f                b1091 (VLDA wr0, [p2], #32)                                        b1092 (VLDB wc0, [p7], #32)                                        b1064 (VEXT.32 r7, vrl3[0])                                       
+005488         1 02 a2 8b 51 e8 bf 80 57                            b1095 (VLDA wr0, [p2], #32)                                        b1096 (VLDB wc1, [p7], #32)                                        b1075 (VUPD.32 vdl0[0], r7)                                       
+005496         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1097 (VLDA wr0, [p2], #32)                                        b1098 (VLDB wc0, [p7], #32)                                        b1081 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005512         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1101 (VLDA wr0, [p2], #32)                                        b1102 (VLDB wc1, [p7], #32)                                        b1082 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005528         1 02 a2 89 51 f0 00 00 64 55 c6 94 88 2b 34 37 2c    b1103 (VLDA wr0, [p2], #32)                                        b1104 (VLDB wc0, [p7], #32)                                        b1126 (VMOV wr3, wr2)                                              b984  (VSHL1.32 wr1, r9)                                           b1087 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005544         1 02 a2 8b 51 f0 00 00 64 f7 53 82 88 34 34 37 00    b1107 (VLDA wr0, [p2], #32)                                        b1108 (VLDB wc1, [p7], #32)                                        b1125 (VMOV wd0, wd1)                                              b1076 (VEXT.32 r9, vdl0[0])                                        b1088 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005560         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1109 (VLDA wr0, [p2], #32)                                        b1110 (VLDB wc0, [p7], #32)                                        b1093 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005576         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1113 (VLDA wr0, [p2], #32)                                        b1114 (VLDB wc1, [p7], #32)                                        b1094 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005592         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1115 (VLDA wr0, [p2], #32)                                        b1116 (VLDB wc0, [p7], #32)                                        b1099 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005608         1 02 a2 8b 51 f4 02 00 40 00 00 00 88 34 34 37 00    b1119 (VLDA wr0, [p2], #32)                                        b1120 (VLDB wc1, [p7], #32)                                        b1056 (PADDS [p0], m0)                                             b1100 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005624         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1121 (VLDA wr0, [p2], #32)                                        b1122 (VLDB wc0, [p7], #32)                                        b1105 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005640         1 12 a2 01 51 70 00 00 40 00 00 00 88 34 34 37 00    b1128 (VLDA wc0, [p0], #32)                                        b1127 (VLDB wr0, [p3], #32)                                        b1106 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005656         1 02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1129 (VLDA wr0, [p3], #32)                                        b1130 (VLDB wc1, [p0], #32)                                        b1111 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005672         1 02 a2 c9 51 10 00 00 40 00 00 00 88 34 34 37 00    b1133 (VLDA wr0, [p3], #32)                                        b1134 (VLDB wc0, [p0], #32)                                        b1112 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005688         1 02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1135 (VLDA wr0, [p3], #32)                                        b1136 (VLDB wc1, [p0], #32)                                        b1117 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005704         1 80 00 00 83 43 43 70 07                            b1118 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005712         1 80 00 00 82 b3 43 72 c7                            b1123 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005720         1 80 00 00 83 43 43 70 07                            b1124 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005728         1 80 00 00 82 b3 43 70 47                            b1131 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005736         1 80 00 00 83 43 43 72 07                            b1132 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005744         1 80 00 00 82 b3 43 70 47                            b1137 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+005752         1 80 00 00 83 43 43 72 07                            b1138 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005760         1 00 01                                              NOP
+005762         1 00 01                                              NOP
+005764         1 00 01                                              NOP
+005766         1 00 01                                              NOP
+005768         1 00 01                                              NOP
+005770         1 49 a8 98 03                                        b1151 (VMOV wr0, wd0)                                             
+005774         1 80 00 00 83 43 83 34 47                            b1144 (VFPMAC wd0, r1, wd0, ya, r14, cl3, wc0, #0, cl1, #0, cl5)  
+005782         1 00 01                                              NOP
+005784         1 00 01                                              NOP
+005786         1 00 01                                              NOP
+005788         1 00 01                                              NOP
+005790         1 00 01                                              NOP
+005792         1 49 a8 98 03                                        b1152 (VMOV wr0, wd0)                                             
+005796         1 80 00 00 83 43 c3 34 47                            b1145 (VFPMAC wd0, r1, wd0, ya, r15, cl3, wc0, #0, cl1, #0, cl5)  
+005804         1 00 01                                              NOP
+005806         1 00 01                                              NOP
+005808         1 00 01                                              NOP
+005810         1 00 01                                              NOP
+005812         1 00 01                                              NOP
+005814         1 49 a8 98 03                                        b1153 (VMOV wr0, wd0)                                             
+005818         1 80 00 00 83 43 03 34 87                            b1146 (VFPMAC wd0, r2, wd0, ya, r12, cl3, wc0, #0, cl1, #0, cl5)  
+005826         1 00 01                                              NOP
+005828         1 00 01                                              NOP
+005830         1 00 01                                              NOP
+005832         1 00 01                                              NOP
+005834         1 00 01                                              NOP
+005836         1 80 00 06 47 75 18 27 f7                            b1154 (VMOV wd0, wr3)                                              b1148 (VEXT.32 r8, vdl0[0])                                       
+005844         1 80 00 00 82 a3 83 35 87                            b1141 (VFPMAC wr3, r2, wr3, yd, r14, cl3, wc0, #0, cl1, #0, cl5)  
+005852         1 00 01                                              NOP
+005854         1 00 01                                              NOP
+005856         1 00 01                                              NOP
+005858         1 00 01                                              NOP
+005860         1 00 01                                              NOP
+005862         1 48 ee 98 03                                        b1155 (VMOV wd0, wr3)                                             
+005866         1 80 00 00 82 a3 c3 35 c7                            b1142 (VFPMAC wr3, r3, wr3, yd, r15, cl3, wc0, #0, cl1, #0, cl5)  
+005874         1 00 01                                              NOP
+005876         1 00 01                                              NOP
+005878         1 00 01                                              NOP
+005880         1 00 01                                              NOP
+005882         1 00 01                                              NOP
+005884         1 08 83 e4 77 40 00 00 77                            b1140 (PADDA [p7], m1)                                             b1156 (VMOV wd0, wr3)                                             
+005892         1 80 00 00 82 a3 03 35 c7                            b1143 (VFPMAC wr3, r3, wr3, yd, r12, cl3, wc0, #0, cl1, #0, cl5)  
+005900         1 02 a2 8b 51 e0 00 00 17                            b1160 (VLDA wr0, [p2], #32)                                        b1161 (VLDB wc1, [p7], #32)                                       
+005908         1 02 a2 89 51 e0 00 00 17                            b1162 (VLDA wr0, [p2], #32)                                        b1163 (VLDB wc0, [p7], #32)                                       
+005916         1 02 a2 8b 51 e0 00 00 17                            b1166 (VLDA wr0, [p2], #32)                                        b1167 (VLDB wc1, [p7], #32)                                       
+005924         1 02 a2 89 51 e8 c6 00 57                            b1168 (VLDA wr0, [p2], #32)                                        b1169 (VLDB wc0, [p7], #32)                                        b1157 (VUPD.32 vrl0[0], r8)                                       
+005932         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 35 34 13 cc    b1172 (VLDA wr0, [p2], #32)                                        b1173 (VLDB wc1, [p7], #32)                                        b1149 (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl7)  
+005948         1 02 a2 89 51 f0 00 00 40 00 0e c2 3f                b1174 (VLDA wr0, [p2], #32)                                        b1175 (VLDB wc0, [p7], #32)                                        b1147 (VEXT.32 r7, vrl3[0])                                       
+005960         1 02 a2 8b 51 e8 bf 80 57                            b1178 (VLDA wr0, [p2], #32)                                        b1179 (VLDB wc1, [p7], #32)                                        b1158 (VUPD.32 vdl0[0], r7)                                       
+005968         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1180 (VLDA wr0, [p2], #32)                                        b1181 (VLDB wc0, [p7], #32)                                        b1164 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+005984         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1184 (VLDA wr0, [p2], #32)                                        b1185 (VLDB wc1, [p7], #32)                                        b1165 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006000         1 02 a2 89 51 f0 00 00 64 55 c6 94 88 2b 34 37 2c    b1186 (VLDA wr0, [p2], #32)                                        b1187 (VLDB wc0, [p7], #32)                                        b1209 (VMOV wr3, wr2)                                              b1067 (VSHL1.32 wr1, r9)                                           b1170 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006016         1 02 a2 8b 51 f0 00 00 64 f7 53 82 88 34 34 37 00    b1190 (VLDA wr0, [p2], #32)                                        b1191 (VLDB wc1, [p7], #32)                                        b1208 (VMOV wd0, wd1)                                              b1159 (VEXT.32 r9, vdl0[0])                                        b1171 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006032         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1192 (VLDA wr0, [p2], #32)                                        b1193 (VLDB wc0, [p7], #32)                                        b1176 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006048         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1196 (VLDA wr0, [p2], #32)                                        b1197 (VLDB wc1, [p7], #32)                                        b1177 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006064         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1198 (VLDA wr0, [p2], #32)                                        b1199 (VLDB wc0, [p7], #32)                                        b1182 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006080         1 02 a2 8b 51 f4 02 00 40 00 00 00 88 34 34 37 00    b1202 (VLDA wr0, [p2], #32)                                        b1203 (VLDB wc1, [p7], #32)                                        b1139 (PADDS [p0], m0)                                             b1183 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006096         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1204 (VLDA wr0, [p2], #32)                                        b1205 (VLDB wc0, [p7], #32)                                        b1188 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006112         1 12 a2 01 51 70 00 00 40 00 00 00 88 34 34 37 00    b1211 (VLDA wc0, [p0], #32)                                        b1210 (VLDB wr0, [p3], #32)                                        b1189 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006128         1 02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1212 (VLDA wr0, [p3], #32)                                        b1213 (VLDB wc1, [p0], #32)                                        b1194 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006144         1 02 a2 c9 51 10 00 00 40 00 00 00 88 34 34 37 00    b1216 (VLDA wr0, [p3], #32)                                        b1217 (VLDB wc0, [p0], #32)                                        b1195 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006160         1 02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1218 (VLDA wr0, [p3], #32)                                        b1219 (VLDB wc1, [p0], #32)                                        b1200 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006176         1 80 00 00 83 43 43 70 07                            b1201 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006184         1 80 00 00 82 b3 43 72 c7                            b1206 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006192         1 80 00 00 83 43 43 70 07                            b1207 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006200         1 80 00 00 82 b3 43 70 47                            b1214 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006208         1 80 00 00 83 43 43 72 07                            b1215 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006216         1 80 00 00 82 b3 43 70 47                            b1220 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006224         1 80 00 00 83 43 43 72 07                            b1221 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006232         1 00 01                                              NOP
+006234         1 00 01                                              NOP
+006236         1 00 01                                              NOP
+006238         1 00 01                                              NOP
+006240         1 00 01                                              NOP
+006242         1 49 a8 98 03                                        b1234 (VMOV wr0, wd0)                                             
+006246         1 80 00 00 83 43 83 34 47                            b1227 (VFPMAC wd0, r1, wd0, ya, r14, cl3, wc0, #0, cl1, #0, cl5)  
+006254         1 00 01                                              NOP
+006256         1 00 01                                              NOP
+006258         1 00 01                                              NOP
+006260         1 00 01                                              NOP
+006262         1 00 01                                              NOP
+006264         1 49 a8 98 03                                        b1235 (VMOV wr0, wd0)                                             
+006268         1 80 00 00 83 43 c3 34 47                            b1228 (VFPMAC wd0, r1, wd0, ya, r15, cl3, wc0, #0, cl1, #0, cl5)  
+006276         1 00 01                                              NOP
+006278         1 00 01                                              NOP
+006280         1 00 01                                              NOP
+006282         1 00 01                                              NOP
+006284         1 00 01                                              NOP
+006286         1 49 a8 98 03                                        b1236 (VMOV wr0, wd0)                                             
+006290         1 80 00 00 83 43 03 34 87                            b1229 (VFPMAC wd0, r2, wd0, ya, r12, cl3, wc0, #0, cl1, #0, cl5)  
+006298         1 00 01                                              NOP
+006300         1 00 01                                              NOP
+006302         1 00 01                                              NOP
+006304         1 00 01                                              NOP
+006306         1 00 01                                              NOP
+006308         1 80 00 06 47 75 18 27 f7                            b1237 (VMOV wd0, wr3)                                              b1231 (VEXT.32 r8, vdl0[0])                                       
+006316         1 80 00 00 82 a3 83 35 87                            b1224 (VFPMAC wr3, r2, wr3, yd, r14, cl3, wc0, #0, cl1, #0, cl5)  
+006324         1 00 01                                              NOP
+006326         1 00 01                                              NOP
+006328         1 00 01                                              NOP
+006330         1 00 01                                              NOP
+006332         1 00 01                                              NOP
+006334         1 48 ee 98 03                                        b1238 (VMOV wd0, wr3)                                             
+006338         1 80 00 00 82 a3 c3 35 c7                            b1225 (VFPMAC wr3, r3, wr3, yd, r15, cl3, wc0, #0, cl1, #0, cl5)  
+006346         1 00 01                                              NOP
+006348         1 00 01                                              NOP
+006350         1 00 01                                              NOP
+006352         1 00 01                                              NOP
+006354         1 00 01                                              NOP
+006356         1 08 83 e4 77 40 00 00 77                            b1223 (PADDA [p7], m1)                                             b1239 (VMOV wd0, wr3)                                             
+006364         1 80 00 00 82 a3 03 35 c7                            b1226 (VFPMAC wr3, r3, wr3, yd, r12, cl3, wc0, #0, cl1, #0, cl5)  
+006372         1 02 a2 8b 51 e0 00 00 17                            b1243 (VLDA wr0, [p2], #32)                                        b1244 (VLDB wc1, [p7], #32)                                       
+006380         1 02 a2 89 51 e0 00 00 17                            b1245 (VLDA wr0, [p2], #32)                                        b1246 (VLDB wc0, [p7], #32)                                       
+006388         1 02 a2 8b 51 e0 00 00 17                            b1249 (VLDA wr0, [p2], #32)                                        b1250 (VLDB wc1, [p7], #32)                                       
+006396         1 02 a2 89 51 e8 c6 00 57                            b1251 (VLDA wr0, [p2], #32)                                        b1252 (VLDB wc0, [p7], #32)                                        b1240 (VUPD.32 vrl0[0], r8)                                       
+006404         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 35 34 13 cc    b1255 (VLDA wr0, [p2], #32)                                        b1256 (VLDB wc1, [p7], #32)                                        b1232 (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl7)  
+006420         1 02 a2 89 51 f0 00 00 40 00 0e c2 3f                b1257 (VLDA wr0, [p2], #32)                                        b1258 (VLDB wc0, [p7], #32)                                        b1230 (VEXT.32 r7, vrl3[0])                                       
+006432         1 02 a2 8b 51 e8 bf 80 57                            b1261 (VLDA wr0, [p2], #32)                                        b1262 (VLDB wc1, [p7], #32)                                        b1241 (VUPD.32 vdl0[0], r7)                                       
+006440         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1263 (VLDA wr0, [p2], #32)                                        b1264 (VLDB wc0, [p7], #32)                                        b1247 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006456         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1267 (VLDA wr0, [p2], #32)                                        b1268 (VLDB wc1, [p7], #32)                                        b1248 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006472         1 02 a2 89 51 f0 00 00 64 55 c6 94 88 2b 34 37 2c    b1269 (VLDA wr0, [p2], #32)                                        b1270 (VLDB wc0, [p7], #32)                                        b1292 (VMOV wr3, wr2)                                              b1150 (VSHL1.32 wr1, r9)                                           b1253 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006488         1 02 a2 8b 51 f0 00 00 64 f7 53 82 88 34 34 37 00    b1273 (VLDA wr0, [p2], #32)                                        b1274 (VLDB wc1, [p7], #32)                                        b1291 (VMOV wd0, wd1)                                              b1242 (VEXT.32 r9, vdl0[0])                                        b1254 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006504         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1275 (VLDA wr0, [p2], #32)                                        b1276 (VLDB wc0, [p7], #32)                                        b1259 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006520         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1279 (VLDA wr0, [p2], #32)                                        b1280 (VLDB wc1, [p7], #32)                                        b1260 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006536         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1281 (VLDA wr0, [p2], #32)                                        b1282 (VLDB wc0, [p7], #32)                                        b1265 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006552         1 02 a2 8b 51 f4 02 00 40 00 00 00 88 34 34 37 00    b1285 (VLDA wr0, [p2], #32)                                        b1286 (VLDB wc1, [p7], #32)                                        b1222 (PADDS [p0], m0)                                             b1266 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006568         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1287 (VLDA wr0, [p2], #32)                                        b1288 (VLDB wc0, [p7], #32)                                        b1271 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006584         1 12 a2 01 51 70 00 00 40 00 00 00 88 34 34 37 00    b1294 (VLDA wc0, [p0], #32)                                        b1293 (VLDB wr0, [p3], #32)                                        b1272 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006600         1 02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1295 (VLDA wr0, [p3], #32)                                        b1296 (VLDB wc1, [p0], #32)                                        b1277 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006616         1 02 a2 c9 51 10 00 00 40 00 00 00 88 34 34 37 00    b1299 (VLDA wr0, [p3], #32)                                        b1300 (VLDB wc0, [p0], #32)                                        b1278 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006632         1 02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1301 (VLDA wr0, [p3], #32)                                        b1302 (VLDB wc1, [p0], #32)                                        b1283 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006648         1 80 00 00 83 43 43 70 07                            b1284 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006656         1 80 00 00 82 b3 43 72 c7                            b1289 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006664         1 80 00 00 83 43 43 70 07                            b1290 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006672         1 80 00 00 82 b3 43 70 47                            b1297 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006680         1 80 00 00 83 43 43 72 07                            b1298 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006688         1 80 00 00 82 b3 43 70 47                            b1303 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006696         1 80 00 00 83 43 43 72 07                            b1304 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006704         1 00 01                                              NOP
+006706         1 00 01                                              NOP
+006708         1 00 01                                              NOP
+006710         1 00 01                                              NOP
+006712         1 00 01                                              NOP
+006714         1 49 a8 98 03                                        b1317 (VMOV wr0, wd0)                                             
+006718         1 80 00 00 83 43 83 34 47                            b1310 (VFPMAC wd0, r1, wd0, ya, r14, cl3, wc0, #0, cl1, #0, cl5)  
+006726         1 00 01                                              NOP
+006728         1 00 01                                              NOP
+006730         1 00 01                                              NOP
+006732         1 00 01                                              NOP
+006734         1 00 01                                              NOP
+006736         1 49 a8 98 03                                        b1318 (VMOV wr0, wd0)                                             
+006740         1 80 00 00 83 43 c3 34 47                            b1311 (VFPMAC wd0, r1, wd0, ya, r15, cl3, wc0, #0, cl1, #0, cl5)  
+006748         1 00 01                                              NOP
+006750         1 00 01                                              NOP
+006752         1 00 01                                              NOP
+006754         1 00 01                                              NOP
+006756         1 00 01                                              NOP
+006758         1 49 a8 98 03                                        b1319 (VMOV wr0, wd0)                                             
+006762         1 80 00 00 83 43 03 34 87                            b1312 (VFPMAC wd0, r2, wd0, ya, r12, cl3, wc0, #0, cl1, #0, cl5)  
+006770         1 00 01                                              NOP
+006772         1 00 01                                              NOP
+006774         1 00 01                                              NOP
+006776         1 00 01                                              NOP
+006778         1 00 01                                              NOP
+006780         1 80 00 06 47 75 18 27 f7                            b1320 (VMOV wd0, wr3)                                              b1314 (VEXT.32 r8, vdl0[0])                                       
+006788         1 80 00 00 82 a3 83 35 87                            b1307 (VFPMAC wr3, r2, wr3, yd, r14, cl3, wc0, #0, cl1, #0, cl5)  
+006796         1 00 01                                              NOP
+006798         1 00 01                                              NOP
+006800         1 00 01                                              NOP
+006802         1 00 01                                              NOP
+006804         1 00 01                                              NOP
+006806         1 48 ee 98 03                                        b1321 (VMOV wd0, wr3)                                             
+006810         1 80 00 00 82 a3 c3 35 c7                            b1308 (VFPMAC wr3, r3, wr3, yd, r15, cl3, wc0, #0, cl1, #0, cl5)  
+006818         1 00 01                                              NOP
+006820         1 00 01                                              NOP
+006822         1 00 01                                              NOP
+006824         1 00 01                                              NOP
+006826         1 00 01                                              NOP
+006828         1 08 83 e4 77 40 00 00 77                            b1306 (PADDA [p7], m1)                                             b1322 (VMOV wd0, wr3)                                             
+006836         1 80 00 00 82 a3 03 35 c7                            b1309 (VFPMAC wr3, r3, wr3, yd, r12, cl3, wc0, #0, cl1, #0, cl5)  
+006844         1 02 a2 8b 51 e0 00 00 17                            b1326 (VLDA wr0, [p2], #32)                                        b1327 (VLDB wc1, [p7], #32)                                       
+006852         1 02 a2 89 51 e0 00 00 17                            b1328 (VLDA wr0, [p2], #32)                                        b1329 (VLDB wc0, [p7], #32)                                       
+006860         1 02 a2 8b 51 e0 00 00 17                            b1332 (VLDA wr0, [p2], #32)                                        b1333 (VLDB wc1, [p7], #32)                                       
+006868         1 02 a2 89 51 e8 c6 00 57                            b1334 (VLDA wr0, [p2], #32)                                        b1335 (VLDB wc0, [p7], #32)                                        b1323 (VUPD.32 vrl0[0], r8)                                       
+006876         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 35 34 13 cc    b1338 (VLDA wr0, [p2], #32)                                        b1339 (VLDB wc1, [p7], #32)                                        b1315 (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl7)  
+006892         1 02 a2 89 51 f0 00 00 40 00 0e c2 3f                b1340 (VLDA wr0, [p2], #32)                                        b1341 (VLDB wc0, [p7], #32)                                        b1313 (VEXT.32 r7, vrl3[0])                                       
+006904         1 02 a2 8b 51 e8 bf 80 57                            b1344 (VLDA wr0, [p2], #32)                                        b1345 (VLDB wc1, [p7], #32)                                        b1324 (VUPD.32 vdl0[0], r7)                                       
+006912         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1346 (VLDA wr0, [p2], #32)                                        b1347 (VLDB wc0, [p7], #32)                                        b1330 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006928         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1350 (VLDA wr0, [p2], #32)                                        b1351 (VLDB wc1, [p7], #32)                                        b1331 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006944         1 02 a2 89 51 f0 00 00 64 55 c6 94 88 2b 34 37 2c    b1352 (VLDA wr0, [p2], #32)                                        b1353 (VLDB wc0, [p7], #32)                                        b1375 (VMOV wr3, wr2)                                              b1233 (VSHL1.32 wr1, r9)                                           b1336 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006960         1 02 a2 8b 51 f0 00 00 64 f7 53 82 88 34 34 37 00    b1356 (VLDA wr0, [p2], #32)                                        b1357 (VLDB wc1, [p7], #32)                                        b1374 (VMOV wd0, wd1)                                              b1325 (VEXT.32 r9, vdl0[0])                                        b1337 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+006976         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1358 (VLDA wr0, [p2], #32)                                        b1359 (VLDB wc0, [p7], #32)                                        b1342 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+006992         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1362 (VLDA wr0, [p2], #32)                                        b1363 (VLDB wc1, [p7], #32)                                        b1343 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007008         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1364 (VLDA wr0, [p2], #32)                                        b1365 (VLDB wc0, [p7], #32)                                        b1348 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+007024         1 02 a2 8b 51 f4 02 00 40 00 00 00 88 34 34 37 00    b1368 (VLDA wr0, [p2], #32)                                        b1369 (VLDB wc1, [p7], #32)                                        b1305 (PADDS [p0], m0)                                             b1349 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007040         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1370 (VLDA wr0, [p2], #32)                                        b1371 (VLDB wc0, [p7], #32)                                        b1354 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+007056         1 12 a2 01 51 70 00 00 40 00 00 00 88 34 34 37 00    b1377 (VLDA wc0, [p0], #32)                                        b1376 (VLDB wr0, [p3], #32)                                        b1355 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007072         1 02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1378 (VLDA wr0, [p3], #32)                                        b1379 (VLDB wc1, [p0], #32)                                        b1360 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+007088         1 02 a2 c9 51 10 00 00 40 00 00 00 88 34 34 37 00    b1382 (VLDA wr0, [p3], #32)                                        b1383 (VLDB wc0, [p0], #32)                                        b1361 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007104         1 02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1384 (VLDA wr0, [p3], #32)                                        b1385 (VLDB wc1, [p0], #32)                                        b1366 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+007120         1 80 00 00 83 43 43 70 07                            b1367 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007128         1 80 00 00 82 b3 43 72 c7                            b1372 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+007136         1 80 00 00 83 43 43 70 07                            b1373 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007144         1 80 00 00 82 b3 43 70 47                            b1380 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007152         1 80 00 00 83 43 43 72 07                            b1381 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+007160         1 80 00 00 82 b3 43 70 47                            b1386 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007168         1 80 00 00 83 43 43 72 07                            b1387 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+007176         1 00 01                                              NOP
+007178         1 00 01                                              NOP
+007180         1 00 01                                              NOP
+007182         1 00 01                                              NOP
+007184         1 00 01                                              NOP
+007186         1 49 a8 98 03                                        b1400 (VMOV wr0, wd0)                                             
+007190         1 80 00 00 83 43 83 34 47                            b1393 (VFPMAC wd0, r1, wd0, ya, r14, cl3, wc0, #0, cl1, #0, cl5)  
+007198         1 00 01                                              NOP
+007200         1 00 01                                              NOP
+007202         1 00 01                                              NOP
+007204         1 00 01                                              NOP
+007206         1 00 01                                              NOP
+007208         1 49 a8 98 03                                        b1401 (VMOV wr0, wd0)                                             
+007212         1 80 00 00 83 43 c3 34 47                            b1394 (VFPMAC wd0, r1, wd0, ya, r15, cl3, wc0, #0, cl1, #0, cl5)  
+007220         1 00 01                                              NOP
+007222         1 00 01                                              NOP
+007224         1 00 01                                              NOP
+007226         1 00 01                                              NOP
+007228         1 00 01                                              NOP
+007230         1 49 a8 98 03                                        b1402 (VMOV wr0, wd0)                                             
+007234         1 80 00 00 83 43 03 34 87                            b1395 (VFPMAC wd0, r2, wd0, ya, r12, cl3, wc0, #0, cl1, #0, cl5)  
+007242         1 00 01                                              NOP
+007244         1 00 01                                              NOP
+007246         1 00 01                                              NOP
+007248         1 00 01                                              NOP
+007250         1 00 01                                              NOP
+007252         1 80 00 06 47 75 18 27 f7                            b1403 (VMOV wd0, wr3)                                              b1397 (VEXT.32 r8, vdl0[0])                                       
+007260         1 80 00 00 82 a3 83 35 87                            b1390 (VFPMAC wr3, r2, wr3, yd, r14, cl3, wc0, #0, cl1, #0, cl5)  
+007268         1 00 01                                              NOP
+007270         1 00 01                                              NOP
+007272         1 00 01                                              NOP
+007274         1 00 01                                              NOP
+007276         1 00 01                                              NOP
+007278         1 48 ee 98 03                                        b1404 (VMOV wd0, wr3)                                             
+007282         1 80 00 00 82 a3 c3 35 c7                            b1391 (VFPMAC wr3, r3, wr3, yd, r15, cl3, wc0, #0, cl1, #0, cl5)  
+007290         1 00 01                                              NOP
+007292         1 00 01                                              NOP
+007294         1 00 01                                              NOP
+007296         1 00 01                                              NOP
+007298         1 00 01                                              NOP
+007300         1 08 83 e4 77 40 00 00 77                            b1389 (PADDA [p7], m1)                                             b1405 (VMOV wd0, wr3)                                             
+007308         1 80 00 00 82 a3 03 35 c7                            b1392 (VFPMAC wr3, r3, wr3, yd, r12, cl3, wc0, #0, cl1, #0, cl5)  
+007316         1 02 a2 8b 51 e0 00 00 17                            b1409 (VLDA wr0, [p2], #32)                                        b1410 (VLDB wc1, [p7], #32)                                       
+007324         1 02 a2 89 51 e0 00 00 17                            b1411 (VLDA wr0, [p2], #32)                                        b1412 (VLDB wc0, [p7], #32)                                       
+007332         1 02 a2 8b 51 e0 00 00 17                            b1415 (VLDA wr0, [p2], #32)                                        b1416 (VLDB wc1, [p7], #32)                                       
+007340         1 02 a2 89 51 e8 c6 00 57                            b1417 (VLDA wr0, [p2], #32)                                        b1418 (VLDB wc0, [p7], #32)                                        b1406 (VUPD.32 vrl0[0], r8)                                       
+007348         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 35 34 13 cc    b1421 (VLDA wr0, [p2], #32)                                        b1422 (VLDB wc1, [p7], #32)                                        b1398 (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl7)  
+007364         1 02 a2 89 51 f0 00 00 40 00 0e c2 3f                b1423 (VLDA wr0, [p2], #32)                                        b1424 (VLDB wc0, [p7], #32)                                        b1396 (VEXT.32 r7, vrl3[0])                                       
+007376         1 02 a2 8b 51 e8 bf 80 57                            b1427 (VLDA wr0, [p2], #32)                                        b1428 (VLDB wc1, [p7], #32)                                        b1407 (VUPD.32 vdl0[0], r7)                                       
+007384         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1429 (VLDA wr0, [p2], #32)                                        b1430 (VLDB wc0, [p7], #32)                                        b1413 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+007400         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1433 (VLDA wr0, [p2], #32)                                        b1434 (VLDB wc1, [p7], #32)                                        b1414 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007416         1 02 a2 89 51 f0 00 00 64 55 c6 94 88 2b 34 37 2c    b1435 (VLDA wr0, [p2], #32)                                        b1436 (VLDB wc0, [p7], #32)                                        b1458 (VMOV wr3, wr2)                                              b1316 (VSHL1.32 wr1, r9)                                           b1419 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+007432         1 02 a2 8b 51 f0 00 00 64 f7 53 82 88 34 34 37 00    b1439 (VLDA wr0, [p2], #32)                                        b1440 (VLDB wc1, [p7], #32)                                        b1457 (VMOV wd0, wd1)                                              b1408 (VEXT.32 r9, vdl0[0])                                        b1420 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007448         1 02 a2 89 51 f0 00 00 69 90 80 00 88 2b 34 37 2c    b1441 (VLDA wr0, [p2], #32)                                        b1442 (VLDB wc0, [p7], #32)                                        b1399 (VSHL0.32 wr1, r9)                                           b1425 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+007464         1 02 a2 8b 51 f0 00 00 40 00 00 00 88 34 34 37 00    b1445 (VLDA wr0, [p2], #32)                                        b1446 (VLDB wc1, [p7], #32)                                        b1426 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007480         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1447 (VLDA wr0, [p2], #32)                                        b1448 (VLDB wc0, [p7], #32)                                        b1431 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+007496         1 02 a2 8b 51 f4 02 00 40 00 00 00 88 34 34 37 00    b1451 (VLDA wr0, [p2], #32)                                        b1452 (VLDB wc1, [p7], #32)                                        b1388 (PADDS [p0], m0)                                             b1432 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007512         1 02 a2 89 51 f0 00 00 40 00 00 00 88 2b 34 37 2c    b1453 (VLDA wr0, [p2], #32)                                        b1454 (VLDB wc0, [p7], #32)                                        b1437 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+007528         1 12 a2 01 51 70 00 00 40 00 00 00 88 34 34 37 00    b1460 (VLDA wc0, [p0], #32)                                        b1459 (VLDB wr0, [p3], #32)                                        b1438 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007544         1 02 a2 cb 51 14 02 0f 40 00 00 00 88 2b 34 37 2c    b1461 (VLDA wr0, [p3], #32)                                        b1462 (VLDB wc1, [p0], #32)                                        b1472 (PADDS [p7], m1)                                             b1443 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+007560         1 02 a2 c9 51 10 00 00 40 00 00 00 88 34 34 37 00    b1465 (VLDA wr0, [p3], #32)                                        b1466 (VLDB wc0, [p0], #32)                                        b1444 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007576         1 02 a2 cb 51 10 00 00 40 00 00 00 88 2b 34 37 2c    b1467 (VLDA wr0, [p3], #32)                                        b1468 (VLDB wc1, [p0], #32)                                        b1449 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+007592         1 80 00 00 83 43 43 70 07                            b1450 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007600         1 08 80 20 00 00 00 04 41 59 a1 b9 6f                b1471 (PADDA [p0], m0)                                             b1455 (VFPMAC wr3, r7, wr3, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+007612         1 80 00 00 83 43 43 70 07                            b1456 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007620         1 80 00 00 82 b3 43 70 47                            b1463 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007628         1 80 00 00 83 43 43 72 07                            b1464 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+007636         1 80 00 00 82 b3 43 70 47                            b1469 (VFPMAC wr3, r5, wr3, ya, r13, cl3, wc0, #0, cl3, #0, cl4)  
+007644         1 80 00 00 83 43 43 72 07                            b1470 (VFPMAC wd0, r0, wd0, ya, r13, cl3, wc1, #0, cl3, #0, cl4)  
+007652         1 00 01                                              NOP
+007654         1 00 01                                              NOP
+007656         1 00 01                                              NOP
+007658         1 00 01                                              NOP
+007660         1 00 01                                              NOP
+007662         1 49 a8 98 03                                        b1483 (VMOV wr0, wd0)                                             
+007666         1 80 00 00 83 43 83 34 47                            b1476 (VFPMAC wd0, r1, wd0, ya, r14, cl3, wc0, #0, cl1, #0, cl5)  
+007674         1 00 01                                              NOP
+007676         1 00 01                                              NOP
+007678         1 00 01                                              NOP
+007680         1 00 01                                              NOP
+007682         1 00 01                                              NOP
+007684         1 49 a8 98 03                                        b1484 (VMOV wr0, wd0)                                             
+007688         1 80 00 00 83 43 c3 34 47                            b1477 (VFPMAC wd0, r1, wd0, ya, r15, cl3, wc0, #0, cl1, #0, cl5)  
+007696         1 00 01                                              NOP
+007698         1 00 01                                              NOP
+007700         1 00 01                                              NOP
+007702         1 00 01                                              NOP
+007704         1 00 01                                              NOP
+007706         1 49 a8 98 03                                        b1485 (VMOV wr0, wd0)                                             
+007710         1 80 00 00 83 43 03 34 87                            b1478 (VFPMAC wd0, r2, wd0, ya, r12, cl3, wc0, #0, cl1, #0, cl5)  
+007718         1 00 01                                              NOP
+007720         1 00 01                                              NOP
+007722         1 00 01                                              NOP
+007724         1 00 01                                              NOP
+007726         1 00 01                                              NOP
+007728         1 80 00 06 47 75 18 27 f7                            b1486 (VMOV wd0, wr3)                                              b1480 (VEXT.32 r8, vdl0[0])                                       
+007736         1 00 00 04 63 01 00 3c 41 51 c1 9a cf                b1489 (VUPD.32 vrl0[0], r8)                                        b1473 (VFPMAC wr3, r2, wr3, yd, r14, cl3, wc0, #0, cl1, #0, cl5)  
+007748         1 00 01                                              NOP
+007750         1 00 01                                              NOP
+007752         1 00 01                                              NOP
+007754         1 00 01                                              NOP
+007756         1 00 01                                              NOP
+007758         1 48 ee 98 03                                        b1487 (VMOV wd0, wr3)                                             
+007762         1 80 00 00 82 a3 c3 35 c7                            b1474 (VFPMAC wr3, r3, wr3, yd, r15, cl3, wc0, #0, cl1, #0, cl5)  
+007770         1 00 01                                              NOP
+007772         1 00 01                                              NOP
+007774         1 00 01                                              NOP
+007776         1 00 01                                              NOP
+007778         1 00 01                                              NOP
+007780         1 48 ee 98 03                                        b1488 (VMOV wd0, wr3)                                             
+007784         1 80 00 00 82 a3 03 35 c7                            b1475 (VFPMAC wr3, r3, wr3, yd, r12, cl3, wc0, #0, cl1, #0, cl5)  
+007792         1 00 01                                              NOP
+007794         1 00 01                                              NOP
+007796         1 00 01                                              NOP
+007798         1 00 01                                              NOP
+007800         1 80 00 00 83 53 41 3c c7                            b1481 (VFPMAC wd0, r7, wd0, ya, r13, cl1, wc0, #0, cl1, #0, cl7)  
+007808         1 00 00 1d 84 30 00 00 77                            b1479 (VEXT.32 r7, vrl3[0])                                       
+007816         1 22 fe 18 03                                        b1490 (VUPD.32 vdl0[0], r7)                                       
+007820         1 00 01                                              NOP
+007822         1 00 01                                              NOP
+007824         1 00 00 00 03                                        NOP
+007828         1 00 00 27 04 30 00 00 77                            b1491 (VEXT.32 r9, vdl0[0])                                       
+007836         1 53 21 18 03                                        b1482 (VSHL0.32 wr1, r9)                                          
+007840         1 1a a3 00 00 00 00 00 24 34 40 00 00 00 00 00 02    b115  (VLDA wd0, [p4], #32)                                        b116  (VMOV wr0, wr1)                                             
+007856         1 00 00 00 00 00 00 00 00 00 00 00 00 05 77 25 8a    b117  (VSEL xc, ya.s32, r13, c2, r6, c2, c6, r6)                  
+007872  m1288    00 01                                              NOP
+007874           49 28 98 03                                        b2159 (VMOV wr0, wc0)                                             
+007878           80 00 00 83 31 83 34 47                            b2160 (VFPMAC wr3, r5, wd0, ya, r6, cl3, wc0, #0, cl1, #0, cl5)   
+007886           00 01                                              NOP
+007888           00 01                                              NOP
+007890           00 01                                              NOP
+007892           00 01                                              NOP
+007894           03 c5                                              b113  (MOV r12, ch0)                                              
+007896           75 a8 d0 00 00 24 7c f7                            b2161 (VST wr3, [p5], #32)                                         b114  (MOV r14, cl0)                                              
+007904  m144     00 01                                              NOP
+007906           00 01                                              NOP
+007908           00 01                                              NOP
+007910           00 01                                              NOP
+007912           19 29                                              b112  (MOV c2, cntr)                                              
+007914  m232     2b f5                                              b106  (MOV r15, cl2)                                              
+007916           80 00 00 a0 20 00 07 f7                            b111  (JAL #0)                                                    
+007924           00 00 04 2f c6 3d fc 77                            b108  (SUB r14, r15, r14)                                          b105  (MOV r15, ch2)                                              
+007932           00 00 19 ee ea fd ff 37                            b109  (SBC r13, r13, r13)                                          b743  (ST.SPIL r14, [sp, #-8])                                    
+007940           31 cf c0 40 a0 00 07 f7                            b107  (SUB r12, r15, r12)                                          b803  (MOV.u20 p0, #0)                                            
+007948           30 dc c0 03                                        b110  (ADD r12, r12, r13)                                         
+007952           00 00 00 00 10 00 00 0f cf ff c4 80 00 00 00 00    b742  (ST.SPIL r12, [sp, #-4])                                    
+007968  m154     00 01                                              NOP
+007970           00 01                                              NOP
+007972           00 01                                              NOP
+007974           58 fd f8 03                                        b760  (LDB lr, [sp, #-36])                                        
+007978           80 00 00 c7 bf fb 67 f7                            b789  (LDA.SPIL p7, [sp, #-40])                                   
+007986           00 01                                              NOP
+007988           00 01                                              NOP
+007990           00 01                                              NOP
+007992           00 01                                              NOP
+007994           00 01                                              NOP
+007996           00 01                                              NOP
+007998           01 01                                              b103  (RET lr)                                                    
+008000           7f 02 00 03                                        b791  (MOV.s12 m0, #-64)                                          
+008004           08 90 00 00 00 00 00 37                            b102  (PADDA [sp], m0)                                            
+008012           00 01                                              .swstall "delay_slot"
+008014           00 01                                              .swstall "delay_slot"
+008016           00 01                                              .swstall "delay_slot"

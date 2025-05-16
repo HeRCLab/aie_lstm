@@ -1,0 +1,5056 @@
+{
+    "schema": "MEGraphSchema-0.4",
+    "id": "root",
+    "blockTypes": {
+        "b2": {
+            "type": "gmio",
+            "ports": {
+                "po0": {
+                    "type": "gmem",
+                    "elementType": "float",
+                    "direction": "out",
+                    "portName": "gmio_in.out[0]"
+                }
+            }
+        },
+        "b3": {
+            "type": "gmio",
+            "ports": {
+                "pi0": {
+                    "type": "gmem",
+                    "elementType": "float",
+                    "direction": "in",
+                    "portName": "gmio_out.in[0]"
+                }
+            }
+        },
+        "b0": {
+            "type": "function",
+            "function": "coordinator_4x2_buff",
+            "srcFile": "coordinator_4x2_buff.cpp",
+            "ports": {
+                "pi0": {
+                    "type": "mem",
+                    "elementType": "float",
+                    "direction": "in",
+                    "parameterIndex": 0,
+                    "bufferPort": true,
+                    "portName": "in[0]",
+                    "varName": "ig_up_rslt",
+                    "cppDataType": "adf::io_buffer<float, adf::direction::in, adf::io_buffer_config<adf::extents<64>, adf::locking::async>> &__restrict",
+                    "dimensions": [
+                        64
+                    ],
+                    "async": true
+                },
+                "pi1": {
+                    "type": "mem",
+                    "elementType": "float",
+                    "direction": "in",
+                    "parameterIndex": 1,
+                    "bufferPort": true,
+                    "portName": "in[1]",
+                    "varName": "ig_down_rslt",
+                    "cppDataType": "adf::io_buffer<float, adf::direction::in, adf::io_buffer_config<adf::extents<64>, adf::locking::async>> &__restrict",
+                    "dimensions": [
+                        64
+                    ],
+                    "async": true
+                },
+                "pi2": {
+                    "type": "mem",
+                    "elementType": "float",
+                    "direction": "in",
+                    "parameterIndex": 2,
+                    "bufferPort": true,
+                    "portName": "in[2]",
+                    "varName": "fg_up_rslt",
+                    "cppDataType": "adf::io_buffer<float, adf::direction::in, adf::io_buffer_config<adf::extents<64>, adf::locking::async>> &__restrict",
+                    "dimensions": [
+                        64
+                    ],
+                    "async": true
+                },
+                "pi3": {
+                    "type": "mem",
+                    "elementType": "float",
+                    "direction": "in",
+                    "parameterIndex": 3,
+                    "bufferPort": true,
+                    "portName": "in[3]",
+                    "varName": "fg_down_rslt",
+                    "cppDataType": "adf::io_buffer<float, adf::direction::in, adf::io_buffer_config<adf::extents<64>, adf::locking::async>> &__restrict",
+                    "dimensions": [
+                        64
+                    ],
+                    "async": true
+                },
+                "pi4": {
+                    "type": "mem",
+                    "elementType": "float",
+                    "direction": "in",
+                    "parameterIndex": 4,
+                    "bufferPort": true,
+                    "portName": "in[4]",
+                    "varName": "og_up_rslt",
+                    "cppDataType": "adf::io_buffer<float, adf::direction::in, adf::io_buffer_config<adf::extents<64>, adf::locking::async>> &__restrict",
+                    "dimensions": [
+                        64
+                    ],
+                    "async": true
+                },
+                "pi5": {
+                    "type": "mem",
+                    "elementType": "float",
+                    "direction": "in",
+                    "parameterIndex": 5,
+                    "bufferPort": true,
+                    "portName": "in[5]",
+                    "varName": "og_down_rslt",
+                    "cppDataType": "adf::io_buffer<float, adf::direction::in, adf::io_buffer_config<adf::extents<64>, adf::locking::async>> &__restrict",
+                    "dimensions": [
+                        64
+                    ],
+                    "async": true
+                },
+                "pi6": {
+                    "type": "mem",
+                    "elementType": "float",
+                    "direction": "in",
+                    "parameterIndex": 6,
+                    "bufferPort": true,
+                    "portName": "in[6]",
+                    "varName": "mg_up_rslt",
+                    "cppDataType": "adf::io_buffer<float, adf::direction::in, adf::io_buffer_config<adf::extents<64>, adf::locking::async>> &__restrict",
+                    "dimensions": [
+                        64
+                    ],
+                    "async": true
+                },
+                "pi7": {
+                    "type": "mem",
+                    "elementType": "float",
+                    "direction": "in",
+                    "parameterIndex": 7,
+                    "bufferPort": true,
+                    "portName": "in[7]",
+                    "varName": "mg_down_rslt",
+                    "cppDataType": "adf::io_buffer<float, adf::direction::in, adf::io_buffer_config<adf::extents<64>, adf::locking::async>> &__restrict",
+                    "dimensions": [
+                        64
+                    ],
+                    "async": true
+                },
+                "pi8": {
+                    "type": "rtp",
+                    "arrayType": {
+                        "elementType": "float",
+                        "indices": [
+                            128
+                        ]
+                    },
+                    "direction": "in",
+                    "parameterIndex": 8,
+                    "portName": "in[8]",
+                    "varName": "w_dense",
+                    "cppDataType": "const float (&)[128]"
+                },
+                "pi9": {
+                    "type": "rtp",
+                    "elementType": "float",
+                    "direction": "in",
+                    "parameterIndex": 9,
+                    "portName": "in[9]",
+                    "varName": "bias_dense",
+                    "cppDataType": "const float"
+                },
+                "po0": {
+                    "type": "mem",
+                    "elementType": "float",
+                    "direction": "out",
+                    "parameterIndex": 10,
+                    "bufferPort": true,
+                    "portName": "out[0]",
+                    "varName": "state_out",
+                    "cppDataType": "adf::io_buffer<float, adf::direction::out, adf::io_buffer_config<adf::extents<128>>> &__restrict",
+                    "dimensions": [
+                        128
+                    ]
+                },
+                "po1": {
+                    "type": "mem",
+                    "elementType": "float",
+                    "direction": "out",
+                    "parameterIndex": 11,
+                    "bufferPort": true,
+                    "portName": "out[1]",
+                    "varName": "output",
+                    "cppDataType": "adf::io_buffer<float, adf::direction::out, adf::io_buffer_config<adf::extents<4>>> &__restrict",
+                    "dimensions": [
+                        4
+                    ]
+                }
+            }
+        },
+        "b1": {
+            "type": "function",
+            "function": "gate_half_buff",
+            "srcFile": "gate_half_buff.cpp",
+            "ports": {
+                "pi0": {
+                    "type": "mem",
+                    "elementType": "float",
+                    "direction": "in",
+                    "parameterIndex": 0,
+                    "bufferPort": true,
+                    "portName": "in[0]",
+                    "varName": "input",
+                    "cppDataType": "adf::io_buffer<float, adf::direction::in, adf::io_buffer_config<adf::extents<32>>> &__restrict",
+                    "dimensions": [
+                        32
+                    ]
+                },
+                "pi1": {
+                    "type": "mem",
+                    "elementType": "float",
+                    "direction": "in",
+                    "parameterIndex": 1,
+                    "bufferPort": true,
+                    "portName": "in[1]",
+                    "varName": "state",
+                    "cppDataType": "adf::io_buffer<float, adf::direction::in, adf::io_buffer_config<adf::extents<128>>> &__restrict",
+                    "dimensions": [
+                        128
+                    ]
+                },
+                "pi2": {
+                    "type": "rtp",
+                    "arrayType": {
+                        "elementType": "float",
+                        "indices": [
+                            8192
+                        ]
+                    },
+                    "direction": "in",
+                    "parameterIndex": 2,
+                    "portName": "in[2]",
+                    "varName": "w_state_part",
+                    "cppDataType": "const float (&)[8192]"
+                },
+                "pi3": {
+                    "type": "rtp",
+                    "arrayType": {
+                        "elementType": "float",
+                        "indices": [
+                            4096
+                        ]
+                    },
+                    "direction": "in",
+                    "parameterIndex": 3,
+                    "portName": "in[3]",
+                    "varName": "w_input",
+                    "cppDataType": "const float (&)[4096]"
+                },
+                "pi4": {
+                    "type": "rtp",
+                    "arrayType": {
+                        "elementType": "float",
+                        "indices": [
+                            64
+                        ]
+                    },
+                    "direction": "in",
+                    "parameterIndex": 4,
+                    "portName": "in[4]",
+                    "varName": "bias",
+                    "cppDataType": "const float (&)[64]"
+                },
+                "pi5": {
+                    "type": "rtp",
+                    "elementType": "int32",
+                    "direction": "in",
+                    "parameterIndex": 5,
+                    "portName": "in[5]",
+                    "varName": "partial_computation",
+                    "cppDataType": "const int"
+                },
+                "po0": {
+                    "type": "mem",
+                    "elementType": "float",
+                    "direction": "out",
+                    "parameterIndex": 6,
+                    "bufferPort": true,
+                    "portName": "out[0]",
+                    "varName": "output",
+                    "cppDataType": "adf::io_buffer<float, adf::direction::out, adf::io_buffer_config<adf::extents<64>>> &__restrict",
+                    "dimensions": [
+                        64
+                    ]
+                }
+            }
+        },
+        "ps_b4": {
+            "type": "function",
+            "function": "ps_main",
+            "srcFile": "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/main.cpp",
+            "implType": "unknown"
+        },
+        "dma_b5": {
+            "type": "dma",
+            "ports": {
+                "pi0": {
+                    "type": "mem",
+                    "elementType": "float",
+                    "direction": "in",
+                    "circularBuffer": 1,
+                    "varName": "in[0]"
+                },
+                "po0": {
+                    "type": "stream",
+                    "elementType": "float",
+                    "direction": "out",
+                    "varName": "out[0]"
+                }
+            }
+        },
+        "dma_b6": {
+            "type": "dma",
+            "ports": {
+                "pi0": {
+                    "type": "stream",
+                    "elementType": "float",
+                    "direction": "in",
+                    "varName": "in[0]"
+                },
+                "po0": {
+                    "type": "mem",
+                    "elementType": "float",
+                    "direction": "out",
+                    "circularBuffer": 1,
+                    "varName": "out[0]"
+                }
+            }
+        }
+    },
+    "blockInstances": {
+        "i0": {
+            "blockType": "b0",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr",
+            "qualifiedName": "gr.coord",
+            "runTime": 0.8999,
+            "fabric": "me",
+            "instanceId": 0,
+            "loc": "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:124:17"
+        },
+        "i1": {
+            "blockType": "b1",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr",
+            "qualifiedName": "gr.gates[0]",
+            "runTime": 0.8999,
+            "fabric": "me",
+            "instanceId": 1,
+            "loc": "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:126:24"
+        },
+        "i2": {
+            "blockType": "b1",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr",
+            "qualifiedName": "gr.gates[1]",
+            "runTime": 0.8999,
+            "fabric": "me",
+            "instanceId": 2,
+            "loc": "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:126:24"
+        },
+        "i3": {
+            "blockType": "b1",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr",
+            "qualifiedName": "gr.gates[2]",
+            "runTime": 0.8999,
+            "fabric": "me",
+            "instanceId": 3,
+            "loc": "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:126:24"
+        },
+        "i4": {
+            "blockType": "b1",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr",
+            "qualifiedName": "gr.gates[3]",
+            "runTime": 0.8999,
+            "fabric": "me",
+            "instanceId": 4,
+            "loc": "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:126:24"
+        },
+        "i5": {
+            "blockType": "b1",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr",
+            "qualifiedName": "gr.gates[4]",
+            "runTime": 0.8999,
+            "fabric": "me",
+            "instanceId": 5,
+            "loc": "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:126:24"
+        },
+        "i6": {
+            "blockType": "b1",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr",
+            "qualifiedName": "gr.gates[5]",
+            "runTime": 0.8999,
+            "fabric": "me",
+            "instanceId": 6,
+            "loc": "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:126:24"
+        },
+        "i7": {
+            "blockType": "b1",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr",
+            "qualifiedName": "gr.gates[6]",
+            "runTime": 0.8999,
+            "fabric": "me",
+            "instanceId": 7,
+            "loc": "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:126:24"
+        },
+        "i8": {
+            "blockType": "b1",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr",
+            "qualifiedName": "gr.gates[7]",
+            "runTime": 0.8999,
+            "fabric": "me",
+            "instanceId": 8,
+            "loc": "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:126:24"
+        },
+        "i9": {
+            "blockType": "b2",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr",
+            "qualifiedName": "gr.gmio_in",
+            "dataWidth": 32,
+            "bandWidth": 1024,
+            "burstSize": 64,
+            "blockSize": 0,
+            "logicalName": "gmioIn",
+            "mode": "READ_ONLY",
+            "addressType": "PHYSICAL",
+            "instanceId": 0,
+            "loc": "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:106:5"
+        },
+        "i10": {
+            "blockType": "b3",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr",
+            "qualifiedName": "gr.gmio_out",
+            "dataWidth": 32,
+            "bandWidth": 1024,
+            "burstSize": 64,
+            "blockSize": 0,
+            "logicalName": "gmioOut",
+            "mode": "WRITE_ONLY",
+            "addressType": "PHYSICAL",
+            "instanceId": 1,
+            "loc": "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:107:5"
+        },
+        "ps_i11": {
+            "blockType": "ps_b4",
+            "graphIds": [
+                -1
+            ],
+            "fabric": "fpga",
+            "plAxiLite": "useDefault",
+            "plFreq": 312.5
+        },
+        "dma_i12": {
+            "blockType": "dma_b5",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr"
+        },
+        "dma_i13": {
+            "blockType": "dma_b6",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr"
+        },
+        "dma_i14": {
+            "blockType": "dma_b6",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr"
+        },
+        "dma_i15": {
+            "blockType": "dma_b6",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr"
+        },
+        "dma_i16": {
+            "blockType": "dma_b6",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr"
+        },
+        "dma_i17": {
+            "blockType": "dma_b6",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr"
+        },
+        "dma_i18": {
+            "blockType": "dma_b6",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr"
+        },
+        "dma_i19": {
+            "blockType": "dma_b6",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr"
+        },
+        "dma_i20": {
+            "blockType": "dma_b6",
+            "graphIds": [
+                0
+            ],
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "qualifiedGraphName": "gr"
+        }
+    },
+    "portInstances": {
+        "i0_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "coord.in[0]",
+            "qualifiedName": "gr.coord.in[0]",
+            "instanceId": 34,
+            "isAsynchronous": 1,
+            "blockInstance": "i0",
+            "blockSize": 256,
+            "dimensions": [
+                64
+            ]
+        },
+        "i0_pi1": {
+            "margin": 0,
+            "port": "pi1",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "coord.in[1]",
+            "qualifiedName": "gr.coord.in[1]",
+            "instanceId": 35,
+            "isAsynchronous": 1,
+            "blockInstance": "i0",
+            "blockSize": 256,
+            "dimensions": [
+                64
+            ]
+        },
+        "i0_pi2": {
+            "margin": 0,
+            "port": "pi2",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "coord.in[2]",
+            "qualifiedName": "gr.coord.in[2]",
+            "instanceId": 36,
+            "isAsynchronous": 1,
+            "blockInstance": "i0",
+            "blockSize": 256,
+            "dimensions": [
+                64
+            ]
+        },
+        "i0_pi3": {
+            "margin": 0,
+            "port": "pi3",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "coord.in[3]",
+            "qualifiedName": "gr.coord.in[3]",
+            "instanceId": 37,
+            "isAsynchronous": 1,
+            "blockInstance": "i0",
+            "blockSize": 256,
+            "dimensions": [
+                64
+            ]
+        },
+        "i0_pi4": {
+            "margin": 0,
+            "port": "pi4",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "coord.in[4]",
+            "qualifiedName": "gr.coord.in[4]",
+            "instanceId": 38,
+            "isAsynchronous": 1,
+            "blockInstance": "i0",
+            "blockSize": 256,
+            "dimensions": [
+                64
+            ]
+        },
+        "i0_pi5": {
+            "margin": 0,
+            "port": "pi5",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "coord.in[5]",
+            "qualifiedName": "gr.coord.in[5]",
+            "instanceId": 39,
+            "isAsynchronous": 1,
+            "blockInstance": "i0",
+            "blockSize": 256,
+            "dimensions": [
+                64
+            ]
+        },
+        "i0_pi6": {
+            "margin": 0,
+            "port": "pi6",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "coord.in[6]",
+            "qualifiedName": "gr.coord.in[6]",
+            "instanceId": 40,
+            "isAsynchronous": 1,
+            "blockInstance": "i0",
+            "blockSize": 256,
+            "dimensions": [
+                64
+            ]
+        },
+        "i0_pi7": {
+            "margin": 0,
+            "port": "pi7",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "coord.in[7]",
+            "qualifiedName": "gr.coord.in[7]",
+            "instanceId": 41,
+            "isAsynchronous": 1,
+            "blockInstance": "i0",
+            "blockSize": 256,
+            "dimensions": [
+                64
+            ]
+        },
+        "i0_pi8": {
+            "margin": 0,
+            "port": "pi8",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "coord.in[8]",
+            "qualifiedName": "gr.coord.in[8]",
+            "instanceId": 42,
+            "RTPAliasInstanceId": 32,
+            "qualifiedRTPAliasName": "gr.rtp_w_dense",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i0",
+            "blockSize": 512
+        },
+        "i0_pi9": {
+            "margin": 0,
+            "port": "pi9",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "coord.in[9]",
+            "qualifiedName": "gr.coord.in[9]",
+            "instanceId": 43,
+            "RTPAliasInstanceId": 33,
+            "qualifiedRTPAliasName": "gr.rtp_b_dense",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i0",
+            "blockSize": 4
+        },
+        "i0_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "coord.out[0]",
+            "qualifiedName": "gr.coord.out[0]",
+            "instanceId": 44,
+            "blockInstance": "i0",
+            "blockSize": 512,
+            "dimensions": [
+                128
+            ]
+        },
+        "i0_po1": {
+            "margin": 0,
+            "port": "po1",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "coord.out[1]",
+            "qualifiedName": "gr.coord.out[1]",
+            "instanceId": 45,
+            "blockInstance": "i0",
+            "blockSize": 16,
+            "dimensions": [
+                4
+            ]
+        },
+        "i1_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[0].in[0]",
+            "qualifiedName": "gr.gates[0].in[0]",
+            "instanceId": 46,
+            "blockInstance": "i1",
+            "blockSize": 128,
+            "dimensions": [
+                32
+            ]
+        },
+        "i1_pi1": {
+            "margin": 0,
+            "port": "pi1",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[0].in[1]",
+            "qualifiedName": "gr.gates[0].in[1]",
+            "instanceId": 47,
+            "blockInstance": "i1",
+            "blockSize": 512,
+            "dimensions": [
+                128
+            ]
+        },
+        "i1_pi2": {
+            "margin": 0,
+            "port": "pi2",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[0].in[2]",
+            "qualifiedName": "gr.gates[0].in[2]",
+            "instanceId": 48,
+            "RTPAliasInstanceId": 0,
+            "qualifiedRTPAliasName": "gr.rtp_w_state[0]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i1",
+            "blockSize": 32768
+        },
+        "i1_pi3": {
+            "margin": 0,
+            "port": "pi3",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[0].in[3]",
+            "qualifiedName": "gr.gates[0].in[3]",
+            "instanceId": 49,
+            "RTPAliasInstanceId": 8,
+            "qualifiedRTPAliasName": "gr.rtp_w_input[0]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i1",
+            "blockSize": 16384
+        },
+        "i1_pi4": {
+            "margin": 0,
+            "port": "pi4",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[0].in[4]",
+            "qualifiedName": "gr.gates[0].in[4]",
+            "instanceId": 50,
+            "RTPAliasInstanceId": 16,
+            "qualifiedRTPAliasName": "gr.rtp_bias[0]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i1",
+            "blockSize": 256
+        },
+        "i1_pi5": {
+            "margin": 0,
+            "port": "pi5",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[0].in[5]",
+            "qualifiedName": "gr.gates[0].in[5]",
+            "instanceId": 51,
+            "RTPAliasInstanceId": 24,
+            "qualifiedRTPAliasName": "gr.partial_computation_flag[0]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i1",
+            "blockSize": 4
+        },
+        "i1_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[0].out[0]",
+            "qualifiedName": "gr.gates[0].out[0]",
+            "instanceId": 52,
+            "blockInstance": "i1",
+            "blockSize": 256,
+            "dimensions": [
+                64
+            ]
+        },
+        "i2_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[1].in[0]",
+            "qualifiedName": "gr.gates[1].in[0]",
+            "instanceId": 53,
+            "blockInstance": "i2",
+            "blockSize": 128,
+            "dimensions": [
+                32
+            ]
+        },
+        "i2_pi1": {
+            "margin": 0,
+            "port": "pi1",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[1].in[1]",
+            "qualifiedName": "gr.gates[1].in[1]",
+            "instanceId": 54,
+            "blockInstance": "i2",
+            "blockSize": 512,
+            "dimensions": [
+                128
+            ]
+        },
+        "i2_pi2": {
+            "margin": 0,
+            "port": "pi2",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[1].in[2]",
+            "qualifiedName": "gr.gates[1].in[2]",
+            "instanceId": 55,
+            "RTPAliasInstanceId": 1,
+            "qualifiedRTPAliasName": "gr.rtp_w_state[1]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i2",
+            "blockSize": 32768
+        },
+        "i2_pi3": {
+            "margin": 0,
+            "port": "pi3",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[1].in[3]",
+            "qualifiedName": "gr.gates[1].in[3]",
+            "instanceId": 56,
+            "RTPAliasInstanceId": 9,
+            "qualifiedRTPAliasName": "gr.rtp_w_input[1]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i2",
+            "blockSize": 16384
+        },
+        "i2_pi4": {
+            "margin": 0,
+            "port": "pi4",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[1].in[4]",
+            "qualifiedName": "gr.gates[1].in[4]",
+            "instanceId": 57,
+            "RTPAliasInstanceId": 17,
+            "qualifiedRTPAliasName": "gr.rtp_bias[1]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i2",
+            "blockSize": 256
+        },
+        "i2_pi5": {
+            "margin": 0,
+            "port": "pi5",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[1].in[5]",
+            "qualifiedName": "gr.gates[1].in[5]",
+            "instanceId": 58,
+            "RTPAliasInstanceId": 25,
+            "qualifiedRTPAliasName": "gr.partial_computation_flag[1]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i2",
+            "blockSize": 4
+        },
+        "i2_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[1].out[0]",
+            "qualifiedName": "gr.gates[1].out[0]",
+            "instanceId": 59,
+            "blockInstance": "i2",
+            "blockSize": 256,
+            "dimensions": [
+                64
+            ]
+        },
+        "i3_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[2].in[0]",
+            "qualifiedName": "gr.gates[2].in[0]",
+            "instanceId": 60,
+            "blockInstance": "i3",
+            "blockSize": 128,
+            "dimensions": [
+                32
+            ]
+        },
+        "i3_pi1": {
+            "margin": 0,
+            "port": "pi1",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[2].in[1]",
+            "qualifiedName": "gr.gates[2].in[1]",
+            "instanceId": 61,
+            "blockInstance": "i3",
+            "blockSize": 512,
+            "dimensions": [
+                128
+            ]
+        },
+        "i3_pi2": {
+            "margin": 0,
+            "port": "pi2",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[2].in[2]",
+            "qualifiedName": "gr.gates[2].in[2]",
+            "instanceId": 62,
+            "RTPAliasInstanceId": 2,
+            "qualifiedRTPAliasName": "gr.rtp_w_state[2]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i3",
+            "blockSize": 32768
+        },
+        "i3_pi3": {
+            "margin": 0,
+            "port": "pi3",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[2].in[3]",
+            "qualifiedName": "gr.gates[2].in[3]",
+            "instanceId": 63,
+            "RTPAliasInstanceId": 10,
+            "qualifiedRTPAliasName": "gr.rtp_w_input[2]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i3",
+            "blockSize": 16384
+        },
+        "i3_pi4": {
+            "margin": 0,
+            "port": "pi4",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[2].in[4]",
+            "qualifiedName": "gr.gates[2].in[4]",
+            "instanceId": 64,
+            "RTPAliasInstanceId": 18,
+            "qualifiedRTPAliasName": "gr.rtp_bias[2]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i3",
+            "blockSize": 256
+        },
+        "i3_pi5": {
+            "margin": 0,
+            "port": "pi5",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[2].in[5]",
+            "qualifiedName": "gr.gates[2].in[5]",
+            "instanceId": 65,
+            "RTPAliasInstanceId": 26,
+            "qualifiedRTPAliasName": "gr.partial_computation_flag[2]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i3",
+            "blockSize": 4
+        },
+        "i3_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[2].out[0]",
+            "qualifiedName": "gr.gates[2].out[0]",
+            "instanceId": 66,
+            "blockInstance": "i3",
+            "blockSize": 256,
+            "dimensions": [
+                64
+            ]
+        },
+        "i4_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[3].in[0]",
+            "qualifiedName": "gr.gates[3].in[0]",
+            "instanceId": 67,
+            "blockInstance": "i4",
+            "blockSize": 128,
+            "dimensions": [
+                32
+            ]
+        },
+        "i4_pi1": {
+            "margin": 0,
+            "port": "pi1",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[3].in[1]",
+            "qualifiedName": "gr.gates[3].in[1]",
+            "instanceId": 68,
+            "blockInstance": "i4",
+            "blockSize": 512,
+            "dimensions": [
+                128
+            ]
+        },
+        "i4_pi2": {
+            "margin": 0,
+            "port": "pi2",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[3].in[2]",
+            "qualifiedName": "gr.gates[3].in[2]",
+            "instanceId": 69,
+            "RTPAliasInstanceId": 3,
+            "qualifiedRTPAliasName": "gr.rtp_w_state[3]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i4",
+            "blockSize": 32768
+        },
+        "i4_pi3": {
+            "margin": 0,
+            "port": "pi3",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[3].in[3]",
+            "qualifiedName": "gr.gates[3].in[3]",
+            "instanceId": 70,
+            "RTPAliasInstanceId": 11,
+            "qualifiedRTPAliasName": "gr.rtp_w_input[3]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i4",
+            "blockSize": 16384
+        },
+        "i4_pi4": {
+            "margin": 0,
+            "port": "pi4",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[3].in[4]",
+            "qualifiedName": "gr.gates[3].in[4]",
+            "instanceId": 71,
+            "RTPAliasInstanceId": 19,
+            "qualifiedRTPAliasName": "gr.rtp_bias[3]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i4",
+            "blockSize": 256
+        },
+        "i4_pi5": {
+            "margin": 0,
+            "port": "pi5",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[3].in[5]",
+            "qualifiedName": "gr.gates[3].in[5]",
+            "instanceId": 72,
+            "RTPAliasInstanceId": 27,
+            "qualifiedRTPAliasName": "gr.partial_computation_flag[3]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i4",
+            "blockSize": 4
+        },
+        "i4_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[3].out[0]",
+            "qualifiedName": "gr.gates[3].out[0]",
+            "instanceId": 73,
+            "blockInstance": "i4",
+            "blockSize": 256,
+            "dimensions": [
+                64
+            ]
+        },
+        "i5_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[4].in[0]",
+            "qualifiedName": "gr.gates[4].in[0]",
+            "instanceId": 74,
+            "blockInstance": "i5",
+            "blockSize": 128,
+            "dimensions": [
+                32
+            ]
+        },
+        "i5_pi1": {
+            "margin": 0,
+            "port": "pi1",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[4].in[1]",
+            "qualifiedName": "gr.gates[4].in[1]",
+            "instanceId": 75,
+            "blockInstance": "i5",
+            "blockSize": 512,
+            "dimensions": [
+                128
+            ]
+        },
+        "i5_pi2": {
+            "margin": 0,
+            "port": "pi2",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[4].in[2]",
+            "qualifiedName": "gr.gates[4].in[2]",
+            "instanceId": 76,
+            "RTPAliasInstanceId": 4,
+            "qualifiedRTPAliasName": "gr.rtp_w_state[4]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i5",
+            "blockSize": 32768
+        },
+        "i5_pi3": {
+            "margin": 0,
+            "port": "pi3",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[4].in[3]",
+            "qualifiedName": "gr.gates[4].in[3]",
+            "instanceId": 77,
+            "RTPAliasInstanceId": 12,
+            "qualifiedRTPAliasName": "gr.rtp_w_input[4]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i5",
+            "blockSize": 16384
+        },
+        "i5_pi4": {
+            "margin": 0,
+            "port": "pi4",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[4].in[4]",
+            "qualifiedName": "gr.gates[4].in[4]",
+            "instanceId": 78,
+            "RTPAliasInstanceId": 20,
+            "qualifiedRTPAliasName": "gr.rtp_bias[4]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i5",
+            "blockSize": 256
+        },
+        "i5_pi5": {
+            "margin": 0,
+            "port": "pi5",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[4].in[5]",
+            "qualifiedName": "gr.gates[4].in[5]",
+            "instanceId": 79,
+            "RTPAliasInstanceId": 28,
+            "qualifiedRTPAliasName": "gr.partial_computation_flag[4]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i5",
+            "blockSize": 4
+        },
+        "i5_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[4].out[0]",
+            "qualifiedName": "gr.gates[4].out[0]",
+            "instanceId": 80,
+            "blockInstance": "i5",
+            "blockSize": 256,
+            "dimensions": [
+                64
+            ]
+        },
+        "i6_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[5].in[0]",
+            "qualifiedName": "gr.gates[5].in[0]",
+            "instanceId": 81,
+            "blockInstance": "i6",
+            "blockSize": 128,
+            "dimensions": [
+                32
+            ]
+        },
+        "i6_pi1": {
+            "margin": 0,
+            "port": "pi1",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[5].in[1]",
+            "qualifiedName": "gr.gates[5].in[1]",
+            "instanceId": 82,
+            "blockInstance": "i6",
+            "blockSize": 512,
+            "dimensions": [
+                128
+            ]
+        },
+        "i6_pi2": {
+            "margin": 0,
+            "port": "pi2",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[5].in[2]",
+            "qualifiedName": "gr.gates[5].in[2]",
+            "instanceId": 83,
+            "RTPAliasInstanceId": 5,
+            "qualifiedRTPAliasName": "gr.rtp_w_state[5]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i6",
+            "blockSize": 32768
+        },
+        "i6_pi3": {
+            "margin": 0,
+            "port": "pi3",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[5].in[3]",
+            "qualifiedName": "gr.gates[5].in[3]",
+            "instanceId": 84,
+            "RTPAliasInstanceId": 13,
+            "qualifiedRTPAliasName": "gr.rtp_w_input[5]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i6",
+            "blockSize": 16384
+        },
+        "i6_pi4": {
+            "margin": 0,
+            "port": "pi4",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[5].in[4]",
+            "qualifiedName": "gr.gates[5].in[4]",
+            "instanceId": 85,
+            "RTPAliasInstanceId": 21,
+            "qualifiedRTPAliasName": "gr.rtp_bias[5]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i6",
+            "blockSize": 256
+        },
+        "i6_pi5": {
+            "margin": 0,
+            "port": "pi5",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[5].in[5]",
+            "qualifiedName": "gr.gates[5].in[5]",
+            "instanceId": 86,
+            "RTPAliasInstanceId": 29,
+            "qualifiedRTPAliasName": "gr.partial_computation_flag[5]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i6",
+            "blockSize": 4
+        },
+        "i6_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[5].out[0]",
+            "qualifiedName": "gr.gates[5].out[0]",
+            "instanceId": 87,
+            "blockInstance": "i6",
+            "blockSize": 256,
+            "dimensions": [
+                64
+            ]
+        },
+        "i7_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[6].in[0]",
+            "qualifiedName": "gr.gates[6].in[0]",
+            "instanceId": 88,
+            "blockInstance": "i7",
+            "blockSize": 128,
+            "dimensions": [
+                32
+            ]
+        },
+        "i7_pi1": {
+            "margin": 0,
+            "port": "pi1",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[6].in[1]",
+            "qualifiedName": "gr.gates[6].in[1]",
+            "instanceId": 89,
+            "blockInstance": "i7",
+            "blockSize": 512,
+            "dimensions": [
+                128
+            ]
+        },
+        "i7_pi2": {
+            "margin": 0,
+            "port": "pi2",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[6].in[2]",
+            "qualifiedName": "gr.gates[6].in[2]",
+            "instanceId": 90,
+            "RTPAliasInstanceId": 6,
+            "qualifiedRTPAliasName": "gr.rtp_w_state[6]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i7",
+            "blockSize": 32768
+        },
+        "i7_pi3": {
+            "margin": 0,
+            "port": "pi3",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[6].in[3]",
+            "qualifiedName": "gr.gates[6].in[3]",
+            "instanceId": 91,
+            "RTPAliasInstanceId": 14,
+            "qualifiedRTPAliasName": "gr.rtp_w_input[6]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i7",
+            "blockSize": 16384
+        },
+        "i7_pi4": {
+            "margin": 0,
+            "port": "pi4",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[6].in[4]",
+            "qualifiedName": "gr.gates[6].in[4]",
+            "instanceId": 92,
+            "RTPAliasInstanceId": 22,
+            "qualifiedRTPAliasName": "gr.rtp_bias[6]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i7",
+            "blockSize": 256
+        },
+        "i7_pi5": {
+            "margin": 0,
+            "port": "pi5",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[6].in[5]",
+            "qualifiedName": "gr.gates[6].in[5]",
+            "instanceId": 93,
+            "RTPAliasInstanceId": 30,
+            "qualifiedRTPAliasName": "gr.partial_computation_flag[6]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i7",
+            "blockSize": 4
+        },
+        "i7_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[6].out[0]",
+            "qualifiedName": "gr.gates[6].out[0]",
+            "instanceId": 94,
+            "blockInstance": "i7",
+            "blockSize": 256,
+            "dimensions": [
+                64
+            ]
+        },
+        "i8_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[7].in[0]",
+            "qualifiedName": "gr.gates[7].in[0]",
+            "instanceId": 95,
+            "blockInstance": "i8",
+            "blockSize": 128,
+            "dimensions": [
+                32
+            ]
+        },
+        "i8_pi1": {
+            "margin": 0,
+            "port": "pi1",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[7].in[1]",
+            "qualifiedName": "gr.gates[7].in[1]",
+            "instanceId": 96,
+            "blockInstance": "i8",
+            "blockSize": 512,
+            "dimensions": [
+                128
+            ]
+        },
+        "i8_pi2": {
+            "margin": 0,
+            "port": "pi2",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[7].in[2]",
+            "qualifiedName": "gr.gates[7].in[2]",
+            "instanceId": 97,
+            "RTPAliasInstanceId": 7,
+            "qualifiedRTPAliasName": "gr.rtp_w_state[7]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i8",
+            "blockSize": 32768
+        },
+        "i8_pi3": {
+            "margin": 0,
+            "port": "pi3",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[7].in[3]",
+            "qualifiedName": "gr.gates[7].in[3]",
+            "instanceId": 98,
+            "RTPAliasInstanceId": 15,
+            "qualifiedRTPAliasName": "gr.rtp_w_input[7]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i8",
+            "blockSize": 16384
+        },
+        "i8_pi4": {
+            "margin": 0,
+            "port": "pi4",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[7].in[4]",
+            "qualifiedName": "gr.gates[7].in[4]",
+            "instanceId": 99,
+            "RTPAliasInstanceId": 23,
+            "qualifiedRTPAliasName": "gr.rtp_bias[7]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i8",
+            "blockSize": 256
+        },
+        "i8_pi5": {
+            "margin": 0,
+            "port": "pi5",
+            "isRuntimeParameter": 1,
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[7].in[5]",
+            "qualifiedName": "gr.gates[7].in[5]",
+            "instanceId": 100,
+            "RTPAliasInstanceId": 31,
+            "qualifiedRTPAliasName": "gr.partial_computation_flag[7]",
+            "isAsynchronous": 1,
+            "numbuffers": 1,
+            "blockInstance": "i8",
+            "blockSize": 4
+        },
+        "i8_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gates[7].out[0]",
+            "qualifiedName": "gr.gates[7].out[0]",
+            "instanceId": 101,
+            "blockInstance": "i8",
+            "blockSize": 256,
+            "dimensions": [
+                64
+            ]
+        },
+        "i9_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gmio_in.out[0]",
+            "qualifiedName": "gr.gmio_in.out[0]",
+            "blockInstance": "i9"
+        },
+        "i10_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "portName": "gmio_out.in[0]",
+            "qualifiedName": "gr.gmio_out.in[0]",
+            "blockInstance": "i10"
+        },
+        "dma_i12_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i12",
+            "blockSize": 512
+        },
+        "dma_i12_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i12"
+        },
+        "dma_i13_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i13"
+        },
+        "dma_i13_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i13",
+            "blockSize": 512
+        },
+        "dma_i14_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i14"
+        },
+        "dma_i14_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i14",
+            "blockSize": 512
+        },
+        "dma_i15_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i15"
+        },
+        "dma_i15_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i15",
+            "blockSize": 512
+        },
+        "dma_i16_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i16"
+        },
+        "dma_i16_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i16",
+            "blockSize": 512
+        },
+        "dma_i17_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i17"
+        },
+        "dma_i17_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i17",
+            "blockSize": 512
+        },
+        "dma_i18_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i18"
+        },
+        "dma_i18_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i18",
+            "blockSize": 512
+        },
+        "dma_i19_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i19"
+        },
+        "dma_i19_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i19",
+            "blockSize": 512
+        },
+        "dma_i20_pi0": {
+            "margin": 0,
+            "port": "pi0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i20"
+        },
+        "dma_i20_po0": {
+            "margin": 0,
+            "port": "po0",
+            "graphName": "gr",
+            "graphType": "LSTMGraph_4x2_buff",
+            "blockInstance": "dma_i20",
+            "blockSize": 512
+        }
+    },
+    "nets": {
+        "net0": {
+            "srcInstance": "i9",
+            "srcPort": "i9_po0",
+            "dstInstance": "i1",
+            "dstPort": "i1_pi0",
+            "varNames": [
+                ""
+            ],
+            "locs": [
+                "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:141:13"
+            ]
+        },
+        "net0_bcast1": {
+            "srcInstance": "i9",
+            "srcPort": "i9_po0",
+            "dstInstance": "i2",
+            "dstPort": "i2_pi0",
+            "varNames": [
+                ""
+            ],
+            "locs": [
+                "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:141:13"
+            ]
+        },
+        "net0_bcast2": {
+            "srcInstance": "i9",
+            "srcPort": "i9_po0",
+            "dstInstance": "i3",
+            "dstPort": "i3_pi0",
+            "varNames": [
+                ""
+            ],
+            "locs": [
+                "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:141:13"
+            ]
+        },
+        "net0_bcast3": {
+            "srcInstance": "i9",
+            "srcPort": "i9_po0",
+            "dstInstance": "i4",
+            "dstPort": "i4_pi0",
+            "varNames": [
+                ""
+            ],
+            "locs": [
+                "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:141:13"
+            ]
+        },
+        "net0_bcast4": {
+            "srcInstance": "i9",
+            "srcPort": "i9_po0",
+            "dstInstance": "i5",
+            "dstPort": "i5_pi0",
+            "varNames": [
+                ""
+            ],
+            "locs": [
+                "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:141:13"
+            ]
+        },
+        "net0_bcast5": {
+            "srcInstance": "i9",
+            "srcPort": "i9_po0",
+            "dstInstance": "i6",
+            "dstPort": "i6_pi0",
+            "varNames": [
+                ""
+            ],
+            "locs": [
+                "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:141:13"
+            ]
+        },
+        "net0_bcast6": {
+            "srcInstance": "i9",
+            "srcPort": "i9_po0",
+            "dstInstance": "i7",
+            "dstPort": "i7_pi0",
+            "varNames": [
+                ""
+            ],
+            "locs": [
+                "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:141:13"
+            ]
+        },
+        "net0_bcast7": {
+            "srcInstance": "i9",
+            "srcPort": "i9_po0",
+            "dstInstance": "i8",
+            "dstPort": "i8_pi0",
+            "varNames": [
+                ""
+            ],
+            "locs": [
+                "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:141:13"
+            ]
+        },
+        "net8": {
+            "srcInstance": "dma_i12",
+            "srcPort": "dma_i12_po0",
+            "dstInstance": "dma_i13",
+            "dstPort": "dma_i13_pi0",
+            "varNames": [],
+            "locs": []
+        },
+        "net8_bcast1": {
+            "srcInstance": "dma_i12",
+            "srcPort": "dma_i12_po0",
+            "dstInstance": "dma_i14",
+            "dstPort": "dma_i14_pi0",
+            "varNames": [],
+            "locs": []
+        },
+        "net8_bcast2": {
+            "srcInstance": "dma_i12",
+            "srcPort": "dma_i12_po0",
+            "dstInstance": "dma_i15",
+            "dstPort": "dma_i15_pi0",
+            "varNames": [],
+            "locs": []
+        },
+        "net8_bcast3": {
+            "srcInstance": "dma_i12",
+            "srcPort": "dma_i12_po0",
+            "dstInstance": "dma_i16",
+            "dstPort": "dma_i16_pi0",
+            "varNames": [],
+            "locs": []
+        },
+        "net8_bcast4": {
+            "srcInstance": "dma_i12",
+            "srcPort": "dma_i12_po0",
+            "dstInstance": "dma_i17",
+            "dstPort": "dma_i17_pi0",
+            "varNames": [],
+            "locs": []
+        },
+        "net8_bcast5": {
+            "srcInstance": "dma_i12",
+            "srcPort": "dma_i12_po0",
+            "dstInstance": "dma_i18",
+            "dstPort": "dma_i18_pi0",
+            "varNames": [],
+            "locs": []
+        },
+        "net8_bcast6": {
+            "srcInstance": "dma_i12",
+            "srcPort": "dma_i12_po0",
+            "dstInstance": "dma_i19",
+            "dstPort": "dma_i19_pi0",
+            "varNames": [],
+            "locs": []
+        },
+        "net8_bcast7": {
+            "srcInstance": "dma_i12",
+            "srcPort": "dma_i12_po0",
+            "dstInstance": "dma_i20",
+            "dstPort": "dma_i20_pi0",
+            "varNames": [],
+            "locs": []
+        },
+        "net16": {
+            "srcInstance": "i1",
+            "srcPort": "i1_po0",
+            "dstInstance": "i0",
+            "dstPort": "i0_pi0",
+            "varNames": [
+                ""
+            ],
+            "locs": [
+                "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:153:13"
+            ]
+        },
+        "net17": {
+            "srcInstance": "i2",
+            "srcPort": "i2_po0",
+            "dstInstance": "i0",
+            "dstPort": "i0_pi1",
+            "varNames": [
+                ""
+            ],
+            "locs": [
+                "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:153:13"
+            ]
+        },
+        "net18": {
+            "srcInstance": "i3",
+            "srcPort": "i3_po0",
+            "dstInstance": "i0",
+            "dstPort": "i0_pi2",
+            "varNames": [
+                ""
+            ],
+            "locs": [
+                "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:153:13"
+            ]
+        },
+        "net19": {
+            "srcInstance": "i4",
+            "srcPort": "i4_po0",
+            "dstInstance": "i0",
+            "dstPort": "i0_pi3",
+            "varNames": [
+                ""
+            ],
+            "locs": [
+                "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:153:13"
+            ]
+        },
+        "net20": {
+            "srcInstance": "i5",
+            "srcPort": "i5_po0",
+            "dstInstance": "i0",
+            "dstPort": "i0_pi4",
+            "varNames": [
+                ""
+            ],
+            "locs": [
+                "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:153:13"
+            ]
+        },
+        "net21": {
+            "srcInstance": "i6",
+            "srcPort": "i6_po0",
+            "dstInstance": "i0",
+            "dstPort": "i0_pi5",
+            "varNames": [
+                ""
+            ],
+            "locs": [
+                "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:153:13"
+            ]
+        },
+        "net22": {
+            "srcInstance": "i7",
+            "srcPort": "i7_po0",
+            "dstInstance": "i0",
+            "dstPort": "i0_pi6",
+            "varNames": [
+                ""
+            ],
+            "locs": [
+                "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:153:13"
+            ]
+        },
+        "net23": {
+            "srcInstance": "i8",
+            "srcPort": "i8_po0",
+            "dstInstance": "i0",
+            "dstPort": "i0_pi7",
+            "varNames": [
+                ""
+            ],
+            "locs": [
+                "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:153:13"
+            ]
+        },
+        "net24": {
+            "srcInstance": "i0",
+            "srcPort": "i0_po1",
+            "dstInstance": "i10",
+            "dstPort": "i10_pi0",
+            "varNames": [
+                ""
+            ],
+            "locs": [
+                "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp:168:9"
+            ]
+        },
+        "db_net25": {
+            "srcInstance": "i0",
+            "srcPort": "i0_po0",
+            "dstInstance": "dma_i12",
+            "dstPort": "dma_i12_pi0",
+            "varNames": [],
+            "locs": []
+        },
+        "db_net26": {
+            "srcInstance": "dma_i13",
+            "srcPort": "dma_i13_po0",
+            "dstInstance": "i1",
+            "dstPort": "i1_pi1",
+            "varNames": [],
+            "locs": []
+        },
+        "db_net27": {
+            "srcInstance": "dma_i14",
+            "srcPort": "dma_i14_po0",
+            "dstInstance": "i2",
+            "dstPort": "i2_pi1",
+            "varNames": [],
+            "locs": []
+        },
+        "db_net28": {
+            "srcInstance": "dma_i15",
+            "srcPort": "dma_i15_po0",
+            "dstInstance": "i3",
+            "dstPort": "i3_pi1",
+            "varNames": [],
+            "locs": []
+        },
+        "db_net29": {
+            "srcInstance": "dma_i16",
+            "srcPort": "dma_i16_po0",
+            "dstInstance": "i4",
+            "dstPort": "i4_pi1",
+            "varNames": [],
+            "locs": []
+        },
+        "db_net30": {
+            "srcInstance": "dma_i17",
+            "srcPort": "dma_i17_po0",
+            "dstInstance": "i5",
+            "dstPort": "i5_pi1",
+            "varNames": [],
+            "locs": []
+        },
+        "db_net31": {
+            "srcInstance": "dma_i18",
+            "srcPort": "dma_i18_po0",
+            "dstInstance": "i6",
+            "dstPort": "i6_pi1",
+            "varNames": [],
+            "locs": []
+        },
+        "db_net32": {
+            "srcInstance": "dma_i19",
+            "srcPort": "dma_i19_po0",
+            "dstInstance": "i7",
+            "dstPort": "i7_pi1",
+            "varNames": [],
+            "locs": []
+        },
+        "db_net33": {
+            "srcInstance": "dma_i20",
+            "srcPort": "dma_i20_po0",
+            "dstInstance": "i8",
+            "dstPort": "i8_pi1",
+            "varNames": [],
+            "locs": []
+        }
+    },
+    "debugInfo": {
+        "i0": {
+            "varName": "coord"
+        },
+        "i1": {
+            "varName": "gates[0]"
+        },
+        "i2": {
+            "varName": "gates[1]"
+        },
+        "i3": {
+            "varName": "gates[2]"
+        },
+        "i4": {
+            "varName": "gates[3]"
+        },
+        "i5": {
+            "varName": "gates[4]"
+        },
+        "i6": {
+            "varName": "gates[5]"
+        },
+        "i7": {
+            "varName": "gates[6]"
+        },
+        "i8": {
+            "varName": "gates[7]"
+        },
+        "i9": {
+            "varName": "gmio_in"
+        },
+        "i10": {
+            "varName": "gmio_out"
+        },
+        "ps_i11": {
+            "varName": ""
+        },
+        "dma_i12": {
+            "varName": "_dma[0]"
+        },
+        "dma_i13": {
+            "varName": "_dma[1]"
+        },
+        "dma_i14": {
+            "varName": "_dma[2]"
+        },
+        "dma_i15": {
+            "varName": "_dma[3]"
+        },
+        "dma_i16": {
+            "varName": "_dma[4]"
+        },
+        "dma_i17": {
+            "varName": "_dma[5]"
+        },
+        "dma_i18": {
+            "varName": "_dma[6]"
+        },
+        "dma_i19": {
+            "varName": "_dma[7]"
+        },
+        "dma_i20": {
+            "varName": "_dma[8]"
+        },
+        "i0_pi0": {
+            "varName": "coord.in[0]"
+        },
+        "i0_pi1": {
+            "varName": "coord.in[1]"
+        },
+        "i0_pi2": {
+            "varName": "coord.in[2]"
+        },
+        "i0_pi3": {
+            "varName": "coord.in[3]"
+        },
+        "i0_pi4": {
+            "varName": "coord.in[4]"
+        },
+        "i0_pi5": {
+            "varName": "coord.in[5]"
+        },
+        "i0_pi6": {
+            "varName": "coord.in[6]"
+        },
+        "i0_pi7": {
+            "varName": "coord.in[7]"
+        },
+        "i0_pi8": {
+            "varName": "coord.in[8]"
+        },
+        "i0_pi9": {
+            "varName": "coord.in[9]"
+        },
+        "i0_po0": {
+            "varName": "coord.out[0]"
+        },
+        "i0_po1": {
+            "varName": "coord.out[1]"
+        },
+        "i1_pi0": {
+            "varName": "gates[0].in[0]"
+        },
+        "i1_pi1": {
+            "varName": "gates[0].in[1]"
+        },
+        "i1_pi2": {
+            "varName": "gates[0].in[2]"
+        },
+        "i1_pi3": {
+            "varName": "gates[0].in[3]"
+        },
+        "i1_pi4": {
+            "varName": "gates[0].in[4]"
+        },
+        "i1_pi5": {
+            "varName": "gates[0].in[5]"
+        },
+        "i1_po0": {
+            "varName": "gates[0].out[0]"
+        },
+        "i2_pi0": {
+            "varName": "gates[1].in[0]"
+        },
+        "i2_pi1": {
+            "varName": "gates[1].in[1]"
+        },
+        "i2_pi2": {
+            "varName": "gates[1].in[2]"
+        },
+        "i2_pi3": {
+            "varName": "gates[1].in[3]"
+        },
+        "i2_pi4": {
+            "varName": "gates[1].in[4]"
+        },
+        "i2_pi5": {
+            "varName": "gates[1].in[5]"
+        },
+        "i2_po0": {
+            "varName": "gates[1].out[0]"
+        },
+        "i3_pi0": {
+            "varName": "gates[2].in[0]"
+        },
+        "i3_pi1": {
+            "varName": "gates[2].in[1]"
+        },
+        "i3_pi2": {
+            "varName": "gates[2].in[2]"
+        },
+        "i3_pi3": {
+            "varName": "gates[2].in[3]"
+        },
+        "i3_pi4": {
+            "varName": "gates[2].in[4]"
+        },
+        "i3_pi5": {
+            "varName": "gates[2].in[5]"
+        },
+        "i3_po0": {
+            "varName": "gates[2].out[0]"
+        },
+        "i4_pi0": {
+            "varName": "gates[3].in[0]"
+        },
+        "i4_pi1": {
+            "varName": "gates[3].in[1]"
+        },
+        "i4_pi2": {
+            "varName": "gates[3].in[2]"
+        },
+        "i4_pi3": {
+            "varName": "gates[3].in[3]"
+        },
+        "i4_pi4": {
+            "varName": "gates[3].in[4]"
+        },
+        "i4_pi5": {
+            "varName": "gates[3].in[5]"
+        },
+        "i4_po0": {
+            "varName": "gates[3].out[0]"
+        },
+        "i5_pi0": {
+            "varName": "gates[4].in[0]"
+        },
+        "i5_pi1": {
+            "varName": "gates[4].in[1]"
+        },
+        "i5_pi2": {
+            "varName": "gates[4].in[2]"
+        },
+        "i5_pi3": {
+            "varName": "gates[4].in[3]"
+        },
+        "i5_pi4": {
+            "varName": "gates[4].in[4]"
+        },
+        "i5_pi5": {
+            "varName": "gates[4].in[5]"
+        },
+        "i5_po0": {
+            "varName": "gates[4].out[0]"
+        },
+        "i6_pi0": {
+            "varName": "gates[5].in[0]"
+        },
+        "i6_pi1": {
+            "varName": "gates[5].in[1]"
+        },
+        "i6_pi2": {
+            "varName": "gates[5].in[2]"
+        },
+        "i6_pi3": {
+            "varName": "gates[5].in[3]"
+        },
+        "i6_pi4": {
+            "varName": "gates[5].in[4]"
+        },
+        "i6_pi5": {
+            "varName": "gates[5].in[5]"
+        },
+        "i6_po0": {
+            "varName": "gates[5].out[0]"
+        },
+        "i7_pi0": {
+            "varName": "gates[6].in[0]"
+        },
+        "i7_pi1": {
+            "varName": "gates[6].in[1]"
+        },
+        "i7_pi2": {
+            "varName": "gates[6].in[2]"
+        },
+        "i7_pi3": {
+            "varName": "gates[6].in[3]"
+        },
+        "i7_pi4": {
+            "varName": "gates[6].in[4]"
+        },
+        "i7_pi5": {
+            "varName": "gates[6].in[5]"
+        },
+        "i7_po0": {
+            "varName": "gates[6].out[0]"
+        },
+        "i8_pi0": {
+            "varName": "gates[7].in[0]"
+        },
+        "i8_pi1": {
+            "varName": "gates[7].in[1]"
+        },
+        "i8_pi2": {
+            "varName": "gates[7].in[2]"
+        },
+        "i8_pi3": {
+            "varName": "gates[7].in[3]"
+        },
+        "i8_pi4": {
+            "varName": "gates[7].in[4]"
+        },
+        "i8_pi5": {
+            "varName": "gates[7].in[5]"
+        },
+        "i8_po0": {
+            "varName": "gates[7].out[0]"
+        },
+        "i9_po0": {
+            "varName": "gmio_in.out[0]"
+        },
+        "i10_pi0": {
+            "varName": "gmio_out.in[0]"
+        },
+        "dma_i12_pi0": {
+            "varName": "_dma[0].in[0]"
+        },
+        "dma_i12_po0": {
+            "varName": "_dma[0].out[0]"
+        },
+        "dma_i13_pi0": {
+            "varName": "_dma[1].in[0]"
+        },
+        "dma_i13_po0": {
+            "varName": "_dma[1].out[0]"
+        },
+        "dma_i14_pi0": {
+            "varName": "_dma[2].in[0]"
+        },
+        "dma_i14_po0": {
+            "varName": "_dma[2].out[0]"
+        },
+        "dma_i15_pi0": {
+            "varName": "_dma[3].in[0]"
+        },
+        "dma_i15_po0": {
+            "varName": "_dma[3].out[0]"
+        },
+        "dma_i16_pi0": {
+            "varName": "_dma[4].in[0]"
+        },
+        "dma_i16_po0": {
+            "varName": "_dma[4].out[0]"
+        },
+        "dma_i17_pi0": {
+            "varName": "_dma[5].in[0]"
+        },
+        "dma_i17_po0": {
+            "varName": "_dma[5].out[0]"
+        },
+        "dma_i18_pi0": {
+            "varName": "_dma[6].in[0]"
+        },
+        "dma_i18_po0": {
+            "varName": "_dma[6].out[0]"
+        },
+        "dma_i19_pi0": {
+            "varName": "_dma[7].in[0]"
+        },
+        "dma_i19_po0": {
+            "varName": "_dma[7].out[0]"
+        },
+        "dma_i20_pi0": {
+            "varName": "_dma[8].in[0]"
+        },
+        "dma_i20_po0": {
+            "varName": "_dma[8].out[0]"
+        }
+    },
+    "graphFilesInfo": {
+        "headerFiles": [
+            "/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/src/graphs.hpp"
+        ]
+    },
+    "mapping": {
+        "blockInstanceMapping": {
+            "i0": {
+                "coreInfo": {
+                    "tile": "aie",
+                    "column": 25,
+                    "row": 4,
+                    "schedule": 0
+                }
+            },
+            "i1": {
+                "coreInfo": {
+                    "tile": "aie",
+                    "column": 26,
+                    "row": 4,
+                    "schedule": 0
+                }
+            },
+            "i10": {
+                "dmaInfo": {
+                    "tile": "shim",
+                    "column": 26,
+                    "direction": "s2mm",
+                    "channel": 0
+                }
+            },
+            "i2": {
+                "coreInfo": {
+                    "tile": "aie",
+                    "column": 26,
+                    "row": 5,
+                    "schedule": 0
+                }
+            },
+            "i3": {
+                "coreInfo": {
+                    "tile": "aie",
+                    "column": 25,
+                    "row": 5,
+                    "schedule": 0
+                }
+            },
+            "i4": {
+                "coreInfo": {
+                    "tile": "aie",
+                    "column": 26,
+                    "row": 3,
+                    "schedule": 0
+                }
+            },
+            "i5": {
+                "coreInfo": {
+                    "tile": "aie",
+                    "column": 24,
+                    "row": 4,
+                    "schedule": 0
+                }
+            },
+            "i6": {
+                "coreInfo": {
+                    "tile": "aie",
+                    "column": 24,
+                    "row": 5,
+                    "schedule": 0
+                }
+            },
+            "i7": {
+                "coreInfo": {
+                    "tile": "aie",
+                    "column": 25,
+                    "row": 3,
+                    "schedule": 0
+                }
+            },
+            "i8": {
+                "coreInfo": {
+                    "tile": "aie",
+                    "column": 24,
+                    "row": 3,
+                    "schedule": 0
+                }
+            },
+            "i9": {
+                "dmaInfo": {
+                    "tile": "shim",
+                    "column": 26,
+                    "direction": "mm2s",
+                    "channel": 0
+                }
+            }
+        },
+        "portInstanceMapping": {
+            "dma_i12_pi0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf17",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 25088,
+                        "size": 512,
+                        "lock": [
+                            0
+                        ]
+                    },
+                    {
+                        "generatedName": "buf17d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 17568,
+                        "size": 512,
+                        "lock": [
+                            1
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 25,
+                    "row": 4,
+                    "direction": "mm2s",
+                    "channel": 0,
+                    "bufferDescriptor": [
+                        0,
+                        1
+                    ]
+                }
+            },
+            "dma_i12_po0": {},
+            "dma_i13_pi0": {},
+            "dma_i13_po0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf18",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 26112,
+                        "size": 512,
+                        "lock": [
+                            2
+                        ]
+                    },
+                    {
+                        "generatedName": "buf18d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 17056,
+                        "size": 512,
+                        "lock": [
+                            3
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 25,
+                    "row": 4,
+                    "direction": "s2mm",
+                    "channel": 0,
+                    "bufferDescriptor": [
+                        2,
+                        3
+                    ]
+                }
+            },
+            "dma_i14_pi0": {},
+            "dma_i14_po0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf19",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 16960,
+                        "size": 512,
+                        "lock": [
+                            0
+                        ]
+                    },
+                    {
+                        "generatedName": "buf19d",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 24576,
+                        "size": 512,
+                        "lock": [
+                            1
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 26,
+                    "row": 4,
+                    "direction": "s2mm",
+                    "channel": 0,
+                    "bufferDescriptor": [
+                        0,
+                        1
+                    ]
+                }
+            },
+            "dma_i15_pi0": {},
+            "dma_i15_po0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf20",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 5,
+                        "offset": 13728,
+                        "size": 512,
+                        "lock": [
+                            0
+                        ]
+                    },
+                    {
+                        "generatedName": "buf20d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 5,
+                        "offset": 30912,
+                        "size": 512,
+                        "lock": [
+                            1
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 25,
+                    "row": 5,
+                    "direction": "s2mm",
+                    "channel": 0,
+                    "bufferDescriptor": [
+                        2,
+                        3
+                    ]
+                }
+            },
+            "dma_i16_pi0": {},
+            "dma_i16_po0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf21",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 16448,
+                        "size": 512,
+                        "lock": [
+                            2
+                        ]
+                    },
+                    {
+                        "generatedName": "buf21d",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 25088,
+                        "size": 512,
+                        "lock": [
+                            3
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 26,
+                    "row": 4,
+                    "direction": "s2mm",
+                    "channel": 1,
+                    "bufferDescriptor": [
+                        2,
+                        3
+                    ]
+                }
+            },
+            "dma_i17_pi0": {},
+            "dma_i17_po0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf22",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 17216,
+                        "size": 512,
+                        "lock": [
+                            0
+                        ]
+                    },
+                    {
+                        "generatedName": "buf22d",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 25344,
+                        "size": 512,
+                        "lock": [
+                            1
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 24,
+                    "row": 4,
+                    "direction": "s2mm",
+                    "channel": 0,
+                    "bufferDescriptor": [
+                        2,
+                        3
+                    ]
+                }
+            },
+            "dma_i18_pi0": {},
+            "dma_i18_po0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf23",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 5,
+                        "offset": 24704,
+                        "size": 512,
+                        "lock": [
+                            0
+                        ]
+                    },
+                    {
+                        "generatedName": "buf23d",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 5,
+                        "offset": 16608,
+                        "size": 512,
+                        "lock": [
+                            1
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 24,
+                    "row": 5,
+                    "direction": "s2mm",
+                    "channel": 0,
+                    "bufferDescriptor": [
+                        2,
+                        3
+                    ]
+                }
+            },
+            "dma_i19_pi0": {},
+            "dma_i19_po0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf24",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 25600,
+                        "size": 512,
+                        "lock": [
+                            4
+                        ]
+                    },
+                    {
+                        "generatedName": "buf24d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 18080,
+                        "size": 512,
+                        "lock": [
+                            5
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 25,
+                    "row": 4,
+                    "direction": "s2mm",
+                    "channel": 1,
+                    "bufferDescriptor": [
+                        4,
+                        5
+                    ]
+                }
+            },
+            "dma_i20_pi0": {},
+            "dma_i20_po0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf25",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 3,
+                        "offset": 16416,
+                        "size": 512,
+                        "lock": [
+                            0
+                        ]
+                    },
+                    {
+                        "generatedName": "buf25d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 3,
+                        "offset": 24832,
+                        "size": 512,
+                        "lock": [
+                            1
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 25,
+                    "row": 3,
+                    "direction": "s2mm",
+                    "channel": 0,
+                    "bufferDescriptor": [
+                        4,
+                        5
+                    ]
+                }
+            },
+            "i0_pi0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf8",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 24576,
+                        "size": 256,
+                        "lock": [
+                            6
+                        ]
+                    },
+                    {
+                        "generatedName": "buf8d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 0,
+                        "size": 256,
+                        "lock": [
+                            7
+                        ]
+                    }
+                ]
+            },
+            "i0_pi1": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf9r",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 3,
+                        "offset": 24576,
+                        "size": 256,
+                        "lock": [
+                            2
+                        ]
+                    },
+                    {
+                        "generatedName": "buf9dr",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 3,
+                        "offset": 17440,
+                        "size": 256,
+                        "lock": [
+                            3
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 25,
+                    "row": 3,
+                    "direction": "s2mm",
+                    "channel": 1,
+                    "bufferDescriptor": [
+                        0,
+                        1
+                    ]
+                }
+            },
+            "i0_pi2": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf10",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 5,
+                        "offset": 21408,
+                        "size": 256,
+                        "lock": [
+                            2
+                        ]
+                    },
+                    {
+                        "generatedName": "buf10d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 5,
+                        "offset": 352,
+                        "size": 256,
+                        "lock": [
+                            3
+                        ]
+                    }
+                ]
+            },
+            "i0_pi3": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf11r",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 16640,
+                        "size": 256,
+                        "lock": [
+                            2
+                        ]
+                    },
+                    {
+                        "generatedName": "buf11dr",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 24576,
+                        "size": 256,
+                        "lock": [
+                            3
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 24,
+                    "row": 4,
+                    "direction": "s2mm",
+                    "channel": 1,
+                    "bufferDescriptor": [
+                        0,
+                        1
+                    ]
+                }
+            },
+            "i0_pi4": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf12",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 16896,
+                        "size": 256,
+                        "lock": [
+                            4
+                        ]
+                    },
+                    {
+                        "generatedName": "buf12d",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 25856,
+                        "size": 256,
+                        "lock": [
+                            5
+                        ]
+                    }
+                ]
+            },
+            "i0_pi5": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf13",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 24832,
+                        "size": 256,
+                        "lock": [
+                            6
+                        ]
+                    },
+                    {
+                        "generatedName": "buf13d",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 16384,
+                        "size": 256,
+                        "lock": [
+                            7
+                        ]
+                    }
+                ]
+            },
+            "i0_pi6": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf14",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 24832,
+                        "size": 256,
+                        "lock": [
+                            8
+                        ]
+                    },
+                    {
+                        "generatedName": "buf14d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 16800,
+                        "size": 256,
+                        "lock": [
+                            9
+                        ]
+                    }
+                ]
+            },
+            "i0_pi7": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf15",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 25088,
+                        "size": 256,
+                        "lock": [
+                            8
+                        ]
+                    },
+                    {
+                        "generatedName": "buf15d",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 17984,
+                        "size": 256,
+                        "lock": [
+                            9
+                        ]
+                    }
+                ]
+            },
+            "i0_pi8": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp26",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 3,
+                        "offset": 16928,
+                        "size": 512,
+                        "lock": [
+                            4
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel27",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 16672,
+                        "size": 4,
+                        "lock": [
+                            10
+                        ]
+                    }
+                ]
+            },
+            "i0_pi9": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp28",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 3,
+                        "offset": 17696,
+                        "size": 4,
+                        "lock": [
+                            6
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel29",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 3,
+                        "offset": 16384,
+                        "size": 4,
+                        "lock": [
+                            5
+                        ]
+                    }
+                ]
+            },
+            "i0_po0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf17",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 25088,
+                        "size": 512,
+                        "lock": [
+                            0
+                        ]
+                    },
+                    {
+                        "generatedName": "buf17d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 17568,
+                        "size": 512,
+                        "lock": [
+                            1
+                        ]
+                    }
+                ]
+            },
+            "i0_po1": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf16",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 3,
+                        "offset": 21920,
+                        "size": 16,
+                        "lock": [
+                            7
+                        ]
+                    },
+                    {
+                        "generatedName": "buf16d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 3,
+                        "offset": 25344,
+                        "size": 16,
+                        "lock": [
+                            8
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 25,
+                    "row": 3,
+                    "direction": "mm2s",
+                    "channel": 0,
+                    "bufferDescriptor": [
+                        2,
+                        3
+                    ]
+                }
+            },
+            "i10_pi0": {},
+            "i1_pi0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf0",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 3,
+                        "offset": 16256,
+                        "size": 128,
+                        "lock": [
+                            0
+                        ]
+                    },
+                    {
+                        "generatedName": "buf0d",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 3,
+                        "offset": 4512,
+                        "size": 128,
+                        "lock": [
+                            1
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 26,
+                    "row": 3,
+                    "direction": "s2mm",
+                    "channel": 0,
+                    "bufferDescriptor": [
+                        0,
+                        1
+                    ]
+                }
+            },
+            "i1_pi1": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf18",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 26112,
+                        "size": 512,
+                        "lock": [
+                            2
+                        ]
+                    },
+                    {
+                        "generatedName": "buf18d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 17056,
+                        "size": 512,
+                        "lock": [
+                            3
+                        ]
+                    }
+                ]
+            },
+            "i1_pi2": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp30",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 5,
+                        "offset": 0,
+                        "size": 32768,
+                        "lock": [
+                            0
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel34",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 16384,
+                        "size": 4,
+                        "lock": [
+                            4
+                        ]
+                    }
+                ]
+            },
+            "i1_pi3": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp35",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 3,
+                        "offset": 16384,
+                        "size": 16384,
+                        "lock": [
+                            2
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel37",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 22240,
+                        "size": 4,
+                        "lock": [
+                            5
+                        ]
+                    }
+                ]
+            },
+            "i1_pi4": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp38",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 17472,
+                        "size": 256,
+                        "lock": [
+                            7
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel39",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 16416,
+                        "size": 4,
+                        "lock": [
+                            6
+                        ]
+                    }
+                ]
+            },
+            "i1_pi5": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp40",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 22272,
+                        "size": 4,
+                        "lock": [
+                            8
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel41",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 16768,
+                        "size": 4,
+                        "lock": [
+                            11
+                        ]
+                    }
+                ]
+            },
+            "i1_po0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf8",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 24576,
+                        "size": 256,
+                        "lock": [
+                            6
+                        ]
+                    },
+                    {
+                        "generatedName": "buf8d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 0,
+                        "size": 256,
+                        "lock": [
+                            7
+                        ]
+                    }
+                ]
+            },
+            "i2_pi0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf1",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 6,
+                        "offset": 16384,
+                        "size": 128,
+                        "lock": [
+                            0
+                        ]
+                    },
+                    {
+                        "generatedName": "buf1d",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 6,
+                        "offset": 24704,
+                        "size": 128,
+                        "lock": [
+                            1
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 26,
+                    "row": 6,
+                    "direction": "s2mm",
+                    "channel": 0,
+                    "bufferDescriptor": [
+                        0,
+                        1
+                    ]
+                }
+            },
+            "i2_pi1": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf19",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 16960,
+                        "size": 512,
+                        "lock": [
+                            0
+                        ]
+                    },
+                    {
+                        "generatedName": "buf19d",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 24576,
+                        "size": 512,
+                        "lock": [
+                            1
+                        ]
+                    }
+                ]
+            },
+            "i2_pi2": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp42",
+                        "tile": "aie",
+                        "column": 27,
+                        "row": 5,
+                        "offset": 0,
+                        "size": 32768,
+                        "lock": [
+                            0
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel46",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 6,
+                        "offset": 0,
+                        "size": 4,
+                        "lock": [
+                            2
+                        ]
+                    }
+                ]
+            },
+            "i2_pi3": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp47",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 0,
+                        "size": 16384,
+                        "lock": [
+                            9
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel49",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 6,
+                        "offset": 32,
+                        "size": 4,
+                        "lock": [
+                            3
+                        ]
+                    }
+                ]
+            },
+            "i2_pi4": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp50",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 6,
+                        "offset": 320,
+                        "size": 256,
+                        "lock": [
+                            5
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel51",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 6,
+                        "offset": 4128,
+                        "size": 4,
+                        "lock": [
+                            4
+                        ]
+                    }
+                ]
+            },
+            "i2_pi5": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp52",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 6,
+                        "offset": 4192,
+                        "size": 4,
+                        "lock": [
+                            7
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel53",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 6,
+                        "offset": 4160,
+                        "size": 4,
+                        "lock": [
+                            6
+                        ]
+                    }
+                ]
+            },
+            "i2_po0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf9",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 6,
+                        "offset": 8192,
+                        "size": 256,
+                        "lock": [
+                            8
+                        ]
+                    },
+                    {
+                        "generatedName": "buf9d",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 6,
+                        "offset": 4224,
+                        "size": 256,
+                        "lock": [
+                            9
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 26,
+                    "row": 6,
+                    "direction": "mm2s",
+                    "channel": 0,
+                    "bufferDescriptor": [
+                        2,
+                        3
+                    ]
+                }
+            },
+            "i3_pi0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf2",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 5,
+                        "offset": 13600,
+                        "size": 128,
+                        "lock": [
+                            4
+                        ]
+                    },
+                    {
+                        "generatedName": "buf2d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 5,
+                        "offset": 21664,
+                        "size": 128,
+                        "lock": [
+                            5
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 25,
+                    "row": 5,
+                    "direction": "s2mm",
+                    "channel": 1,
+                    "bufferDescriptor": [
+                        0,
+                        1
+                    ]
+                }
+            },
+            "i3_pi1": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf20",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 5,
+                        "offset": 13728,
+                        "size": 512,
+                        "lock": [
+                            0
+                        ]
+                    },
+                    {
+                        "generatedName": "buf20d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 5,
+                        "offset": 30912,
+                        "size": 512,
+                        "lock": [
+                            1
+                        ]
+                    }
+                ]
+            },
+            "i3_pi2": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp54",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 6,
+                        "offset": 0,
+                        "size": 32768,
+                        "lock": [
+                            0
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel58",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 16640,
+                        "size": 4,
+                        "lock": [
+                            12
+                        ]
+                    }
+                ]
+            },
+            "i3_pi3": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp59",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 256,
+                        "size": 16384,
+                        "lock": [
+                            14
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel61",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 16704,
+                        "size": 4,
+                        "lock": [
+                            13
+                        ]
+                    }
+                ]
+            },
+            "i3_pi4": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp62",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 5,
+                        "offset": 32,
+                        "size": 256,
+                        "lock": [
+                            7
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel63",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 5,
+                        "offset": 0,
+                        "size": 4,
+                        "lock": [
+                            6
+                        ]
+                    }
+                ]
+            },
+            "i3_pi5": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp64",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 5,
+                        "offset": 320,
+                        "size": 4,
+                        "lock": [
+                            9
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel65",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 5,
+                        "offset": 288,
+                        "size": 4,
+                        "lock": [
+                            8
+                        ]
+                    }
+                ]
+            },
+            "i3_po0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf10",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 5,
+                        "offset": 21408,
+                        "size": 256,
+                        "lock": [
+                            2
+                        ]
+                    },
+                    {
+                        "generatedName": "buf10d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 5,
+                        "offset": 352,
+                        "size": 256,
+                        "lock": [
+                            3
+                        ]
+                    }
+                ]
+            },
+            "i4_pi0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf3",
+                        "tile": "aie",
+                        "column": 27,
+                        "row": 3,
+                        "offset": 20768,
+                        "size": 128,
+                        "lock": [
+                            0
+                        ]
+                    },
+                    {
+                        "generatedName": "buf3d",
+                        "tile": "aie",
+                        "column": 27,
+                        "row": 3,
+                        "offset": 24832,
+                        "size": 128,
+                        "lock": [
+                            1
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 27,
+                    "row": 3,
+                    "direction": "s2mm",
+                    "channel": 0,
+                    "bufferDescriptor": [
+                        0,
+                        1
+                    ]
+                }
+            },
+            "i4_pi1": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf21",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 16448,
+                        "size": 512,
+                        "lock": [
+                            2
+                        ]
+                    },
+                    {
+                        "generatedName": "buf21d",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 25088,
+                        "size": 512,
+                        "lock": [
+                            3
+                        ]
+                    }
+                ]
+            },
+            "i4_pi2": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp66",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 2,
+                        "offset": 0,
+                        "size": 32768,
+                        "lock": [
+                            0
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel70",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 18048,
+                        "size": 4,
+                        "lock": [
+                            10
+                        ]
+                    }
+                ]
+            },
+            "i4_pi3": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp71",
+                        "tile": "aie",
+                        "column": 27,
+                        "row": 3,
+                        "offset": 0,
+                        "size": 16384,
+                        "lock": [
+                            2
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel73",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 18016,
+                        "size": 4,
+                        "lock": [
+                            11
+                        ]
+                    }
+                ]
+            },
+            "i4_pi4": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp74",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 17728,
+                        "size": 256,
+                        "lock": [
+                            13
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel75",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 17984,
+                        "size": 4,
+                        "lock": [
+                            12
+                        ]
+                    }
+                ]
+            },
+            "i4_pi5": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp76",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 4,
+                        "offset": 22208,
+                        "size": 4,
+                        "lock": [
+                            14
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel77",
+                        "tile": "aie",
+                        "column": 27,
+                        "row": 3,
+                        "offset": 20896,
+                        "size": 4,
+                        "lock": [
+                            3
+                        ]
+                    }
+                ]
+            },
+            "i4_po0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf11",
+                        "tile": "aie",
+                        "column": 27,
+                        "row": 3,
+                        "offset": 24576,
+                        "size": 256,
+                        "lock": [
+                            4
+                        ]
+                    },
+                    {
+                        "generatedName": "buf11d",
+                        "tile": "aie",
+                        "column": 27,
+                        "row": 3,
+                        "offset": 20512,
+                        "size": 256,
+                        "lock": [
+                            5
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 27,
+                    "row": 3,
+                    "direction": "mm2s",
+                    "channel": 0,
+                    "bufferDescriptor": [
+                        2,
+                        3
+                    ]
+                }
+            },
+            "i5_pi0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf4",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 3,
+                        "offset": 24576,
+                        "size": 128,
+                        "lock": [
+                            0
+                        ]
+                    },
+                    {
+                        "generatedName": "buf4d",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 3,
+                        "offset": 16576,
+                        "size": 128,
+                        "lock": [
+                            1
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 24,
+                    "row": 3,
+                    "direction": "s2mm",
+                    "channel": 0,
+                    "bufferDescriptor": [
+                        0,
+                        1
+                    ]
+                }
+            },
+            "i5_pi1": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf22",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 17216,
+                        "size": 512,
+                        "lock": [
+                            0
+                        ]
+                    },
+                    {
+                        "generatedName": "buf22d",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 25344,
+                        "size": 512,
+                        "lock": [
+                            1
+                        ]
+                    }
+                ]
+            },
+            "i5_pi2": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp78",
+                        "tile": "aie",
+                        "column": 23,
+                        "row": 4,
+                        "offset": 0,
+                        "size": 32768,
+                        "lock": [
+                            0
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel82",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 3,
+                        "offset": 16384,
+                        "size": 4,
+                        "lock": [
+                            2
+                        ]
+                    }
+                ]
+            },
+            "i5_pi3": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp83",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 3,
+                        "offset": 0,
+                        "size": 16384,
+                        "lock": [
+                            4
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel85",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 3,
+                        "offset": 21216,
+                        "size": 4,
+                        "lock": [
+                            3
+                        ]
+                    }
+                ]
+            },
+            "i5_pi4": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp86",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 3,
+                        "offset": 20928,
+                        "size": 256,
+                        "lock": [
+                            5
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel87",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 5,
+                        "offset": 17120,
+                        "size": 4,
+                        "lock": [
+                            2
+                        ]
+                    }
+                ]
+            },
+            "i5_pi5": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp88",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 5,
+                        "offset": 17152,
+                        "size": 4,
+                        "lock": [
+                            3
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel89",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 3,
+                        "offset": 16736,
+                        "size": 4,
+                        "lock": [
+                            6
+                        ]
+                    }
+                ]
+            },
+            "i5_po0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf12",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 16896,
+                        "size": 256,
+                        "lock": [
+                            4
+                        ]
+                    },
+                    {
+                        "generatedName": "buf12d",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 25856,
+                        "size": 256,
+                        "lock": [
+                            5
+                        ]
+                    }
+                ]
+            },
+            "i6_pi0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf5",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 5,
+                        "offset": 16384,
+                        "size": 128,
+                        "lock": [
+                            4
+                        ]
+                    },
+                    {
+                        "generatedName": "buf5d",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 5,
+                        "offset": 24576,
+                        "size": 128,
+                        "lock": [
+                            5
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 24,
+                    "row": 5,
+                    "direction": "s2mm",
+                    "channel": 1,
+                    "bufferDescriptor": [
+                        0,
+                        1
+                    ]
+                }
+            },
+            "i6_pi1": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf23",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 5,
+                        "offset": 24704,
+                        "size": 512,
+                        "lock": [
+                            0
+                        ]
+                    },
+                    {
+                        "generatedName": "buf23d",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 5,
+                        "offset": 16608,
+                        "size": 512,
+                        "lock": [
+                            1
+                        ]
+                    }
+                ]
+            },
+            "i6_pi2": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp90",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 6,
+                        "offset": 0,
+                        "size": 32768,
+                        "lock": [
+                            0
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel94",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 5,
+                        "offset": 21312,
+                        "size": 4,
+                        "lock": [
+                            6
+                        ]
+                    }
+                ]
+            },
+            "i6_pi3": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp95",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 5,
+                        "offset": 0,
+                        "size": 16384,
+                        "lock": [
+                            7
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel97",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 17152,
+                        "size": 4,
+                        "lock": [
+                            10
+                        ]
+                    }
+                ]
+            },
+            "i6_pi4": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp98",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 5,
+                        "offset": 21344,
+                        "size": 256,
+                        "lock": [
+                            9
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel99",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 5,
+                        "offset": 16544,
+                        "size": 4,
+                        "lock": [
+                            8
+                        ]
+                    }
+                ]
+            },
+            "i6_pi5": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp100",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 5,
+                        "offset": 16576,
+                        "size": 4,
+                        "lock": [
+                            11
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel101",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 5,
+                        "offset": 16512,
+                        "size": 4,
+                        "lock": [
+                            10
+                        ]
+                    }
+                ]
+            },
+            "i6_po0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf13",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 24832,
+                        "size": 256,
+                        "lock": [
+                            6
+                        ]
+                    },
+                    {
+                        "generatedName": "buf13d",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 16384,
+                        "size": 256,
+                        "lock": [
+                            7
+                        ]
+                    }
+                ]
+            },
+            "i7_pi0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf6",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 3,
+                        "offset": 0,
+                        "size": 128,
+                        "lock": [
+                            3
+                        ]
+                    },
+                    {
+                        "generatedName": "buf6d",
+                        "tile": "aie",
+                        "column": 26,
+                        "row": 3,
+                        "offset": 8192,
+                        "size": 128,
+                        "lock": [
+                            4
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 26,
+                    "row": 3,
+                    "direction": "s2mm",
+                    "channel": 1,
+                    "bufferDescriptor": [
+                        2,
+                        3
+                    ]
+                }
+            },
+            "i7_pi1": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf24",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 25600,
+                        "size": 512,
+                        "lock": [
+                            4
+                        ]
+                    },
+                    {
+                        "generatedName": "buf24d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 18080,
+                        "size": 512,
+                        "lock": [
+                            5
+                        ]
+                    }
+                ]
+            },
+            "i7_pi2": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp102",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 2,
+                        "offset": 0,
+                        "size": 32768,
+                        "lock": [
+                            0
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel106",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 3,
+                        "offset": 17728,
+                        "size": 4,
+                        "lock": [
+                            9
+                        ]
+                    }
+                ]
+            },
+            "i7_pi3": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp107",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 3,
+                        "offset": 0,
+                        "size": 16384,
+                        "lock": [
+                            11
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel109",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 3,
+                        "offset": 21888,
+                        "size": 4,
+                        "lock": [
+                            10
+                        ]
+                    }
+                ]
+            },
+            "i7_pi4": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp110",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 3,
+                        "offset": 21952,
+                        "size": 256,
+                        "lock": [
+                            13
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel111",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 3,
+                        "offset": 22240,
+                        "size": 4,
+                        "lock": [
+                            12
+                        ]
+                    }
+                ]
+            },
+            "i7_pi5": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp112",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 16736,
+                        "size": 4,
+                        "lock": [
+                            15
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel113",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 3,
+                        "offset": 22208,
+                        "size": 4,
+                        "lock": [
+                            14
+                        ]
+                    }
+                ]
+            },
+            "i7_po0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf14",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 24832,
+                        "size": 256,
+                        "lock": [
+                            8
+                        ]
+                    },
+                    {
+                        "generatedName": "buf14d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 4,
+                        "offset": 16800,
+                        "size": 256,
+                        "lock": [
+                            9
+                        ]
+                    }
+                ]
+            },
+            "i8_pi0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf7",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 3,
+                        "offset": 16416,
+                        "size": 128,
+                        "lock": [
+                            7
+                        ]
+                    },
+                    {
+                        "generatedName": "buf7d",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 3,
+                        "offset": 24704,
+                        "size": 128,
+                        "lock": [
+                            8
+                        ]
+                    }
+                ],
+                "dmaInfo": {
+                    "tile": "aie",
+                    "column": 24,
+                    "row": 3,
+                    "direction": "s2mm",
+                    "channel": 1,
+                    "bufferDescriptor": [
+                        2,
+                        3
+                    ]
+                }
+            },
+            "i8_pi1": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf25",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 3,
+                        "offset": 16416,
+                        "size": 512,
+                        "lock": [
+                            0
+                        ]
+                    },
+                    {
+                        "generatedName": "buf25d",
+                        "tile": "aie",
+                        "column": 25,
+                        "row": 3,
+                        "offset": 24832,
+                        "size": 512,
+                        "lock": [
+                            1
+                        ]
+                    }
+                ]
+            },
+            "i8_pi2": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp114",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 2,
+                        "offset": 0,
+                        "size": 32768,
+                        "lock": [
+                            0
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel118",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 3,
+                        "offset": 20896,
+                        "size": 4,
+                        "lock": [
+                            9
+                        ]
+                    }
+                ]
+            },
+            "i8_pi3": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp119",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 0,
+                        "size": 16384,
+                        "lock": [
+                            11
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel121",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 3,
+                        "offset": 16704,
+                        "size": 4,
+                        "lock": [
+                            10
+                        ]
+                    }
+                ]
+            },
+            "i8_pi4": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp122",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 17728,
+                        "size": 256,
+                        "lock": [
+                            13
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel123",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 17184,
+                        "size": 4,
+                        "lock": [
+                            12
+                        ]
+                    }
+                ]
+            },
+            "i8_pi5": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "rtp124",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 3,
+                        "offset": 21184,
+                        "size": 4,
+                        "lock": [
+                            12
+                        ]
+                    }
+                ],
+                "selectorInfo": [
+                    {
+                        "generatedName": "rtpsel125",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 3,
+                        "offset": 16544,
+                        "size": 4,
+                        "lock": [
+                            11
+                        ]
+                    }
+                ]
+            },
+            "i8_po0": {
+                "bufferInfo": [
+                    {
+                        "generatedName": "buf15",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 25088,
+                        "size": 256,
+                        "lock": [
+                            8
+                        ]
+                    },
+                    {
+                        "generatedName": "buf15d",
+                        "tile": "aie",
+                        "column": 24,
+                        "row": 4,
+                        "offset": 17984,
+                        "size": 256,
+                        "lock": [
+                            9
+                        ]
+                    }
+                ]
+            },
+            "i9_po0": {}
+        },
+        "graphInstanceMapping": {
+            "gr": {
+                "graphInfo": {
+                    "core_columns": [
+                        24,
+                        24,
+                        24,
+                        25,
+                        25,
+                        25,
+                        26,
+                        26,
+                        26
+                    ],
+                    "core_rows": [
+                        3,
+                        4,
+                        5,
+                        3,
+                        4,
+                        5,
+                        3,
+                        4,
+                        5
+                    ],
+                    "iteration_memory_columns": [
+                        24,
+                        24,
+                        24,
+                        26,
+                        25,
+                        25,
+                        27,
+                        26,
+                        26
+                    ],
+                    "iteration_memory_rows": [
+                        4,
+                        3,
+                        5,
+                        3,
+                        3,
+                        4,
+                        3,
+                        4,
+                        6
+                    ],
+                    "iteration_memory_addresses": [
+                        18244,
+                        16772,
+                        17188,
+                        388,
+                        17764,
+                        28644,
+                        16388,
+                        18084,
+                        28644
+                    ],
+                    "multirate_triggers": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "DMAFIFO": {},
+        "systemMemory": [
+            {
+                "tile": "aie",
+                "column": 24,
+                "row": 4,
+                "offset": 18240,
+                "size": 4128
+            },
+            {
+                "tile": "aie",
+                "column": 24,
+                "row": 3,
+                "offset": 16768,
+                "size": 4128
+            },
+            {
+                "tile": "aie",
+                "column": 24,
+                "row": 5,
+                "offset": 17184,
+                "size": 4128
+            },
+            {
+                "tile": "aie",
+                "column": 26,
+                "row": 3,
+                "offset": 384,
+                "size": 4128
+            },
+            {
+                "tile": "aie",
+                "column": 25,
+                "row": 3,
+                "offset": 17760,
+                "size": 4128
+            },
+            {
+                "tile": "aie",
+                "column": 25,
+                "row": 4,
+                "offset": 28640,
+                "size": 4128
+            },
+            {
+                "tile": "aie",
+                "column": 27,
+                "row": 3,
+                "offset": 16384,
+                "size": 4128
+            },
+            {
+                "tile": "aie",
+                "column": 26,
+                "row": 4,
+                "offset": 18080,
+                "size": 4128
+            },
+            {
+                "tile": "aie",
+                "column": 26,
+                "row": 6,
+                "offset": 28640,
+                "size": 4128
+            }
+        ]
+    },
+    "scheduling": {
+        "i0": {
+            "repetition_count": 1
+        },
+        "i1": {
+            "repetition_count": 1
+        },
+        "i2": {
+            "repetition_count": 1
+        },
+        "i3": {
+            "repetition_count": 1
+        },
+        "i4": {
+            "repetition_count": 1
+        },
+        "i5": {
+            "repetition_count": 1
+        },
+        "i6": {
+            "repetition_count": 1
+        },
+        "i7": {
+            "repetition_count": 1
+        },
+        "i8": {
+            "repetition_count": 1
+        }
+    },
+    "event_trace_graph": {
+        "trace_ports": {}
+    },
+    "aie_driver_config": {
+        "hw_gen": 1,
+        "base_address": 2199023255552,
+        "npi_address": 4144627712,
+        "column_shift": 23,
+        "row_shift": 18,
+        "num_rows": 9,
+        "num_columns": 50,
+        "shim_row": 0,
+        "mem_row_start": 0,
+        "mem_num_rows": 0,
+        "aie_tile_row_start": 1,
+        "aie_tile_num_rows": 8
+    },
+    "unreachable_plio_shim_columns": {
+        "column_nums": "0, 1, 2, 3, 4, 5, 45, 46, 47, 48, 49"
+    },
+    "part": "xcvc1902-vsva2197-2MP-e-S",
+    "platform": "/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/base_platforms/xilinx_vck190_base_202420_1/xilinx_vck190_base_202420_1.xpfm"
+}

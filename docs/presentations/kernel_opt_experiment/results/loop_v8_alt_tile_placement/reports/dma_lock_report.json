@@ -1,0 +1,456 @@
+{
+    "S2MM": [
+        {
+            "KernelPort": {
+                "QualifiedGraphName": "gr",
+                "VariableName": "gr.coord.in[1]"
+            },
+            "BufferInfo": [
+                {
+                    "Column": 25,
+                    "Row": 3,
+                    "Channel": 1,
+                    "LockID": 2,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        0
+                    ]
+                },
+                {
+                    "Column": 25,
+                    "Row": 3,
+                    "Channel": 1,
+                    "LockID": 3,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        1
+                    ]
+                }
+            ]
+        },
+        {
+            "KernelPort": {
+                "QualifiedGraphName": "gr",
+                "VariableName": "gr.coord.in[5]"
+            },
+            "BufferInfo": [
+                {
+                    "Column": 25,
+                    "Row": 5,
+                    "Channel": 0,
+                    "LockID": 2,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        0
+                    ]
+                },
+                {
+                    "Column": 25,
+                    "Row": 5,
+                    "Channel": 0,
+                    "LockID": 3,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        1
+                    ]
+                }
+            ]
+        },
+        {
+            "KernelPort": {
+                "QualifiedGraphName": "gr",
+                "VariableName": "gr.coord.in[7]"
+            },
+            "BufferInfo": [
+                {
+                    "Column": 24,
+                    "Row": 4,
+                    "Channel": 1,
+                    "LockID": 6,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        0
+                    ]
+                },
+                {
+                    "Column": 24,
+                    "Row": 4,
+                    "Channel": 1,
+                    "LockID": 7,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        1
+                    ]
+                }
+            ]
+        },
+        {
+            "KernelPort": {
+                "QualifiedGraphName": "gr",
+                "VariableName": "gr.gates[0].in[0]"
+            },
+            "BufferInfo": [
+                {
+                    "Column": 26,
+                    "Row": 3,
+                    "Channel": 0,
+                    "LockID": 0,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        0
+                    ]
+                },
+                {
+                    "Column": 26,
+                    "Row": 3,
+                    "Channel": 0,
+                    "LockID": 1,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        1
+                    ]
+                }
+            ]
+        },
+        {
+            "KernelPort": {
+                "QualifiedGraphName": "gr",
+                "VariableName": "gr.gates[1].in[0]"
+            },
+            "BufferInfo": [
+                {
+                    "Column": 26,
+                    "Row": 2,
+                    "Channel": 0,
+                    "LockID": 0,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        0
+                    ]
+                },
+                {
+                    "Column": 26,
+                    "Row": 2,
+                    "Channel": 0,
+                    "LockID": 1,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        1
+                    ]
+                }
+            ]
+        },
+        {
+            "KernelPort": {
+                "QualifiedGraphName": "gr",
+                "VariableName": "gr.gates[2].in[0]"
+            },
+            "BufferInfo": [
+                {
+                    "Column": 25,
+                    "Row": 5,
+                    "Channel": 1,
+                    "LockID": 4,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        2
+                    ]
+                },
+                {
+                    "Column": 25,
+                    "Row": 5,
+                    "Channel": 1,
+                    "LockID": 5,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        3
+                    ]
+                }
+            ]
+        },
+        {
+            "KernelPort": {
+                "QualifiedGraphName": "gr",
+                "VariableName": "gr.gates[3].in[0]"
+            },
+            "BufferInfo": [
+                {
+                    "Column": 24,
+                    "Row": 3,
+                    "Channel": 1,
+                    "LockID": 2,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        0
+                    ]
+                },
+                {
+                    "Column": 24,
+                    "Row": 3,
+                    "Channel": 1,
+                    "LockID": 3,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        1
+                    ]
+                }
+            ]
+        },
+        {
+            "KernelPort": {
+                "QualifiedGraphName": "gr",
+                "VariableName": "gr.gates[4].in[0]"
+            },
+            "BufferInfo": [
+                {
+                    "Column": 23,
+                    "Row": 4,
+                    "Channel": 1,
+                    "LockID": 2,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        0
+                    ]
+                },
+                {
+                    "Column": 23,
+                    "Row": 4,
+                    "Channel": 1,
+                    "LockID": 3,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        1
+                    ]
+                }
+            ]
+        },
+        {
+            "KernelPort": {
+                "QualifiedGraphName": "gr",
+                "VariableName": "gr.gates[5].in[0]"
+            },
+            "BufferInfo": [
+                {
+                    "Column": 27,
+                    "Row": 5,
+                    "Channel": 0,
+                    "LockID": 0,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        0
+                    ]
+                },
+                {
+                    "Column": 27,
+                    "Row": 5,
+                    "Channel": 0,
+                    "LockID": 1,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        1
+                    ]
+                }
+            ]
+        },
+        {
+            "KernelPort": {
+                "QualifiedGraphName": "gr",
+                "VariableName": "gr.gates[6].in[0]"
+            },
+            "BufferInfo": [
+                {
+                    "Column": 26,
+                    "Row": 3,
+                    "Channel": 1,
+                    "LockID": 4,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        2
+                    ]
+                },
+                {
+                    "Column": 26,
+                    "Row": 3,
+                    "Channel": 1,
+                    "LockID": 5,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        3
+                    ]
+                }
+            ]
+        },
+        {
+            "KernelPort": {
+                "QualifiedGraphName": "gr",
+                "VariableName": "gr.gates[7].in[0]"
+            },
+            "BufferInfo": [
+                {
+                    "Column": 22,
+                    "Row": 4,
+                    "Channel": 0,
+                    "LockID": 0,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        0
+                    ]
+                },
+                {
+                    "Column": 22,
+                    "Row": 4,
+                    "Channel": 0,
+                    "LockID": 1,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        1
+                    ]
+                }
+            ]
+        }
+    ],
+    "MM2S": [
+        {
+            "KernelPort": {
+                "QualifiedGraphName": "gr",
+                "VariableName": "gr.coord.out[1]"
+            },
+            "BufferInfo": [
+                {
+                    "Column": 24,
+                    "Row": 4,
+                    "Channel": 0,
+                    "LockID": 10,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        2
+                    ]
+                },
+                {
+                    "Column": 24,
+                    "Row": 4,
+                    "Channel": 0,
+                    "LockID": 11,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        3
+                    ]
+                }
+            ]
+        },
+        {
+            "KernelPort": {
+                "QualifiedGraphName": "gr",
+                "VariableName": "gr.gates[1].out[0]"
+            },
+            "BufferInfo": [
+                {
+                    "Column": 26,
+                    "Row": 2,
+                    "Channel": 0,
+                    "LockID": 5,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        2
+                    ]
+                },
+                {
+                    "Column": 26,
+                    "Row": 2,
+                    "Channel": 0,
+                    "LockID": 6,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        3
+                    ]
+                }
+            ]
+        },
+        {
+            "KernelPort": {
+                "QualifiedGraphName": "gr",
+                "VariableName": "gr.gates[5].out[0]"
+            },
+            "BufferInfo": [
+                {
+                    "Column": 27,
+                    "Row": 5,
+                    "Channel": 0,
+                    "LockID": 8,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        2
+                    ]
+                },
+                {
+                    "Column": 27,
+                    "Row": 5,
+                    "Channel": 0,
+                    "LockID": 9,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        3
+                    ]
+                }
+            ]
+        },
+        {
+            "KernelPort": {
+                "QualifiedGraphName": "gr",
+                "VariableName": "gr.gates[7].out[0]"
+            },
+            "BufferInfo": [
+                {
+                    "Column": 23,
+                    "Row": 3,
+                    "Channel": 0,
+                    "LockID": 6,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        0
+                    ]
+                },
+                {
+                    "Column": 23,
+                    "Row": 3,
+                    "Channel": 0,
+                    "LockID": 7,
+                    "ControlBuffer": false,
+                    "AB_Mode": false,
+                    "BD": [
+                        1
+                    ]
+                }
+            ]
+        }
+    ]
+}

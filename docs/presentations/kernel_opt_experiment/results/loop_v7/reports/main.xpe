@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<POWERDATA data="AI-Engine Compiler" dataVersion="" design="main" date="Tue May 13 23:28:13 2025
+">
+ <DEVICE part="xcvc1902" grade="extended" package="vsva2197" speed="-2MP" process="typical" vid="No"></DEVICE>
+  <AIE status="COMPILER_OUTPUT">
+    <AIE_MODULE name="main" num_tiles="20" clk_freq="1250">
+      <TILE name="CR(23,4)" type="none" int_core_load="0" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0" coordinates="23,5">
+      </TILE>
+      <TILE name="CR(24,2)" type="none" int_core_load="0" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0" coordinates="24,3">
+      </TILE>
+      <TILE name="CR(24,3)" type="int16" int_core_load="0.54" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0.11" coordinates="24,4">
+        <KERNEL name="i8"  int_core_load="0.9" fp_core_load="0"></KERNEL>
+      </TILE>
+      <TILE name="CR(24,4)" type="int16" int_core_load="0.54" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0.11" coordinates="24,5">
+        <KERNEL name="i5"  int_core_load="0.9" fp_core_load="0"></KERNEL>
+      </TILE>
+      <TILE name="CR(24,5)" type="int16" int_core_load="0.54" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0.09" coordinates="24,6">
+        <KERNEL name="i6"  int_core_load="0.9" fp_core_load="0"></KERNEL>
+      </TILE>
+      <TILE name="CR(24,6)" type="none" int_core_load="0" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0" coordinates="24,7">
+      </TILE>
+      <TILE name="CR(25,2)" type="none" int_core_load="0" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0" coordinates="25,3">
+      </TILE>
+      <TILE name="CR(25,3)" type="int16" int_core_load="0.54" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0.19" coordinates="25,4">
+        <KERNEL name="i7"  int_core_load="0.9" fp_core_load="0"></KERNEL>
+      </TILE>
+      <TILE name="CR(25,4)" type="int16" int_core_load="0.54" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0.17" coordinates="25,5">
+        <KERNEL name="i0"  int_core_load="0.9" fp_core_load="0"></KERNEL>
+      </TILE>
+      <TILE name="CR(25,5)" type="int16" int_core_load="0.54" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0.15" coordinates="25,6">
+        <KERNEL name="i3"  int_core_load="0.9" fp_core_load="0"></KERNEL>
+      </TILE>
+      <TILE name="CR(25,6)" type="none" int_core_load="0" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0.073" coordinates="25,7">
+      </TILE>
+      <TILE name="CR(26,0)" type="none" int_core_load="0" fp_core_load="0" mem_banks="0" mem_rw_rate="0.2" stream_util="0.073" coordinates="26,1">
+      </TILE>
+      <TILE name="CR(26,1)" type="none" int_core_load="0" fp_core_load="0" mem_banks="0" mem_rw_rate="0.2" stream_util="0.073" coordinates="26,2">
+      </TILE>
+      <TILE name="CR(26,2)" type="none" int_core_load="0" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0.073" coordinates="26,3">
+      </TILE>
+      <TILE name="CR(26,3)" type="int16" int_core_load="0.54" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0.16" coordinates="26,4">
+        <KERNEL name="i4"  int_core_load="0.9" fp_core_load="0"></KERNEL>
+      </TILE>
+      <TILE name="CR(26,4)" type="int16" int_core_load="0.54" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0.058" coordinates="26,5">
+        <KERNEL name="i1"  int_core_load="0.9" fp_core_load="0"></KERNEL>
+      </TILE>
+      <TILE name="CR(26,5)" type="int16" int_core_load="0.54" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0" coordinates="26,6">
+        <KERNEL name="i2"  int_core_load="0.9" fp_core_load="0"></KERNEL>
+      </TILE>
+      <TILE name="CR(26,6)" type="none" int_core_load="0" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0.073" coordinates="26,7">
+      </TILE>
+      <TILE name="CR(27,3)" type="none" int_core_load="0" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0.073" coordinates="27,4">
+      </TILE>
+      <TILE name="CR(27,5)" type="none" int_core_load="0" fp_core_load="0" mem_banks="8" mem_rw_rate="0.2" stream_util="0" coordinates="27,6">
+      </TILE>
+      <SHIM name="SHIM(26, 0)" type="AIE_PL_NOC_SHIM" stream_util="0.081" num_pl_streams="0" num_aximm_connections="1" coordinates="26,0"></SHIM>
+    </AIE_MODULE>
+  </AIE>
+</POWERDATA>

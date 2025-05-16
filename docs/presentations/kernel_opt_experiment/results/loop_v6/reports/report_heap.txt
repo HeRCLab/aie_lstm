@@ -1,0 +1,94 @@
+Note: All sizes are in bytes
+
+Core 24_3
+	Heap Size Used (after alignment) = 104
+	Heap Size Allotted = 2048
+	Heap Variables
+		Name = ZERO; Size = 32
+		Name = atexit_cnt; Size = 4
+		Name = _stdout; Size = 8
+		Name = atexits; Size = 32
+		Name = ___str; Size = 24
+		Name = stdout; Size = 4
+Core 24_4
+	Heap Size Used (after alignment) = 104
+	Heap Size Allotted = 2048
+	Heap Variables
+		Name = ZERO; Size = 32
+		Name = atexit_cnt; Size = 4
+		Name = _stdout; Size = 8
+		Name = atexits; Size = 32
+		Name = ___str; Size = 24
+		Name = stdout; Size = 4
+Core 24_5
+	Heap Size Used (after alignment) = 104
+	Heap Size Allotted = 2048
+	Heap Variables
+		Name = ZERO; Size = 32
+		Name = atexit_cnt; Size = 4
+		Name = _stdout; Size = 8
+		Name = atexits; Size = 32
+		Name = ___str; Size = 24
+		Name = stdout; Size = 4
+Core 25_3
+	Heap Size Used (after alignment) = 104
+	Heap Size Allotted = 2048
+	Heap Variables
+		Name = ZERO; Size = 32
+		Name = atexit_cnt; Size = 4
+		Name = _stdout; Size = 8
+		Name = atexits; Size = 32
+		Name = ___str; Size = 24
+		Name = stdout; Size = 4
+Core 25_4
+	Heap Size Used (after alignment) = 600
+	Heap Size Allotted = 2048
+	Heap Variables
+		Name = ZERO; Size = 32
+		Name = atexit_cnt; Size = 4
+		Name = first_iteration; Size = 1
+		Name = state; Size = 512
+		Name = _stdout; Size = 8
+		Name = atexits; Size = 32
+		Name = stdout; Size = 4
+		Name = str; Size = 7
+Core 25_5
+	Heap Size Used (after alignment) = 104
+	Heap Size Allotted = 2048
+	Heap Variables
+		Name = ZERO; Size = 32
+		Name = atexit_cnt; Size = 4
+		Name = _stdout; Size = 8
+		Name = atexits; Size = 32
+		Name = ___str; Size = 24
+		Name = stdout; Size = 4
+Core 26_3
+	Heap Size Used (after alignment) = 104
+	Heap Size Allotted = 2048
+	Heap Variables
+		Name = ZERO; Size = 32
+		Name = atexit_cnt; Size = 4
+		Name = _stdout; Size = 8
+		Name = atexits; Size = 32
+		Name = ___str; Size = 24
+		Name = stdout; Size = 4
+Core 26_4
+	Heap Size Used (after alignment) = 104
+	Heap Size Allotted = 2048
+	Heap Variables
+		Name = ZERO; Size = 32
+		Name = atexit_cnt; Size = 4
+		Name = _stdout; Size = 8
+		Name = atexits; Size = 32
+		Name = ___str; Size = 24
+		Name = stdout; Size = 4
+Core 26_5
+	Heap Size Used (after alignment) = 104
+	Heap Size Allotted = 2048
+	Heap Variables
+		Name = ZERO; Size = 32
+		Name = atexit_cnt; Size = 4
+		Name = _stdout; Size = 8
+		Name = atexits; Size = 32
+		Name = ___str; Size = 24
+		Name = stdout; Size = 4

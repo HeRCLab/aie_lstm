@@ -1,0 +1,103 @@
+{
+    "SyncBufferAddress": [
+        {
+            "QualifiedGraphName": "gr",
+            "Column": 24,
+            "Row": 3,
+            "LocalAddress": "0x2c2c0",
+            "GlobalAddress": {
+                "Column": 24,
+                "Row": 3,
+                "Address": "0x42c0"
+            }
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "Column": 24,
+            "Row": 4,
+            "LocalAddress": "0x38260",
+            "GlobalAddress": {
+                "Column": 24,
+                "Row": 4,
+                "Address": "0x260"
+            }
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "Column": 24,
+            "Row": 5,
+            "LocalAddress": "0x28ec0",
+            "GlobalAddress": {
+                "Column": 24,
+                "Row": 5,
+                "Address": "0xec0"
+            }
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "Column": 25,
+            "Row": 3,
+            "LocalAddress": "0x28100",
+            "GlobalAddress": {
+                "Column": 25,
+                "Row": 3,
+                "Address": "0x100"
+            }
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "Column": 25,
+            "Row": 4,
+            "LocalAddress": "0x36000",
+            "GlobalAddress": {
+                "Column": 25,
+                "Row": 5,
+                "Address": "0x6000"
+            }
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "Column": 25,
+            "Row": 5,
+            "LocalAddress": "0x20880",
+            "GlobalAddress": {
+                "Column": 25,
+                "Row": 4,
+                "Address": "0x880"
+            }
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "Column": 26,
+            "Row": 3,
+            "LocalAddress": "0x3c280",
+            "GlobalAddress": {
+                "Column": 27,
+                "Row": 3,
+                "Address": "0x4280"
+            }
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "Column": 26,
+            "Row": 4,
+            "LocalAddress": "0x340a0",
+            "GlobalAddress": {
+                "Column": 26,
+                "Row": 5,
+                "Address": "0x40a0"
+            }
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "Column": 26,
+            "Row": 5,
+            "LocalAddress": "0x3e020",
+            "GlobalAddress": {
+                "Column": 27,
+                "Row": 5,
+                "Address": "0x6020"
+            }
+        }
+    ]
+}

@@ -1,0 +1,1 @@
+make build-hw VARIANT=4X2_BUFF GATE_HALF_LOOP=V4 && make run-aiesim

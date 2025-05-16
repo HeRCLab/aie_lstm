@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="functional_interface.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:connector-spacing="10"
+     inkscape:zoom="0.53039953"
+     inkscape:cx="18.853712"
+     inkscape:cy="314.85699"
+     inkscape:window-width="1444"
+     inkscape:window-height="751"
+     inkscape:window-x="423"
+     inkscape:window-y="75"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="marker2354"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="TriangleStart"
+       markerWidth="5.3244081"
+       markerHeight="6.155385"
+       viewBox="0 0 5.3244081 6.1553851"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path2352" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleStart"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="TriangleStart"
+       markerWidth="5.3244081"
+       markerHeight="6.155385"
+       viewBox="0 0 5.3244081 6.1553851"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g1455"
+       transform="translate(10.330554,61.135768)"
+       inkscape:connector-avoid="true"
+       inkscape:export-filename="functional_diagram.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         style="fill:#ff8080;stroke:#800000;stroke-width:1;stroke-dasharray:none"
+         id="rect898"
+         width="36.229584"
+         height="22.391115"
+         x="28.64015"
+         y="57.193939" />
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;fill:none;fill-opacity:1;stroke:none;stroke-width:0.6;stroke-dasharray:none"
+         x="41.399242"
+         y="68.951988"
+         id="text1221"><tspan
+           sodipodi:role="line"
+           id="tspan1219"
+           style="fill:none;stroke:none;stroke-width:0.6;stroke-dasharray:none"
+           x="41.399242"
+           y="68.951988">Gate half buff</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:6.50352px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.22901;stroke-dasharray:none"
+         x="33.082115"
+         y="69.986382"
+         id="text1329"><tspan
+           sodipodi:role="line"
+           id="tspan1327"
+           style="fill:#000000;stroke-width:1.22901"
+           x="33.082115"
+           y="69.986382">  F Gate </tspan></text>
+    </g>
+    <g
+       id="g1512"
+       transform="translate(-19.243375,19.55786)"
+       inkscape:connector-avoid="true">
+      <rect
+         style="fill:#ffbb8d;fill-opacity:1;stroke:#333333;stroke-width:1;stroke-dasharray:none"
+         id="rect1165"
+         width="52.421951"
+         height="36.228317"
+         x="121.21121"
+         y="74.643623" />
+      <text
+         xml:space="preserve"
+         style="font-size:6.39924px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.20931;stroke-dasharray:none"
+         x="130.30421"
+         y="94.45993"
+         id="text1459"><tspan
+           sodipodi:role="line"
+           id="tspan1457"
+           style="stroke-width:1.20931"
+           x="130.30421"
+           y="94.45993">Coordinator</tspan></text>
+    </g>
+    <g
+       id="g1471"
+       transform="translate(10.330554,34.397517)"
+       inkscape:connector-avoid="true">
+      <rect
+         style="fill:#ff8080;stroke:#800000;stroke-width:1;stroke-dasharray:none"
+         id="rect1461"
+         width="36.229584"
+         height="22.391115"
+         x="28.64015"
+         y="57.193939" />
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;fill:none;fill-opacity:1;stroke:none;stroke-width:0.6;stroke-dasharray:none"
+         x="41.399242"
+         y="68.951988"
+         id="text1465"><tspan
+           sodipodi:role="line"
+           id="tspan1463"
+           style="fill:none;stroke:none;stroke-width:0.6;stroke-dasharray:none"
+           x="41.399242"
+           y="68.951988">Gate half buff</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:6.50352px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.22901;stroke-dasharray:none"
+         x="33.082115"
+         y="69.986382"
+         id="text1469"><tspan
+           sodipodi:role="line"
+           id="tspan1467"
+           style="fill:#000000;stroke-width:1.22901"
+           x="33.082115"
+           y="69.986382">   I Gate</tspan></text>
+    </g>
+    <g
+       id="g1483"
+       transform="translate(10.330554,114.61227)"
+       inkscape:connector-avoid="true">
+      <rect
+         style="fill:#ff8080;stroke:#800000;stroke-width:1;stroke-dasharray:none"
+         id="rect1473"
+         width="36.229584"
+         height="22.391115"
+         x="28.64015"
+         y="57.193939" />
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;fill:none;fill-opacity:1;stroke:none;stroke-width:0.6;stroke-dasharray:none"
+         x="41.399242"
+         y="68.951988"
+         id="text1477"><tspan
+           sodipodi:role="line"
+           id="tspan1475"
+           style="fill:none;stroke:none;stroke-width:0.6;stroke-dasharray:none"
+           x="41.399242"
+           y="68.951988">Gate half buff</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:6.50352px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.22901;stroke-dasharray:none"
+         x="33.082115"
+         y="69.986382"
+         id="text1481"><tspan
+           sodipodi:role="line"
+           id="tspan1479"
+           style="fill:#000000;stroke-width:1.22901"
+           x="33.082115"
+           y="69.986382">M Gate</tspan></text>
+    </g>
+    <g
+       id="g1525"
+       transform="translate(-61.20356,-0.107281)"
+       inkscape:connector-avoid="true">
+      <g
+         id="g1495"
+         transform="translate(71.534114,87.9813)">
+        <rect
+           style="fill:#ff8080;stroke:#800000;stroke-width:1;stroke-dasharray:none"
+           id="rect1485"
+           width="36.229584"
+           height="22.391115"
+           x="28.64015"
+           y="57.193939" />
+        <text
+           xml:space="preserve"
+           style="font-size:3.175px;fill:none;fill-opacity:1;stroke:none;stroke-width:0.6;stroke-dasharray:none"
+           x="41.399242"
+           y="68.951988"
+           id="text1489"><tspan
+             sodipodi:role="line"
+             id="tspan1487"
+             style="fill:none;stroke:none;stroke-width:0.6;stroke-dasharray:none"
+             x="41.399242"
+             y="68.951988">Gate half buff</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:6.50352px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.22901;stroke-dasharray:none"
+           x="33.082115"
+           y="69.986382"
+           id="text1493"><tspan
+             sodipodi:role="line"
+             id="tspan1491"
+             style="fill:#000000;stroke-width:1.22901"
+             x="33.082115"
+             y="69.986382">O Gate</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g1517"
+       transform="translate(-134.84348,-177.41946)"
+       inkscape:connector-avoid="true">
+      <rect
+         style="fill:#a2ffa2;fill-opacity:1;stroke:#2f882f;stroke-width:1.07978;stroke-dasharray:none;stroke-opacity:1"
+         id="rect1007"
+         width="133.3734"
+         height="22.677914"
+         x="40.245865"
+         y="197.9912" />
+      <text
+         xml:space="preserve"
+         style="font-size:7.15664px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.35244;stroke-dasharray:none"
+         x="57.797588"
+         y="211.15027"
+         id="text1499"><tspan
+           sodipodi:role="line"
+           id="tspan1497"
+           style="stroke-width:1.35244"
+           x="57.797588"
+           y="211.15027">DDR Memory (GMIO Interface)</tspan></text>
+    </g>
+    <path
+       style="display:inline;fill:none;fill-rule:evenodd;stroke:#ff2a2a;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart)"
+       d="m 75.200288,183.00177 60.195922,0 c 1.05833,0 2.11666,-1.05834 2.11666,-2.11667 V 127.461"
+       id="path1957"
+       inkscape:connector-type="orthogonal"
+       inkscape:connector-curvature="8"
+       inkscape:connection-start="#g1483" />
+    <path
+       style="display:inline;fill:none;fill-rule:evenodd;stroke:#ff2a2a;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart)"
+       d="M 75.200288,102.78701 H 88.584062 V 98.949976 H 100.52495"
+       id="path2256"
+       inkscape:connector-type="orthogonal"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g1471" />
+    <path
+       style="display:inline;fill:none;fill-rule:evenodd;stroke:#ff2a2a;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart)"
+       d="M 75.200288,129.52526 H 88.584062 V 109.46457 H 101.41192"
+       id="path2276"
+       inkscape:connector-type="orthogonal"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g1455" />
+    <path
+       style="display:inline;fill:none;fill-rule:evenodd;stroke:#ff2a2a;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2354)"
+       d="M 75.200288,156.26352 H 113.67129 V 128.75879"
+       id="path2298"
+       inkscape:connector-type="orthogonal"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g1525" />
+    <path
+       style="display:inline;fill:none;fill-rule:evenodd;stroke:#008000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart)"
+       d="m -27.910916,43.249649 0,83.365201 c 0,1.45521 1.455208,2.91041 2.910416,2.91041 h 63.971204"
+       id="path2404"
+       inkscape:connector-type="orthogonal"
+       inkscape:connector-curvature="11"
+       inkscape:connection-end="#g1455"
+       inkscape:connection-start="#g1517" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 57.085496,102.78701 v 0"
+       id="path2406"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="4"
+       inkscape:connection-start="#g1471"
+       inkscape:connection-end="#g1471" />
+    <path
+       style="display:inline;fill:none;fill-rule:evenodd;stroke:#008000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart)"
+       d="m 38.775783,31.910693 17.25138,0 c 0.529166,0 1.058333,0.529166 1.058333,1.058333 v 58.62243"
+       id="path2446"
+       inkscape:connector-type="orthogonal"
+       inkscape:connector-curvature="4"
+       inkscape:connection-end="#g1471"
+       inkscape:connection-start="#g1517" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#008000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart)"
+       d="M -27.910916,43.249649 V 181.94343 c 0,0.52917 0.529166,1.05834 1.058333,1.05834 l 65.823287,0"
+       id="path2448"
+       inkscape:connector-type="orthogonal"
+       inkscape:connector-curvature="4"
+       inkscape:connection-start="#g1517"
+       inkscape:connection-end="#g1483" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#008000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart)"
+       d="M -27.910916,43.249649 V 155.20518 c 0,0.52917 0.529166,1.05834 1.058333,1.05834 h 65.823287"
+       id="path2450"
+       inkscape:connector-type="orthogonal"
+       inkscape:connector-curvature="4"
+       inkscape:connection-end="#g1525"
+       inkscape:connection-start="#g1517" />
+    <path
+       style="display:inline;fill:none;fill-rule:evenodd;stroke:#ff6600;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart)"
+       d="M 128.17881,94.201483 V 26.551231 c 0,-0.529166 -0.52916,-1.058333 -1.05833,-1.058333 H 39.928885"
+       id="path2739"
+       inkscape:connector-type="orthogonal"
+       inkscape:connector-curvature="4"
+       inkscape:connection-start="#g1512" />
+  </g>
+</svg>

@@ -1,0 +1,38 @@
+Note: All sizes are in bytes
+
+Core 24_3
+	PM Size Used = 2772
+	PM Size Allotted = 16384
+	PM Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/24_3/Release/24_3.calltree
+Core 24_4
+	PM Size Used = 2756
+	PM Size Allotted = 16384
+	PM Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/24_4/Release/24_4.calltree
+Core 24_5
+	PM Size Used = 2772
+	PM Size Allotted = 16384
+	PM Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/24_5/Release/24_5.calltree
+Core 25_3
+	PM Size Used = 2772
+	PM Size Allotted = 16384
+	PM Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_3/Release/25_3.calltree
+Core 25_4
+	PM Size Used = 10650
+	PM Size Allotted = 16384
+	PM Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_4/Release/25_4.calltree
+Core 25_5
+	PM Size Used = 2772
+	PM Size Allotted = 16384
+	PM Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_5/Release/25_5.calltree
+Core 26_3
+	PM Size Used = 2772
+	PM Size Allotted = 16384
+	PM Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/26_3/Release/26_3.calltree
+Core 26_4
+	PM Size Used = 2756
+	PM Size Allotted = 16384
+	PM Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/26_4/Release/26_4.calltree
+Core 26_5
+	PM Size Used = 2756
+	PM Size Allotted = 16384
+	PM Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/26_5/Release/26_5.calltree

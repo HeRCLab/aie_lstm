@@ -1,0 +1,90 @@
+InterposerAnalysis Report 
+Port Name : dma_i12_pi0(Variable Name : _dma[0].in[0]) straightthru <memory> : Lock Buff 
+Port Name : dma_i12_po0(Variable Name : _dma[0].out[0]) straightthru <stream> : Chnl 
+Port Name : dma_i13_pi0(Variable Name : _dma[1].in[0]) straightthru <stream> : Chnl 
+Port Name : dma_i13_po0(Variable Name : _dma[1].out[0]) straightthru <memory> : Lock Buff 
+Port Name : dma_i14_pi0(Variable Name : _dma[2].in[0]) straightthru <stream> : Chnl 
+Port Name : dma_i14_po0(Variable Name : _dma[2].out[0]) straightthru <memory> : Lock Buff 
+Port Name : dma_i15_pi0(Variable Name : _dma[3].in[0]) straightthru <stream> : Chnl 
+Port Name : dma_i15_po0(Variable Name : _dma[3].out[0]) straightthru <memory> : Lock Buff 
+Port Name : dma_i16_pi0(Variable Name : _dma[4].in[0]) straightthru <stream> : Chnl 
+Port Name : dma_i16_po0(Variable Name : _dma[4].out[0]) straightthru <memory> : Lock Buff 
+Port Name : dma_i17_pi0(Variable Name : _dma[5].in[0]) straightthru <stream> : Chnl 
+Port Name : dma_i17_po0(Variable Name : _dma[5].out[0]) straightthru <memory> : Lock Buff 
+Port Name : dma_i18_pi0(Variable Name : _dma[6].in[0]) straightthru <stream> : Chnl 
+Port Name : dma_i18_po0(Variable Name : _dma[6].out[0]) straightthru <memory> : Lock Buff 
+Port Name : dma_i19_pi0(Variable Name : _dma[7].in[0]) straightthru <stream> : Chnl 
+Port Name : dma_i19_po0(Variable Name : _dma[7].out[0]) straightthru <memory> : Lock Buff 
+Port Name : dma_i20_pi0(Variable Name : _dma[8].in[0]) straightthru <stream> : Chnl 
+Port Name : dma_i20_po0(Variable Name : _dma[8].out[0]) straightthru <memory> : Lock Buff 
+Port Name : i0_pi0(Variable Name : coord.in[0]) straightthru <memory> : Lock Buff 
+Port Name : i0_pi1(Variable Name : coord.in[1]) adaptor <stream,memory> : Lock Buff DMA 
+Port Name : i0_pi2(Variable Name : coord.in[2]) straightthru <memory> : Lock Buff 
+Port Name : i0_pi3(Variable Name : coord.in[3]) adaptor <stream,memory> : Lock Buff DMA 
+Port Name : i0_pi4(Variable Name : coord.in[4]) straightthru <memory> : Lock Buff 
+Port Name : i0_pi5(Variable Name : coord.in[5]) straightthru <memory> : Lock Buff 
+Port Name : i0_pi6(Variable Name : coord.in[6]) straightthru <memory> : Lock Buff 
+Port Name : i0_pi7(Variable Name : coord.in[7]) straightthru <memory> : Lock Buff 
+Port Name : i0_pi8(Variable Name : coord.in[8]) param : Lock Buff 
+Port Name : i0_pi9(Variable Name : coord.in[9]) param : Lock Buff 
+Port Name : i0_po0(Variable Name : coord.out[0]) straightthru <memory> : Lock Buff 
+Port Name : i0_po1(Variable Name : coord.out[1]) adaptor <memory,stream> : Lock Buff DMA 
+Port Name : i10_pi0(Variable Name : gmio_out.in[0]) adaptor <stream,aximm> : Chnl DMA 
+Port Name : i1_pi0(Variable Name : gates[0].in[0]) adaptor <stream,memory> : Lock Buff DMA 
+Port Name : i1_pi1(Variable Name : gates[0].in[1]) straightthru <memory> : Lock Buff 
+Port Name : i1_pi2(Variable Name : gates[0].in[2]) param : Lock Buff 
+Port Name : i1_pi3(Variable Name : gates[0].in[3]) param : Lock Buff 
+Port Name : i1_pi4(Variable Name : gates[0].in[4]) param : Lock Buff 
+Port Name : i1_pi5(Variable Name : gates[0].in[5]) param : Lock Buff 
+Port Name : i1_po0(Variable Name : gates[0].out[0]) straightthru <memory> : Lock Buff 
+Port Name : i2_pi0(Variable Name : gates[1].in[0]) adaptor <stream,memory> : Lock Buff DMA 
+Port Name : i2_pi1(Variable Name : gates[1].in[1]) straightthru <memory> : Lock Buff 
+Port Name : i2_pi2(Variable Name : gates[1].in[2]) param : Lock Buff 
+Port Name : i2_pi3(Variable Name : gates[1].in[3]) param : Lock Buff 
+Port Name : i2_pi4(Variable Name : gates[1].in[4]) param : Lock Buff 
+Port Name : i2_pi5(Variable Name : gates[1].in[5]) param : Lock Buff 
+Port Name : i2_po0(Variable Name : gates[1].out[0]) adaptor <memory,stream> : Lock Buff DMA 
+Port Name : i3_pi0(Variable Name : gates[2].in[0]) adaptor <stream,memory> : Lock Buff DMA 
+Port Name : i3_pi1(Variable Name : gates[2].in[1]) straightthru <memory> : Lock Buff 
+Port Name : i3_pi2(Variable Name : gates[2].in[2]) param : Lock Buff 
+Port Name : i3_pi3(Variable Name : gates[2].in[3]) param : Lock Buff 
+Port Name : i3_pi4(Variable Name : gates[2].in[4]) param : Lock Buff 
+Port Name : i3_pi5(Variable Name : gates[2].in[5]) param : Lock Buff 
+Port Name : i3_po0(Variable Name : gates[2].out[0]) straightthru <memory> : Lock Buff 
+Port Name : i4_pi0(Variable Name : gates[3].in[0]) adaptor <stream,memory> : Lock Buff DMA 
+Port Name : i4_pi1(Variable Name : gates[3].in[1]) straightthru <memory> : Lock Buff 
+Port Name : i4_pi2(Variable Name : gates[3].in[2]) param : Lock Buff 
+Port Name : i4_pi3(Variable Name : gates[3].in[3]) param : Lock Buff 
+Port Name : i4_pi4(Variable Name : gates[3].in[4]) param : Lock Buff 
+Port Name : i4_pi5(Variable Name : gates[3].in[5]) param : Lock Buff 
+Port Name : i4_po0(Variable Name : gates[3].out[0]) adaptor <memory,stream> : Lock Buff DMA 
+Port Name : i5_pi0(Variable Name : gates[4].in[0]) adaptor <stream,memory> : Lock Buff DMA 
+Port Name : i5_pi1(Variable Name : gates[4].in[1]) straightthru <memory> : Lock Buff 
+Port Name : i5_pi2(Variable Name : gates[4].in[2]) param : Lock Buff 
+Port Name : i5_pi3(Variable Name : gates[4].in[3]) param : Lock Buff 
+Port Name : i5_pi4(Variable Name : gates[4].in[4]) param : Lock Buff 
+Port Name : i5_pi5(Variable Name : gates[4].in[5]) param : Lock Buff 
+Port Name : i5_po0(Variable Name : gates[4].out[0]) straightthru <memory> : Lock Buff 
+Port Name : i6_pi0(Variable Name : gates[5].in[0]) adaptor <stream,memory> : Lock Buff DMA 
+Port Name : i6_pi1(Variable Name : gates[5].in[1]) straightthru <memory> : Lock Buff 
+Port Name : i6_pi2(Variable Name : gates[5].in[2]) param : Lock Buff 
+Port Name : i6_pi3(Variable Name : gates[5].in[3]) param : Lock Buff 
+Port Name : i6_pi4(Variable Name : gates[5].in[4]) param : Lock Buff 
+Port Name : i6_pi5(Variable Name : gates[5].in[5]) param : Lock Buff 
+Port Name : i6_po0(Variable Name : gates[5].out[0]) straightthru <memory> : Lock Buff 
+Port Name : i7_pi0(Variable Name : gates[6].in[0]) adaptor <stream,memory> : Lock Buff DMA 
+Port Name : i7_pi1(Variable Name : gates[6].in[1]) straightthru <memory> : Lock Buff 
+Port Name : i7_pi2(Variable Name : gates[6].in[2]) param : Lock Buff 
+Port Name : i7_pi3(Variable Name : gates[6].in[3]) param : Lock Buff 
+Port Name : i7_pi4(Variable Name : gates[6].in[4]) param : Lock Buff 
+Port Name : i7_pi5(Variable Name : gates[6].in[5]) param : Lock Buff 
+Port Name : i7_po0(Variable Name : gates[6].out[0]) straightthru <memory> : Lock Buff 
+Port Name : i8_pi0(Variable Name : gates[7].in[0]) adaptor <stream,memory> : Lock Buff DMA 
+Port Name : i8_pi1(Variable Name : gates[7].in[1]) straightthru <memory> : Lock Buff 
+Port Name : i8_pi2(Variable Name : gates[7].in[2]) param : Lock Buff 
+Port Name : i8_pi3(Variable Name : gates[7].in[3]) param : Lock Buff 
+Port Name : i8_pi4(Variable Name : gates[7].in[4]) param : Lock Buff 
+Port Name : i8_pi5(Variable Name : gates[7].in[5]) param : Lock Buff 
+Port Name : i8_po0(Variable Name : gates[7].out[0]) straightthru <memory> : Lock Buff 
+Port Name : i9_po0(Variable Name : gmio_in.out[0]) adaptor <aximm,stream> : DMA 
+

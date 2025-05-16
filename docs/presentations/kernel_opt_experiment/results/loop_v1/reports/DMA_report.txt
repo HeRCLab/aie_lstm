@@ -1,0 +1,74 @@
+DMA Analysis Report 
+
+DMA Report: S2MM
+portinst: dma_i13_po0 idx[-1] datatype:buff<float> mem out bw_utlization = 1 (variable name:  _dma[1].out[0])
+ MG(25,4) : channel=0, startBD=2, lockID=2, name=buf18
+ MG(25,4) : channel=0, startBD=3, lockID=3, name=buf18d
+portinst: dma_i14_po0 idx[-1] datatype:buff<float> mem out bw_utlization = 1 (variable name:  _dma[2].out[0])
+ MG(26,4) : channel=0, startBD=0, lockID=0, name=buf19
+ MG(26,4) : channel=0, startBD=1, lockID=1, name=buf19d
+portinst: dma_i15_po0 idx[-1] datatype:buff<float> mem out bw_utlization = 1 (variable name:  _dma[3].out[0])
+ MG(25,5) : channel=0, startBD=2, lockID=0, name=buf20
+ MG(25,5) : channel=0, startBD=3, lockID=1, name=buf20d
+portinst: dma_i16_po0 idx[-1] datatype:buff<float> mem out bw_utlization = 1 (variable name:  _dma[4].out[0])
+ MG(26,4) : channel=1, startBD=2, lockID=2, name=buf21
+ MG(26,4) : channel=1, startBD=3, lockID=3, name=buf21d
+portinst: dma_i17_po0 idx[-1] datatype:buff<float> mem out bw_utlization = 1 (variable name:  _dma[5].out[0])
+ MG(24,4) : channel=0, startBD=2, lockID=0, name=buf22
+ MG(24,4) : channel=0, startBD=3, lockID=1, name=buf22d
+portinst: dma_i18_po0 idx[-1] datatype:buff<float> mem out bw_utlization = 1 (variable name:  _dma[6].out[0])
+ MG(24,5) : channel=0, startBD=2, lockID=0, name=buf23
+ MG(24,5) : channel=0, startBD=3, lockID=1, name=buf23d
+portinst: dma_i19_po0 idx[-1] datatype:buff<float> mem out bw_utlization = 1 (variable name:  _dma[7].out[0])
+ MG(25,4) : channel=1, startBD=4, lockID=4, name=buf24
+ MG(25,4) : channel=1, startBD=5, lockID=5, name=buf24d
+portinst: dma_i20_po0 idx[-1] datatype:buff<float> mem out bw_utlization = 1 (variable name:  _dma[8].out[0])
+ MG(25,3) : channel=0, startBD=4, lockID=0, name=buf25
+ MG(25,3) : channel=0, startBD=5, lockID=1, name=buf25d
+portinst: i0_pi1 idx[1] datatype:buff<float> mem in bw_utlization = 1 synctype:async (variable name:  coord.in[1])
+ MG(25,3) : channel=1, startBD=0, lockID=2, name=buf9r
+ MG(25,3) : channel=1, startBD=1, lockID=3, name=buf9dr
+portinst: i0_pi3 idx[3] datatype:buff<float> mem in bw_utlization = 1 synctype:async (variable name:  coord.in[3])
+ MG(24,4) : channel=1, startBD=0, lockID=2, name=buf11r
+ MG(24,4) : channel=1, startBD=1, lockID=3, name=buf11dr
+portinst: i10_pi0 idx[-1] datatype:float gmem in bw_utlization = 1 (variable name:  gmio_out.in[0]): SHIM(26) : channel=0, startBD=0
+portinst: i1_pi0 idx[0] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[0].in[0])
+ MG(26,3) : channel=0, startBD=0, lockID=0, name=buf0
+ MG(26,3) : channel=0, startBD=1, lockID=1, name=buf0d
+portinst: i2_pi0 idx[0] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[1].in[0])
+ MG(26,6) : channel=0, startBD=0, lockID=0, name=buf1
+ MG(26,6) : channel=0, startBD=1, lockID=1, name=buf1d
+portinst: i3_pi0 idx[0] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[2].in[0])
+ MG(25,5) : channel=1, startBD=0, lockID=4, name=buf2
+ MG(25,5) : channel=1, startBD=1, lockID=5, name=buf2d
+portinst: i4_pi0 idx[0] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[3].in[0])
+ MG(27,3) : channel=0, startBD=0, lockID=0, name=buf3
+ MG(27,3) : channel=0, startBD=1, lockID=1, name=buf3d
+portinst: i5_pi0 idx[0] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[4].in[0])
+ MG(24,3) : channel=0, startBD=0, lockID=0, name=buf4
+ MG(24,3) : channel=0, startBD=1, lockID=1, name=buf4d
+portinst: i6_pi0 idx[0] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[5].in[0])
+ MG(24,5) : channel=1, startBD=0, lockID=4, name=buf5
+ MG(24,5) : channel=1, startBD=1, lockID=5, name=buf5d
+portinst: i7_pi0 idx[0] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[6].in[0])
+ MG(26,3) : channel=1, startBD=2, lockID=3, name=buf6
+ MG(26,3) : channel=1, startBD=3, lockID=4, name=buf6d
+portinst: i8_pi0 idx[0] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[7].in[0])
+ MG(24,3) : channel=1, startBD=2, lockID=7, name=buf7
+ MG(24,3) : channel=1, startBD=3, lockID=8, name=buf7d
+
+DMA Report: MM2S
+portinst: dma_i12_pi0 idx[-1] datatype:buff<float> mem in bw_utlization = 1 (variable name:  _dma[0].in[0])
+ MG(25,4) : channel=0, startBD=0, lockID=0, name=buf17
+ MG(25,4) : channel=0, startBD=1, lockID=1, name=buf17d
+portinst: i0_po1 idx[11] datatype:buff<float> mem out bw_utlization = 1 (variable name:  coord.out[1])
+ MG(25,3) : channel=0, startBD=2, lockID=7, name=buf16
+ MG(25,3) : channel=0, startBD=3, lockID=8, name=buf16d
+portinst: i2_po0 idx[6] datatype:buff<float> mem out bw_utlization = 1 (variable name:  gates[1].out[0])
+ MG(26,6) : channel=0, startBD=2, lockID=8, name=buf9
+ MG(26,6) : channel=0, startBD=3, lockID=9, name=buf9d
+portinst: i4_po0 idx[6] datatype:buff<float> mem out bw_utlization = 1 (variable name:  gates[3].out[0])
+ MG(27,3) : channel=0, startBD=2, lockID=4, name=buf11
+ MG(27,3) : channel=0, startBD=3, lockID=5, name=buf11d
+portinst: i9_po0 idx[-1] datatype:float gmem out bw_utlization = 1 (variable name:  gmio_in.out[0]): SHIM(26) : channel=0, startBD=1
+

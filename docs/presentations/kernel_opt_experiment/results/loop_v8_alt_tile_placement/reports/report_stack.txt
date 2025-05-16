@@ -1,0 +1,38 @@
+Note: All sizes are in bytes. Actual usage can be slightly higher due to alignment.
+
+Core 23_4
+	Stack Size Used = 256
+	Stack Size Allotted = 2048
+	Stack Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/23_4/Release/23_4.calltree
+Core 24_3
+	Stack Size Used = 256
+	Stack Size Allotted = 2048
+	Stack Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/24_3/Release/24_3.calltree
+Core 24_4
+	Stack Size Used = 256
+	Stack Size Allotted = 2048
+	Stack Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/24_4/Release/24_4.calltree
+Core 25_3
+	Stack Size Used = 256
+	Stack Size Allotted = 2048
+	Stack Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_3/Release/25_3.calltree
+Core 25_4
+	Stack Size Used = 1856
+	Stack Size Allotted = 2048
+	Stack Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_4/Release/25_4.calltree
+Core 25_5
+	Stack Size Used = 256
+	Stack Size Allotted = 2048
+	Stack Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_5/Release/25_5.calltree
+Core 26_3
+	Stack Size Used = 256
+	Stack Size Allotted = 2048
+	Stack Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/26_3/Release/26_3.calltree
+Core 26_4
+	Stack Size Used = 256
+	Stack Size Allotted = 2048
+	Stack Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/26_4/Release/26_4.calltree
+Core 27_4
+	Stack Size Used = 256
+	Stack Size Allotted = 2048
+	Stack Usage by Functions : Refer /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/27_4/Release/27_4.calltree

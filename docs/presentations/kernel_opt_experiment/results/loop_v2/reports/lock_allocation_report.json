@@ -1,0 +1,1344 @@
+{
+    "PortsWithLock": [
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr.coord",
+            "Ports": [
+                {
+                    "Port": "i0_pi0",
+                    "PortName": "gr.coord.in[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf8",
+                            "LockID": 6,
+                            "LockName": "LOCK_25_4_6_0"
+                        },
+                        {
+                            "BufferName": "buf8d",
+                            "LockID": 7,
+                            "LockName": "LOCK_25_4_7_0"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i0_pi1",
+                    "PortName": "gr.coord.in[1]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf9r",
+                            "LockID": 2,
+                            "LockName": "LOCK_25_3_2_0"
+                        },
+                        {
+                            "BufferName": "buf9dr",
+                            "LockID": 3,
+                            "LockName": "LOCK_25_3_3_1056"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i0_pi2",
+                    "PortName": "gr.coord.in[2]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf10",
+                            "LockID": 2,
+                            "LockName": "LOCK_25_5_2_5024"
+                        },
+                        {
+                            "BufferName": "buf10d",
+                            "LockID": 3,
+                            "LockName": "LOCK_25_5_3_352"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i0_pi3",
+                    "PortName": "gr.coord.in[3]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf11r",
+                            "LockID": 2,
+                            "LockName": "LOCK_24_4_2_256"
+                        },
+                        {
+                            "BufferName": "buf11dr",
+                            "LockID": 3,
+                            "LockName": "LOCK_24_4_3_0"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i0_pi4",
+                    "PortName": "gr.coord.in[4]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf12",
+                            "LockID": 4,
+                            "LockName": "LOCK_24_4_4_512"
+                        },
+                        {
+                            "BufferName": "buf12d",
+                            "LockID": 5,
+                            "LockName": "LOCK_24_4_5_1280"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i0_pi5",
+                    "PortName": "gr.coord.in[5]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf13",
+                            "LockID": 6,
+                            "LockName": "LOCK_24_4_6_256"
+                        },
+                        {
+                            "BufferName": "buf13d",
+                            "LockID": 7,
+                            "LockName": "LOCK_24_4_7_0"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i0_pi6",
+                    "PortName": "gr.coord.in[6]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf14",
+                            "LockID": 8,
+                            "LockName": "LOCK_25_4_8_256"
+                        },
+                        {
+                            "BufferName": "buf14d",
+                            "LockID": 9,
+                            "LockName": "LOCK_25_4_9_416"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i0_pi7",
+                    "PortName": "gr.coord.in[7]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf15",
+                            "LockID": 8,
+                            "LockName": "LOCK_24_4_8_512"
+                        },
+                        {
+                            "BufferName": "buf15d",
+                            "LockID": 9,
+                            "LockName": "LOCK_24_4_9_1600"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i0_pi8",
+                    "PortName": "gr.coord.in[8]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp26",
+                            "LockID": 4,
+                            "LockName": "LOCK_RTP_25_3_4_544"
+                        },
+                        {
+                            "BufferName": "rtpsel27",
+                            "LockID": 10,
+                            "LockName": "LOCK_RTP_25_4_10_288"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i0_pi9",
+                    "PortName": "gr.coord.in[9]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp28",
+                            "LockID": 6,
+                            "LockName": "LOCK_RTP_25_3_6_1312"
+                        },
+                        {
+                            "BufferName": "rtpsel29",
+                            "LockID": 5,
+                            "LockName": "LOCK_RTP_25_3_5_0"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i0_po0",
+                    "PortName": "gr.coord.out[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf17",
+                            "LockID": 0,
+                            "LockName": "LOCK_25_4_0_512"
+                        },
+                        {
+                            "BufferName": "buf17d",
+                            "LockID": 1,
+                            "LockName": "LOCK_25_4_1_1184"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i0_po1",
+                    "PortName": "gr.coord.out[1]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf16",
+                            "LockID": 7,
+                            "LockName": "LOCK_25_3_7_5536"
+                        },
+                        {
+                            "BufferName": "buf16d",
+                            "LockID": 8,
+                            "LockName": "LOCK_25_3_8_768"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr.gates[0]",
+            "Ports": [
+                {
+                    "Port": "i1_pi0",
+                    "PortName": "gr.gates[0].in[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf0",
+                            "LockID": 0,
+                            "LockName": "LOCK_26_3_0_8064"
+                        },
+                        {
+                            "BufferName": "buf0d",
+                            "LockID": 1,
+                            "LockName": "LOCK_26_3_1_4512"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i1_pi1",
+                    "PortName": "gr.gates[0].in[1]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf18",
+                            "LockID": 2,
+                            "LockName": "LOCK_25_4_2_1536"
+                        },
+                        {
+                            "BufferName": "buf18d",
+                            "LockID": 3,
+                            "LockName": "LOCK_25_4_3_672"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i1_pi2",
+                    "PortName": "gr.gates[0].in[2]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp30",
+                            "LockID": 0,
+                            "LockName": "LOCK_RTP_26_5_0_0"
+                        },
+                        {
+                            "BufferName": "rtpsel34",
+                            "LockID": 4,
+                            "LockName": "LOCK_RTP_26_4_4_0"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i1_pi3",
+                    "PortName": "gr.gates[0].in[3]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp35",
+                            "LockID": 2,
+                            "LockName": "LOCK_RTP_26_3_2_0"
+                        },
+                        {
+                            "BufferName": "rtpsel37",
+                            "LockID": 5,
+                            "LockName": "LOCK_RTP_26_4_5_5856"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i1_pi4",
+                    "PortName": "gr.gates[0].in[4]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp38",
+                            "LockID": 7,
+                            "LockName": "LOCK_RTP_26_4_7_1088"
+                        },
+                        {
+                            "BufferName": "rtpsel39",
+                            "LockID": 6,
+                            "LockName": "LOCK_RTP_26_4_6_32"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i1_pi5",
+                    "PortName": "gr.gates[0].in[5]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp40",
+                            "LockID": 8,
+                            "LockName": "LOCK_RTP_26_4_8_5888"
+                        },
+                        {
+                            "BufferName": "rtpsel41",
+                            "LockID": 11,
+                            "LockName": "LOCK_RTP_25_4_11_384"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i1_po0",
+                    "PortName": "gr.gates[0].out[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf8",
+                            "LockID": 6,
+                            "LockName": "LOCK_25_4_6_0"
+                        },
+                        {
+                            "BufferName": "buf8d",
+                            "LockID": 7,
+                            "LockName": "LOCK_25_4_7_0"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr.gates[1]",
+            "Ports": [
+                {
+                    "Port": "i2_pi0",
+                    "PortName": "gr.gates[1].in[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf1",
+                            "LockID": 0,
+                            "LockName": "LOCK_26_6_0_0"
+                        },
+                        {
+                            "BufferName": "buf1d",
+                            "LockID": 1,
+                            "LockName": "LOCK_26_6_1_128"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i2_pi1",
+                    "PortName": "gr.gates[1].in[1]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf19",
+                            "LockID": 0,
+                            "LockName": "LOCK_26_4_0_576"
+                        },
+                        {
+                            "BufferName": "buf19d",
+                            "LockID": 1,
+                            "LockName": "LOCK_26_4_1_0"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i2_pi2",
+                    "PortName": "gr.gates[1].in[2]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp42",
+                            "LockID": 0,
+                            "LockName": "LOCK_RTP_27_5_0_0"
+                        },
+                        {
+                            "BufferName": "rtpsel46",
+                            "LockID": 2,
+                            "LockName": "LOCK_RTP_26_6_2_0"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i2_pi3",
+                    "PortName": "gr.gates[1].in[3]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp47",
+                            "LockID": 9,
+                            "LockName": "LOCK_RTP_26_4_9_0"
+                        },
+                        {
+                            "BufferName": "rtpsel49",
+                            "LockID": 3,
+                            "LockName": "LOCK_RTP_26_6_3_32"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i2_pi4",
+                    "PortName": "gr.gates[1].in[4]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp50",
+                            "LockID": 5,
+                            "LockName": "LOCK_RTP_26_6_5_320"
+                        },
+                        {
+                            "BufferName": "rtpsel51",
+                            "LockID": 4,
+                            "LockName": "LOCK_RTP_26_6_4_4128"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i2_pi5",
+                    "PortName": "gr.gates[1].in[5]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp52",
+                            "LockID": 7,
+                            "LockName": "LOCK_RTP_26_6_7_4192"
+                        },
+                        {
+                            "BufferName": "rtpsel53",
+                            "LockID": 6,
+                            "LockName": "LOCK_RTP_26_6_6_4160"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i2_po0",
+                    "PortName": "gr.gates[1].out[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf9",
+                            "LockID": 8,
+                            "LockName": "LOCK_26_6_8_0"
+                        },
+                        {
+                            "BufferName": "buf9d",
+                            "LockID": 9,
+                            "LockName": "LOCK_26_6_9_4224"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr.gates[2]",
+            "Ports": [
+                {
+                    "Port": "i3_pi0",
+                    "PortName": "gr.gates[2].in[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf2",
+                            "LockID": 4,
+                            "LockName": "LOCK_25_5_4_5408"
+                        },
+                        {
+                            "BufferName": "buf2d",
+                            "LockID": 5,
+                            "LockName": "LOCK_25_5_5_5280"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i3_pi1",
+                    "PortName": "gr.gates[2].in[1]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf20",
+                            "LockID": 0,
+                            "LockName": "LOCK_25_5_0_5536"
+                        },
+                        {
+                            "BufferName": "buf20d",
+                            "LockID": 1,
+                            "LockName": "LOCK_25_5_1_6336"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i3_pi2",
+                    "PortName": "gr.gates[2].in[2]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp54",
+                            "LockID": 0,
+                            "LockName": "LOCK_RTP_25_6_0_0"
+                        },
+                        {
+                            "BufferName": "rtpsel58",
+                            "LockID": 12,
+                            "LockName": "LOCK_RTP_25_4_12_256"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i3_pi3",
+                    "PortName": "gr.gates[2].in[3]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp59",
+                            "LockID": 14,
+                            "LockName": "LOCK_RTP_25_4_14_256"
+                        },
+                        {
+                            "BufferName": "rtpsel61",
+                            "LockID": 13,
+                            "LockName": "LOCK_RTP_25_4_13_320"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i3_pi4",
+                    "PortName": "gr.gates[2].in[4]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp62",
+                            "LockID": 7,
+                            "LockName": "LOCK_RTP_25_5_7_32"
+                        },
+                        {
+                            "BufferName": "rtpsel63",
+                            "LockID": 6,
+                            "LockName": "LOCK_RTP_25_5_6_0"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i3_pi5",
+                    "PortName": "gr.gates[2].in[5]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp64",
+                            "LockID": 9,
+                            "LockName": "LOCK_RTP_25_5_9_320"
+                        },
+                        {
+                            "BufferName": "rtpsel65",
+                            "LockID": 8,
+                            "LockName": "LOCK_RTP_25_5_8_288"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i3_po0",
+                    "PortName": "gr.gates[2].out[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf10",
+                            "LockID": 2,
+                            "LockName": "LOCK_25_5_2_5024"
+                        },
+                        {
+                            "BufferName": "buf10d",
+                            "LockID": 3,
+                            "LockName": "LOCK_25_5_3_352"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr.gates[3]",
+            "Ports": [
+                {
+                    "Port": "i4_pi0",
+                    "PortName": "gr.gates[3].in[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf3",
+                            "LockID": 0,
+                            "LockName": "LOCK_27_3_0_4384"
+                        },
+                        {
+                            "BufferName": "buf3d",
+                            "LockID": 1,
+                            "LockName": "LOCK_27_3_1_256"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i4_pi1",
+                    "PortName": "gr.gates[3].in[1]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf21",
+                            "LockID": 2,
+                            "LockName": "LOCK_26_4_2_64"
+                        },
+                        {
+                            "BufferName": "buf21d",
+                            "LockID": 3,
+                            "LockName": "LOCK_26_4_3_512"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i4_pi2",
+                    "PortName": "gr.gates[3].in[2]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp66",
+                            "LockID": 0,
+                            "LockName": "LOCK_RTP_26_2_0_0"
+                        },
+                        {
+                            "BufferName": "rtpsel70",
+                            "LockID": 10,
+                            "LockName": "LOCK_RTP_26_4_10_1664"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i4_pi3",
+                    "PortName": "gr.gates[3].in[3]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp71",
+                            "LockID": 2,
+                            "LockName": "LOCK_RTP_27_3_2_0"
+                        },
+                        {
+                            "BufferName": "rtpsel73",
+                            "LockID": 11,
+                            "LockName": "LOCK_RTP_26_4_11_1632"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i4_pi4",
+                    "PortName": "gr.gates[3].in[4]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp74",
+                            "LockID": 13,
+                            "LockName": "LOCK_RTP_26_4_13_1344"
+                        },
+                        {
+                            "BufferName": "rtpsel75",
+                            "LockID": 12,
+                            "LockName": "LOCK_RTP_26_4_12_1600"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i4_pi5",
+                    "PortName": "gr.gates[3].in[5]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp76",
+                            "LockID": 14,
+                            "LockName": "LOCK_RTP_26_4_14_5824"
+                        },
+                        {
+                            "BufferName": "rtpsel77",
+                            "LockID": 3,
+                            "LockName": "LOCK_RTP_27_3_3_4512"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i4_po0",
+                    "PortName": "gr.gates[3].out[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf11",
+                            "LockID": 4,
+                            "LockName": "LOCK_27_3_4_0"
+                        },
+                        {
+                            "BufferName": "buf11d",
+                            "LockID": 5,
+                            "LockName": "LOCK_27_3_5_4128"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr.gates[4]",
+            "Ports": [
+                {
+                    "Port": "i5_pi0",
+                    "PortName": "gr.gates[4].in[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf4",
+                            "LockID": 0,
+                            "LockName": "LOCK_24_3_0_0"
+                        },
+                        {
+                            "BufferName": "buf4d",
+                            "LockID": 1,
+                            "LockName": "LOCK_24_3_1_192"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i5_pi1",
+                    "PortName": "gr.gates[4].in[1]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf22",
+                            "LockID": 0,
+                            "LockName": "LOCK_24_4_0_832"
+                        },
+                        {
+                            "BufferName": "buf22d",
+                            "LockID": 1,
+                            "LockName": "LOCK_24_4_1_768"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i5_pi2",
+                    "PortName": "gr.gates[4].in[2]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp78",
+                            "LockID": 0,
+                            "LockName": "LOCK_RTP_23_4_0_0"
+                        },
+                        {
+                            "BufferName": "rtpsel82",
+                            "LockID": 2,
+                            "LockName": "LOCK_RTP_24_3_2_0"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i5_pi3",
+                    "PortName": "gr.gates[4].in[3]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp83",
+                            "LockID": 4,
+                            "LockName": "LOCK_RTP_24_3_4_0"
+                        },
+                        {
+                            "BufferName": "rtpsel85",
+                            "LockID": 3,
+                            "LockName": "LOCK_RTP_24_3_3_4832"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i5_pi4",
+                    "PortName": "gr.gates[4].in[4]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp86",
+                            "LockID": 5,
+                            "LockName": "LOCK_RTP_24_3_5_4544"
+                        },
+                        {
+                            "BufferName": "rtpsel87",
+                            "LockID": 2,
+                            "LockName": "LOCK_RTP_24_5_2_736"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i5_pi5",
+                    "PortName": "gr.gates[4].in[5]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp88",
+                            "LockID": 3,
+                            "LockName": "LOCK_RTP_24_5_3_768"
+                        },
+                        {
+                            "BufferName": "rtpsel89",
+                            "LockID": 6,
+                            "LockName": "LOCK_RTP_24_3_6_352"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i5_po0",
+                    "PortName": "gr.gates[4].out[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf12",
+                            "LockID": 4,
+                            "LockName": "LOCK_24_4_4_512"
+                        },
+                        {
+                            "BufferName": "buf12d",
+                            "LockID": 5,
+                            "LockName": "LOCK_24_4_5_1280"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr.gates[5]",
+            "Ports": [
+                {
+                    "Port": "i6_pi0",
+                    "PortName": "gr.gates[5].in[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf5",
+                            "LockID": 4,
+                            "LockName": "LOCK_24_5_4_0"
+                        },
+                        {
+                            "BufferName": "buf5d",
+                            "LockID": 5,
+                            "LockName": "LOCK_24_5_5_0"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i6_pi1",
+                    "PortName": "gr.gates[5].in[1]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf23",
+                            "LockID": 0,
+                            "LockName": "LOCK_24_5_0_128"
+                        },
+                        {
+                            "BufferName": "buf23d",
+                            "LockID": 1,
+                            "LockName": "LOCK_24_5_1_224"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i6_pi2",
+                    "PortName": "gr.gates[5].in[2]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp90",
+                            "LockID": 0,
+                            "LockName": "LOCK_RTP_24_6_0_0"
+                        },
+                        {
+                            "BufferName": "rtpsel94",
+                            "LockID": 6,
+                            "LockName": "LOCK_RTP_24_5_6_4928"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i6_pi3",
+                    "PortName": "gr.gates[5].in[3]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp95",
+                            "LockID": 7,
+                            "LockName": "LOCK_RTP_24_5_7_0"
+                        },
+                        {
+                            "BufferName": "rtpsel97",
+                            "LockID": 10,
+                            "LockName": "LOCK_RTP_24_4_10_768"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i6_pi4",
+                    "PortName": "gr.gates[5].in[4]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp98",
+                            "LockID": 9,
+                            "LockName": "LOCK_RTP_24_5_9_4960"
+                        },
+                        {
+                            "BufferName": "rtpsel99",
+                            "LockID": 8,
+                            "LockName": "LOCK_RTP_24_5_8_160"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i6_pi5",
+                    "PortName": "gr.gates[5].in[5]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp100",
+                            "LockID": 11,
+                            "LockName": "LOCK_RTP_24_5_11_192"
+                        },
+                        {
+                            "BufferName": "rtpsel101",
+                            "LockID": 10,
+                            "LockName": "LOCK_RTP_24_5_10_128"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i6_po0",
+                    "PortName": "gr.gates[5].out[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf13",
+                            "LockID": 6,
+                            "LockName": "LOCK_24_4_6_256"
+                        },
+                        {
+                            "BufferName": "buf13d",
+                            "LockID": 7,
+                            "LockName": "LOCK_24_4_7_0"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr.gates[6]",
+            "Ports": [
+                {
+                    "Port": "i7_pi0",
+                    "PortName": "gr.gates[6].in[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf6",
+                            "LockID": 3,
+                            "LockName": "LOCK_26_3_3_0"
+                        },
+                        {
+                            "BufferName": "buf6d",
+                            "LockID": 4,
+                            "LockName": "LOCK_26_3_4_0"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i7_pi1",
+                    "PortName": "gr.gates[6].in[1]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf24",
+                            "LockID": 4,
+                            "LockName": "LOCK_25_4_4_1024"
+                        },
+                        {
+                            "BufferName": "buf24d",
+                            "LockID": 5,
+                            "LockName": "LOCK_25_4_5_1696"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i7_pi2",
+                    "PortName": "gr.gates[6].in[2]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp102",
+                            "LockID": 0,
+                            "LockName": "LOCK_RTP_25_2_0_0"
+                        },
+                        {
+                            "BufferName": "rtpsel106",
+                            "LockID": 9,
+                            "LockName": "LOCK_RTP_25_3_9_1344"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i7_pi3",
+                    "PortName": "gr.gates[6].in[3]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp107",
+                            "LockID": 11,
+                            "LockName": "LOCK_RTP_25_3_11_0"
+                        },
+                        {
+                            "BufferName": "rtpsel109",
+                            "LockID": 10,
+                            "LockName": "LOCK_RTP_25_3_10_5504"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i7_pi4",
+                    "PortName": "gr.gates[6].in[4]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp110",
+                            "LockID": 13,
+                            "LockName": "LOCK_RTP_25_3_13_5568"
+                        },
+                        {
+                            "BufferName": "rtpsel111",
+                            "LockID": 12,
+                            "LockName": "LOCK_RTP_25_3_12_5856"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i7_pi5",
+                    "PortName": "gr.gates[6].in[5]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp112",
+                            "LockID": 15,
+                            "LockName": "LOCK_RTP_25_4_15_352"
+                        },
+                        {
+                            "BufferName": "rtpsel113",
+                            "LockID": 14,
+                            "LockName": "LOCK_RTP_25_3_14_5824"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i7_po0",
+                    "PortName": "gr.gates[6].out[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf14",
+                            "LockID": 8,
+                            "LockName": "LOCK_25_4_8_256"
+                        },
+                        {
+                            "BufferName": "buf14d",
+                            "LockID": 9,
+                            "LockName": "LOCK_25_4_9_416"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr.gates[7]",
+            "Ports": [
+                {
+                    "Port": "i8_pi0",
+                    "PortName": "gr.gates[7].in[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf7",
+                            "LockID": 7,
+                            "LockName": "LOCK_24_3_7_32"
+                        },
+                        {
+                            "BufferName": "buf7d",
+                            "LockID": 8,
+                            "LockName": "LOCK_24_3_8_128"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i8_pi1",
+                    "PortName": "gr.gates[7].in[1]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf25",
+                            "LockID": 0,
+                            "LockName": "LOCK_25_3_0_32"
+                        },
+                        {
+                            "BufferName": "buf25d",
+                            "LockID": 1,
+                            "LockName": "LOCK_25_3_1_256"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i8_pi2",
+                    "PortName": "gr.gates[7].in[2]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp114",
+                            "LockID": 0,
+                            "LockName": "LOCK_RTP_24_2_0_0"
+                        },
+                        {
+                            "BufferName": "rtpsel118",
+                            "LockID": 9,
+                            "LockName": "LOCK_RTP_24_3_9_4512"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i8_pi3",
+                    "PortName": "gr.gates[7].in[3]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp119",
+                            "LockID": 11,
+                            "LockName": "LOCK_RTP_24_4_11_0"
+                        },
+                        {
+                            "BufferName": "rtpsel121",
+                            "LockID": 10,
+                            "LockName": "LOCK_RTP_24_3_10_320"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i8_pi4",
+                    "PortName": "gr.gates[7].in[4]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp122",
+                            "LockID": 13,
+                            "LockName": "LOCK_RTP_24_4_13_1344"
+                        },
+                        {
+                            "BufferName": "rtpsel123",
+                            "LockID": 12,
+                            "LockName": "LOCK_RTP_24_4_12_800"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i8_pi5",
+                    "PortName": "gr.gates[7].in[5]",
+                    "Locks": [
+                        {
+                            "BufferName": "rtp124",
+                            "LockID": 12,
+                            "LockName": "LOCK_RTP_24_3_12_4800"
+                        },
+                        {
+                            "BufferName": "rtpsel125",
+                            "LockID": 11,
+                            "LockName": "LOCK_RTP_24_3_11_160"
+                        }
+                    ]
+                },
+                {
+                    "Port": "i8_po0",
+                    "PortName": "gr.gates[7].out[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf15",
+                            "LockID": 8,
+                            "LockName": "LOCK_24_4_8_512"
+                        },
+                        {
+                            "BufferName": "buf15d",
+                            "LockID": 9,
+                            "LockName": "LOCK_24_4_9_1600"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr._dma[0]",
+            "Ports": [
+                {
+                    "Port": "dma_i12_pi0",
+                    "PortName": "gr._dma[0].in[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf17",
+                            "LockID": 0,
+                            "LockName": "LOCK_25_4_0_512"
+                        },
+                        {
+                            "BufferName": "buf17d",
+                            "LockID": 1,
+                            "LockName": "LOCK_25_4_1_1184"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr._dma[1]",
+            "Ports": [
+                {
+                    "Port": "dma_i13_po0",
+                    "PortName": "gr._dma[1].out[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf18",
+                            "LockID": 2,
+                            "LockName": "LOCK_25_4_2_1536"
+                        },
+                        {
+                            "BufferName": "buf18d",
+                            "LockID": 3,
+                            "LockName": "LOCK_25_4_3_672"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr._dma[2]",
+            "Ports": [
+                {
+                    "Port": "dma_i14_po0",
+                    "PortName": "gr._dma[2].out[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf19",
+                            "LockID": 0,
+                            "LockName": "LOCK_26_4_0_576"
+                        },
+                        {
+                            "BufferName": "buf19d",
+                            "LockID": 1,
+                            "LockName": "LOCK_26_4_1_0"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr._dma[3]",
+            "Ports": [
+                {
+                    "Port": "dma_i15_po0",
+                    "PortName": "gr._dma[3].out[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf20",
+                            "LockID": 0,
+                            "LockName": "LOCK_25_5_0_5536"
+                        },
+                        {
+                            "BufferName": "buf20d",
+                            "LockID": 1,
+                            "LockName": "LOCK_25_5_1_6336"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr._dma[4]",
+            "Ports": [
+                {
+                    "Port": "dma_i16_po0",
+                    "PortName": "gr._dma[4].out[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf21",
+                            "LockID": 2,
+                            "LockName": "LOCK_26_4_2_64"
+                        },
+                        {
+                            "BufferName": "buf21d",
+                            "LockID": 3,
+                            "LockName": "LOCK_26_4_3_512"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr._dma[5]",
+            "Ports": [
+                {
+                    "Port": "dma_i17_po0",
+                    "PortName": "gr._dma[5].out[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf22",
+                            "LockID": 0,
+                            "LockName": "LOCK_24_4_0_832"
+                        },
+                        {
+                            "BufferName": "buf22d",
+                            "LockID": 1,
+                            "LockName": "LOCK_24_4_1_768"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr._dma[6]",
+            "Ports": [
+                {
+                    "Port": "dma_i18_po0",
+                    "PortName": "gr._dma[6].out[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf23",
+                            "LockID": 0,
+                            "LockName": "LOCK_24_5_0_128"
+                        },
+                        {
+                            "BufferName": "buf23d",
+                            "LockID": 1,
+                            "LockName": "LOCK_24_5_1_224"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr._dma[7]",
+            "Ports": [
+                {
+                    "Port": "dma_i19_po0",
+                    "PortName": "gr._dma[7].out[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf24",
+                            "LockID": 4,
+                            "LockName": "LOCK_25_4_4_1024"
+                        },
+                        {
+                            "BufferName": "buf24d",
+                            "LockID": 5,
+                            "LockName": "LOCK_25_4_5_1696"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "QualifiedGraphName": "gr",
+            "VariableName": "gr._dma[8]",
+            "Ports": [
+                {
+                    "Port": "dma_i20_po0",
+                    "PortName": "gr._dma[8].out[0]",
+                    "Locks": [
+                        {
+                            "BufferName": "buf25",
+                            "LockID": 0,
+                            "LockName": "LOCK_25_3_0_32"
+                        },
+                        {
+                            "BufferName": "buf25d",
+                            "LockID": 1,
+                            "LockName": "LOCK_25_3_1_256"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

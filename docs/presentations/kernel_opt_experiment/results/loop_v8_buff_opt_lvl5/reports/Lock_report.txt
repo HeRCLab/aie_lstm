@@ -1,0 +1,234 @@
+
+Lock Report
+portinst: dma_i12_pi0 idx[-1] datatype:buff<float> mem in bw_utlization = 1 (variable name:  _dma[0].in[0]):
+  Lock 0 MG(25,4) bankId 1 offset 0x200 size 512 name buf17
+  Lock 1 MG(25,4) bankId 0 offset 0x580 size 512 name buf17d
+portinst: dma_i13_po0 idx[-1] datatype:buff<float> mem out bw_utlization = 1 (variable name:  _dma[1].out[0]):
+  Lock 2 MG(25,4) bankId 0 offset 0x380 size 512 name buf18
+  Lock 3 MG(25,4) bankId 1 offset 0x0 size 512 name buf18d
+portinst: dma_i14_po0 idx[-1] datatype:buff<float> mem out bw_utlization = 1 (variable name:  _dma[2].out[0]):
+  Lock 0 MG(26,4) bankId 2 offset 0x0 size 512 name buf19
+  Lock 1 MG(26,4) bankId 0 offset 0xf00 size 512 name buf19d
+portinst: dma_i15_po0 idx[-1] datatype:buff<float> mem out bw_utlization = 1 (variable name:  _dma[3].out[0]):
+  Lock 4 MG(25,4) bankId 0 offset 0x120 size 512 name buf20
+  Lock 5 MG(25,4) bankId 1 offset 0x440 size 512 name buf20d
+portinst: dma_i16_po0 idx[-1] datatype:buff<float> mem out bw_utlization = 1 (variable name:  _dma[4].out[0]):
+  Lock 2 MG(26,4) bankId 3 offset 0x0 size 512 name buf21
+  Lock 3 MG(26,4) bankId 1 offset 0x0 size 512 name buf21d
+portinst: dma_i17_po0 idx[-1] datatype:buff<float> mem out bw_utlization = 1 (variable name:  _dma[5].out[0]):
+  Lock 0 MG(24,4) bankId 2 offset 0x0 size 512 name buf22
+  Lock 1 MG(24,4) bankId 1 offset 0x1e00 size 512 name buf22d
+portinst: dma_i18_po0 idx[-1] datatype:buff<float> mem out bw_utlization = 1 (variable name:  _dma[6].out[0]):
+  Lock 0 MG(25,5) bankId 0 offset 0x220 size 512 name buf23
+  Lock 1 MG(25,5) bankId 3 offset 0x1120 size 512 name buf23d
+portinst: dma_i19_po0 idx[-1] datatype:buff<float> mem out bw_utlization = 1 (variable name:  _dma[7].out[0]):
+  Lock 0 MG(25,3) bankId 0 offset 0x1140 size 512 name buf24
+  Lock 1 MG(25,3) bankId 1 offset 0x760 size 512 name buf24d
+portinst: dma_i20_po0 idx[-1] datatype:buff<float> mem out bw_utlization = 1 (variable name:  _dma[8].out[0]):
+  Lock 0 MG(24,3) bankId 3 offset 0x0 size 512 name buf25
+  Lock 1 MG(24,3) bankId 2 offset 0x20 size 512 name buf25d
+portinst: i0_pi0 idx[0] datatype:buff<float> mem in bw_utlization = 1 synctype:async (variable name:  coord.in[0]):
+  Lock 6 MG(25,4) bankId 1 offset 0x1f00 size 256 name buf8
+  Lock 7 MG(25,4) bankId 0 offset 0x780 size 256 name buf8d
+portinst: i0_pi1 idx[1] datatype:buff<float> mem in bw_utlization = 1 synctype:async (variable name:  coord.in[1]):
+  Lock 2 MG(25,5) bankId 3 offset 0x1460 size 256 name buf9r
+  Lock 3 MG(25,5) bankId 0 offset 0x20 size 256 name buf9dr
+portinst: i0_pi2 idx[2] datatype:buff<float> mem in bw_utlization = 1 synctype:async (variable name:  coord.in[2]):
+  Lock 4 MG(25,5) bankId 3 offset 0x1020 size 256 name buf10
+  Lock 5 MG(25,5) bankId 0 offset 0x120 size 256 name buf10d
+portinst: i0_pi3 idx[3] datatype:buff<float> mem in bw_utlization = 1 synctype:async (variable name:  coord.in[3]):
+  Lock 2 MG(24,4) bankId 1 offset 0x0 size 256 name buf11r
+  Lock 3 MG(24,4) bankId 0 offset 0x1d00 size 256 name buf11dr
+portinst: i0_pi4 idx[4] datatype:buff<float> mem in bw_utlization = 1 synctype:async (variable name:  coord.in[4]):
+  Lock 4 MG(24,4) bankId 3 offset 0x1f00 size 256 name buf12
+  Lock 5 MG(24,4) bankId 0 offset 0x1f00 size 256 name buf12d
+portinst: i0_pi5 idx[5] datatype:buff<float> mem in bw_utlization = 1 synctype:async (variable name:  coord.in[5]):
+  Lock 6 MG(25,5) bankId 3 offset 0x1340 size 256 name buf13
+  Lock 7 MG(25,5) bankId 0 offset 0x1ee0 size 256 name buf13d
+portinst: i0_pi6 idx[6] datatype:buff<float> mem in bw_utlization = 1 synctype:async (variable name:  coord.in[6]):
+  Lock 2 MG(25,3) bankId 0 offset 0x0 size 256 name buf14
+  Lock 3 MG(25,3) bankId 1 offset 0x100 size 256 name buf14d
+portinst: i0_pi7 idx[7] datatype:buff<float> mem in bw_utlization = 1 synctype:async (variable name:  coord.in[7]):
+  Lock 4 MG(25,3) bankId 0 offset 0x1e80 size 256 name buf15
+  Lock 5 MG(25,3) bankId 1 offset 0x1ee0 size 256 name buf15d
+portinst: i0_pi8 idx[8] datatype:arr<float>[128]> rtp in bw_utlization = 1 synctype:async (variable name:  coord.in[8]):
+  Lock 8 MG(25,5) bankId 0 offset 0x520 size 4 name rtpsel27
+  Lock 6 MG(24,4) bankId 0 offset 0x20 size 512 name rtp26
+portinst: i0_pi9 idx[9] datatype:float rtp in bw_utlization = 1 synctype:async (variable name:  coord.in[9]):
+  Lock 6 MG(25,3) bankId 1 offset 0x740 size 4 name rtpsel29
+  Lock 7 MG(24,4) bankId 0 offset 0x240 size 4 name rtp28
+portinst: i0_po0 idx[10] datatype:buff<float> mem out bw_utlization = 1 (variable name:  coord.out[0]):
+  Lock 0 MG(25,4) bankId 1 offset 0x200 size 512 name buf17
+  Lock 1 MG(25,4) bankId 0 offset 0x580 size 512 name buf17d
+portinst: i0_po1 idx[11] datatype:buff<float> mem out bw_utlization = 1 (variable name:  coord.out[1]):
+  Lock 9 MG(25,5) bankId 0 offset 0x1fe0 size 16 name buf16
+  Lock 10 MG(25,5) bankId 3 offset 0x1320 size 16 name buf16d
+portinst: i1_pi0 idx[0] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[0].in[0]):
+  Lock 0 MG(26,5) bankId 3 offset 0x0 size 128 name buf0
+  Lock 1 MG(26,5) bankId 2 offset 0x0 size 128 name buf0d
+portinst: i1_pi1 idx[1] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[0].in[1]):
+  Lock 2 MG(25,4) bankId 0 offset 0x380 size 512 name buf18
+  Lock 3 MG(25,4) bankId 1 offset 0x0 size 512 name buf18d
+portinst: i1_pi2 idx[2] datatype:arr<float>[8192]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[0].in[2]):
+  Lock 2 MG(26,5) bankId 2 offset 0x1140 size 4 name rtpsel34
+  Lock 0 MG(26,3) bankId 0 offset 0x0 size 32768 name rtp30
+portinst: i1_pi3 idx[3] datatype:arr<float>[4096]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[0].in[3]):
+  Lock 3 MG(26,5) bankId 2 offset 0x11a0 size 4 name rtpsel37
+  Lock 4 MG(26,5) bankId 0 offset 0x0 size 16384 name rtp35
+portinst: i1_pi4 idx[4] datatype:arr<float>[64]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[0].in[4]):
+  Lock 5 MG(26,5) bankId 2 offset 0x1180 size 4 name rtpsel39
+  Lock 8 MG(25,4) bankId 0 offset 0x20 size 256 name rtp38
+portinst: i1_pi5 idx[5] datatype:int32 rtp in bw_utlization = 1 synctype:async (variable name:  gates[0].in[5]):
+  Lock 6 MG(26,5) bankId 2 offset 0x80 size 4 name rtpsel41
+  Lock 7 MG(26,5) bankId 2 offset 0x1160 size 4 name rtp40
+portinst: i1_po0 idx[6] datatype:buff<float> mem out bw_utlization = 1 (variable name:  gates[0].out[0]):
+  Lock 6 MG(25,4) bankId 1 offset 0x1f00 size 256 name buf8
+  Lock 7 MG(25,4) bankId 0 offset 0x780 size 256 name buf8d
+portinst: i2_pi0 idx[0] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[1].in[0]):
+  Lock 0 MG(27,5) bankId 3 offset 0x1080 size 128 name buf1
+  Lock 1 MG(27,5) bankId 2 offset 0x20 size 128 name buf1d
+portinst: i2_pi1 idx[1] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[1].in[1]):
+  Lock 0 MG(26,4) bankId 2 offset 0x0 size 512 name buf19
+  Lock 1 MG(26,4) bankId 0 offset 0xf00 size 512 name buf19d
+portinst: i2_pi2 idx[2] datatype:arr<float>[8192]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[1].in[2]):
+  Lock 2 MG(27,5) bankId 3 offset 0x1040 size 4 name rtpsel46
+  Lock 0 MG(26,6) bankId 0 offset 0x0 size 32768 name rtp42
+portinst: i2_pi3 idx[3] datatype:arr<float>[4096]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[1].in[3]):
+  Lock 3 MG(27,5) bankId 3 offset 0x1060 size 4 name rtpsel49
+  Lock 4 MG(27,5) bankId 0 offset 0x0 size 16384 name rtp47
+portinst: i2_pi4 idx[4] datatype:arr<float>[64]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[1].in[4]):
+  Lock 5 MG(27,5) bankId 2 offset 0x0 size 4 name rtpsel51
+  Lock 6 MG(27,5) bankId 2 offset 0x1c0 size 256 name rtp50
+portinst: i2_pi5 idx[5] datatype:int32 rtp in bw_utlization = 1 synctype:async (variable name:  gates[1].in[5]):
+  Lock 7 MG(27,5) bankId 3 offset 0x0 size 4 name rtpsel53
+  Lock 8 MG(27,5) bankId 2 offset 0xa0 size 4 name rtp52
+portinst: i2_po0 idx[6] datatype:buff<float> mem out bw_utlization = 1 (variable name:  gates[1].out[0]):
+  Lock 9 MG(27,5) bankId 3 offset 0x1f00 size 256 name buf9
+  Lock 10 MG(27,5) bankId 2 offset 0xc0 size 256 name buf9d
+portinst: i3_pi0 idx[0] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[2].in[0]):
+  Lock 8 MG(26,5) bankId 2 offset 0x10c0 size 128 name buf2
+  Lock 9 MG(26,5) bankId 3 offset 0x80 size 128 name buf2d
+portinst: i3_pi1 idx[1] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[2].in[1]):
+  Lock 4 MG(25,4) bankId 0 offset 0x120 size 512 name buf20
+  Lock 5 MG(25,4) bankId 1 offset 0x440 size 512 name buf20d
+portinst: i3_pi2 idx[2] datatype:arr<float>[8192]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[2].in[2]):
+  Lock 9 MG(25,4) bankId 1 offset 0x400 size 4 name rtpsel58
+  Lock 0 MG(25,6) bankId 0 offset 0x0 size 32768 name rtp54
+portinst: i3_pi3 idx[3] datatype:arr<float>[4096]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[2].in[3]):
+  Lock 11 MG(25,5) bankId 3 offset 0x1440 size 4 name rtpsel61
+  Lock 10 MG(25,4) bankId 2 offset 0x0 size 16384 name rtp59
+portinst: i3_pi4 idx[4] datatype:arr<float>[64]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[2].in[4]):
+  Lock 11 MG(25,4) bankId 1 offset 0x640 size 4 name rtpsel63
+  Lock 12 MG(25,5) bankId 0 offset 0x420 size 256 name rtp62
+portinst: i3_pi5 idx[5] datatype:int32 rtp in bw_utlization = 1 synctype:async (variable name:  gates[2].in[5]):
+  Lock 12 MG(25,4) bankId 1 offset 0x420 size 4 name rtpsel65
+  Lock 13 MG(25,5) bankId 0 offset 0x0 size 4 name rtp64
+portinst: i3_po0 idx[6] datatype:buff<float> mem out bw_utlization = 1 (variable name:  gates[2].out[0]):
+  Lock 4 MG(25,5) bankId 3 offset 0x1020 size 256 name buf10
+  Lock 5 MG(25,5) bankId 0 offset 0x120 size 256 name buf10d
+portinst: i4_pi0 idx[0] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[3].in[0]):
+  Lock 0 MG(27,3) bankId 2 offset 0x12c0 size 128 name buf3
+  Lock 1 MG(27,3) bankId 3 offset 0x100 size 128 name buf3d
+portinst: i4_pi1 idx[1] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[3].in[1]):
+  Lock 2 MG(26,4) bankId 3 offset 0x0 size 512 name buf21
+  Lock 3 MG(26,4) bankId 1 offset 0x0 size 512 name buf21d
+portinst: i4_pi2 idx[2] datatype:arr<float>[8192]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[3].in[2]):
+  Lock 2 MG(27,3) bankId 2 offset 0x260 size 4 name rtpsel70
+  Lock 0 MG(26,2) bankId 0 offset 0x0 size 32768 name rtp66
+portinst: i4_pi3 idx[3] datatype:arr<float>[4096]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[3].in[3]):
+  Lock 3 MG(27,3) bankId 2 offset 0x240 size 4 name rtpsel73
+  Lock 4 MG(27,3) bankId 0 offset 0x0 size 16384 name rtp71
+portinst: i4_pi4 idx[4] datatype:arr<float>[64]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[3].in[4]):
+  Lock 5 MG(27,3) bankId 2 offset 0x120 size 4 name rtpsel75
+  Lock 6 MG(27,3) bankId 2 offset 0x140 size 256 name rtp74
+portinst: i4_pi5 idx[5] datatype:int32 rtp in bw_utlization = 1 synctype:async (variable name:  gates[3].in[5]):
+  Lock 7 MG(27,3) bankId 2 offset 0x12a0 size 4 name rtpsel77
+  Lock 8 MG(27,3) bankId 2 offset 0x100 size 4 name rtp76
+portinst: i4_po0 idx[6] datatype:buff<float> mem out bw_utlization = 1 (variable name:  gates[3].out[0]):
+  Lock 9 MG(27,3) bankId 3 offset 0x0 size 256 name buf11
+  Lock 10 MG(27,3) bankId 2 offset 0x0 size 256 name buf11d
+portinst: i5_pi0 idx[0] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[4].in[0]):
+  Lock 0 MG(24,5) bankId 1 offset 0x1f80 size 128 name buf4
+  Lock 1 MG(24,5) bankId 0 offset 0x0 size 128 name buf4d
+portinst: i5_pi1 idx[1] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[4].in[1]):
+  Lock 0 MG(24,4) bankId 2 offset 0x0 size 512 name buf22
+  Lock 1 MG(24,4) bankId 1 offset 0x1e00 size 512 name buf22d
+portinst: i5_pi2 idx[2] datatype:arr<float>[8192]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[4].in[2]):
+  Lock 2 MG(24,5) bankId 0 offset 0x280 size 4 name rtpsel82
+  Lock 0 MG(23,4) bankId 0 offset 0x0 size 32768 name rtp78
+portinst: i5_pi3 idx[3] datatype:arr<float>[4096]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[4].in[3]):
+  Lock 3 MG(24,5) bankId 0 offset 0x1ee0 size 4 name rtpsel85
+  Lock 4 MG(24,5) bankId 2 offset 0x0 size 16384 name rtp83
+portinst: i5_pi4 idx[4] datatype:arr<float>[64]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[4].in[4]):
+  Lock 5 MG(24,5) bankId 0 offset 0xc0 size 4 name rtpsel87
+  Lock 6 MG(24,5) bankId 0 offset 0xe0 size 256 name rtp86
+portinst: i5_pi5 idx[5] datatype:int32 rtp in bw_utlization = 1 synctype:async (variable name:  gates[4].in[5]):
+  Lock 7 MG(24,5) bankId 0 offset 0xa0 size 4 name rtpsel89
+  Lock 8 MG(24,5) bankId 0 offset 0x80 size 4 name rtp88
+portinst: i5_po0 idx[6] datatype:buff<float> mem out bw_utlization = 1 (variable name:  gates[4].out[0]):
+  Lock 4 MG(24,4) bankId 3 offset 0x1f00 size 256 name buf12
+  Lock 5 MG(24,4) bankId 0 offset 0x1f00 size 256 name buf12d
+portinst: i6_pi0 idx[0] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[5].in[0]):
+  Lock 9 MG(24,5) bankId 1 offset 0x0 size 128 name buf5
+  Lock 10 MG(24,5) bankId 0 offset 0x1e0 size 128 name buf5d
+portinst: i6_pi1 idx[1] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[5].in[1]):
+  Lock 0 MG(25,5) bankId 0 offset 0x220 size 512 name buf23
+  Lock 1 MG(25,5) bankId 3 offset 0x1120 size 512 name buf23d
+portinst: i6_pi2 idx[2] datatype:arr<float>[8192]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[5].in[2]):
+  Lock 8 MG(24,4) bankId 0 offset 0x220 size 4 name rtpsel94
+  Lock 0 MG(24,6) bankId 0 offset 0x0 size 32768 name rtp90
+portinst: i6_pi3 idx[3] datatype:arr<float>[4096]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[5].in[3]):
+  Lock 11 MG(24,5) bankId 0 offset 0x260 size 4 name rtpsel97
+  Lock 14 MG(25,5) bankId 1 offset 0x0 size 16384 name rtp95
+portinst: i6_pi4 idx[4] datatype:arr<float>[64]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[5].in[4]):
+  Lock 9 MG(24,4) bankId 0 offset 0x1ce0 size 4 name rtpsel99
+  Lock 12 MG(24,5) bankId 0 offset 0x1f00 size 256 name rtp98
+portinst: i6_pi5 idx[5] datatype:int32 rtp in bw_utlization = 1 synctype:async (variable name:  gates[5].in[5]):
+  Lock 10 MG(24,4) bankId 0 offset 0x1ca0 size 4 name rtpsel101
+  Lock 11 MG(24,4) bankId 0 offset 0x1cc0 size 4 name rtp100
+portinst: i6_po0 idx[6] datatype:buff<float> mem out bw_utlization = 1 (variable name:  gates[5].out[0]):
+  Lock 6 MG(25,5) bankId 3 offset 0x1340 size 256 name buf13
+  Lock 7 MG(25,5) bankId 0 offset 0x1ee0 size 256 name buf13d
+portinst: i7_pi0 idx[0] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[6].in[0]):
+  Lock 7 MG(25,3) bankId 1 offset 0x6c0 size 128 name buf6
+  Lock 8 MG(25,3) bankId 0 offset 0x1f80 size 128 name buf6d
+portinst: i7_pi1 idx[1] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[6].in[1]):
+  Lock 0 MG(25,3) bankId 0 offset 0x1140 size 512 name buf24
+  Lock 1 MG(25,3) bankId 1 offset 0x760 size 512 name buf24d
+portinst: i7_pi2 idx[2] datatype:arr<float>[8192]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[6].in[2]):
+  Lock 13 MG(25,4) bankId 0 offset 0x0 size 4 name rtpsel106
+  Lock 0 MG(25,2) bankId 0 offset 0x0 size 32768 name rtp102
+portinst: i7_pi3 idx[3] datatype:arr<float>[4096]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[6].in[3]):
+  Lock 14 MG(25,4) bankId 1 offset 0x660 size 4 name rtpsel109
+  Lock 9 MG(25,3) bankId 2 offset 0x0 size 16384 name rtp107
+portinst: i7_pi4 idx[4] datatype:arr<float>[64]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[6].in[4]):
+  Lock 10 MG(25,3) bankId 1 offset 0x1fe0 size 4 name rtpsel111
+  Lock 11 MG(25,3) bankId 1 offset 0x0 size 256 name rtp110
+portinst: i7_pi5 idx[5] datatype:int32 rtp in bw_utlization = 1 synctype:async (variable name:  gates[6].in[5]):
+  Lock 12 MG(25,3) bankId 0 offset 0x1340 size 4 name rtpsel113
+  Lock 15 MG(25,4) bankId 1 offset 0x680 size 4 name rtp112
+portinst: i7_po0 idx[6] datatype:buff<float> mem out bw_utlization = 1 (variable name:  gates[6].out[0]):
+  Lock 2 MG(25,3) bankId 0 offset 0x0 size 256 name buf14
+  Lock 3 MG(25,3) bankId 1 offset 0x100 size 256 name buf14d
+portinst: i8_pi0 idx[0] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[7].in[0]):
+  Lock 2 MG(24,3) bankId 2 offset 0x220 size 128 name buf7
+  Lock 3 MG(24,3) bankId 3 offset 0x200 size 128 name buf7d
+portinst: i8_pi1 idx[1] datatype:buff<float> mem in bw_utlization = 1 (variable name:  gates[7].in[1]):
+  Lock 0 MG(24,3) bankId 3 offset 0x0 size 512 name buf25
+  Lock 1 MG(24,3) bankId 2 offset 0x20 size 512 name buf25d
+portinst: i8_pi2 idx[2] datatype:arr<float>[8192]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[7].in[2]):
+  Lock 4 MG(24,3) bankId 2 offset 0x0 size 4 name rtpsel118
+  Lock 0 MG(24,2) bankId 0 offset 0x0 size 32768 name rtp114
+portinst: i8_pi3 idx[3] datatype:arr<float>[4096]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[7].in[3]):
+  Lock 12 MG(24,4) bankId 0 offset 0x1c80 size 4 name rtpsel121
+  Lock 5 MG(24,3) bankId 0 offset 0x0 size 16384 name rtp119
+portinst: i8_pi4 idx[4] datatype:arr<float>[64]> rtp in bw_utlization = 1 synctype:async (variable name:  gates[7].in[4]):
+  Lock 13 MG(25,3) bankId 0 offset 0x1120 size 4 name rtpsel123
+  Lock 13 MG(24,4) bankId 0 offset 0x1e00 size 256 name rtp122
+portinst: i8_pi5 idx[5] datatype:int32 rtp in bw_utlization = 1 synctype:async (variable name:  gates[7].in[5]):
+  Lock 6 MG(24,3) bankId 2 offset 0x2a0 size 4 name rtpsel125
+  Lock 14 MG(24,4) bankId 0 offset 0x0 size 4 name rtp124
+portinst: i8_po0 idx[6] datatype:buff<float> mem out bw_utlization = 1 (variable name:  gates[7].out[0]):
+  Lock 4 MG(25,3) bankId 0 offset 0x1e80 size 256 name buf15
+  Lock 5 MG(25,3) bankId 1 offset 0x1ee0 size 256 name buf15d
+

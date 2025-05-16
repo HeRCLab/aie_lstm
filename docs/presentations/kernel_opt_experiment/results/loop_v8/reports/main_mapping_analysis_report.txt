@@ -1,0 +1,396 @@
+Mapping Analysis Report
+
+
+Acronym List
+    * CR(x,y)    - Core <column, row>
+    * MG(x,y):b  - MemoryGroup <column, row> : Bank
+    * MT(x,y):b  - MemoryTile <column, row> : Bank
+
+
+===============================================
+Block Mapping Report:
+===============================================
+
+Block:Function Name      CR(x,y)/IO(x)  Schedule  Utilization  Variable Name  Graph Name
+-----------------------  -------------  --------  -----------  -------------  ----------
+i0:coordinator_4x2_buff  CR(25,4)              0        0.900  coord          gr
+i1:gate_half_buff        CR(26,4)              0        0.900  gates[0]       gr
+i10:GMIO                 IO(26)                                gmio_out       gr
+i2:gate_half_buff        CR(26,5)              0        0.900  gates[1]       gr
+i3:gate_half_buff        CR(25,5)              0        0.900  gates[2]       gr
+i4:gate_half_buff        CR(26,3)              0        0.900  gates[3]       gr
+i5:gate_half_buff        CR(24,4)              0        0.900  gates[4]       gr
+i6:gate_half_buff        CR(24,5)              0        0.900  gates[5]       gr
+i7:gate_half_buff        CR(25,3)              0        0.900  gates[6]       gr
+i8:gate_half_buff        CR(24,3)              0        0.900  gates[7]       gr
+i9:GMIO                  IO(26)                                gmio_in        gr
+
+
+===============================================
+Port Mapping Report:
+===============================================
+
+PortName     Dir  PrtType  BufType  Buffer Name  MG(x,y):b      Addr   Size  Variable Name    Graph Name
+-----------  ---  -------  -------  -----------  ----------  -------  -----  ---------------  ----------
+i0_pi0       in   buffer   mem      buf8         MG(25,4):3  0x06000    256  coord.in[0]      gr
+i0_pi0       in   buffer   mem      buf8d        MG(25,4):0  0x00000    256  coord.in[0]      gr
+i0_pi1       in   buffer   mem      buf9r        MG(25,3):3  0x06000    256  coord.in[1]      gr
+i0_pi1       in   buffer   mem      buf9dr       MG(25,3):2  0x04420    256  coord.in[1]      gr
+i0_pi2       in   buffer   mem      buf10        MG(25,5):2  0x053a0    256  coord.in[2]      gr
+i0_pi2       in   buffer   mem      buf10d       MG(25,5):0  0x00160    256  coord.in[2]      gr
+i0_pi3       in   buffer   mem      buf11r       MG(24,4):2  0x04100    256  coord.in[3]      gr
+i0_pi3       in   buffer   mem      buf11dr      MG(24,4):3  0x06000    256  coord.in[3]      gr
+i0_pi4       in   buffer   mem      buf12        MG(24,4):2  0x04200    256  coord.in[4]      gr
+i0_pi4       in   buffer   mem      buf12d       MG(24,4):3  0x06500    256  coord.in[4]      gr
+i0_pi5       in   buffer   mem      buf13        MG(24,4):3  0x06100    256  coord.in[5]      gr
+i0_pi5       in   buffer   mem      buf13d       MG(24,4):2  0x04000    256  coord.in[5]      gr
+i0_pi6       in   buffer   mem      buf14        MG(25,4):3  0x06100    256  coord.in[6]      gr
+i0_pi6       in   buffer   mem      buf14d       MG(25,4):2  0x041a0    256  coord.in[6]      gr
+i0_pi7       in   buffer   mem      buf15        MG(24,4):3  0x06200    256  coord.in[7]      gr
+i0_pi7       in   buffer   mem      buf15d       MG(24,4):2  0x04640    256  coord.in[7]      gr
+i0_pi8       in   rtp      rtp      rtp26        MG(25,3):2  0x04220    512  coord.in[8]      gr
+i0_pi8       in   rtp      rtp      rtpsel27     MG(25,4):2  0x04120      4  coord.in[8]      gr
+i0_pi9       in   rtp      rtp      rtp28        MG(25,3):2  0x04520      4  coord.in[9]      gr
+i0_pi9       in   rtp      rtp      rtpsel29     MG(25,3):2  0x04000      4  coord.in[9]      gr
+i0_po0       out  buffer   mem      buf17        MG(25,4):3  0x06200    512  coord.out[0]     gr
+i0_po0       out  buffer   mem      buf17d       MG(25,4):2  0x044a0    512  coord.out[0]     gr
+i0_po1       out  buffer   mem      buf16        MG(25,3):2  0x055a0     16  coord.out[1]     gr
+i0_po1       out  buffer   mem      buf16d       MG(25,3):3  0x06300     16  coord.out[1]     gr
+i1_pi0       in   buffer   mem      buf0         MG(26,3):1  0x03f80    128  gates[0].in[0]   gr
+i1_pi0       in   buffer   mem      buf0d        MG(26,3):0  0x011a0    128  gates[0].in[0]   gr
+i1_pi1       in   buffer   mem      buf18        MG(25,4):3  0x06600    512  gates[0].in[1]   gr
+i1_pi1       in   buffer   mem      buf18d       MG(25,4):2  0x042a0    512  gates[0].in[1]   gr
+i1_pi2       in   rtp      rtp      rtp30        MG(26,5):0  0x00000  32768  gates[0].in[2]   gr
+i1_pi2       in   rtp      rtp      rtpsel34     MG(26,4):2  0x04000      4  gates[0].in[2]   gr
+i1_pi3       in   rtp      rtp      rtp35        MG(26,3):2  0x04000  16384  gates[0].in[3]   gr
+i1_pi3       in   rtp      rtp      rtpsel37     MG(26,4):2  0x056e0      4  gates[0].in[3]   gr
+i1_pi4       in   rtp      rtp      rtp38        MG(26,4):2  0x04440    256  gates[0].in[4]   gr
+i1_pi4       in   rtp      rtp      rtpsel39     MG(26,4):2  0x04020      4  gates[0].in[4]   gr
+i1_pi5       in   rtp      rtp      rtp40        MG(26,4):2  0x05700      4  gates[0].in[5]   gr
+i1_pi5       in   rtp      rtp      rtpsel41     MG(25,4):2  0x04180      4  gates[0].in[5]   gr
+i1_po0       out  buffer   mem      buf8         MG(25,4):3  0x06000    256  gates[0].out[0]  gr
+i1_po0       out  buffer   mem      buf8d        MG(25,4):0  0x00000    256  gates[0].out[0]  gr
+i2_pi0       in   buffer   mem      buf1         MG(26,6):2  0x04000    128  gates[1].in[0]   gr
+i2_pi0       in   buffer   mem      buf1d        MG(26,6):3  0x06080    128  gates[1].in[0]   gr
+i2_pi1       in   buffer   mem      buf19        MG(26,4):2  0x04240    512  gates[1].in[1]   gr
+i2_pi1       in   buffer   mem      buf19d       MG(26,4):3  0x06000    512  gates[1].in[1]   gr
+i2_pi2       in   rtp      rtp      rtp42        MG(27,5):0  0x00000  32768  gates[1].in[2]   gr
+i2_pi2       in   rtp      rtp      rtpsel46     MG(26,6):0  0x00000      4  gates[1].in[2]   gr
+i2_pi3       in   rtp      rtp      rtp47        MG(26,4):0  0x00000  16384  gates[1].in[3]   gr
+i2_pi3       in   rtp      rtp      rtpsel49     MG(26,6):0  0x00020      4  gates[1].in[3]   gr
+i2_pi4       in   rtp      rtp      rtp50        MG(26,6):0  0x00140    256  gates[1].in[4]   gr
+i2_pi4       in   rtp      rtp      rtpsel51     MG(26,6):0  0x01020      4  gates[1].in[4]   gr
+i2_pi5       in   rtp      rtp      rtp52        MG(26,6):0  0x01060      4  gates[1].in[5]   gr
+i2_pi5       in   rtp      rtp      rtpsel53     MG(26,6):0  0x01040      4  gates[1].in[5]   gr
+i2_po0       out  buffer   mem      buf9         MG(26,6):1  0x02000    256  gates[1].out[0]  gr
+i2_po0       out  buffer   mem      buf9d        MG(26,6):0  0x01080    256  gates[1].out[0]  gr
+i3_pi0       in   buffer   mem      buf2         MG(25,5):1  0x03520    128  gates[2].in[0]   gr
+i3_pi0       in   buffer   mem      buf2d        MG(25,5):2  0x054a0    128  gates[2].in[0]   gr
+i3_pi1       in   buffer   mem      buf20        MG(25,5):1  0x035a0    512  gates[2].in[1]   gr
+i3_pi1       in   buffer   mem      buf20d       MG(25,5):3  0x078c0    512  gates[2].in[1]   gr
+i3_pi2       in   rtp      rtp      rtp54        MG(25,6):0  0x00000  32768  gates[2].in[2]   gr
+i3_pi2       in   rtp      rtp      rtpsel58     MG(25,4):2  0x04100      4  gates[2].in[2]   gr
+i3_pi3       in   rtp      rtp      rtp59        MG(25,4):0  0x00100  16384  gates[2].in[3]   gr
+i3_pi3       in   rtp      rtp      rtpsel61     MG(25,4):2  0x04140      4  gates[2].in[3]   gr
+i3_pi4       in   rtp      rtp      rtp62        MG(25,5):0  0x00020    256  gates[2].in[4]   gr
+i3_pi4       in   rtp      rtp      rtpsel63     MG(25,5):0  0x00000      4  gates[2].in[4]   gr
+i3_pi5       in   rtp      rtp      rtp64        MG(25,5):0  0x00140      4  gates[2].in[5]   gr
+i3_pi5       in   rtp      rtp      rtpsel65     MG(25,5):0  0x00120      4  gates[2].in[5]   gr
+i3_po0       out  buffer   mem      buf10        MG(25,5):2  0x053a0    256  gates[2].out[0]  gr
+i3_po0       out  buffer   mem      buf10d       MG(25,5):0  0x00160    256  gates[2].out[0]  gr
+i4_pi0       in   buffer   mem      buf3         MG(27,3):2  0x05120    128  gates[3].in[0]   gr
+i4_pi0       in   buffer   mem      buf3d        MG(27,3):3  0x06100    128  gates[3].in[0]   gr
+i4_pi1       in   buffer   mem      buf21        MG(26,4):2  0x04040    512  gates[3].in[1]   gr
+i4_pi1       in   buffer   mem      buf21d       MG(26,4):3  0x06200    512  gates[3].in[1]   gr
+i4_pi2       in   rtp      rtp      rtp66        MG(26,2):0  0x00000  32768  gates[3].in[2]   gr
+i4_pi2       in   rtp      rtp      rtpsel70     MG(26,4):2  0x04680      4  gates[3].in[2]   gr
+i4_pi3       in   rtp      rtp      rtp71        MG(27,3):0  0x00000  16384  gates[3].in[3]   gr
+i4_pi3       in   rtp      rtp      rtpsel73     MG(26,4):2  0x04660      4  gates[3].in[3]   gr
+i4_pi4       in   rtp      rtp      rtp74        MG(26,4):2  0x04540    256  gates[3].in[4]   gr
+i4_pi4       in   rtp      rtp      rtpsel75     MG(26,4):2  0x04640      4  gates[3].in[4]   gr
+i4_pi5       in   rtp      rtp      rtp76        MG(26,4):2  0x056c0      4  gates[3].in[5]   gr
+i4_pi5       in   rtp      rtp      rtpsel77     MG(27,3):2  0x051a0      4  gates[3].in[5]   gr
+i4_po0       out  buffer   mem      buf11        MG(27,3):3  0x06000    256  gates[3].out[0]  gr
+i4_po0       out  buffer   mem      buf11d       MG(27,3):2  0x05020    256  gates[3].out[0]  gr
+i5_pi0       in   buffer   mem      buf4         MG(24,3):3  0x06000    128  gates[4].in[0]   gr
+i5_pi0       in   buffer   mem      buf4d        MG(24,3):2  0x040c0    128  gates[4].in[0]   gr
+i5_pi1       in   buffer   mem      buf22        MG(24,4):2  0x04340    512  gates[4].in[1]   gr
+i5_pi1       in   buffer   mem      buf22d       MG(24,4):3  0x06300    512  gates[4].in[1]   gr
+i5_pi2       in   rtp      rtp      rtp78        MG(23,4):0  0x00000  32768  gates[4].in[2]   gr
+i5_pi2       in   rtp      rtp      rtpsel82     MG(24,3):2  0x04000      4  gates[4].in[2]   gr
+i5_pi3       in   rtp      rtp      rtp83        MG(24,3):0  0x00000  16384  gates[4].in[3]   gr
+i5_pi3       in   rtp      rtp      rtpsel85     MG(24,3):2  0x052e0      4  gates[4].in[3]   gr
+i5_pi4       in   rtp      rtp      rtp86        MG(24,3):2  0x051c0    256  gates[4].in[4]   gr
+i5_pi4       in   rtp      rtp      rtpsel87     MG(24,5):2  0x042e0      4  gates[4].in[4]   gr
+i5_pi5       in   rtp      rtp      rtp88        MG(24,5):2  0x04300      4  gates[4].in[5]   gr
+i5_pi5       in   rtp      rtp      rtpsel89     MG(24,3):2  0x04160      4  gates[4].in[5]   gr
+i5_po0       out  buffer   mem      buf12        MG(24,4):2  0x04200    256  gates[4].out[0]  gr
+i5_po0       out  buffer   mem      buf12d       MG(24,4):3  0x06500    256  gates[4].out[0]  gr
+i6_pi0       in   buffer   mem      buf5         MG(24,5):2  0x04000    128  gates[5].in[0]   gr
+i6_pi0       in   buffer   mem      buf5d        MG(24,5):3  0x06000    128  gates[5].in[0]   gr
+i6_pi1       in   buffer   mem      buf23        MG(24,5):3  0x06080    512  gates[5].in[1]   gr
+i6_pi1       in   buffer   mem      buf23d       MG(24,5):2  0x040e0    512  gates[5].in[1]   gr
+i6_pi2       in   rtp      rtp      rtp90        MG(24,6):0  0x00000  32768  gates[5].in[2]   gr
+i6_pi2       in   rtp      rtp      rtpsel94     MG(24,5):2  0x05340      4  gates[5].in[2]   gr
+i6_pi3       in   rtp      rtp      rtp95        MG(24,5):0  0x00000  16384  gates[5].in[3]   gr
+i6_pi3       in   rtp      rtp      rtpsel97     MG(24,4):2  0x04300      4  gates[5].in[3]   gr
+i6_pi4       in   rtp      rtp      rtp98        MG(24,5):2  0x05360    256  gates[5].in[4]   gr
+i6_pi4       in   rtp      rtp      rtpsel99     MG(24,5):2  0x040a0      4  gates[5].in[4]   gr
+i6_pi5       in   rtp      rtp      rtp100       MG(24,5):2  0x040c0      4  gates[5].in[5]   gr
+i6_pi5       in   rtp      rtp      rtpsel101    MG(24,5):2  0x04080      4  gates[5].in[5]   gr
+i6_po0       out  buffer   mem      buf13        MG(24,4):3  0x06100    256  gates[5].out[0]  gr
+i6_po0       out  buffer   mem      buf13d       MG(24,4):2  0x04000    256  gates[5].out[0]  gr
+i7_pi0       in   buffer   mem      buf6         MG(26,3):0  0x00000    128  gates[6].in[0]   gr
+i7_pi0       in   buffer   mem      buf6d        MG(26,3):1  0x02000    128  gates[6].in[0]   gr
+i7_pi1       in   buffer   mem      buf24        MG(25,4):3  0x06400    512  gates[6].in[1]   gr
+i7_pi1       in   buffer   mem      buf24d       MG(25,4):2  0x046a0    512  gates[6].in[1]   gr
+i7_pi2       in   rtp      rtp      rtp102       MG(25,2):0  0x00000  32768  gates[6].in[2]   gr
+i7_pi2       in   rtp      rtp      rtpsel106    MG(25,3):2  0x04540      4  gates[6].in[2]   gr
+i7_pi3       in   rtp      rtp      rtp107       MG(25,3):0  0x00000  16384  gates[6].in[3]   gr
+i7_pi3       in   rtp      rtp      rtpsel109    MG(25,3):2  0x05580      4  gates[6].in[3]   gr
+i7_pi4       in   rtp      rtp      rtp110       MG(25,3):2  0x055c0    256  gates[6].in[4]   gr
+i7_pi4       in   rtp      rtp      rtpsel111    MG(25,3):2  0x056e0      4  gates[6].in[4]   gr
+i7_pi5       in   rtp      rtp      rtp112       MG(25,4):2  0x04160      4  gates[6].in[5]   gr
+i7_pi5       in   rtp      rtp      rtpsel113    MG(25,3):2  0x056c0      4  gates[6].in[5]   gr
+i7_po0       out  buffer   mem      buf14        MG(25,4):3  0x06100    256  gates[6].out[0]  gr
+i7_po0       out  buffer   mem      buf14d       MG(25,4):2  0x041a0    256  gates[6].out[0]  gr
+i8_pi0       in   buffer   mem      buf7         MG(24,3):2  0x04020    128  gates[7].in[0]   gr
+i8_pi0       in   buffer   mem      buf7d        MG(24,3):3  0x06080    128  gates[7].in[0]   gr
+i8_pi1       in   buffer   mem      buf25        MG(25,3):2  0x04020    512  gates[7].in[1]   gr
+i8_pi1       in   buffer   mem      buf25d       MG(25,3):3  0x06100    512  gates[7].in[1]   gr
+i8_pi2       in   rtp      rtp      rtp114       MG(24,2):0  0x00000  32768  gates[7].in[2]   gr
+i8_pi2       in   rtp      rtp      rtpsel118    MG(24,3):2  0x051a0      4  gates[7].in[2]   gr
+i8_pi3       in   rtp      rtp      rtp119       MG(24,4):0  0x00000  16384  gates[7].in[3]   gr
+i8_pi3       in   rtp      rtp      rtpsel121    MG(24,3):2  0x04140      4  gates[7].in[3]   gr
+i8_pi4       in   rtp      rtp      rtp122       MG(24,4):2  0x04540    256  gates[7].in[4]   gr
+i8_pi4       in   rtp      rtp      rtpsel123    MG(24,4):2  0x04320      4  gates[7].in[4]   gr
+i8_pi5       in   rtp      rtp      rtp124       MG(24,3):2  0x052c0      4  gates[7].in[5]   gr
+i8_pi5       in   rtp      rtp      rtpsel125    MG(24,3):2  0x040a0      4  gates[7].in[5]   gr
+i8_po0       out  buffer   mem      buf15        MG(24,4):3  0x06200    256  gates[7].out[0]  gr
+i8_po0       out  buffer   mem      buf15d       MG(24,4):2  0x04640    256  gates[7].out[0]  gr
+i9_po0       out  aximm    mem      buf0         MG(26,3):1  0x03f80    128  gmio_in.out[0]   gr
+i9_po0       out  aximm    mem      buf1         MG(26,6):2  0x04000    128  gmio_in.out[0]   gr
+i9_po0       out  aximm    mem      buf2         MG(25,5):1  0x03520    128  gmio_in.out[0]   gr
+i9_po0       out  aximm    mem      buf3         MG(27,3):2  0x05120    128  gmio_in.out[0]   gr
+i9_po0       out  aximm    mem      buf4         MG(24,3):3  0x06000    128  gmio_in.out[0]   gr
+i9_po0       out  aximm    mem      buf5         MG(24,5):2  0x04000    128  gmio_in.out[0]   gr
+i9_po0       out  aximm    mem      buf6         MG(26,3):0  0x00000    128  gmio_in.out[0]   gr
+i9_po0       out  aximm    mem      buf7         MG(24,3):2  0x04020    128  gmio_in.out[0]   gr
+i9_po0       out  aximm    mem      buf0d        MG(26,3):0  0x011a0    128  gmio_in.out[0]   gr
+i9_po0       out  aximm    mem      buf1d        MG(26,6):3  0x06080    128  gmio_in.out[0]   gr
+i9_po0       out  aximm    mem      buf2d        MG(25,5):2  0x054a0    128  gmio_in.out[0]   gr
+i9_po0       out  aximm    mem      buf3d        MG(27,3):3  0x06100    128  gmio_in.out[0]   gr
+i9_po0       out  aximm    mem      buf4d        MG(24,3):2  0x040c0    128  gmio_in.out[0]   gr
+i9_po0       out  aximm    mem      buf5d        MG(24,5):3  0x06000    128  gmio_in.out[0]   gr
+i9_po0       out  aximm    mem      buf6d        MG(26,3):1  0x02000    128  gmio_in.out[0]   gr
+i9_po0       out  aximm    mem      buf7d        MG(24,3):3  0x06080    128  gmio_in.out[0]   gr
+i10_pi0      in   aximm    mem      buf16        MG(25,3):2  0x055a0     16  gmio_out.in[0]   gr
+i10_pi0      in   aximm    mem      buf16d       MG(25,3):3  0x06300     16  gmio_out.in[0]   gr
+dma_i12_pi0  in   buffer   mem      buf17        MG(25,4):3  0x06200    512  _dma[0].in[0]    gr
+dma_i12_pi0  in   buffer   mem      buf17d       MG(25,4):2  0x044a0    512  _dma[0].in[0]    gr
+dma_i13_po0  out  buffer   mem      buf18        MG(25,4):3  0x06600    512  _dma[1].out[0]   gr
+dma_i13_po0  out  buffer   mem      buf18d       MG(25,4):2  0x042a0    512  _dma[1].out[0]   gr
+dma_i14_po0  out  buffer   mem      buf19        MG(26,4):2  0x04240    512  _dma[2].out[0]   gr
+dma_i14_po0  out  buffer   mem      buf19d       MG(26,4):3  0x06000    512  _dma[2].out[0]   gr
+dma_i15_po0  out  buffer   mem      buf20        MG(25,5):1  0x035a0    512  _dma[3].out[0]   gr
+dma_i15_po0  out  buffer   mem      buf20d       MG(25,5):3  0x078c0    512  _dma[3].out[0]   gr
+dma_i16_po0  out  buffer   mem      buf21        MG(26,4):2  0x04040    512  _dma[4].out[0]   gr
+dma_i16_po0  out  buffer   mem      buf21d       MG(26,4):3  0x06200    512  _dma[4].out[0]   gr
+dma_i17_po0  out  buffer   mem      buf22        MG(24,4):2  0x04340    512  _dma[5].out[0]   gr
+dma_i17_po0  out  buffer   mem      buf22d       MG(24,4):3  0x06300    512  _dma[5].out[0]   gr
+dma_i18_po0  out  buffer   mem      buf23        MG(24,5):3  0x06080    512  _dma[6].out[0]   gr
+dma_i18_po0  out  buffer   mem      buf23d       MG(24,5):2  0x040e0    512  _dma[6].out[0]   gr
+dma_i19_po0  out  buffer   mem      buf24        MG(25,4):3  0x06400    512  _dma[7].out[0]   gr
+dma_i19_po0  out  buffer   mem      buf24d       MG(25,4):2  0x046a0    512  _dma[7].out[0]   gr
+dma_i20_po0  out  buffer   mem      buf25        MG(25,3):2  0x04020    512  _dma[8].out[0]   gr
+dma_i20_po0  out  buffer   mem      buf25d       MG(25,3):3  0x06100    512  _dma[8].out[0]   gr
+
+
+===============================================
+Memory Bank Report:
+===============================================
+
+MG(x,y):b   Buffer Name     Addr   Size  Accessing Block          CR(x,y)/IO(x)
+----------  -----------  -------  -----  -----------------------  -------------
+MG(23,4):0  rtp78        0x00000  32768  i5:gate_half_buff        CR(24,4)
+MG(24,2):0  rtp114       0x00000  32768  i8:gate_half_buff        CR(24,3)
+MG(24,3):0  rtp83        0x00000  16384  i5:gate_half_buff        CR(24,4)
+MG(24,3):2  rtpsel82     0x04000      4  i5:gate_half_buff        CR(24,4)
+MG(24,3):2  buf7         0x04020    128  i9                       IO(26)
+MG(24,3):2  buf7         0x04020    128  i8:gate_half_buff        CR(24,3)
+MG(24,3):2  rtpsel125    0x040a0      4  i8:gate_half_buff        CR(24,3)
+MG(24,3):2  buf4d        0x040c0    128  i5:gate_half_buff        CR(24,4)
+MG(24,3):2  buf4d        0x040c0    128  i9                       IO(26)
+MG(24,3):2  rtpsel121    0x04140      4  i8:gate_half_buff        CR(24,3)
+MG(24,3):2  rtpsel89     0x04160      4  i5:gate_half_buff        CR(24,4)
+MG(24,3):2  sysmem131    0x04180   4128  main                     CR(24,4)
+MG(24,3):2  rtpsel118    0x051a0      4  i8:gate_half_buff        CR(24,3)
+MG(24,3):2  rtp86        0x051c0    256  i5:gate_half_buff        CR(24,4)
+MG(24,3):2  rtp124       0x052c0      4  i8:gate_half_buff        CR(24,3)
+MG(24,3):2  rtpsel85     0x052e0      4  i5:gate_half_buff        CR(24,4)
+MG(24,3):3  buf4         0x06000    128  i5:gate_half_buff        CR(24,4)
+MG(24,3):3  buf4         0x06000    128  i9                       IO(26)
+MG(24,3):3  buf7d        0x06080    128  i9                       IO(26)
+MG(24,3):3  buf7d        0x06080    128  i8:gate_half_buff        CR(24,3)
+MG(24,4):0  rtp119       0x00000  16384  i8:gate_half_buff        CR(24,3)
+MG(24,4):2  buf13d       0x04000    256  i6:gate_half_buff        CR(24,5)
+MG(24,4):2  buf13d       0x04000    256  i0:coordinator_4x2_buff  CR(25,4)
+MG(24,4):2  buf11r       0x04100    256  i0:coordinator_4x2_buff  CR(25,4)
+MG(24,4):2  buf12        0x04200    256  i0:coordinator_4x2_buff  CR(25,4)
+MG(24,4):2  buf12        0x04200    256  i5:gate_half_buff        CR(24,4)
+MG(24,4):2  rtpsel97     0x04300      4  i6:gate_half_buff        CR(24,5)
+MG(24,4):2  rtpsel123    0x04320      4  i8:gate_half_buff        CR(24,3)
+MG(24,4):2  buf22        0x04340    512  dma_i17                  
+MG(24,4):2  buf22        0x04340    512  i5:gate_half_buff        CR(24,4)
+MG(24,4):2  rtp122       0x04540    256  i8:gate_half_buff        CR(24,3)
+MG(24,4):2  buf15d       0x04640    256  i0:coordinator_4x2_buff  CR(25,4)
+MG(24,4):2  buf15d       0x04640    256  i8:gate_half_buff        CR(24,3)
+MG(24,4):2  sysmem134    0x04740   4128  main                     CR(24,3)
+MG(24,4):3  buf11dr      0x06000    256  i0:coordinator_4x2_buff  CR(25,4)
+MG(24,4):3  buf13        0x06100    256  i6:gate_half_buff        CR(24,5)
+MG(24,4):3  buf13        0x06100    256  i0:coordinator_4x2_buff  CR(25,4)
+MG(24,4):3  buf15        0x06200    256  i0:coordinator_4x2_buff  CR(25,4)
+MG(24,4):3  buf15        0x06200    256  i8:gate_half_buff        CR(24,3)
+MG(24,4):3  buf22d       0x06300    512  i5:gate_half_buff        CR(24,4)
+MG(24,4):3  buf22d       0x06300    512  dma_i17                  
+MG(24,4):3  buf12d       0x06500    256  i5:gate_half_buff        CR(24,4)
+MG(24,4):3  buf12d       0x06500    256  i0:coordinator_4x2_buff  CR(25,4)
+MG(24,5):0  rtp95        0x00000  16384  i6:gate_half_buff        CR(24,5)
+MG(24,5):2  buf5         0x04000    128  i9                       IO(26)
+MG(24,5):2  buf5         0x04000    128  i6:gate_half_buff        CR(24,5)
+MG(24,5):2  rtpsel101    0x04080      4  i6:gate_half_buff        CR(24,5)
+MG(24,5):2  rtpsel99     0x040a0      4  i6:gate_half_buff        CR(24,5)
+MG(24,5):2  rtp100       0x040c0      4  i6:gate_half_buff        CR(24,5)
+MG(24,5):2  buf23d       0x040e0    512  i6:gate_half_buff        CR(24,5)
+MG(24,5):2  buf23d       0x040e0    512  dma_i18                  
+MG(24,5):2  rtpsel87     0x042e0      4  i5:gate_half_buff        CR(24,4)
+MG(24,5):2  rtp88        0x04300      4  i5:gate_half_buff        CR(24,4)
+MG(24,5):2  sysmem132    0x04320   4128  main                     CR(24,5)
+MG(24,5):2  rtpsel94     0x05340      4  i6:gate_half_buff        CR(24,5)
+MG(24,5):2  rtp98        0x05360    256  i6:gate_half_buff        CR(24,5)
+MG(24,5):3  buf5d        0x06000    128  i9                       IO(26)
+MG(24,5):3  buf5d        0x06000    128  i6:gate_half_buff        CR(24,5)
+MG(24,5):3  buf23        0x06080    512  i6:gate_half_buff        CR(24,5)
+MG(24,5):3  buf23        0x06080    512  dma_i18                  
+MG(24,6):0  rtp90        0x00000  32768  i6:gate_half_buff        CR(24,5)
+MG(25,2):0  rtp102       0x00000  32768  i7:gate_half_buff        CR(25,3)
+MG(25,3):0  rtp107       0x00000  16384  i7:gate_half_buff        CR(25,3)
+MG(25,3):2  rtpsel29     0x04000      4  i0:coordinator_4x2_buff  CR(25,4)
+MG(25,3):2  buf25        0x04020    512  i8:gate_half_buff        CR(24,3)
+MG(25,3):2  buf25        0x04020    512  dma_i20                  
+MG(25,3):2  rtp26        0x04220    512  i0:coordinator_4x2_buff  CR(25,4)
+MG(25,3):2  buf9dr       0x04420    256  i0:coordinator_4x2_buff  CR(25,4)
+MG(25,3):2  rtp28        0x04520      4  i0:coordinator_4x2_buff  CR(25,4)
+MG(25,3):2  rtpsel106    0x04540      4  i7:gate_half_buff        CR(25,3)
+MG(25,3):2  sysmem126    0x04560   4128  main                     CR(25,4)
+MG(25,3):2  rtpsel109    0x05580      4  i7:gate_half_buff        CR(25,3)
+MG(25,3):2  buf16        0x055a0     16  i0:coordinator_4x2_buff  CR(25,4)
+MG(25,3):2  buf16        0x055a0     16  i10                      IO(26)
+MG(25,3):2  rtp110       0x055c0    256  i7:gate_half_buff        CR(25,3)
+MG(25,3):2  rtpsel113    0x056c0      4  i7:gate_half_buff        CR(25,3)
+MG(25,3):2  rtpsel111    0x056e0      4  i7:gate_half_buff        CR(25,3)
+MG(25,3):3  buf9r        0x06000    256  i0:coordinator_4x2_buff  CR(25,4)
+MG(25,3):3  buf25d       0x06100    512  dma_i20                  
+MG(25,3):3  buf25d       0x06100    512  i8:gate_half_buff        CR(24,3)
+MG(25,3):3  buf16d       0x06300     16  i0:coordinator_4x2_buff  CR(25,4)
+MG(25,3):3  buf16d       0x06300     16  i10                      IO(26)
+MG(25,4):0  buf8d        0x00000    256  i0:coordinator_4x2_buff  CR(25,4)
+MG(25,4):0  buf8d        0x00000    256  i1:gate_half_buff        CR(26,4)
+MG(25,4):0  rtp59        0x00100  16384  i3:gate_half_buff        CR(25,5)
+MG(25,4):2  rtpsel58     0x04100      4  i3:gate_half_buff        CR(25,5)
+MG(25,4):2  rtpsel27     0x04120      4  i0:coordinator_4x2_buff  CR(25,4)
+MG(25,4):2  rtpsel61     0x04140      4  i3:gate_half_buff        CR(25,5)
+MG(25,4):2  rtp112       0x04160      4  i7:gate_half_buff        CR(25,3)
+MG(25,4):2  rtpsel41     0x04180      4  i1:gate_half_buff        CR(26,4)
+MG(25,4):2  buf14d       0x041a0    256  i7:gate_half_buff        CR(25,3)
+MG(25,4):2  buf14d       0x041a0    256  i0:coordinator_4x2_buff  CR(25,4)
+MG(25,4):2  buf18d       0x042a0    512  i1:gate_half_buff        CR(26,4)
+MG(25,4):2  buf18d       0x042a0    512  dma_i13                  
+MG(25,4):2  buf17d       0x044a0    512  i0:coordinator_4x2_buff  CR(25,4)
+MG(25,4):2  buf17d       0x044a0    512  dma_i12                  
+MG(25,4):2  buf24d       0x046a0    512  i7:gate_half_buff        CR(25,3)
+MG(25,4):2  buf24d       0x046a0    512  dma_i19                  
+MG(25,4):3  buf8         0x06000    256  i0:coordinator_4x2_buff  CR(25,4)
+MG(25,4):3  buf8         0x06000    256  i1:gate_half_buff        CR(26,4)
+MG(25,4):3  buf14        0x06100    256  i7:gate_half_buff        CR(25,3)
+MG(25,4):3  buf14        0x06100    256  i0:coordinator_4x2_buff  CR(25,4)
+MG(25,4):3  buf17        0x06200    512  dma_i12                  
+MG(25,4):3  buf17        0x06200    512  i0:coordinator_4x2_buff  CR(25,4)
+MG(25,4):3  buf24        0x06400    512  i7:gate_half_buff        CR(25,3)
+MG(25,4):3  buf24        0x06400    512  dma_i19                  
+MG(25,4):3  buf18        0x06600    512  dma_i13                  
+MG(25,4):3  buf18        0x06600    512  i1:gate_half_buff        CR(26,4)
+MG(25,4):3  sysmem129    0x06fe0   4128  main                     CR(25,5)
+MG(25,5):0  rtpsel63     0x00000      4  i3:gate_half_buff        CR(25,5)
+MG(25,5):0  rtp62        0x00020    256  i3:gate_half_buff        CR(25,5)
+MG(25,5):0  rtpsel65     0x00120      4  i3:gate_half_buff        CR(25,5)
+MG(25,5):0  rtp64        0x00140      4  i3:gate_half_buff        CR(25,5)
+MG(25,5):0  buf10d       0x00160    256  i0:coordinator_4x2_buff  CR(25,4)
+MG(25,5):0  buf10d       0x00160    256  i3:gate_half_buff        CR(25,5)
+MG(25,5):1  buf2         0x03520    128  i9                       IO(26)
+MG(25,5):1  buf2         0x03520    128  i3:gate_half_buff        CR(25,5)
+MG(25,5):1  buf20        0x035a0    512  dma_i15                  
+MG(25,5):1  buf20        0x035a0    512  i3:gate_half_buff        CR(25,5)
+MG(25,5):2  buf10        0x053a0    256  i0:coordinator_4x2_buff  CR(25,4)
+MG(25,5):2  buf10        0x053a0    256  i3:gate_half_buff        CR(25,5)
+MG(25,5):2  buf2d        0x054a0    128  i9                       IO(26)
+MG(25,5):2  buf2d        0x054a0    128  i3:gate_half_buff        CR(25,5)
+MG(25,5):3  buf20d       0x078c0    512  dma_i15                  
+MG(25,5):3  buf20d       0x078c0    512  i3:gate_half_buff        CR(25,5)
+MG(25,6):0  rtp54        0x00000  32768  i3:gate_half_buff        CR(25,5)
+MG(26,2):0  rtp66        0x00000  32768  i4:gate_half_buff        CR(26,3)
+MG(26,3):0  buf6         0x00000    128  i7:gate_half_buff        CR(25,3)
+MG(26,3):0  buf6         0x00000    128  i9                       IO(26)
+MG(26,3):0  sysmem133    0x00180   4128  main                     CR(25,3)
+MG(26,3):0  buf0d        0x011a0    128  i1:gate_half_buff        CR(26,4)
+MG(26,3):0  buf0d        0x011a0    128  i9                       IO(26)
+MG(26,3):1  buf6d        0x02000    128  i7:gate_half_buff        CR(25,3)
+MG(26,3):1  buf6d        0x02000    128  i9                       IO(26)
+MG(26,3):1  buf0         0x03f80    128  i1:gate_half_buff        CR(26,4)
+MG(26,3):1  buf0         0x03f80    128  i9                       IO(26)
+MG(26,3):2  rtp35        0x04000  16384  i1:gate_half_buff        CR(26,4)
+MG(26,4):0  rtp47        0x00000  16384  i2:gate_half_buff        CR(26,5)
+MG(26,4):2  rtpsel34     0x04000      4  i1:gate_half_buff        CR(26,4)
+MG(26,4):2  rtpsel39     0x04020      4  i1:gate_half_buff        CR(26,4)
+MG(26,4):2  buf21        0x04040    512  i4:gate_half_buff        CR(26,3)
+MG(26,4):2  buf21        0x04040    512  dma_i16                  
+MG(26,4):2  buf19        0x04240    512  i2:gate_half_buff        CR(26,5)
+MG(26,4):2  buf19        0x04240    512  dma_i14                  
+MG(26,4):2  rtp38        0x04440    256  i1:gate_half_buff        CR(26,4)
+MG(26,4):2  rtp74        0x04540    256  i4:gate_half_buff        CR(26,3)
+MG(26,4):2  rtpsel75     0x04640      4  i4:gate_half_buff        CR(26,3)
+MG(26,4):2  rtpsel73     0x04660      4  i4:gate_half_buff        CR(26,3)
+MG(26,4):2  rtpsel70     0x04680      4  i4:gate_half_buff        CR(26,3)
+MG(26,4):2  sysmem127    0x046a0   4128  main                     CR(26,4)
+MG(26,4):2  rtp76        0x056c0      4  i4:gate_half_buff        CR(26,3)
+MG(26,4):2  rtpsel37     0x056e0      4  i1:gate_half_buff        CR(26,4)
+MG(26,4):2  rtp40        0x05700      4  i1:gate_half_buff        CR(26,4)
+MG(26,4):3  buf19d       0x06000    512  dma_i14                  
+MG(26,4):3  buf19d       0x06000    512  i2:gate_half_buff        CR(26,5)
+MG(26,4):3  buf21d       0x06200    512  dma_i16                  
+MG(26,4):3  buf21d       0x06200    512  i4:gate_half_buff        CR(26,3)
+MG(26,5):0  rtp30        0x00000  32768  i1:gate_half_buff        CR(26,4)
+MG(26,6):0  rtpsel46     0x00000      4  i2:gate_half_buff        CR(26,5)
+MG(26,6):0  rtpsel49     0x00020      4  i2:gate_half_buff        CR(26,5)
+MG(26,6):0  rtp50        0x00140    256  i2:gate_half_buff        CR(26,5)
+MG(26,6):0  rtpsel51     0x01020      4  i2:gate_half_buff        CR(26,5)
+MG(26,6):0  rtpsel53     0x01040      4  i2:gate_half_buff        CR(26,5)
+MG(26,6):0  rtp52        0x01060      4  i2:gate_half_buff        CR(26,5)
+MG(26,6):0  buf9d        0x01080    256  i2:gate_half_buff        CR(26,5)
+MG(26,6):1  buf9         0x02000    256  i2:gate_half_buff        CR(26,5)
+MG(26,6):2  buf1         0x04000    128  i2:gate_half_buff        CR(26,5)
+MG(26,6):2  buf1         0x04000    128  i9                       IO(26)
+MG(26,6):3  buf1d        0x06080    128  i2:gate_half_buff        CR(26,5)
+MG(26,6):3  buf1d        0x06080    128  i9                       IO(26)
+MG(26,6):3  sysmem128    0x06fe0   4128  main                     CR(26,5)
+MG(27,3):0  rtp71        0x00000  16384  i4:gate_half_buff        CR(26,3)
+MG(27,3):2  sysmem130    0x04000   4128  main                     CR(26,3)
+MG(27,3):2  buf11d       0x05020    256  i4:gate_half_buff        CR(26,3)
+MG(27,3):2  buf3         0x05120    128  i9                       IO(26)
+MG(27,3):2  buf3         0x05120    128  i4:gate_half_buff        CR(26,3)
+MG(27,3):2  rtpsel77     0x051a0      4  i4:gate_half_buff        CR(26,3)
+MG(27,3):3  buf11        0x06000    256  i4:gate_half_buff        CR(26,3)
+MG(27,3):3  buf3d        0x06100    128  i9                       IO(26)
+MG(27,3):3  buf3d        0x06100    128  i4:gate_half_buff        CR(26,3)
+MG(27,5):0  rtp42        0x00000  32768  i2:gate_half_buff        CR(26,5)
+

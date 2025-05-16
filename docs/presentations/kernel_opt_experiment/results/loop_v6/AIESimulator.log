@@ -1,0 +1,197 @@
+                                           AI Engine Simulator
+                                     Version 2024.2.2 (linux64-bit)
+                                     SW Build 5266121 on 2024-12-15-00:33:53
+                          Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+                          Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+AIEsim feature license is found.
+INFO: Executing config: build_hw/config/scsim_config.json
+[INFO]: If you are running trace or profile, Xilinx recommends to use --xlopt=0. This will give a greater visibility into the design. One can verify --xlopt level in the aiecompiler command line.
+profile data for cores: All
+set use_simple_noc to: 1
+Loading device config from: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/devices/VC1902.json
+[INFO] AIE Frequency: 1.25e+09 Hz 
+AIE_WORK_DIR = /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw
+[INFO] : Reading options file at aiesim-options.txt
+Initializing AIE driver...
+Initializing ADF API...
+XAIEFAL: INFO: Resource group Avail is created.
+XAIEFAL: INFO: Resource group Static is created.
+XAIEFAL: INFO: Resource group Generic is created.
+IP-INFO: [ps_i11_ps_main] IP loaded.
+Warning: ps_lib_path is empty, And supported simulators are XSIM, RIVIERA, XCELIUM, VCS and QUESTA
+
+Info: DEVICE FILE: /media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/devices/VC1902.json
+
+Info: AIE SOLUTION FILE: build_hw/arch/aieshim_solution.aiesol
+[AIESIM_OPTIONS]: aiesim_options file path aiesimulator_output/aiesim_options.txt
+[INFO]: Disable Unused Tiles
+[INFO]: Xpe File: /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/reports/main.xpe
+INFO  : Running AIE MTMODEL Simulation with 1 threads
+ISS disables unused tiles
+Optimized ISS Wrapper (R+W), r2p26
+RPC SERVER MESSAGE
+RPC SERVER MESSAGE iss rpc_server available on port 35097
+RPC SERVER MESSAGE
+INFO  : ROWS: 8 COLS: 50
+Enable memory boundary check
+Current Directory=/media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm
+Using new arbitration logic
+Enabled fast PM writes.
+Enabled fast DM writes.
+[INFO]: Enabled Stream Switch Port Latency 
+IP-INFO: [ps_i11_ps_main] IP started.
+Program compiled with VARIANT=4x2_BUFF
+Reading weights from array ...
+Reading data from array ...
+Initiating graph ...
+Loading elfs of graph gr...
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_4.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/24_3/Release/24_3 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/24_3/Release/24_3.cmic2_132269761064976 -D__tct_tgt__=240507    +F
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_4.cm.proc.iss] : Stack range [214880..216927] has been loaded from elf executable for stack memory DM_stack and stack pointer SP
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_5.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/24_4/Release/24_4 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/24_4/Release/24_4.cmic2_132269605847056 -D__tct_tgt__=240507    +F
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_5.cm.proc.iss] : Stack range [147872..149919] has been loaded from elf executable for stack memory DM_stack and stack pointer SP
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_6.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/24_5/Release/24_5 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/24_5/Release/24_5.cmic2_132269515603984 -D__tct_tgt__=240507    +F
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_6.cm.proc.iss] : Stack range [181056..183103] has been loaded from elf executable for stack memory DM_stack and stack pointer SP
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_4.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_3/Release/25_3 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_3/Release/25_3.cmic2_132269664612368 -D__tct_tgt__=240507    +F
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_4.cm.proc.iss] : Stack range [229792..231839] has been loaded from elf executable for stack memory DM_stack and stack pointer SP
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_5.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_4/Release/25_4 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_4/Release/25_4.cmic2_132269578563600 -D__tct_tgt__=240507    +F
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_5.cm.proc.iss] : Stack range [148864..150911] has been loaded from elf executable for stack memory DM_stack and stack pointer SP
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_6.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_5/Release/25_5 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_5/Release/25_5.cmic2_132269488320528 -D__tct_tgt__=240507    +F
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_6.cm.proc.iss] : Stack range [159744..161791] has been loaded from elf executable for stack memory DM_stack and stack pointer SP
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_4.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/26_3/Release/26_3 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/26_3/Release/26_3.cmic2_132269637328912 -D__tct_tgt__=240507    +F
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_4.cm.proc.iss] : Stack range [245792..247839] has been loaded from elf executable for stack memory DM_stack and stack pointer SP
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_5.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/26_4/Release/26_4 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/26_4/Release/26_4.cmic2_132269542887440 -D__tct_tgt__=240507    +F
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_5.cm.proc.iss] : Stack range [247488..249535] has been loaded from elf executable for stack memory DM_stack and stack pointer SP
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_6.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/26_5/Release/26_5 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/26_5/Release/26_5.cmic2_132269461037072 -D__tct_tgt__=240507    +F
+me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_6.cm.proc.iss] : Stack range [225280..227327] has been loaded from elf executable for stack memory DM_stack and stack pointer SP
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_4.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/24_3/Release/24_3 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/24_3/Release/24_3.cmic2_132269761064976 -D__tct_tgt__=240507    +F : checkers_Disassemble_Elf32File
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_4.cm.proc.iss] : Stack range [214880..216927] has been loaded from elf executable for stack memory DM_stack and stack pointer SP : loadprogram (elf)
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_4.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_3/Release/25_3 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_3/Release/25_3.cmic2_132269664612368 -D__tct_tgt__=240507    +F : checkers_Disassemble_Elf32File
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_4.cm.proc.iss] : Stack range [229792..231839] has been loaded from elf executable for stack memory DM_stack and stack pointer SP : loadprogram (elf)
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_5.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/24_4/Release/24_4 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/24_4/Release/24_4.cmic2_132269605847056 -D__tct_tgt__=240507    +F : checkers_Disassemble_Elf32File
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_5.cm.proc.iss] : Stack range [147872..149919] has been loaded from elf executable for stack memory DM_stack and stack pointer SP : loadprogram (elf)
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_5.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_4/Release/25_4 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_4/Release/25_4.cmic2_132269578563600 -D__tct_tgt__=240507    +F : checkers_Disassemble_Elf32File
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_5.cm.proc.iss] : Stack range [148864..150911] has been loaded from elf executable for stack memory DM_stack and stack pointer SP : loadprogram (elf)
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_6.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/24_5/Release/24_5 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/24_5/Release/24_5.cmic2_132269515603984 -D__tct_tgt__=240507    +F : checkers_Disassemble_Elf32File
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_6.cm.proc.iss] : Stack range [181056..183103] has been loaded from elf executable for stack memory DM_stack and stack pointer SP : loadprogram (elf)
+Initializing graph gr...
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_4.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/26_3/Release/26_3 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/26_3/Release/26_3.cmic2_132269637328912 -D__tct_tgt__=240507    +F : checkers_Disassemble_Elf32File
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_4.cm.proc.iss] : Stack range [245792..247839] has been loaded from elf executable for stack memory DM_stack and stack pointer SP : loadprogram (elf)
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_5.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/26_4/Release/26_4 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/26_4/Release/26_4.cmic2_132269542887440 -D__tct_tgt__=240507    +F : checkers_Disassemble_Elf32File
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_5.cm.proc.iss] : Stack range [247488..249535] has been loaded from elf executable for stack memory DM_stack and stack pointer SP : loadprogram (elf)
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_6.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_5/Release/25_5 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/25_5/Release/25_5.cmic2_132269488320528 -D__tct_tgt__=240507    +F : checkers_Disassemble_Elf32File
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_6.cm.proc.iss] : Stack range [159744..161791] has been loaded from elf executable for stack memory DM_stack and stack pointer SP : loadprogram (elf)
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_6.cm.proc.iss] : Disassemble command used: darts -c /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/26_5/Release/26_5 -I/media/titon/LinuxPortable/xilinx_tools_2024_2/Vitis/2024.2/aietools/data/versal_prod/lib me -o /media/titon/LinuxData/development_herc/amd_ai_engine/aie_lstm/build_hw/aie/26_5/Release/26_5.cmic2_132269461037072 -D__tct_tgt__=240507    +F : checkers_Disassemble_Elf32File
+MSG :   -1 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_6.cm.proc.iss] : Stack range [225280..227327] has been loaded from elf executable for stack memory DM_stack and stack pointer SP : loadprogram (elf)
+Resetting cores of graph gr...
+Configuring DMAs of graph gr...
+Configuring PL-Interface for graph gr...
+Output samples: 3
+Input buff size: 512
+Output buff size: 64
+Attaching GMIO buffers ..
+Starting graph ...
+Set 4 iterations for the core(s) of graph gr
+Enabling core(s) of graph gr
+Loop cycle count: 4127
+Loop cycle count: 4124
+Loop cycle count: 4124
+Loop cycle count: 4133
+Loop cycle count: 4535
+Loop cycle count: 4547
+Loop cycle count: 4564
+Loop cycle count: 4573
+------
+Loop cycle count: 4124
+Loop cycle count: 4124
+Loop cycle count: 4125
+Loop cycle count: 4125
+Loop cycle count: 4131
+Loop cycle count: 4131
+Loop cycle count: 4850
+Loop cycle count: 4854
+------
+Loop cycle count: 4126
+Loop cycle count: 4124
+Loop cycle count: 4125
+Loop cycle count: 4133
+Loop cycle count: 4363
+Loop cycle count: 4367
+Loop cycle count: 4730
+Loop cycle count: 4737
+------
+Waiting for core(s) of graph gr to finish execution ...
+Loop cycle count: 4124
+Loop cycle count: 4124
+Loop cycle count: 4125
+Loop cycle count: 4125
+Loop cycle count: 4134
+Loop cycle count: 4135
+Loop cycle count: 4131
+Loop cycle count: 4131
+core(s) are done executing
+Graph done.
+#0.968299567699 0.000000000000
+#0.969299554825 0.000000000000
+#0.970299541950 0.000000000000
+#0.971299588680 0.000000000000
+#0.972299575806 0.000000000000
+#0.973299562931 0.000000000000
+#0.974299550056 0.000000000000
+#0.975299596786 0.000000000000
+#0.976299583912 0.000000000000
+#0.977299571037 0.000000000000
+#0.978299558163 0.000000000000
+#0.979299545288 0.000000000000
+#0.980299592018 0.000000000000
+#0.981299579144 0.000000000000
+#0.982299566269 0.000000000000
+#0.983299553394 0.000000000000
+#0.984299540520 0.000000000000
+#0.985299587250 0.000000000000
+#0.986299574375 0.000000000000
+#0.987299561501 0.880538105965
+#0.988299548626 0.883305907249
+#0.989299595356 0.886036396027
+Waiting for core(s) of graph gr to finish execution ...
+core(s) are done executing
+Exiting!
+Cores are done executing but the simulation will run for some more cycles to allow PLIO to be flushed
+generate profile data for all cores
+WARNING : WRN (-2) : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_5.cm.proc.iss] : Execution tracing should be enabled when requesting function details : in function chkapi_function_profiling
+WRN :   -2 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_5.cm.proc.iss] : Execution tracing should be enabled when requesting function details : chkapi_function_profiling
+WARNING : WRN (-2) : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_5.cm.proc.iss] : Execution tracing should be enabled when requesting function details : in function chkapi_function_profiling
+WARNING : WRN (-2) : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_4.cm.proc.iss] : Execution tracing should be enabled when requesting function details : in function chkapi_function_profiling
+WARNING : WRN (-2) : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_4.cm.proc.iss] : Execution tracing should be enabled when requesting function details : in function chkapi_function_profiling
+WRN :   -2 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_4.cm.proc.iss] : Execution tracing should be enabled when requesting function details : chkapi_function_profiling
+WRN :   -2 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_6.cm.proc.iss] : Execution tracing should be enabled when requesting function details : chkapi_function_profiling
+WARNING : WRN (-2) : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_6.cm.proc.iss] : Execution tracing should be enabled when requesting function details : in function chkapi_function_profiling
+WARNING : WRN (-2) : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_5.cm.proc.iss] : Execution tracing should be enabled when requesting function details : in function chkapi_function_profiling
+WRN :   -2 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_5.cm.proc.iss] : Execution tracing should be enabled when requesting function details : chkapi_function_profiling
+WRN :   -2 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_6.cm.proc.iss] : Execution tracing should be enabled when requesting function details : chkapi_function_profiling
+WARNING : WRN (-2) : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_5.cm.proc.iss] : Execution tracing should be enabled when requesting function details : in function chkapi_function_profiling
+WARNING : WRN (-2) : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_4.cm.proc.iss] : Execution tracing should be enabled when requesting function details : in function chkapi_function_profiling
+WRN :   -2 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_5.cm.proc.iss] : Execution tracing should be enabled when requesting function details : chkapi_function_profiling
+WARNING : WRN (-2) : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_4.cm.proc.iss] : Execution tracing should be enabled when requesting function details : in function chkapi_function_profiling
+WARNING : WRN (-2) : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_6.cm.proc.iss] : Execution tracing should be enabled when requesting function details : in function chkapi_function_profiling
+WARNING : WRN (-2) : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_6.cm.proc.iss] : Execution tracing should be enabled when requesting function details : in function chkapi_function_profiling
+WRN :   -2 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_4.cm.proc.iss] : Execution tracing should be enabled when requesting function details : chkapi_function_profiling
+WRN :   -2 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_25_6.cm.proc.iss] : Execution tracing should be enabled when requesting function details : chkapi_function_profiling
+WARNING : WRN (-2) : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_5.cm.proc.iss] : Execution tracing should be enabled when requesting function details : in function chkapi_function_profiling
+WARNING : WRN (-2) : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_5.cm.proc.iss] : Execution tracing should be enabled when requesting function details : in function chkapi_function_profiling
+WARNING : WRN (-2) : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_6.cm.proc.iss] : Execution tracing should be enabled when requesting function details : in function chkapi_function_profiling
+WRN :   -2 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_5.cm.proc.iss] : Execution tracing should be enabled when requesting function details : chkapi_function_profiling
+WRN :   -2 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_6.cm.proc.iss] : Execution tracing should be enabled when requesting function details : chkapi_function_profiling
+WARNING : WRN (-2) : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_6.cm.proc.iss] : Execution tracing should be enabled when requesting function details : in function chkapi_function_profiling
+WARNING : WRN (-2) : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_4.cm.proc.iss] : Execution tracing should be enabled when requesting function details : in function chkapi_function_profiling
+WRN :   -2 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_4.cm.proc.iss] : Execution tracing should be enabled when requesting function details : chkapi_function_profiling
+WRN :   -2 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_26_6.cm.proc.iss] : Execution tracing should be enabled when requesting function details : chkapi_function_profiling
+WARNING : WRN (-2) : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_4.cm.proc.iss] : Execution tracing should be enabled when requesting function details : in function chkapi_function_profiling
+generate profile data for all cores
+WRN :   -2 : me[::tl.aie_logical.aie_xtlm.math_engine.array.tile_24_4.cm.proc.iss] : Execution tracing should be enabled when requesting function details : chkapi_function_profiling
+Stopping Simulator.
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+[INFO]: Memory Violation Guidance report generated ./AIESim_Guidance.json
+IP-INFO: deleting ip PSIP_ps_i11 
+[INFO] : Simulation Finished, Sim result: 0 Total Simulation time 43440 ns, Wall clock time 138.503 s 
+AIEsim feature license is released.

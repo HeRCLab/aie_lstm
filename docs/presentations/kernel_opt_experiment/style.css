@@ -1,0 +1,13 @@
+#large-code-block {
+  font-size: 1.0rem;
+  padding-left: 3rem;
+}
+
+#large-code-block .sourceCode {
+  overflow: auto;
+  overflow-wrap: normal;
+}
+
+.reveal h1 {
+  font-size: 5rem;
+}
