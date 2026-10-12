@@ -4,6 +4,21 @@ This project is an experimental exploration of implementing an LSTM network
 using C++ graph and kernel API for 1st generation AI Engine architecture on
 VCK190 Versal ACAP board.
 
+<table>
+  <tr>
+    <td align="center">
+      <img src="./images/graph_and_array_4x1_buff.png" width="45%" alt="4 Core Variant" />
+      <br />
+      <b>4 Core LSTM Block Graph and Array Placement</b>
+    </td>
+    <td align="center">
+      <img src="./images/graph_and_array_4x2_buff.png" width="45%" alt="8 Core Variant" />
+      <br />
+      <b>8 Core LSTM Block Graph and Array Placement</b>
+    </td>
+  </tr>
+</table>
+
 ## Building and Running
 
 Assuming the development environment is a GNU/Linux machine:
@@ -78,17 +93,9 @@ frequency set to 1250MHz and sampling interval of 1pS.
 
 ![Variant 4X1\_BUFF Trace Analysis](./images/trace_4x1_buff.png)
 
-### 4 Core Variant Graph and Array Placement
-
-![Variant 4X1\_BUFF Graph and Array](./images/graph_and_array_4x1_buff.png)
-
 ### 8 Core Variant Simulation Trace
 
 ![Variant 4X2\_BUFF Trace Analysis](./images/trace_4x2_buff.png)
-
-### 4 Core Variant Graph and Array Placement
-
-![Variant 4X2\_BUFF Graph and Array](./images/graph_and_array_4x2_buff.png)
 
 ## Accuracy
 
