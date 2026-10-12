@@ -82,8 +82,9 @@ usual three gates.
 ## Simulation Latency Analysis
 
 | Variant | Gate 1st Latency | Network 1st Latency |
-| 4 Core | ~10.6µS | ~16µS |
-| 8 Core | ~7µS | ~12.6µS |
+|---------|------------------|---------------------|
+| 4 Core  | ~10.6µS          | ~16µS               |
+| 8 Core  | ~7µS             | ~12.6µS             |
 
 `4X1_STRM` variant is so slow that `vitis_analyzer` times out and hangs while
 analyzing the vcd file. For all cases, simulation was done with the core clock
