@@ -13,7 +13,7 @@ INCLUDE_DIRS:=$(SRC_DIR) \
 #           stream based comm.
 VARIANT:=4X2_BUFF
 
-GATE_HALF_LOOP:=V1
+GATE_HALF_LOOP:=V8
 
 # 0 : No kernel optimizations.
 #
@@ -25,9 +25,9 @@ GATE_HALF_LOOP:=V1
 OPT_LVL:=0
 
 # Buffer placement optimization level (0-9).
-BUFFER_OPT_LVL:=0
+BUFFER_OPT_LVL:=9
 
-STACK_SIZE:=2048
+STACK_SIZE:=2176
 HEAP_SIZE:=2048
 
 # Pre-processor directives:
@@ -57,7 +57,9 @@ LOG_DIR:=logs
 ADF_API_LOG_LVL:=2
 AIE_LOG_LVL:=2
 
-PLATFORM:=$(XILINX_VITIS)/base_platforms/xilinx_vck190_base_202420_1/xilinx_vck190_base_202420_1.xpfm
+# Adjust platform for specific version of Vitis tools and target board.
+# PLATFORM:=$(XILINX_VITIS)/base_platforms/xilinx_vck190_base_202420_1/xilinx_vck190_base_202420_1.xpfm
+PLATFORM:=$(XILINX_VITIS)/base_platforms/xilinx_vck190_base_202520_1/xilinx_vck190_base_202520_1.xpfm
 
 SOURCES := $(wildcard $(SRC_DIR)/*.cpp) \
 	   $(wildcard $(SRC_DIR)/*.hpp) \
@@ -78,7 +80,6 @@ AIECC := v++ \
       --mode aie \
       --aie.debug \
       --aie.verbose \
-      --aie.keep-intermediate-results \
       --aie.adf-api-log-level=$(ADF_API_LOG_LVL) \
       --aie.log-level=$(AIE_LOG_LVL) \
       --aie.xlopt=$(OPT_LVL) \
@@ -87,7 +88,7 @@ AIECC := v++ \
       --aie.fastmath \
       --aie.fast-floats \
       --aie.fast-nonlinearfloats \
-      --aie.Xchess="main:backend.mist2.maxfoldk=2048" \
+      --aie.Xchess="main:backend.mist2.maxfoldk=128" \
       --aie.Xchess="main:backend.mist2.xargs=-ggraph" \
       --aie.Xmapper="BufferOptLevel$(BUFFER_OPT_LVL)" \
       --platform $(PLATFORM) \
@@ -127,8 +128,7 @@ AIESIM_CMD := aiesimulator \
 
 run-aiesim:
 	$(AIESIM_CMD) \
-		--enable-memory-check=1 \
-		--profile
+		--enable-memory-check=1
 
 # Dumping VCD file while --profile option is active seems
 # to corrupt the network output.
