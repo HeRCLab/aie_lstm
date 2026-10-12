@@ -131,6 +131,9 @@ repository is mostly archival.
 - Scaling LSTM or any other neural network operator implementation without a
   compiler framework is dumb. For example, the best implementation here uses 8
   cores, while there are 400 cores available.
+- The weights and intermediate buffers per core are too big be double buffered.
+  A 16 core solution with all the RTP and IO buffers doubled would have been
+  a better design for steady state performance.
 
 ## License
 
