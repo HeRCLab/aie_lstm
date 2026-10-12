@@ -37,7 +37,7 @@ Assuming the development environment is a GNU/Linux machine:
 - To view the compile summary, run:
       `vitis_analyzer build_hw/main.aiecompile_summary`
 - To view simulator trace, run:
-      `vitis_analyzer build_hw/`
+      `vitis_analyzer aiesimulator_output/default.aierun_summary`
 
 ## Code Guide
 
