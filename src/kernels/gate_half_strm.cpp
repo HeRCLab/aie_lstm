@@ -61,10 +61,11 @@ void gate_half_strm(
     for (int i = 0; i < state_blocks; i++)
         chess_prepare_for_pipelining {
             // Fill a vector from the state stream.
-            for (int j = 0; j < VECTOR_LANES / strm_width; j++) {
-                vs = readincr_v<strm_width>(state_strm);
-                va = va.insert(j, vs);
-            }
+            for (int j = 0; j < VECTOR_LANES / strm_width; j++)
+                chess_unroll_loop(*) {
+                    vs = readincr_v<strm_width>(state_strm);
+                    va = va.insert(j, vs);
+                }
 
             acc1 = mac(acc1, *w_state_iter++, va);
             *state_iter++ = va;
@@ -74,10 +75,11 @@ void gate_half_strm(
     for (int i = 0; i < input_blocks; i++)
         chess_prepare_for_pipelining {
             // Fill a vector from the input stream.
-            for (int j = 0; j < VECTOR_LANES / strm_width; j++) {
-                vs = readincr_v<strm_width>(input_strm);
-                va = va.insert(j, vs);
-            }
+            for (int j = 0; j < VECTOR_LANES / strm_width; j++)
+                chess_unroll_loop(*) {
+                    vs = readincr_v<strm_width>(input_strm);
+                    va = va.insert(j, vs);
+                }
 
             acc1 = mac(acc1, *w_inp_iter++, va);
             *inp_iter++ = va;
@@ -98,16 +100,15 @@ void gate_half_strm(
     state_iter -= state_blocks;
     // -------------------------------------------------------------'
 
-    for (int row = 1; row < LSTM_UNITS / 2; row++)
-        chess_prepare_for_pipelining {
-            if (!partial_computation || (row < (LSTM_UNITS_REAL - LSTM_UNITS / 2))) {
+    for (int row = 1; row < LSTM_UNITS / 2; row++) {
+        if (!partial_computation || (row < (LSTM_UNITS_REAL - LSTM_UNITS / 2))) {
+            rslt = *b_iter++;
+            acc1 = zeros<accfloat, VECTOR_LANES>();
+            acc2 = zeros<accfloat, VECTOR_LANES>();
 
-                rslt = *b_iter++;
-                acc1 = zeros<accfloat, VECTOR_LANES>();
-                acc2 = zeros<accfloat, VECTOR_LANES>();
-
-                // Multiply and accumulate with state weight matrix.
-                for (int i = 0; i < state_blocks / 2; i++) {
+            // Multiply and accumulate with state weight matrix.
+            for (int i = 0; i < state_blocks / 2; i++)
+                chess_prepare_for_pipelining {
                     va = *w_state_iter++;
                     vb = *state_iter++;
                     acc1 = mac(acc1, va, vb);
@@ -116,25 +117,26 @@ void gate_half_strm(
                     acc2 = mac(acc2, va, vb);
                 }
 
-                // Mutiply and accumulate with input-weight matrix.
-                for (int i = 0; i < input_blocks; i++) {
+            // Mutiply and accumulate with input-weight matrix.
+            for (int i = 0; i < input_blocks; i++)
+                chess_prepare_for_pipelining {
                     acc1 = mac(acc1, *w_inp_iter++, *inp_iter++);
                 }
 
-                // Sum all of the accumulator lanes.
-                rslt += reduce_add(acc1.to_vector<float>(0));
-                rslt += reduce_add(acc2.to_vector<float>(0));
+            // Sum all of the accumulator lanes.
+            rslt += reduce_add(acc1.to_vector<float>(0));
+            rslt += reduce_add(acc2.to_vector<float>(0));
 
-                // Reset input and state iterators.
-                inp_iter -= input_blocks;
-                state_iter -= state_blocks;
+            // Reset input and state iterators.
+            inp_iter -= input_blocks;
+            state_iter -= state_blocks;
 
 #ifdef DEBUG
-                printf("G_%d [gate ->> strm] = %.5f\n", gate_id, rslt);
+            printf("G_%d [gate ->> strm] = %.5f\n", gate_id, rslt);
 #endif
-                // Send result over output stream.
-                writeHeader(output_strm, 0, output_strm_id);
-                writeincr(output_strm, reinterpret_cast<uint32 &>(rslt), true);
-            }
+            // Send result over output stream.
+            writeHeader(output_strm, 0, output_strm_id);
+            writeincr(output_strm, reinterpret_cast<uint32 &>(rslt), true);
         }
+    }
 }

@@ -35,10 +35,9 @@ struct GateFIFO {
     float buff[GATE_FIFO_MAX_SIZE] = {0.0f};
 };
 
-inline
-float get_gate_result(GateFIFO (&gate_fifos)[N_HALF_GATES],
-                      input_pktstream *strm,
-                      int32 gate_idx) {
+inline float get_gate_result(GateFIFO (&gate_fifos)[N_HALF_GATES],
+                             input_pktstream *strm,
+                             int32 gate_idx) {
     float rslt;
     int32 strm_head, strm_val, gidx;
     GateFIFO *fifo = &gate_fifos[gate_idx];
