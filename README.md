@@ -8,7 +8,7 @@ API.
 > rather than optimal. This was my first introduction to programming deep
 > pipelined processor cores. As such, there are a lot of anti-patterns in the
 > loop designs and overall implementation. The caveats are discussed in details
-> in the (Lessons Learned)[#lessons-learned] section.
+> in the "Lessons Learned" section.
 
 <table style="border: none;">
   <tr>
@@ -51,7 +51,7 @@ Assuming the development environment is a GNU/Linux machine:
   using `fpmac` instruction. All the inner loops are software pipelined as much
   as possible with a loop II of 2. Each gate is assigned their individual cores
   and receives data through the synchronous I/O buffer interface.
-- There is coordinator kernel which is responsible for feeding inputs to and
+- There is a coordinator kernel which is responsible for feeding inputs to and
   collating outputs from all the gates. It is also responsible for state
   management in between the recurrent iterations.
 - Weights and biases are loaded into 32KB scratchpad memory before graph
