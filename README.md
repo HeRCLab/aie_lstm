@@ -4,17 +4,17 @@ This project is an experimental exploration of implementing an LSTM network
 using C++ graph and kernel API for 1st generation AI Engine architecture on
 VCK190 Versal ACAP board.
 
-<table stype="border: none;">
+<table style="border: none;">
   <tr>
     <td align="center">
-      <img src="./images/graph_and_array_4x1_buff.png" width="90%" alt="4 Core Variant" />
+      <img src="./images/graph_and_array_4x1_buff.png" width="100%" alt="4 Core Variant" />
       <br />
-      <b>4 Core LSTM Block Graph and Array Placement</b>
+      <b>4 core variant graph and array placement</b>
     </td>
     <td align="center">
-      <img src="./images/graph_and_array_4x2_buff.png" width="90%" alt="8 Core Variant" />
+      <img src="./images/graph_and_array_4x2_buff.png" width="100%" alt="8 Core Variant" />
       <br />
-      <b>8 Core LSTM Block Graph and Array Placement</b>
+      <b>8 core variant graph and array placement</b>
     </td>
   </tr>
 </table>
@@ -74,10 +74,10 @@ Assuming the development environment is a GNU/Linux machine:
 
 The project was inspired by and compares to an internal implementation of LSTM
 network written in C using non-SIMD standard library math, related to the
-[dropbear project](). The code is available [here](./lstm_ref_code/test_lstm.c).
-The network is a single LSTM block with dense layer before the output. It has an
-input size of 20, hidden size of 100 and a cell/modulation gate, as well as the
-usual three gates.
+[dropbear project](https://github.com/HeRCLab/dropbear_lstm). The code is
+available [here](./lstm_ref_code/test_lstm.c). The network is a single LSTM
+block with dense layer before the output. It has an input size of 20, hidden
+size of 100 and a cell/modulation gate, as well as the usual three gates.
 
 ## Simulation Latency Analysis
 
