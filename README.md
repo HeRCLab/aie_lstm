@@ -1,8 +1,14 @@
 # Exploratory LSTM Implementation for AMD AI Engine
 
-This project is an experimental exploration of implementing an LSTM network
-using C++ graph and kernel API for 1st generation AI Engine architecture on
-VCK190 Versal ACAP board.
+This project is an experimental exploration of implementing an LSTM network on
+1st generation AMD/Xilinx AI Engine architecture, using C++ graph and kernel
+API.
+
+> ⚠️ As the name suggests, the designs present in this project are exploratory,
+> rather than optimal. This was my first introduction to programming deep
+> pipelined processor cores. As such, there are a lot of anti-patterns in the
+> loop designs and overall implementation. The caveats are discussed in details
+> in the (Lessons Learned)[#lessons-learned] section.
 
 <table style="border: none;">
   <tr>
@@ -41,21 +47,19 @@ Assuming the development environment is a GNU/Linux machine:
 
 ## Code Guide
 
-- The gate kernels are implemented with vectorized matrix multiplication with 8
-  lanes of single precision float per cycle using `aie::mac` API function. All
-  the inner loops are software pipelined as much as possible with a loop II
-  of 2. Each gate is assigned their individual cores and receives data through
-  the synchronous I/O buffer interface.
+- The gate kernels are implemented with 8 lane vectorized matrix multiplication
+  using `fpmac` instruction. All the inner loops are software pipelined as much
+  as possible with a loop II of 2. Each gate is assigned their individual cores
+  and receives data through the synchronous I/O buffer interface.
 - There is coordinator kernel which is responsible for feeding inputs to and
   collating outputs from all the gates. It is also responsible for state
-  management in between the recurrent iterations which necessitates it to
-  utilize the asynchronous I/O buffer interface.
+  management in between the recurrent iterations.
 - Weights and biases are loaded into 32KB scratchpad memory before graph
   execution begins. They are implemented as Run Time Parameter(RTP) buffers,
   exclusive to each gate.
 - The [graph](./src/graphs.hpp) describes the interconnection between the
-  kernels, using AMD ADF graph API. It also describes various meta information
-  like placement constraints between the kernels.
+  kernels, using the AMD ADF C++ graph API. It also describes various meta
+  information like placement constraints between the kernels.
 - The [host shim](./src/main.cpp) is responsible for loading and invoking the
   graph along with allocating buffers for graph input/output using GMIO
   interface.
