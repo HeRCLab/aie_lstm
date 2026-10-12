@@ -1,4 +1,4 @@
-# Exploratory LSTM Implementation for AMD AI Engine
+# Exploratory LSTM Implementation on AMD AI Engine
 
 This project is an experimental exploration of implementing an LSTM network on
 1st generation AMD/Xilinx AI Engine architecture, using C++ graph and kernel
