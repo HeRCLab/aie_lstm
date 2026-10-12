@@ -4,15 +4,15 @@ This project is an experimental exploration of implementing an LSTM network
 using C++ graph and kernel API for 1st generation AI Engine architecture on
 VCK190 Versal ACAP board.
 
-<table>
+<table stype="border: none;">
   <tr>
     <td align="center">
-      <img src="./images/graph_and_array_4x1_buff.png" width="45%" alt="4 Core Variant" />
+      <img src="./images/graph_and_array_4x1_buff.png" width="90%" alt="4 Core Variant" />
       <br />
       <b>4 Core LSTM Block Graph and Array Placement</b>
     </td>
     <td align="center">
-      <img src="./images/graph_and_array_4x2_buff.png" width="45%" alt="8 Core Variant" />
+      <img src="./images/graph_and_array_4x2_buff.png" width="90%" alt="8 Core Variant" />
       <br />
       <b>8 Core LSTM Block Graph and Array Placement</b>
     </td>
@@ -81,9 +81,9 @@ usual three gates.
 
 ## Simulation Latency Analysis
 
-| Variant   | Gate 1st Latency | Network 1st Latency |
-| 4X1\_BUFF | ~10.6µS          | ~16µS               |
-| 4X2\_BUFF | ~7µS             | ~12.6µS             |
+| Variant | Gate 1st Latency | Network 1st Latency |
+| 4 Core | ~10.6µS | ~16µS |
+| 8 Core | ~7µS | ~12.6µS |
 
 `4X1_STRM` variant is so slow that `vitis_analyzer` times out and hangs while
 analyzing the vcd file. For all cases, simulation was done with the core clock
